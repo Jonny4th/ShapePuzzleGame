@@ -1,28 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class BlockPiece : MonoBehaviour, ISelectable
 {
     Color original;
-    public List<LineRenderer> positionLines;
-    public GameObject visual;
+    public event Action Selected;
+    public event Action Deselected;
     public void OnDeselect()
     {
-        Debug.Log("On Deselect.");
-        visual.GetComponent<MeshRenderer>().material.color = original;
-        foreach (var item in positionLines)
-        {
-            item.gameObject.SetActive(false);
-        }
+        Deselected?.Invoke();
     }
 
     public void OnSelect()
     {
-        original = visual.GetComponent<MeshRenderer>().material.color;
-        visual.GetComponent<MeshRenderer>().material.color = Color.yellow;
-        foreach (var item in positionLines)
-        {
-            item.gameObject.SetActive(true);
-        }
+        Selected?.Invoke();
+    }
+
+    public void SelectResponse()
+    {
+        original = GetComponent<MeshRenderer>().material.color;
+        GetComponent<MeshRenderer>().material.color = Color.yellow;
+    }
+
+    public void DeselectResponse()
+    {
+        GetComponent<MeshRenderer>().material.color = original;
     }
 }

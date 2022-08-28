@@ -18,12 +18,12 @@ public class PanelOnOff : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (blockOn == true) blockOn = false;
+        blockOn = false;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (blockOn == false) blockOn = true;
+        if (other.CompareTag("Block")) blockOn = true;
     }
 
 

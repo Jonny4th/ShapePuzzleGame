@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8495054308071801235}
   - component: {fileID: 8495054308071801232}
   - component: {fileID: 8495054308071801236}
-  - component: {fileID: -636652089704857891}
   - component: {fileID: 8930045394749255402}
   m_Layer: 0
   m_Name: Panel
@@ -29,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8495054308071801233}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 0.1, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 1
@@ -65,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8c3ea15c2eb93184fa5c2f9910fd8f10, type: 2}
+  - {fileID: 2100000, guid: 09fcf172b5a7ee34f961f82fffe0fab8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,24 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e93fa0cfa7efe14582bdbf20cb08a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelOn: 1
+  panelOn: 0
   blockOn: 0
   activeMaterial: {fileID: 2100000, guid: 8c3ea15c2eb93184fa5c2f9910fd8f10, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 09fcf172b5a7ee34f961f82fffe0fab8, type: 2}
   shadowMaterial: {fileID: 2100000, guid: e002265d9cce6cd47b8d4600a77e72cd, type: 2}
   correctMaterial: {fileID: 2100000, guid: e2c513dd70a01de4199c5052616d0ad3, type: 2}
---- !u!114 &-636652089704857891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8495054308071801233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bcb77efa3fc22f4d9be7933da90973a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &8930045394749255402
 Rigidbody:
   m_ObjectHideFlags: 0
