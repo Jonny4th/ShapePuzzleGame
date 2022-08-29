@@ -16,17 +16,22 @@ public class OnDragMoveSingleAxis : MonoBehaviour
         parent = GetComponentInParent<ShapeController>();
         mainCamera = Camera.main;
         gameController = FindObjectOfType<GameController>();
-        xzPlane = FindObjectOfType<xzPlane>().gameObject;
+        xzPlane = FindObjectOfType<xzPlane>(true).gameObject;
     }
 
     private void OnMouseDown() {
         //get offset
-        parent.xzplane.SetActive(true);
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 20f, xzplane))
+        if (Physics.Raycast(ray, out RaycastHit hit, 20f, LayerMask.GetMask("Block")))
+        {
+            xzPlane.transform.position = hit.point;
+            xzPlane.SetActive(true);
+        }
+        // parent.xzplane.SetActive(true);
+        if (Physics.Raycast(ray, out RaycastHit planeHit, 20f, xzplane))
         {
             pos = parent.transform.position;
-            offset = pos - hit.point;
+            offset = pos - planeHit.point;
         }
     }
     private void OnMouseDrag() {
@@ -41,7 +46,8 @@ public class OnDragMoveSingleAxis : MonoBehaviour
     }
     private void OnMouseUp() {
         //disable plane
-        parent.xzplane.SetActive(false);
+        // parent.xzplane.SetActive(false);
+        xzPlane.SetActive(false);
     }
 
     private Vector3 SnapToGrid(Vector3 v)
