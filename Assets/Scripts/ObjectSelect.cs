@@ -7,6 +7,7 @@ public class ObjectSelect : MonoBehaviour
 {
     private GameController gameController;
     private Camera mainCamera;
+    [SerializeField] LayerMask selectable;
     public static event Action<GameObject> OnShapeSelect;
     public static event Action OnShapeDeselect;
 
@@ -26,7 +27,7 @@ public class ObjectSelect : MonoBehaviour
                 OnShapeDeselect?.Invoke();
             }
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 50f))
+            if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable))
             {
                 ISelectable block = hit.collider.gameObject.GetComponent<ISelectable>();
                 if (block != null)

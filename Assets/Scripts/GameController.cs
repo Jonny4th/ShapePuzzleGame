@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     private void ShapeSelectResponse(GameObject seleted)
     {
         currentGameobject = seleted;
-        currentShape = currentGameobject.transform.parent.GetComponent<ShapeController>();
+        currentShape = currentGameobject.GetComponentInParent<ShapeController>();
     }
 
     private void Clear()

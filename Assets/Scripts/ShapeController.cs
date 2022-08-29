@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShapeController : MonoBehaviour
 {
     [SerializeField] BlockPiece[] blocks;
+    public GameObject xzplane;
     private void OnEnable()
     {
         blocks = GetComponentsInChildren<BlockPiece>();
@@ -25,6 +26,7 @@ public class ShapeController : MonoBehaviour
 
     private void SelectResponse()
     {
+        // xzplane.SetActive(true);
         foreach (var item in blocks)
         {
             item.SelectResponse();
@@ -32,6 +34,7 @@ public class ShapeController : MonoBehaviour
     }
     private void DeselectResponse()
     {
+        // xzplane.SetActive(false);
         foreach (var item in blocks)
         {
             item.DeselectResponse();

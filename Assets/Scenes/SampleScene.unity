@@ -6598,7 +6598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775484197832895057, guid: b2ff4a0fb68fa084d9e5f86086cea140, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1775484197832895057, guid: b2ff4a0fb68fa084d9e5f86086cea140, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8393,6 +8393,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407963fecc09bda4e807d77f9d72d791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectable:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &1587853871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8402,11 +8405,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1587853867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ea436c0d0401042be61f31999da0e5, type: 3}
+  m_Script: {fileID: 11500000, guid: a2a8d85e08b26e7499c01a9b7554738a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  original: {x: 0, y: 0, z: 0}
-  threshold: 4000
 --- !u!1001 &1597369308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10746,6 +10747,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 406496340686283695, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
       propertyPath: blocks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360494210706368584, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2471147021762884604, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
