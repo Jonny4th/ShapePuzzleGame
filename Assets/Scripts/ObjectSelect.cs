@@ -51,7 +51,13 @@ public class ObjectSelect : MonoBehaviour
                 index = (index+1) % gameController.ShapeInScene.Count;
                 ShapeController selected = gameController.ShapeInScene[index];
                 selected.OnSelect();
-                OnShapeSelect?.Invoke(gameController.ShapeInScene[index].gameObject);
+                OnShapeSelect?.Invoke(selected.gameObject);
+            }
+            else
+            {
+                ShapeController selected = gameController.ShapeInScene[0];
+                selected.OnSelect();
+                OnShapeSelect?.Invoke(selected.gameObject);
             }
         }
         // gameController.currentGameobject = this.gameObject;
