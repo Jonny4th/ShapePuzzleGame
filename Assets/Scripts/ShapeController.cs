@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ShapeController : MonoBehaviour
+public class ShapeController : MonoBehaviour, ISelectable
 {
     [SerializeField] BlockPiece[] blocks;
     public GameObject xzplane;
@@ -11,30 +9,28 @@ public class ShapeController : MonoBehaviour
         blocks = GetComponentsInChildren<BlockPiece>();
         foreach (var item in blocks)
         {
-            item.Deselected += DeselectResponse;
-            item.Selected += SelectResponse;
+            item.Deselected += OnDeselect;
+            item.Selected += OnSelect;
         }
     }
     private void OnDisable()
     {
         foreach (var item in blocks)
         {
-            item.Deselected -= DeselectResponse;
-            item.Selected -= SelectResponse;
+            item.Deselected -= OnDeselect;
+            item.Selected -= OnSelect;
         }
     }
 
-    private void SelectResponse()
+    public void OnSelect()
     {
-        // xzplane.SetActive(true);
         foreach (var item in blocks)
         {
             item.SelectResponse();
         }
     }
-    private void DeselectResponse()
+    public void OnDeselect()
     {
-        // xzplane.SetActive(false);
         foreach (var item in blocks)
         {
             item.DeselectResponse();

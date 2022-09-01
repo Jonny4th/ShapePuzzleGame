@@ -23,22 +23,38 @@ public class ObjectSelect : MonoBehaviour
             GameObject current = gameController.currentGameobject;
             if (current != null)
             {
-                current.GetComponent<ISelectable>().OnDeselect();
+                current.GetComponent<ISelectable>()?.OnDeselect();
                 OnShapeDeselect?.Invoke();
             }
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable))
             {
-                ISelectable block = hit.collider.gameObject.GetComponent<ISelectable>();
-                if (block != null)
+                ISelectable seleted = hit.collider.gameObject.GetComponent<ISelectable>();
+                if (seleted != null)
                 {
                     gameController.currentGameobject = hit.collider.gameObject;
-                    block.OnSelect();
+                    seleted.OnSelect();
                     OnShapeSelect?.Invoke(hit.collider.gameObject);
                 }
                 //gameController.currentGameobject = null;
             }
         }
+        
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            ShapeController current = gameController.currentShape;
+            if (current != null)
+            {
+                var index = gameController.ShapeInScene.IndexOf(current);
+                gameController.currentGameobject.GetComponent<ISelectable>()?.OnDeselect();
+                OnShapeDeselect?.Invoke();
+                index = (index+1) % gameController.ShapeInScene.Count;
+                ShapeController selected = gameController.ShapeInScene[index];
+                selected.OnSelect();
+                OnShapeSelect?.Invoke(gameController.ShapeInScene[index].gameObject);
+            }
+        }
         // gameController.currentGameobject = this.gameObject;
     }
 }
+ 
