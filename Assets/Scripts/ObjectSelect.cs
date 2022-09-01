@@ -27,7 +27,7 @@ public class ObjectSelect : MonoBehaviour
                 OnShapeDeselect?.Invoke();
             }
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable))
+            if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable, QueryTriggerInteraction.Ignore))
             {
                 ISelectable seleted = hit.collider.gameObject.GetComponent<ISelectable>();
                 if (seleted != null)
