@@ -10,11 +10,12 @@ public class ObjectSelect : MonoBehaviour
     [SerializeField] LayerMask selectable;
     public static event Action<GameObject> OnShapeSelect;
     public static event Action OnShapeDeselect;
-
+    public List<ShapeController> ShapeInScene;
     private void Start()
     {
         mainCamera = Camera.main;
         gameController = GetComponent<GameController>();
+        ShapeInScene.AddRange(GameObject.FindObjectsOfType<ShapeController>());
     }
     private void Update()
     {
@@ -45,17 +46,17 @@ public class ObjectSelect : MonoBehaviour
             ShapeController current = gameController.currentShape;
             if (current != null)
             {
-                var index = gameController.ShapeInScene.IndexOf(current);
+                var index = ShapeInScene.IndexOf(current);
                 current.OnDeselect();
                 OnShapeDeselect?.Invoke();
-                index = (index+1) % gameController.ShapeInScene.Count;
-                ShapeController selected = gameController.ShapeInScene[index];
+                index = (index+1) % ShapeInScene.Count;
+                ShapeController selected = ShapeInScene[index];
                 selected.OnSelect();
                 OnShapeSelect?.Invoke(selected.gameObject);
             }
             else
             {
-                ShapeController selected = gameController.ShapeInScene[0];
+                ShapeController selected = ShapeInScene[0];
                 selected.OnSelect();
                 OnShapeSelect?.Invoke(selected.gameObject);
             }

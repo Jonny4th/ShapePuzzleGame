@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2532508004208108138, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
     - target: {fileID: 2532508005413688825, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
       propertyPath: m_Name
       value: S-block Chamfered
@@ -55,11 +59,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8270047362663453675, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+    - target: {fileID: 3956628986416893268, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376396778906205457, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
+    - target: {fileID: 7884650541032570130, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8131101187158281950, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8270047362663453673, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
+    - target: {fileID: 8270047362663453675, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959001791320554212, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
     - target: {fileID: 8959001791320554214, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099137775312725971, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}

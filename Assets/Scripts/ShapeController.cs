@@ -3,7 +3,6 @@ using UnityEngine;
 public class ShapeController : MonoBehaviour, ISelectable
 {
     [SerializeField] BlockPiece[] blocks;
-    public GameObject xzplane;
     private void OnEnable()
     {
         blocks = GetComponentsInChildren<BlockPiece>();
