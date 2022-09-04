@@ -21,6 +21,10 @@ public class ObjectSelect : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, LayerMask.GetMask("UI")))
+            {
+                Debug.Log("hit ui");
+            }
             GameObject current = gameController.currentGameobject;
             if (current != null)
             {
@@ -37,7 +41,6 @@ public class ObjectSelect : MonoBehaviour
                     seleted.OnSelect();
                     OnShapeSelect?.Invoke(hit.collider.gameObject);
                 }
-                //gameController.currentGameobject = null;
             }
         }
         

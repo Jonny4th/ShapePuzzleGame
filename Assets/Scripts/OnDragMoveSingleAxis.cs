@@ -24,7 +24,7 @@ public class OnDragMoveSingleAxis : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 20f, LayerMask.GetMask("Block")))
         {
-            xzPlane.transform.position = hit.point;
+            xzPlane.transform.position = new Vector3(0,hit.point.y,0);
             xzPlane.SetActive(true);
         }
         // parent.xzplane.SetActive(true);
@@ -37,11 +37,13 @@ public class OnDragMoveSingleAxis : MonoBehaviour
     private void OnMouseDrag() {
         //update hit.point position
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 20f, xzplane))
+        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, xzplane, QueryTriggerInteraction.Ignore))
         {
+            // Debug.Log("hit xy plane");
             pos = (hit.point + offset);
             pos.y = parent.transform.position.y;
             parent.transform.position = SnapToGrid(pos);
+            // xzPlane.transform.position = parent.transform.position;
         }
     }
     private void OnMouseUp() {
