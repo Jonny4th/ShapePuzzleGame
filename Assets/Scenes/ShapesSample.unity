@@ -11302,21 +11302,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: xzPlane
       objectReference: {fileID: 0}
+    - target: {fileID: 50994484258286363, guid: 2263a35633448934eb54e750de6d6f90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 50994484258286367, guid: 2263a35633448934eb54e750de6d6f90, type: 3}
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 50994484258286367, guid: 2263a35633448934eb54e750de6d6f90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.13137627
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 50994484258286367, guid: 2263a35633448934eb54e750de6d6f90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.31220055
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 50994484258286367, guid: 2263a35633448934eb54e750de6d6f90, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.3937309
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 50994484258286367, guid: 2263a35633448934eb54e750de6d6f90, type: 3}
       propertyPath: m_LocalRotation.w
