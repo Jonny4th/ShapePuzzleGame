@@ -24,7 +24,7 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
     ""name"": ""NewPlayerInput"",
     ""maps"": [
         {
-            ""name"": ""PuzzleControls"",
+            ""name"": ""Puzzle Controls"",
             ""id"": ""933754f8-fab1-475b-b70c-61ca4e05b6dc"",
             ""actions"": [
                 {
@@ -67,6 +67,33 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""ToggleSelection"",
                     ""type"": ""Button"",
                     ""id"": ""f60efdef-6a78-4717-adc0-2f03f3e3f38c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""a83a15f0-5444-4982-958d-5f981100b2c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""50413d75-a55b-4613-b037-45c3d2a9fd26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Deselect"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2421e3a-b91f-49ce-bbe2-b49c2c070a15"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -243,7 +270,7 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""40d63c64-75d0-4cbe-8c81-a7dc172892e5"",
                     ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""KeyBoard"",
                     ""action"": ""ToggleSelection"",
@@ -293,6 +320,153 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""RotateView"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d5059bc-c47f-4a4c-8175-4734be39e67d"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95b0e703-05b7-4207-8b43-89452ec236dc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca8d3d06-e8e6-4602-bfcf-724f0742d2e3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe979fe2-d034-4147-99e6-3be75cac63e2"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Deselect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""1e97f71f-18c8-49b8-b147-4a3d8cd776f7"",
+            ""actions"": [
+                {
+                    ""name"": ""Choose"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5147dae-f691-464d-a67a-3ba919b74733"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""1aede6a7-2fd4-4c04-b7ed-c800c042f184"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""ba318258-11f9-4c9c-ac62-ebca84d68a09"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""59b920c7-703a-4969-805c-cabceb9d3dc0"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""91461697-a999-43e2-a1cf-cbb04cd60a7e"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""WS"",
+                    ""id"": ""49e558c3-eba2-4d9f-a67e-22d35bf6167a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Choose"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""91d515f4-ef26-4f6b-9cb7-3012c4f51d27"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a1147ed0-398a-4976-baa8-e98ee9b3e2ea"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Choose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e227cdff-3e82-4c0b-9753-b84719dd56c3"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -305,6 +479,11 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""devicePath"": ""<Keyboard>"",
                     ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
@@ -322,13 +501,20 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // PuzzleControls
-        m_PuzzleControls = asset.FindActionMap("PuzzleControls", throwIfNotFound: true);
+        // Puzzle Controls
+        m_PuzzleControls = asset.FindActionMap("Puzzle Controls", throwIfNotFound: true);
         m_PuzzleControls_MoveShape = m_PuzzleControls.FindAction("MoveShape", throwIfNotFound: true);
         m_PuzzleControls_RotateBlock = m_PuzzleControls.FindAction("RotateBlock", throwIfNotFound: true);
         m_PuzzleControls_RotateView = m_PuzzleControls.FindAction("RotateView", throwIfNotFound: true);
         m_PuzzleControls_ToggleTiltAngle = m_PuzzleControls.FindAction("ToggleTiltAngle", throwIfNotFound: true);
         m_PuzzleControls_ToggleSelection = m_PuzzleControls.FindAction("ToggleSelection", throwIfNotFound: true);
+        m_PuzzleControls_Pause = m_PuzzleControls.FindAction("Pause", throwIfNotFound: true);
+        m_PuzzleControls_Select = m_PuzzleControls.FindAction("Select", throwIfNotFound: true);
+        m_PuzzleControls_Deselect = m_PuzzleControls.FindAction("Deselect", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Choose = m_Menu.FindAction("Choose", throwIfNotFound: true);
+        m_Menu_Select = m_Menu.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -385,7 +571,7 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PuzzleControls
+    // Puzzle Controls
     private readonly InputActionMap m_PuzzleControls;
     private IPuzzleControlsActions m_PuzzleControlsActionsCallbackInterface;
     private readonly InputAction m_PuzzleControls_MoveShape;
@@ -393,6 +579,9 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PuzzleControls_RotateView;
     private readonly InputAction m_PuzzleControls_ToggleTiltAngle;
     private readonly InputAction m_PuzzleControls_ToggleSelection;
+    private readonly InputAction m_PuzzleControls_Pause;
+    private readonly InputAction m_PuzzleControls_Select;
+    private readonly InputAction m_PuzzleControls_Deselect;
     public struct PuzzleControlsActions
     {
         private @NewPlayerInput m_Wrapper;
@@ -402,6 +591,9 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
         public InputAction @RotateView => m_Wrapper.m_PuzzleControls_RotateView;
         public InputAction @ToggleTiltAngle => m_Wrapper.m_PuzzleControls_ToggleTiltAngle;
         public InputAction @ToggleSelection => m_Wrapper.m_PuzzleControls_ToggleSelection;
+        public InputAction @Pause => m_Wrapper.m_PuzzleControls_Pause;
+        public InputAction @Select => m_Wrapper.m_PuzzleControls_Select;
+        public InputAction @Deselect => m_Wrapper.m_PuzzleControls_Deselect;
         public InputActionMap Get() { return m_Wrapper.m_PuzzleControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -426,6 +618,15 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
                 @ToggleSelection.started -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnToggleSelection;
                 @ToggleSelection.performed -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnToggleSelection;
                 @ToggleSelection.canceled -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnToggleSelection;
+                @Pause.started -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnPause;
+                @Select.started -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnSelect;
+                @Deselect.started -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnDeselect;
+                @Deselect.performed -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnDeselect;
+                @Deselect.canceled -= m_Wrapper.m_PuzzleControlsActionsCallbackInterface.OnDeselect;
             }
             m_Wrapper.m_PuzzleControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -445,10 +646,60 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
                 @ToggleSelection.started += instance.OnToggleSelection;
                 @ToggleSelection.performed += instance.OnToggleSelection;
                 @ToggleSelection.canceled += instance.OnToggleSelection;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+                @Deselect.started += instance.OnDeselect;
+                @Deselect.performed += instance.OnDeselect;
+                @Deselect.canceled += instance.OnDeselect;
             }
         }
     }
     public PuzzleControlsActions @PuzzleControls => new PuzzleControlsActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Choose;
+    private readonly InputAction m_Menu_Select;
+    public struct MenuActions
+    {
+        private @NewPlayerInput m_Wrapper;
+        public MenuActions(@NewPlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Choose => m_Wrapper.m_Menu_Choose;
+        public InputAction @Select => m_Wrapper.m_Menu_Select;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Choose.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnChoose;
+                @Choose.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnChoose;
+                @Choose.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnChoose;
+                @Select.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnSelect;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Choose.started += instance.OnChoose;
+                @Choose.performed += instance.OnChoose;
+                @Choose.canceled += instance.OnChoose;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     private int m_KeyBoardSchemeIndex = -1;
     public InputControlScheme KeyBoardScheme
     {
@@ -474,5 +725,13 @@ public partial class @NewPlayerInput : IInputActionCollection2, IDisposable
         void OnRotateView(InputAction.CallbackContext context);
         void OnToggleTiltAngle(InputAction.CallbackContext context);
         void OnToggleSelection(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnDeselect(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnChoose(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }

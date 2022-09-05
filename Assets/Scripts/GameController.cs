@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
     public GameObject currentGameobject;
     public ShapeController currentShape;
+    PlayerInput playerInput;
     private void Awake()
     {
         ObjectSelect.OnShapeSelect += ShapeSelectResponse;
         ObjectSelect.OnShapeDeselect += Clear;
+        playerInput = GetComponent<PlayerInput>();
     }
-
     private void ShapeSelectResponse(GameObject seleted)
     {
         currentGameobject = seleted;
@@ -24,10 +24,12 @@ public class GameController : MonoBehaviour
         currentShape = null;
     }
 
-    private void Update() {
-        if(Input.GetKeyUp(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+    public void OnPause()
+    {
+        playerInput.SwitchCurrentActionMap("Menu");
+    }
+    public void OnPlay()
+    {
+        playerInput.SwitchCurrentActionMap("Puzzle Controls");
     }
 }
