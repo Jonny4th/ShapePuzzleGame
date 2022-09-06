@@ -41,25 +41,25 @@ public class ObjectSelect : MonoBehaviour
     }
     public void TabSelect(InputAction.CallbackContext context)
     {
-        Debug.Log("Exe TabSelect");
-        ShapeController current = gameController.currentShape;
-        if (current != null)
+        if (context.performed)
         {
-            Debug.Log("Looping");
-            var index = ShapeInScene.IndexOf(current);
-            current.OnDeselect();
-            OnShapeDeselect?.Invoke();
-            index = (index+1) % ShapeInScene.Count;
-            ShapeController selected = ShapeInScene[index];
-            selected.OnSelect();
-            OnShapeSelect?.Invoke(selected.gameObject);
-        }
-        else
-        {
-            Debug.Log("Initiate");
-            ShapeController selected = ShapeInScene[0];
-            selected.OnSelect();
-            OnShapeSelect?.Invoke(selected.gameObject);
+            ShapeController current = gameController.currentShape;
+            if (current != null)
+            {
+                var index = ShapeInScene.IndexOf(current);
+                current.OnDeselect();
+                OnShapeDeselect?.Invoke();
+                index = (index+1) % ShapeInScene.Count;
+                ShapeController selected = ShapeInScene[index];
+                selected.OnSelect();
+                OnShapeSelect?.Invoke(selected.gameObject);
+            }
+            else
+            {
+                ShapeController selected = ShapeInScene[0];
+                selected.OnSelect();
+                OnShapeSelect?.Invoke(selected.gameObject);
+            }
         }
     }
 

@@ -235,28 +235,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9633d960-ecfd-4205-8ef7-6768a3568ee0",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "ToggleSelection",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "40d63c64-75d0-4cbe-8c81-a7dc172892e5",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "ToggleSelection",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "46610f57-12a4-40e8-9e2a-c7b7b75b1db0",
                     "path": "<Keyboard>/numpad0",
                     "interactions": "",
@@ -340,6 +318,28 @@
                     "processors": "",
                     "groups": "KeyBoard",
                     "action": "Deselect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40d63c64-75d0-4cbe-8c81-a7dc172892e5",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "ToggleSelection",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d78dac2-73f2-42de-95ef-2c03702fee58",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "ToggleSelection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
