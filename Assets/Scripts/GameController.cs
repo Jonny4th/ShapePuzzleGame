@@ -32,4 +32,9 @@ public class GameController : MonoBehaviour
     {
         playerInput.SwitchCurrentActionMap("Puzzle Controls");
     }
+
+    public void OnQuit()
+    {
+        Application.Quit();
+    }
 }

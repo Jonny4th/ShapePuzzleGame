@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 7460690972144960730}
   - component: {fileID: 5140597467116463199}
   m_Layer: 0
-  m_Name: Block
+  m_Name: Shape
   m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocks: []
-  xzplane: {fileID: 0}
 --- !u!1 &7460690973299891805
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3532317691837268552}
   m_Layer: 0
-  m_Name: Shape
+  m_Name: Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
