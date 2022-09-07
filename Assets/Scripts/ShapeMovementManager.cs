@@ -6,7 +6,6 @@ using System;
 public class ShapeMovementManager : MonoBehaviour
 {
     GameController gameController;
-    Vector3 inputMovement;
     [SerializeField] float gridSize;
     [SerializeField] bool gridStartAtZero;
     public event Action OnTranslate;
@@ -18,13 +17,30 @@ public class ShapeMovementManager : MonoBehaviour
 
     public void OnMovementKeyDown(InputAction.CallbackContext value)
     {
-        inputMovement = value.ReadValue<Vector3>();
-        ShapeController shape = gameController.currentShape;
-        if (shape != null)
+        if (value.performed)
         {
-            OnTranslate?.Invoke();
-            shape.transform.position += inputMovement;
-            shape.transform.position = AlignToGrid(shape.transform.position);
+            Vector3 inputMovement = value.ReadValue<Vector3>();
+            ShapeController shape = gameController.currentShape;
+            if (shape != null)
+            {
+                OnTranslate?.Invoke();
+                shape.transform.position += inputMovement;
+                shape.transform.position = AlignToGrid(shape.transform.position);
+            }
+        }
+    }
+
+    public void OnRotationKeyDown(InputAction.CallbackContext value)
+    {
+        if (value.performed)
+        {
+            Vector3 inputAxis = value.ReadValue<Vector3>();
+            ShapeController shape = gameController.currentShape;
+            if (shape != null)
+            {
+                OnRotate?.Invoke();
+                shape.transform.Rotate(inputAxis*90, Space.World);
+            }
         }
     }
 

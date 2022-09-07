@@ -9685,6 +9685,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3ba9d5ba-3db3-47bd-b10a-9337caf6ee60
     m_ActionName: Puzzle Controls/RotateBlock Z-axis
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1587853873}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnRotationKeyDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c0acedcf-60bc-48e1-881c-41a622c38526
+    m_ActionName: Puzzle Controls/RotateBlock
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Puzzle Controls
@@ -9703,6 +9719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: 1
+  gridStartAtZero: 0
 --- !u!1001 &1597369308
 PrefabInstance:
   m_ObjectHideFlags: 0
