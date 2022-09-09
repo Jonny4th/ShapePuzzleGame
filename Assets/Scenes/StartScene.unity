@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 07eee6b1e2a92054c82b04d9b4f9a7d6, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2029,6 +2029,7 @@ GameObject:
   - component: {fileID: 418973380}
   - component: {fileID: 418973379}
   - component: {fileID: 418973378}
+  - component: {fileID: 418973381}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -2100,7 +2101,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 418973379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 418973381}
+        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &418973379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,6 +2152,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418973376}
   m_CullTransparentMesh: 1
+--- !u!114 &418973381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418973376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a08b79803eda9344a790b79789a2819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSceneIndex: 1
+  toSceneName: SampleLevel00
+  useSceneName: 1
+  goToNextScene: 0
 --- !u!1 &420781081
 GameObject:
   m_ObjectHideFlags: 0
@@ -3127,7 +3156,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4800409779380272935, guid: 052dc1f27ef47374f9401efb2bafd151, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 052dc1f27ef47374f9401efb2bafd151, type: 3}
 --- !u!4 &575806115 stripped
 Transform:
@@ -4679,7 +4709,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7995250587161356046, guid: 9df4ff2aff8e6db459faf0d9b676bd25, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9df4ff2aff8e6db459faf0d9b676bd25, type: 3}
 --- !u!4 &792351208 stripped
 Transform:
@@ -7337,7 +7368,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4070525880314874580, guid: b2ff4a0fb68fa084d9e5f86086cea140, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b2ff4a0fb68fa084d9e5f86086cea140, type: 3}
 --- !u!4 &1327226368 stripped
 Transform:
@@ -10195,7 +10227,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 446640978997633514, guid: 5acc2f107e076a24f9f2cd5b1c84ec31, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5acc2f107e076a24f9f2cd5b1c84ec31, type: 3}
 --- !u!4 &1767006307 stripped
 Transform:
@@ -11359,7 +11392,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4498274486657908261, guid: b4350d4406d73f34b867e76f84a2b47e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b4350d4406d73f34b867e76f84a2b47e, type: 3}
 --- !u!4 &1967128641 stripped
 Transform:
@@ -11889,7 +11923,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 186309908172989675, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
 --- !u!4 &2097936348 stripped
 Transform:
@@ -12173,7 +12208,8 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7013900286093187080, guid: bd04bca0358718749b87fd3a4cd3f658, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd04bca0358718749b87fd3a4cd3f658, type: 3}
 --- !u!4 &2145870101 stripped
 Transform:

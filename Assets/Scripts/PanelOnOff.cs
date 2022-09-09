@@ -1,41 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 #if UNITY_EDITOR
 [ExecuteInEditMode]
 #endif
 public class PanelOnOff : MonoBehaviour
 {
-    public bool panelOn;
-    public bool blockOn;
+    [SerializeField] private bool _panelOn;
+    public bool PanelOn
+    {
+        get
+        {
+            return _panelOn;
+        }
+    }
+    #if UNITY_EDITOR
+    private void Update() {
+        CheckPanelState();
+    }
+    #endif
+    [SerializeField] private bool _blockOn;
+    public bool BlockOn
+    {
+        get
+        {
+            return _blockOn;
+        }
+        set
+        {
+            if (value != _blockOn)
+            {
+                _blockOn = value;
+                OnChange?.Invoke();
+            }
+        }
+    }
+    public event Action OnChange;
+    public event Action OnCorrect;
     [SerializeField] private Material activeMaterial;
     [SerializeField] private Material inactiveMaterial;
     [SerializeField] private Material shadowMaterial;
     [SerializeField] private Material correctMaterial;
 
-    private void Update()
-    {
-        CheckPanelState();
+    private void Start() {
+        this.OnChange += CheckPanelState;
     }
+    
     private void OnTriggerExit(Collider other)
     {
-        blockOn = false;
+        BlockOn = false;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Block")) blockOn = true;
+        if (other.CompareTag("Block")) BlockOn = true;
     }
-
 
     private void CheckPanelState()
     {
         //compound bools
-        bool correct = blockOn && panelOn;
-        bool needFill= !blockOn && panelOn;
-        bool shadow  = blockOn && !panelOn;
-        bool normal  = !blockOn && !panelOn;
+        bool correct = _blockOn && _panelOn;
+        bool needFill= !_blockOn && _panelOn;
+        bool shadow  = _blockOn && !_panelOn;
+        bool normal  = !_blockOn && !_panelOn;
 
         if (needFill)
         {
