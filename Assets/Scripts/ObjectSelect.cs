@@ -12,6 +12,7 @@ public class ObjectSelect : MonoBehaviour
     public static event Action<GameObject> OnShapeSelect;
     public static event Action OnShapeDeselect;
     public List<ShapeController> ShapeInScene;
+    public int SelectedIndex {get; set;}
     private void Start()
     {
         mainCamera = Camera.main;
