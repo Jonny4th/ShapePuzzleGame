@@ -16,11 +16,13 @@ public class PanelOnOff : MonoBehaviour
             return _panelOn;
         }
     }
+
     #if UNITY_EDITOR
     private void Update() {
         CheckPanelState();
     }
     #endif
+    
     [SerializeField] private bool _blockOn;
     public bool BlockOn
     {
@@ -33,19 +35,21 @@ public class PanelOnOff : MonoBehaviour
             if (value != _blockOn)
             {
                 _blockOn = value;
-                OnChange?.Invoke();
             }
         }
     }
-    public event Action OnChange;
-    public event Action OnCorrect;
     [SerializeField] private Material activeMaterial;
     [SerializeField] private Material inactiveMaterial;
     [SerializeField] private Material shadowMaterial;
     [SerializeField] private Material correctMaterial;
 
-    private void Start() {
-        this.OnChange += CheckPanelState;
+    private void OnEnable() {
+        ShapeMovementManager.OnRotate += CheckPanelState;
+        ShapeMovementManager.OnTranslate += CheckPanelState;
+    }
+    private void OnDisable() {
+        ShapeMovementManager.OnRotate -= CheckPanelState;
+        ShapeMovementManager.OnTranslate -= CheckPanelState;
     }
     
     private void OnTriggerExit(Collider other)
@@ -68,19 +72,19 @@ public class PanelOnOff : MonoBehaviour
 
         if (needFill)
         {
-            gameObject.GetComponent<MeshRenderer>().material = activeMaterial;
+            GetComponent<MeshRenderer>().material = activeMaterial;
         }
         else if (normal)
         {
-            gameObject.GetComponent<MeshRenderer>().material = inactiveMaterial;
+            GetComponent<MeshRenderer>().material = inactiveMaterial;
         }
         else if (shadow)
         {
-            gameObject.GetComponent<MeshRenderer>().material = shadowMaterial;
+            GetComponent<MeshRenderer>().material = shadowMaterial;
         }
         else if (correct)
         {
-            gameObject.GetComponent<MeshRenderer>().material = correctMaterial;
+            GetComponent<MeshRenderer>().material = correctMaterial;
         }
     }
 }

@@ -8,8 +8,8 @@ public class ShapeMovementManager : MonoBehaviour
     GameController gameController;
     [SerializeField] float gridSize;
     [SerializeField] bool gridStartAtZero;
-    public event Action OnTranslate;
-    public event Action OnRotate;
+    public static event Action OnTranslate;
+    public static event Action OnRotate;
     
     private void OnEnable() {
         gameController = GetComponent<GameController>();
@@ -17,6 +17,7 @@ public class ShapeMovementManager : MonoBehaviour
 
     public void OnMovementKeyDown(InputAction.CallbackContext value)
     {
+        Debug.Log("Key down");
         if (value.performed)
         {
             Vector3 inputMovement = value.ReadValue<Vector3>();

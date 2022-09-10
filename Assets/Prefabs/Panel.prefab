@@ -52,7 +52,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8495054308071801233}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e93fa0cfa7efe14582bdbf20cb08a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelOn: 0
-  blockOn: 0
+  _panelOn: 0
+  _blockOn: 0
   activeMaterial: {fileID: 2100000, guid: 8c3ea15c2eb93184fa5c2f9910fd8f10, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: 09fcf172b5a7ee34f961f82fffe0fab8, type: 2}
   shadowMaterial: {fileID: 2100000, guid: e002265d9cce6cd47b8d4600a77e72cd, type: 2}

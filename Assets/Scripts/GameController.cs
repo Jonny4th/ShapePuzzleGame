@@ -6,12 +6,23 @@ public class GameController : MonoBehaviour
     public GameObject currentGameobject;
     public ShapeController currentShape;
     PlayerInput playerInput;
-    private void Awake()
+    private void OnEnable()
     {
         ObjectSelect.OnShapeSelect += ShapeSelectResponse;
         ObjectSelect.OnShapeDeselect += Clear;
+        GameOverManager.Success += OnMenu;
         playerInput = GetComponent<PlayerInput>();
+        OnPlay();
     }
+    private void OnDisable()
+    {
+        ObjectSelect.OnShapeSelect -= ShapeSelectResponse;
+        ObjectSelect.OnShapeDeselect -= Clear;
+        GameOverManager.Success -= OnMenu;
+        playerInput = GetComponent<PlayerInput>();
+        OnPlay();
+    }
+
     private void ShapeSelectResponse(GameObject seleted)
     {
         currentGameobject = seleted;
@@ -24,7 +35,7 @@ public class GameController : MonoBehaviour
         currentShape = null;
     }
 
-    public void OnPause()
+    public void OnMenu()
     {
         playerInput.SwitchCurrentActionMap("Menu");
     }

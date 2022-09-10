@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PauseScreen : MonoBehaviour
 {
@@ -9,9 +6,12 @@ public class PauseScreen : MonoBehaviour
     public GameObject pauseMenuUI;
     public void Pause()
     {
-        Time.timeScale = 0f;
-        GameIsPause = true;
-        pauseMenuUI.SetActive(true);
+        if(!GameOverManager.gameIsOver)
+        {
+            Time.timeScale = 0f;
+            GameIsPause = true;
+            pauseMenuUI.SetActive(true);
+        }
     }
 
     public void Resume()
