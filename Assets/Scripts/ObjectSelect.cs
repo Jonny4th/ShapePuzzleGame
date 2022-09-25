@@ -3,26 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Runtime.ConstrainedExecution;
 
 public class ObjectSelect : MonoBehaviour
 {
-    private GameController gameController;
-    private Camera mainCamera;
+    Camera mainCamera;
     [SerializeField] LayerMask selectable;
+    
+    public List<ShapeController> ShapeInScene;
+    public GameObject currentSelectedBlock { get; private set; }
+    public ShapeController currentSelectedShape { get; private set; }
+
     public static event Action<GameObject> OnShapeSelect;
     public static event Action OnShapeDeselect;
-    public List<ShapeController> ShapeInScene;
     public int SelectedIndex {get; set;}
+
+    private void OnEnable()
+    {
+        OnShapeSelect += ShapeSelectResponse;
+        OnShapeDeselect += Clear;
+    }
+
+    private void OnDisable()
+    {
+        OnShapeSelect -= ShapeSelectResponse;
+        OnShapeDeselect -= Clear;
+    }
+
     private void Start()
     {
         mainCamera = Camera.main;
-        gameController = GetComponent<GameController>();
-        ShapeInScene.AddRange(GameObject.FindObjectsOfType<ShapeController>());
+        ShapeInScene.AddRange(FindObjectsOfType<ShapeController>());
+    }
+
+    private void ShapeSelectResponse(GameObject seleted)
+    {
+        currentSelectedBlock = seleted;
+        currentSelectedShape = currentSelectedBlock.GetComponentInParent<ShapeController>();
+    }
+
+    private void Clear()
+    {
+        currentSelectedBlock = null;
+        currentSelectedShape = null;
     }
 
     public void ClickSelect()
     {
-        GameObject current = gameController.currentGameobject;
+        GameObject current = currentSelectedBlock;
         if (current != null)
         {
             current.GetComponent<ISelectable>()?.OnDeselect();
@@ -31,20 +59,20 @@ public class ObjectSelect : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable, QueryTriggerInteraction.Ignore))
         {
-            ISelectable seleted = hit.collider.gameObject.GetComponent<ISelectable>();
-            if (seleted != null)
+            if (hit.collider.gameObject.TryGetComponent<ISelectable>(out var seleted))
             {
-                gameController.currentGameobject = hit.collider.gameObject;
+                currentSelectedBlock = hit.collider.gameObject;
                 seleted.OnSelect();
                 OnShapeSelect?.Invoke(hit.collider.gameObject);
             }
         }
     }
+
     public void TabSelect(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            ShapeController current = gameController.currentShape;
+            ShapeController current = currentSelectedShape;
             if (current != null)
             {
                 var index = ShapeInScene.IndexOf(current);
@@ -66,7 +94,7 @@ public class ObjectSelect : MonoBehaviour
 
     public void Deselect()
     {
-        ShapeController current = gameController.currentShape;
+        ShapeController current = currentSelectedShape;
         if (current != null)
         {
             current.OnDeselect();

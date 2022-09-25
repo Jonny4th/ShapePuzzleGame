@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ShapeController : MonoBehaviour, ISelectable
 {
-    [SerializeField] BlockPiece[] blocks;
+    [SerializeField] BlockPieceSelect[] blocks;
     private void OnEnable()
     {
-        blocks = GetComponentsInChildren<BlockPiece>();
+        blocks = GetComponentsInChildren<BlockPieceSelect>();
         foreach (var item in blocks)
         {
             item.Deselected += OnDeselect;

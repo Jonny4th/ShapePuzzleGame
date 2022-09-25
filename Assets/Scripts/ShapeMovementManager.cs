@@ -1,48 +1,84 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+
 public class ShapeMovementManager : MonoBehaviour
 {
-    GameController gameController;
     [SerializeField] float gridSize;
     [SerializeField] bool gridStartAtZero;
     public static event Action OnTranslate;
     public static event Action OnRotate;
-    
+    [SerializeField] ShapeController shape;
+    bool isRotating;
     private void OnEnable() {
-        gameController = GetComponent<GameController>();
+        ObjectSelect.OnShapeSelect += AssignSelectedShape;
+        ObjectSelect.OnShapeDeselect += ClearSelectedShape;
     }
+    private void OnDisable() {
+        ObjectSelect.OnShapeSelect -= AssignSelectedShape;
+        ObjectSelect.OnShapeDeselect -= ClearSelectedShape;
+    }
+
+    private void AssignSelectedShape(GameObject o)
+    {
+        shape = o.GetComponentInParent<ShapeController>();
+    }
+    private void ClearSelectedShape()
+    {
+        shape = null;
+    }
+
 
     public void OnMovementKeyDown(InputAction.CallbackContext value)
     {
-        Debug.Log("Key down");
         if (value.performed)
         {
             Vector3 inputMovement = value.ReadValue<Vector3>();
-            ShapeController shape = gameController.currentShape;
             if (shape != null)
             {
                 OnTranslate?.Invoke();
-                shape.transform.position += inputMovement;
-                shape.transform.position = AlignToGrid(shape.transform.position);
+                MoveShape(inputMovement);
             }
         }
+    }
+
+    private void MoveShape(Vector3 direction)
+    {
+        shape.transform.position += direction;
+        shape.transform.position = AlignToGrid(shape.transform.position);
     }
 
     public void OnRotationKeyDown(InputAction.CallbackContext value)
     {
-        if (value.performed)
+        if (value.performed && !isRotating)
         {
             Vector3 inputAxis = value.ReadValue<Vector3>();
-            ShapeController shape = gameController.currentShape;
             if (shape != null)
             {
                 OnRotate?.Invoke();
-                shape.transform.Rotate(inputAxis*90, Space.World);
+                RotateShape(inputAxis);
             }
         }
+    }
+
+    private void RotateShape(Vector3 axis)
+    {
+        Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shape.transform.rotation;
+        StartCoroutine("Rotate", targetAngle);
+    }
+    IEnumerator Rotate(Quaternion target)
+    {
+        while(Quaternion.Angle(shape.transform.rotation, target) > 0.05f)
+        {
+            shape.transform.rotation = Quaternion.Slerp(shape.transform.rotation, target, 0.9f);
+            Debug.Log("Rotating");
+            isRotating = true;
+            yield return null;
+        }
+        Debug.Log("Snap to right angle");
+        shape.transform.rotation = target;
+        isRotating = false;
     }
 
     Vector3 AlignToGrid(Vector3 pos)

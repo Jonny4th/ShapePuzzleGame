@@ -5,7 +5,7 @@ using UnityEngine;
 public class SuccessScreen : MonoBehaviour
 {
     [SerializeField] GameObject successScreen;
-    public bool successScreenOn;
+    public bool successScreenOn { get; private set;}
     void Awake()
     {
         GameOverManager.Success += ShowScreen;
