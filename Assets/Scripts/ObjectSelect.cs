@@ -13,11 +13,11 @@ public class ObjectSelect : MonoBehaviour
     public List<ShapeController> ShapeInScene;
     public GameObject currentSelectedBlock { get; private set; }
     public ShapeController currentSelectedShape { get; private set; }
+    public int SelectedIndex {get; private set;}
 
     public static event Action<ShapeController> OnShapeSelect;
     public static event Action<GameObject> OnBlockSelect;
     public static event Action OnShapeDeselect;
-    public int SelectedIndex {get; set;}
 
     private void OnEnable()
     {
@@ -41,7 +41,7 @@ public class ObjectSelect : MonoBehaviour
     {
         currentSelectedBlock = seleted;
         currentSelectedShape = currentSelectedBlock.GetComponentInParent<ShapeController>();
-        OnShapeSelect(currentSelectedShape);
+        OnShapeSelect?.Invoke(currentSelectedShape);
     }
 
     private void Clear()

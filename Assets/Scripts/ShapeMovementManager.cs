@@ -7,10 +7,13 @@ public class ShapeMovementManager : MonoBehaviour
 {
     [SerializeField] float gridSize;
     [SerializeField] bool gridStartAtZero;
+
+    ShapeController shape;
+    bool isRotating;
+
     public static event Action OnTranslate;
     public static event Action OnRotate;
-    [SerializeField] ShapeController shape;
-    bool isRotating;
+
     private void OnEnable() {
         ObjectSelect.OnShapeSelect += AssignSelectedShape;
         ObjectSelect.OnShapeDeselect += ClearSelectedShape;
