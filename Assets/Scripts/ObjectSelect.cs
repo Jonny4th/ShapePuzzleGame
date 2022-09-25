@@ -14,19 +14,20 @@ public class ObjectSelect : MonoBehaviour
     public GameObject currentSelectedBlock { get; private set; }
     public ShapeController currentSelectedShape { get; private set; }
 
-    public static event Action<GameObject> OnShapeSelect;
+    public static event Action<ShapeController> OnShapeSelect;
+    public static event Action<GameObject> OnBlockSelect;
     public static event Action OnShapeDeselect;
     public int SelectedIndex {get; set;}
 
     private void OnEnable()
     {
-        OnShapeSelect += ShapeSelectResponse;
+        OnBlockSelect += ShapeSelectResponse;
         OnShapeDeselect += Clear;
     }
 
     private void OnDisable()
     {
-        OnShapeSelect -= ShapeSelectResponse;
+        OnBlockSelect -= ShapeSelectResponse;
         OnShapeDeselect -= Clear;
     }
 
@@ -40,6 +41,7 @@ public class ObjectSelect : MonoBehaviour
     {
         currentSelectedBlock = seleted;
         currentSelectedShape = currentSelectedBlock.GetComponentInParent<ShapeController>();
+        OnShapeSelect(currentSelectedShape);
     }
 
     private void Clear()
@@ -63,7 +65,7 @@ public class ObjectSelect : MonoBehaviour
             {
                 currentSelectedBlock = hit.collider.gameObject;
                 seleted.OnSelect();
-                OnShapeSelect?.Invoke(hit.collider.gameObject);
+                OnBlockSelect?.Invoke(hit.collider.gameObject);
             }
         }
     }
@@ -81,13 +83,13 @@ public class ObjectSelect : MonoBehaviour
                 index = (index+1) % ShapeInScene.Count;
                 ShapeController selected = ShapeInScene[index];
                 selected.OnSelect();
-                OnShapeSelect?.Invoke(selected.gameObject);
+                OnBlockSelect?.Invoke(selected.gameObject);
             }
             else
             {
                 ShapeController selected = ShapeInScene[0];
                 selected.OnSelect();
-                OnShapeSelect?.Invoke(selected.gameObject);
+                OnBlockSelect?.Invoke(selected.gameObject);
             }
         }
     }

@@ -20,9 +20,9 @@ public class ShapeMovementManager : MonoBehaviour
         ObjectSelect.OnShapeDeselect -= ClearSelectedShape;
     }
 
-    private void AssignSelectedShape(GameObject o)
+    private void AssignSelectedShape(ShapeController s)
     {
-        shape = o.GetComponentInParent<ShapeController>();
+        shape = s;
     }
     private void ClearSelectedShape()
     {
@@ -65,18 +65,16 @@ public class ShapeMovementManager : MonoBehaviour
     private void RotateShape(Vector3 axis)
     {
         Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shape.transform.rotation;
-        StartCoroutine("Rotate", targetAngle);
+        StartCoroutine(nameof(Rotate), targetAngle);
     }
     IEnumerator Rotate(Quaternion target)
     {
         while(Quaternion.Angle(shape.transform.rotation, target) > 0.05f)
         {
             shape.transform.rotation = Quaternion.Slerp(shape.transform.rotation, target, 0.9f);
-            Debug.Log("Rotating");
             isRotating = true;
             yield return null;
         }
-        Debug.Log("Snap to right angle");
         shape.transform.rotation = target;
         isRotating = false;
     }
