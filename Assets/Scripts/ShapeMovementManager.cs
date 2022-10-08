@@ -3,6 +3,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
+public class OnMovementInfo
+{
+    public ShapeController shape;
+}
+
 public class ShapeMovementManager : MonoBehaviour
 {
     [SerializeField] float gridSize;
@@ -11,7 +16,7 @@ public class ShapeMovementManager : MonoBehaviour
     ShapeController shape;
     bool isRotating;
 
-    public static event Action OnMovement;
+    public static event Action<OnMovementInfo> OnMovement;
 
     private void OnEnable() {
         ObjectSelect.OnShapeSelect += AssignSelectedShape;
@@ -40,7 +45,11 @@ public class ShapeMovementManager : MonoBehaviour
             if (shape != null)
             {
                 MoveShape(inputMovement);
-                OnMovement?.Invoke();
+                OnMovementInfo info = new()
+                {
+                    shape = shape
+                };
+                OnMovement?.Invoke(info);
             }
         }
     }
@@ -78,7 +87,11 @@ public class ShapeMovementManager : MonoBehaviour
         }
         shape.transform.rotation = target;
         isRotating = false;
-        OnMovement?.Invoke();
+        OnMovementInfo info = new()
+        {
+            shape = shape
+        };
+        OnMovement?.Invoke(info);
     }
 
     Vector3 AlignToGrid(Vector3 pos)

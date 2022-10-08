@@ -7,6 +7,7 @@ public class ShapeController : MonoBehaviour, ISelectable
 
     public event Action OnShapeSelect;
     public event Action OnShapeDeselect;
+    public event Action<bool> OnBlockOverlap;
 
     private void Awake()
     {
@@ -23,4 +24,6 @@ public class ShapeController : MonoBehaviour, ISelectable
         OnShapeDeselect?.Invoke();
     }
     #endregion
+
+    public void BlockOverlap(bool value) => OnBlockOverlap?.Invoke(value);
 }

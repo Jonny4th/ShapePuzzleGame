@@ -33,7 +33,7 @@ public class GameOverManager : MonoBehaviour
         return panel.BlockOn;
     }
 
-    private void PanelCheck()
+    private void PanelCheck(OnMovementInfo info)
     {
         List<PanelOnOff> corrects = new List<PanelOnOff>();
         corrects = targetPanels.FindAll(IsBlockOn);

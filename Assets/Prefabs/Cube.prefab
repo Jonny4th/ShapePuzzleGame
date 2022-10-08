@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 572746709822571996}
-  - component: {fileID: 4516524838738300420}
   - component: {fileID: 7260432643977410686}
   m_Layer: 3
   m_Name: BlockCollider
@@ -33,19 +32,6 @@ Transform:
   m_Father: {fileID: 6615677422724981765}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4516524838738300420
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2238641866304388219}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.95, y: 0.95, z: 0.95}
-  m_Center: {x: 0, y: -0, z: 0}
 --- !u!114 &7260432643977410686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0199a12085890ee4a9473f6e8be624d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &6615677422724981761
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +188,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.95, y: 0.95, z: 0.95}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1435465436032340965
 Rigidbody:

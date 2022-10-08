@@ -19,7 +19,7 @@ public class PanelOnOff : MonoBehaviour
 
     #if UNITY_EDITOR
     private void Update() {
-        CheckPanelState();
+        CheckPanelState(null);
     }
     #endif
     
@@ -38,6 +38,7 @@ public class PanelOnOff : MonoBehaviour
             }
         }
     }
+
     [SerializeField] private Material activeMaterial;
     [SerializeField] private Material inactiveMaterial;
     [SerializeField] private Material shadowMaterial;
@@ -60,7 +61,7 @@ public class PanelOnOff : MonoBehaviour
         if (other.CompareTag("Block")) BlockOn = true;
     }
 
-    private void CheckPanelState()
+    private void CheckPanelState(OnMovementInfo info)
     {
         //compound bools
         bool correct = _blockOn && _panelOn;

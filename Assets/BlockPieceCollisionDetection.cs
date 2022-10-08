@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
-
 public class BlockPieceCollisionDetection : MonoBehaviour
 {
-    public event Action OnCollisionEnter;
-    public event Action OnCollisionExit;
+    //public event Action OnCollisionEnter;
+    //public event Action OnCollisionExit;
+
+    private bool isOverlap;
+    [SerializeField] LayerMask mask;
 
     #region MonoBehaviors
     ShapeController shapeController;
@@ -21,36 +22,84 @@ public class BlockPieceCollisionDetection : MonoBehaviour
     {
         shapeController.OnShapeSelect += SelectResponse;
         shapeController.OnShapeDeselect += DeselectResponse;
+        shapeController.OnBlockOverlap += BlockCollisionResponse;
+        ShapeMovementManager.OnMovement += CheckBlockOverlap;
     }
+
+    private void CheckBlockOverlap(OnMovementInfo info)
+    {
+        if (info.shape == shapeController)
+        {
+            Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2,Quaternion.identity, mask, QueryTriggerInteraction.Ignore);
+            int i = 0;
+            while (i < hitColliders.Length)
+            {
+                ShapeController collider = hitColliders[i].GetComponentInParent<ShapeController>();
+                if (collider != GetComponentInParent<ShapeController>())
+                {
+                    //Output all of the collider names
+                    Debug.Log("Hit : " + collider.name);
+                }
+                //Increase the number of Colliders in the array
+                i++;
+            }
+        }
+    }
+
     private void OnDisable()
     {
         shapeController.OnShapeSelect -= SelectResponse;
         shapeController.OnShapeDeselect -= DeselectResponse;
+        shapeController.OnBlockOverlap -= BlockCollisionResponse;
     }
     #endregion
 
     private void DeselectResponse()
     {
-        GetComponent<Collider>().isTrigger = false;
+        //GetComponent<Collider>().isTrigger = false;
     }
 
     private void SelectResponse()
     {
-        GetComponent<Collider>().isTrigger = true;
+        //GetComponent<Collider>().isTrigger = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.TryGetComponent<BlockPieceCollisionDetection>(out BlockPieceCollisionDetection _other))
+    //    {
+    //        //OnCollisionEnter?.Invoke();
+    //        ToggleIsOverlap(true);
+    //        shapeController.BlockOverlap(true);
+    //        Debug.Log(message: _other.GetComponentInParent<ShapeController>().name);
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    ToggleIsOverlap(false);
+    //    shapeController.BlockOverlap(false);
+    //    //OnCollisionExit?.Invoke();
+    //}
+
+    private void ToggleIsOverlap(bool valid)
     {
-        if (other.TryGetComponent<BlockPieceCollisionDetection>(out BlockPieceCollisionDetection _other))
+        if (isOverlap != valid)
         {
-            OnCollisionEnter?.Invoke();
-            Debug.Log(message: _other.GetComponentInParent<ShapeController>().name);
+            isOverlap = valid;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void BlockCollisionResponse(bool stay)
     {
-        OnCollisionExit?.Invoke();
+        if(stay)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
 }
