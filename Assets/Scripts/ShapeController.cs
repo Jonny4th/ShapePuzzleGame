@@ -1,38 +1,26 @@
+using System;
 using UnityEngine;
 
 public class ShapeController : MonoBehaviour, ISelectable
 {
     [SerializeField] BlockPieceSelect[] blocks;
-    private void OnEnable()
+
+    public event Action OnShapeSelect;
+    public event Action OnShapeDeselect;
+
+    private void Awake()
     {
         blocks = GetComponentsInChildren<BlockPieceSelect>();
-        foreach (var item in blocks)
-        {
-            item.Deselected += OnDeselect;
-            item.Selected += OnSelect;
-        }
-    }
-    private void OnDisable()
-    {
-        foreach (var item in blocks)
-        {
-            item.Deselected -= OnDeselect;
-            item.Selected -= OnSelect;
-        }
     }
 
+    #region ISelectable
     public void OnSelect()
     {
-        foreach (var item in blocks)
-        {
-            item.SelectResponse();
-        }
+        OnShapeSelect?.Invoke();
     }
     public void OnDeselect()
     {
-        foreach (var item in blocks)
-        {
-            item.DeselectResponse();
-        }
+        OnShapeDeselect?.Invoke();
     }
+    #endregion
 }

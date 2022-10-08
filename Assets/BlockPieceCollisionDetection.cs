@@ -9,26 +9,32 @@ public class BlockPieceCollisionDetection : MonoBehaviour
 {
     public event Action OnCollisionEnter;
     public event Action OnCollisionExit;
-    BlockPieceSelect parentBlock;
 
+    #region MonoBehaviors
+    ShapeController shapeController;
+    private void Awake()
+    {
+        shapeController = GetComponentInParent<ShapeController>();
+
+    }
     private void OnEnable()
     {
-        parentBlock = GetComponent<BlockPieceSelect>();
-        parentBlock.Selected += SelectResponce;
-        parentBlock.Deselected += DeselectResponce;
+        shapeController.OnShapeSelect += SelectResponse;
+        shapeController.OnShapeDeselect += DeselectResponse;
     }
     private void OnDisable()
     {
-        parentBlock.Selected -= SelectResponce;
-        parentBlock.Deselected -= DeselectResponce;
+        shapeController.OnShapeSelect -= SelectResponse;
+        shapeController.OnShapeDeselect -= DeselectResponse;
     }
+    #endregion
 
-    private void DeselectResponce()
+    private void DeselectResponse()
     {
         GetComponent<Collider>().isTrigger = false;
     }
 
-    private void SelectResponce()
+    private void SelectResponse()
     {
         GetComponent<Collider>().isTrigger = true;
     }
@@ -43,19 +49,5 @@ public class BlockPieceCollisionDetection : MonoBehaviour
     {
         OnCollisionExit?.Invoke();
     }
-
-    //public void InvalidResponce()
-    //{
-    //    originalMaterial = GetComponentInParent<MeshRenderer>().material;
-    //    GetComponentInParent<MeshRenderer>().material = invalidMaterial;
-    //    foreach (BoxCollider collider in GetComponentsInParent<BoxCollider>())
-    //    {
-    //        if (collider.isTrigger)
-    //        {
-    //            collider.enabled = false;
-    //        }
-    //    }
-    //    OnValidityChange?.Invoke();
-    //}
 
 }
