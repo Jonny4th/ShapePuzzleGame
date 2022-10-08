@@ -44,12 +44,10 @@ public class PanelOnOff : MonoBehaviour
     [SerializeField] private Material correctMaterial;
 
     private void OnEnable() {
-        ShapeMovementManager.OnRotate += CheckPanelState;
-        ShapeMovementManager.OnTranslate += CheckPanelState;
+        ShapeMovementManager.OnMovement += CheckPanelState;
     }
     private void OnDisable() {
-        ShapeMovementManager.OnRotate -= CheckPanelState;
-        ShapeMovementManager.OnTranslate -= CheckPanelState;
+        ShapeMovementManager.OnMovement -= CheckPanelState;
     }
     
     private void OnTriggerExit(Collider other)

@@ -41,8 +41,11 @@ public class BlockPieceCollisionDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnCollisionEnter?.Invoke();
-        Debug.Log("collide");
+        if (other.TryGetComponent<BlockPieceCollisionDetection>(out BlockPieceCollisionDetection _other))
+        {
+            OnCollisionEnter?.Invoke();
+            Debug.Log(message: _other.GetComponentInParent<ShapeController>().name);
+        }
     }
 
     private void OnTriggerExit(Collider other)

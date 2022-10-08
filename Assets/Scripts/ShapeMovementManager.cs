@@ -11,8 +11,7 @@ public class ShapeMovementManager : MonoBehaviour
     ShapeController shape;
     bool isRotating;
 
-    public static event Action OnTranslate;
-    public static event Action OnRotate;
+    public static event Action OnMovement;
 
     private void OnEnable() {
         ObjectSelect.OnShapeSelect += AssignSelectedShape;
@@ -40,8 +39,8 @@ public class ShapeMovementManager : MonoBehaviour
             Vector3 inputMovement = value.ReadValue<Vector3>();
             if (shape != null)
             {
-                OnTranslate?.Invoke();
                 MoveShape(inputMovement);
+                OnMovement?.Invoke();
             }
         }
     }
@@ -59,7 +58,6 @@ public class ShapeMovementManager : MonoBehaviour
             Vector3 inputAxis = value.ReadValue<Vector3>();
             if (shape != null)
             {
-                OnRotate?.Invoke();
                 RotateShape(inputAxis);
             }
         }
@@ -80,6 +78,7 @@ public class ShapeMovementManager : MonoBehaviour
         }
         shape.transform.rotation = target;
         isRotating = false;
+        OnMovement?.Invoke();
     }
 
     Vector3 AlignToGrid(Vector3 pos)
