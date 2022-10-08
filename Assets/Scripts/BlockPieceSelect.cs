@@ -3,7 +3,8 @@ using System;
 
 public class BlockPieceSelect : MonoBehaviour, ISelectable
 {
-    Color original;
+    Material originalMaterial;
+    [SerializeField] Material selectedMaterial;
     public event Action Selected;
     public event Action Deselected;
     public void OnDeselect() => Deselected?.Invoke();
@@ -12,12 +13,13 @@ public class BlockPieceSelect : MonoBehaviour, ISelectable
     
     public void SelectResponse()
     {
-        original = GetComponent<MeshRenderer>().material.color;
-        GetComponent<MeshRenderer>().material.color = Color.yellow;
+        originalMaterial = GetComponent<MeshRenderer>().material;
+        GetComponent<MeshRenderer>().material = selectedMaterial;
+
     }
 
     public void DeselectResponse()
     {
-        GetComponent<MeshRenderer>().material.color = original;
+        GetComponent<MeshRenderer>().material = originalMaterial;
     }
 }
