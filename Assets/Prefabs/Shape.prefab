@@ -272,6 +272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7460690972144960730}
   - component: {fileID: 5140597467116463199}
+  - component: {fileID: 1612751189800567635}
   m_Layer: 0
   m_Name: Shape
   m_TagString: Shape
@@ -310,7 +311,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de889d0fc6dd39458cb06ab8114265d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks: []
+--- !u!114 &1612751189800567635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460690972144960728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d71b67e999997d49a7b4dcc3fd4f694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7460690973299891805
 GameObject:
   m_ObjectHideFlags: 0

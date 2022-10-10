@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnDragMoveSingleAxis : MonoBehaviour
 {
-    ShapeController parent;
+    ShapeSelectionController parent;
     Camera mainCamera;
     [SerializeField] Vector3 offset;
     [SerializeField] Vector3 pos;
@@ -13,7 +13,7 @@ public class OnDragMoveSingleAxis : MonoBehaviour
     GameController gameController;
     GameObject xzPlane;
     private void OnEnable() {
-        parent = GetComponentInParent<ShapeController>();
+        parent = GetComponentInParent<ShapeSelectionController>();
         mainCamera = Camera.main;
         gameController = FindObjectOfType<GameController>();
         xzPlane = FindObjectOfType<xzPlane>(true).gameObject;

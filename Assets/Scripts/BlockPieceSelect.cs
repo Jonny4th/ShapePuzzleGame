@@ -3,10 +3,10 @@ using UnityEngine;
 public class BlockPieceSelect : MonoBehaviour, ISelectable
 {
     #region MonoBehaviors
-    ShapeController shapeController;
+    ShapeSelectionController shapeController;
     private void Awake()
     {
-        shapeController = GetComponentInParent<ShapeController>();
+        shapeController = GetComponentInParent<ShapeSelectionController>();
         
     }
     private void OnEnable()
@@ -40,12 +40,12 @@ public class BlockPieceSelect : MonoBehaviour, ISelectable
     #region ISelectable
     public void OnDeselect()
     {
-        GetComponentInParent<ShapeController>().OnDeselect();
+        GetComponentInParent<ShapeSelectionController>().OnDeselect();
     }
 
     public void OnSelect()
     {
-        GetComponentInParent<ShapeController>().OnSelect();
+        GetComponentInParent<ShapeSelectionController>().OnSelect();
     }
     #endregion
 }

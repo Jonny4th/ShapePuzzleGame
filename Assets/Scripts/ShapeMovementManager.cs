@@ -5,7 +5,7 @@ using System;
 
 public class OnMovementInfo
 {
-    public ShapeController shape;
+    public ShapeSelectionController shape;
 }
 
 public class ShapeMovementManager : MonoBehaviour
@@ -13,7 +13,7 @@ public class ShapeMovementManager : MonoBehaviour
     [SerializeField] float gridSize;
     [SerializeField] bool gridStartAtZero;
 
-    ShapeController shape;
+    ShapeSelectionController shape;
     bool isRotating;
 
     public static event Action<OnMovementInfo> OnMovement;
@@ -27,7 +27,7 @@ public class ShapeMovementManager : MonoBehaviour
         ObjectSelect.OnShapeDeselect -= ClearSelectedShape;
     }
 
-    private void AssignSelectedShape(ShapeController s)
+    private void AssignSelectedShape(ShapeSelectionController s)
     {
         shape = s;
     }
