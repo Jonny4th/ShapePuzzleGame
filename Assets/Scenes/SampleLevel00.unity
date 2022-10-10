@@ -10982,22 +10982,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 406496340686283695, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-      propertyPath: blocks.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1360494210706368584, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471147021762884604, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471147021762884604, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: a777777f2ac83d246bfcddfe73bd0b2b, type: 2}
     - target: {fileID: 2471147023237940332, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
       propertyPath: m_Name
       value: L-block Chamfered
@@ -11044,18 +11028,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471147023237940334, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2816421461594790930, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-      propertyPath: blocks.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950903379746007872, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7844830362366653950, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

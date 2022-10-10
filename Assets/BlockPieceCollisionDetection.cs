@@ -31,18 +31,15 @@ public class BlockPieceCollisionDetection : MonoBehaviour
         if (info.shape == shapeController)
         {
             Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2,Quaternion.identity, mask, QueryTriggerInteraction.Ignore);
-            int i = 0;
-            while (i < hitColliders.Length)
-            {
-                ShapeController collider = hitColliders[i].GetComponentInParent<ShapeController>();
-                if (collider != GetComponentInParent<ShapeController>())
-                {
-                    //Output all of the collider names
-                    Debug.Log("Hit : " + collider.name);
-                }
-                //Increase the number of Colliders in the array
-                i++;
-            }
+            hitColliders = Array.FindAll(hitColliders, x => x.GetComponentInParent<ShapeController>() != shapeController);
+            
+            //int i = 0;
+            //while (i < hitColliders.Length)
+            //{
+            //    ShapeController collider = hitColliders[i].GetComponentInParent<ShapeController>();
+            //    Debug.Log("Hit : " + collider.name);
+            //    i++;
+            //}
         }
     }
 
