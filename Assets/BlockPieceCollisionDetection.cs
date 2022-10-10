@@ -9,6 +9,8 @@ public class BlockPieceCollisionDetection : MonoBehaviour
     public event Action OnCollisionDetected;
     [SerializeField] LayerMask mask;
     ShapeOverlapController shapeController;
+    Material invalid;
+    Material original;
 
     #region MonoBehaviors
     private void Awake()
@@ -17,13 +19,17 @@ public class BlockPieceCollisionDetection : MonoBehaviour
     }
     private void OnEnable()
     {
-        ShapeMovementManager.OnMovement += CheckBlockOverlap;
+        //ShapeMovementManager.OnMovement += CheckBlockOverlap;
         shapeController.IsOverlapChanged += BlockCollisionResponse;
     }
     private void OnDisable()
     {
-        ShapeMovementManager.OnMovement -= CheckBlockOverlap;
+        //ShapeMovementManager.OnMovement -= CheckBlockOverlap;
         shapeController.IsOverlapChanged -= BlockCollisionResponse;
+    }
+    private void Update()
+    {
+        CheckBlockOverlap(null);
     }
     #endregion
 
