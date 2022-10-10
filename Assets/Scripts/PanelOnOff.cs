@@ -8,6 +8,7 @@ using System;
 #endif
 public class PanelOnOff : MonoBehaviour
 {
+
     [SerializeField] private bool _panelOn;
     public bool PanelOn
     {
@@ -45,20 +46,26 @@ public class PanelOnOff : MonoBehaviour
     [SerializeField] private Material correctMaterial;
 
     private void OnEnable() {
-        ShapeMovementManager.OnMovement += CheckPanelState;
+        //ShapeMovementManager.OnMovement += CheckPanelState;
     }
     private void OnDisable() {
-        ShapeMovementManager.OnMovement -= CheckPanelState;
+        //ShapeMovementManager.OnMovement -= CheckPanelState;
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         BlockOn = false;
+        CheckPanelState(null);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Block")) BlockOn = true;
+        ShapeOverlapController shape = other.GetComponentInParent<ShapeOverlapController>();
+        if (shape != null)
+        {
+            BlockOn = !shape.IsOverlap;
+            CheckPanelState(null);
+        }
     }
 
     private void CheckPanelState(OnMovementInfo info)

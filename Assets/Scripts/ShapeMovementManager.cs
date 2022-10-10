@@ -5,7 +5,7 @@ using System;
 
 public class OnMovementInfo
 {
-    public ShapeSelectionController shape;
+    public GameObject shape;
 }
 
 public class ShapeMovementManager : MonoBehaviour
@@ -45,11 +45,6 @@ public class ShapeMovementManager : MonoBehaviour
             if (shape != null)
             {
                 MoveShape(inputMovement);
-                OnMovementInfo info = new()
-                {
-                    shape = shape
-                };
-                OnMovement?.Invoke(info);
             }
         }
     }
@@ -58,6 +53,12 @@ public class ShapeMovementManager : MonoBehaviour
     {
         shape.transform.position += direction;
         shape.transform.position = AlignToGrid(shape.transform.position);
+
+        OnMovementInfo info = new()
+        {
+            shape = shape.gameObject
+        };
+        OnMovement?.Invoke(info);
     }
 
     public void OnRotationKeyDown(InputAction.CallbackContext value)
@@ -76,6 +77,12 @@ public class ShapeMovementManager : MonoBehaviour
     {
         Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shape.transform.rotation;
         StartCoroutine(nameof(Rotate), targetAngle);
+
+        OnMovementInfo info = new()
+        {
+            shape = shape.gameObject
+        };
+        OnMovement?.Invoke(info);
     }
     IEnumerator Rotate(Quaternion target)
     {
@@ -87,11 +94,6 @@ public class ShapeMovementManager : MonoBehaviour
         }
         shape.transform.rotation = target;
         isRotating = false;
-        OnMovementInfo info = new()
-        {
-            shape = shape
-        };
-        OnMovement?.Invoke(info);
     }
 
     Vector3 AlignToGrid(Vector3 pos)
