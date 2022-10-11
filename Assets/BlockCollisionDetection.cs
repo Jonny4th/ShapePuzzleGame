@@ -16,16 +16,7 @@ public class BlockCollisionDetection : MonoBehaviour
         overlapController = GetComponentInParent<ShapeOverlapController>();
         
     }
-    private void OnEnable()
-    {
-        //ShapeMovementManager.OnMovement += CheckBlockOverlap;
-        //overlapController.OnOverlapChanged += BlockCollisionResponse;
-    }
-    private void OnDisable()
-    {
-        //ShapeMovementManager.OnMovement -= CheckBlockOverlap;
-        //overlapController.OnOverlapChanged -= BlockCollisionResponse;
-    }
+
     private void Update()
     {
         CheckBlockOverlap(null);
@@ -46,16 +37,4 @@ public class BlockCollisionDetection : MonoBehaviour
             overlapController.CheckOverlap();
         }
     }
-
-    //private void BlockCollisionResponse(bool stay)
-    //{
-    //    if(stay)
-    //    {
-    //        GetComponent<MeshRenderer>().material = invalidMaterial;
-    //    }
-    //    else
-    //    {
-    //        GetComponent<MeshRenderer>().material = GetComponentInParent<ShapeModel>().Data.OriginalMaterial;
-    //    }
-    //}
 }
