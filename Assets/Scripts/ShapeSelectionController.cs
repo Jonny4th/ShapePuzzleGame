@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class ShapeSelectionController : MonoBehaviour, ISelectable
 {
-    public event Action OnShapeSelect;
-    public event Action OnShapeDeselect;
+    public bool IsSelected { get; private set; }
+    public event Action<bool> OnShapeSelect;
 
     #region ISelectable
     public void OnSelect()
     {
-        OnShapeSelect?.Invoke();
+        IsSelected = true;
+        OnShapeSelect?.Invoke(true);
     }
     public void OnDeselect()
     {
-        OnShapeDeselect?.Invoke();
+        IsSelected = false;
+        OnShapeSelect?.Invoke(false);
     }
     #endregion
 }

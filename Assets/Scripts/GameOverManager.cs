@@ -23,14 +23,14 @@ public class GameOverManager : MonoBehaviour
         //ShapeMovementManager.OnMovement += GameOverConditionCheck;
         foreach ( var shape in FindObjectsOfType<ShapeOverlapController>() )
         {
-            shape.IsOverlapChanged += CheckInvalidPlacement;
+            shape.OnOverlapChanged += CheckInvalidPlacement;
         }
     }
     private void OnDisable() {
         //ShapeMovementManager.OnMovement -= GameOverConditionCheck;
         foreach (var shape in FindObjectsOfType<ShapeOverlapController>())
         {
-            shape.IsOverlapChanged -= CheckInvalidPlacement;
+            shape.OnOverlapChanged -= CheckInvalidPlacement;
         }
     }
 

@@ -3,29 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockPieceCollisionDetection : MonoBehaviour
+public class BlockCollisionDetection : MonoBehaviour
 {
     public bool IsOverlap { get; private set; }
-    public event Action OnCollisionDetected;
     [SerializeField] LayerMask mask;
-    ShapeOverlapController shapeController;
-    Material invalid;
-    Material original;
+    ShapeOverlapController overlapController;
+    [SerializeField] Material invalidMaterial;
 
     #region MonoBehaviors
     private void Awake()
     {
-        shapeController = GetComponentInParent<ShapeOverlapController>();
+        overlapController = GetComponentInParent<ShapeOverlapController>();
+        
     }
     private void OnEnable()
     {
         //ShapeMovementManager.OnMovement += CheckBlockOverlap;
-        shapeController.IsOverlapChanged += BlockCollisionResponse;
+        //overlapController.OnOverlapChanged += BlockCollisionResponse;
     }
     private void OnDisable()
     {
         //ShapeMovementManager.OnMovement -= CheckBlockOverlap;
-        shapeController.IsOverlapChanged -= BlockCollisionResponse;
+        //overlapController.OnOverlapChanged -= BlockCollisionResponse;
     }
     private void Update()
     {
@@ -35,33 +34,28 @@ public class BlockPieceCollisionDetection : MonoBehaviour
 
     private void CheckBlockOverlap(OnMovementInfo info)
     {
-        //if (info.shape == shapeController.gameObject)
-        //{
         Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2,Quaternion.identity, mask, QueryTriggerInteraction.Ignore);
-        hitColliders = Array.FindAll(hitColliders, x => x.GetComponentInParent<ShapeOverlapController>() != shapeController);
+        hitColliders = Array.FindAll(hitColliders, x => x.GetComponentInParent<ShapeOverlapController>() != overlapController);
         ToggleIsOverlap(hitColliders.Length > 0);
-        //}
     }
     private void ToggleIsOverlap(bool value)
     {
         if (IsOverlap != value)
         {
             IsOverlap = value;
-            OnCollisionDetected?.Invoke();
+            overlapController.CheckOverlap();
         }
     }
 
-    private void BlockCollisionResponse(bool stay)
-    {
-        if(stay)
-        {
-            Debug.Log("Overlap");
-        }
-        else
-        {
-            Debug.Log("Out");
-
-        }
-    }
-
+    //private void BlockCollisionResponse(bool stay)
+    //{
+    //    if(stay)
+    //    {
+    //        GetComponent<MeshRenderer>().material = invalidMaterial;
+    //    }
+    //    else
+    //    {
+    //        GetComponent<MeshRenderer>().material = GetComponentInParent<ShapeModel>().Data.OriginalMaterial;
+    //    }
+    //}
 }

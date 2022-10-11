@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 800038621272619803}
   - component: {fileID: 3390820248911946507}
   - component: {fileID: 8918637596020996437}
+  - component: {fileID: 7091841392101535657}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Block
@@ -207,3 +208,18 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
+  invalidMaterial: {fileID: 2100000, guid: ed088d52f3e9c474bb4960576f4bf0cc, type: 2}
+--- !u!114 &7091841392101535657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615677422724981761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e40049312019a42abbb33e95bed206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invalidMaterial: {fileID: 2100000, guid: ed088d52f3e9c474bb4960576f4bf0cc, type: 2}
+  selectMaterial: {fileID: 2100000, guid: 0e31e7706b185d64bab3a4d926c2dded, type: 2}

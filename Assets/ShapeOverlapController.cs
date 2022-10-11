@@ -6,29 +6,22 @@ using UnityEngine;
 
 public class ShapeOverlapController : MonoBehaviour
 {
-    [SerializeField] BlockPieceCollisionDetection[] blocks;
+    [SerializeField] BlockCollisionDetection[] blocks;
     public bool IsOverlap { get; private set; }
-    public event Action<Boolean> IsOverlapChanged;
+    public event Action<bool> OnOverlapChanged;
 
     private void Awake()
     {
-        blocks = GetComponentsInChildren<BlockPieceCollisionDetection>();
-    }
-    private void OnEnable()
-    {
-        foreach (BlockPieceCollisionDetection block in blocks)
-        {
-            block.OnCollisionDetected += CheckOverlap;
-        }
+        blocks = GetComponentsInChildren<BlockCollisionDetection>();
     }
 
-    private void CheckOverlap()
+    public void CheckOverlap()
     {
         bool cache = Array.Exists(blocks, x => x.IsOverlap);
         if(cache != IsOverlap)
         {
             IsOverlap = cache;
-            IsOverlapChanged?.Invoke(IsOverlap);
+            OnOverlapChanged?.Invoke(IsOverlap);
         }
     }
 }
