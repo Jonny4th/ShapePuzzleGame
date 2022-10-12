@@ -14,7 +14,6 @@ public class BlockCollisionDetection : MonoBehaviour
     private void Awake()
     {
         overlapController = GetComponentInParent<ShapeOverlapController>();
-        
     }
 
     private void Update()

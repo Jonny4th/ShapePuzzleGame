@@ -9,12 +9,12 @@ using System;
 public class PanelOnOff : MonoBehaviour
 {
 
-    [SerializeField] private bool _panelOn;
-    public bool PanelOn
+    [SerializeField] private bool _isOn;
+    public bool IsOn
     {
         get
         {
-            return _panelOn;
+            return _isOn;
         }
     }
 
@@ -24,18 +24,18 @@ public class PanelOnOff : MonoBehaviour
     }
     #endif
     
-    [SerializeField] private bool _blockOn;
-    public bool BlockOn
+    [SerializeField] private bool _isBlock;
+    public bool IsBlock
     {
         get
         {
-            return _blockOn;
+            return _isBlock;
         }
         set
         {
-            if (value != _blockOn)
+            if (value != _isBlock)
             {
-                _blockOn = value;
+                _isBlock = value;
             }
         }
     }
@@ -54,7 +54,7 @@ public class PanelOnOff : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        BlockOn = false;
+        IsBlock = false;
         CheckPanelState(null);
     }
 
@@ -63,7 +63,7 @@ public class PanelOnOff : MonoBehaviour
         ShapeOverlapController shape = other.GetComponentInParent<ShapeOverlapController>();
         if (shape != null)
         {
-            BlockOn = !shape.IsOverlap;
+            IsBlock = !shape.IsOverlap;
             CheckPanelState(null);
         }
     }
@@ -71,10 +71,10 @@ public class PanelOnOff : MonoBehaviour
     private void CheckPanelState(OnMovementInfo info)
     {
         //compound bools
-        bool correct = _blockOn && _panelOn;
-        bool needFill= !_blockOn && _panelOn;
-        bool shadow  = _blockOn && !_panelOn;
-        bool normal  = !_blockOn && !_panelOn;
+        bool correct = _isBlock && _isOn;
+        bool needFill= !_isBlock && _isOn;
+        bool shadow  = _isBlock && !_isOn;
+        bool normal  = !_isBlock && !_isOn;
 
         if (needFill)
         {

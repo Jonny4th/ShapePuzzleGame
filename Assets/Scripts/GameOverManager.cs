@@ -23,25 +23,25 @@ public class GameOverManager : MonoBehaviour
         //ShapeMovementManager.OnMovement += GameOverConditionCheck;
         foreach ( var shape in FindObjectsOfType<ShapeOverlapController>() )
         {
-            shape.OnOverlapChanged += CheckInvalidPlacement;
+            shape.OverlapChanged += CheckInvalidPlacement;
         }
     }
     private void OnDisable() {
         //ShapeMovementManager.OnMovement -= GameOverConditionCheck;
         foreach (var shape in FindObjectsOfType<ShapeOverlapController>())
         {
-            shape.OnOverlapChanged -= CheckInvalidPlacement;
+            shape.OverlapChanged -= CheckInvalidPlacement;
         }
     }
 
     private static bool IsTargetPanel(PanelOnOff panel)
     {
-        return panel.PanelOn;
+        return panel.IsOn;
     }
 
     private static bool IsBlockOn(PanelOnOff panel)
     {
-        return panel.BlockOn;
+        return panel.IsBlock;
     }
 
     private void CheckInvalidPlacement(bool value)

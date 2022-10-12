@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using UnityEditor;
 
 public class OnMovementInfo
 {
@@ -16,15 +17,15 @@ public class ShapeMovementManager : MonoBehaviour
     ShapeSelectionController shape;
     bool isRotating;
 
-    public static event Action<OnMovementInfo> OnMovement;
+    public static event Action<OnMovementInfo> Moved;
 
     private void OnEnable() {
-        ObjectSelect.OnShapeSelect += AssignSelectedShape;
-        ObjectSelect.OnShapeDeselect += ClearSelectedShape;
+        ObjectSelect.ShapeSelected += AssignSelectedShape;
+        ObjectSelect.ShapeDeselected += ClearSelectedShape;
     }
     private void OnDisable() {
-        ObjectSelect.OnShapeSelect -= AssignSelectedShape;
-        ObjectSelect.OnShapeDeselect -= ClearSelectedShape;
+        ObjectSelect.ShapeSelected -= AssignSelectedShape;
+        ObjectSelect.ShapeDeselected -= ClearSelectedShape;
     }
 
     private void AssignSelectedShape(ShapeSelectionController s)
@@ -37,14 +38,25 @@ public class ShapeMovementManager : MonoBehaviour
     }
 
 
-    public void OnMovementKeyDown(InputAction.CallbackContext value)
+    public void OnMovementKeyDown(InputAction.CallbackContext context)
     {
-        if (value.performed)
+        if (context.performed && context.ReadValue<Vector3>().sqrMagnitude > 0.1f)
         {
-            Vector3 inputMovement = value.ReadValue<Vector3>();
+            Vector3 inputMovement = context.ReadValue<Vector3>();
             if (shape != null)
             {
                 MoveShape(inputMovement);
+            }
+        }
+    }
+    public void OnRotationKeyDown(InputAction.CallbackContext context)
+    {
+        if (context.performed && !isRotating)
+        {
+            Vector3 inputAxis = context.ReadValue<Vector3>();
+            if (shape != null)
+            {
+                RotateShape(inputAxis);
             }
         }
     }
@@ -53,36 +65,15 @@ public class ShapeMovementManager : MonoBehaviour
     {
         shape.transform.position += direction;
         shape.transform.position = AlignToGrid(shape.transform.position);
-
-        OnMovementInfo info = new()
-        {
-            shape = shape.gameObject
-        };
-        OnMovement?.Invoke(info);
+        OnMove();
     }
 
-    public void OnRotationKeyDown(InputAction.CallbackContext value)
-    {
-        if (value.performed && !isRotating)
-        {
-            Vector3 inputAxis = value.ReadValue<Vector3>();
-            if (shape != null)
-            {
-                RotateShape(inputAxis);
-            }
-        }
-    }
 
     private void RotateShape(Vector3 axis)
     {
         Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shape.transform.rotation;
+        OnMove();
         StartCoroutine(nameof(Rotate), targetAngle);
-
-        OnMovementInfo info = new()
-        {
-            shape = shape.gameObject
-        };
-        OnMovement?.Invoke(info);
     }
     IEnumerator Rotate(Quaternion target)
     {
@@ -104,7 +95,6 @@ public class ShapeMovementManager : MonoBehaviour
         pos = new Vector3(x,y,z);
         return pos;
     }
-
     float AlignToGrid(float value)
     {
         float offset = 0f;
@@ -113,5 +103,14 @@ public class ShapeMovementManager : MonoBehaviour
             offset = 0.5f;
         }
         return Mathf.RoundToInt(value/gridSize - offset)*gridSize + offset;
+    }
+
+    private void OnMove()
+    {
+        OnMovementInfo info = new()
+        {
+            shape = shape.gameObject
+        };
+        Moved?.Invoke(info);
     }
 }

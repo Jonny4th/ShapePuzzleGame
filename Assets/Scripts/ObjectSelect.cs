@@ -15,20 +15,20 @@ public class ObjectSelect : MonoBehaviour
     public ShapeSelectionController currentSelectedShape { get; private set; }
     public int SelectedIndex {get; private set;}
 
-    public static event Action<ShapeSelectionController> OnShapeSelect;
-    public static event Action<GameObject> OnBlockSelect;
-    public static event Action OnShapeDeselect;
+    public static event Action<ShapeSelectionController> ShapeSelected;
+    public static event Action<GameObject> BlockSelected;
+    public static event Action ShapeDeselected;
 
     private void OnEnable()
     {
-        OnBlockSelect += ShapeSelectResponse;
-        OnShapeDeselect += Clear;
+        BlockSelected += OnShapeSelect;
+        ShapeDeselected += Clear;
     }
 
     private void OnDisable()
     {
-        OnBlockSelect -= ShapeSelectResponse;
-        OnShapeDeselect -= Clear;
+        BlockSelected -= OnShapeSelect;
+        ShapeDeselected -= Clear;
     }
 
     private void Start()
@@ -37,11 +37,11 @@ public class ObjectSelect : MonoBehaviour
         ShapeInScene.AddRange(FindObjectsOfType<ShapeSelectionController>());
     }
 
-    private void ShapeSelectResponse(GameObject seleted)
+    private void OnShapeSelect(GameObject seleted)
     {
         currentSelectedBlock = seleted;
         currentSelectedShape = currentSelectedBlock.GetComponentInParent<ShapeSelectionController>();
-        OnShapeSelect?.Invoke(currentSelectedShape);
+        ShapeSelected?.Invoke(currentSelectedShape);
     }
 
     private void Clear()
@@ -56,7 +56,7 @@ public class ObjectSelect : MonoBehaviour
         if (current != null)
         {
             current.GetComponent<ISelectable>()?.OnDeselect();
-            OnShapeDeselect?.Invoke();
+            ShapeDeselected?.Invoke();
         }
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable, QueryTriggerInteraction.Ignore))
@@ -65,7 +65,7 @@ public class ObjectSelect : MonoBehaviour
             {
                 currentSelectedBlock = hit.collider.gameObject;
                 seleted.OnSelect();
-                OnBlockSelect?.Invoke(hit.collider.gameObject);
+                BlockSelected?.Invoke(hit.collider.gameObject);
             }
         }
     }
@@ -79,28 +79,28 @@ public class ObjectSelect : MonoBehaviour
             {
                 var index = ShapeInScene.IndexOf(current);
                 current.OnDeselect();
-                OnShapeDeselect?.Invoke();
+                ShapeDeselected?.Invoke();
                 index = (index+1) % ShapeInScene.Count;
                 ShapeSelectionController selected = ShapeInScene[index];
                 selected.OnSelect();
-                OnBlockSelect?.Invoke(selected.gameObject);
+                BlockSelected?.Invoke(selected.gameObject);
             }
             else
             {
                 ShapeSelectionController selected = ShapeInScene[0];
                 selected.OnSelect();
-                OnBlockSelect?.Invoke(selected.gameObject);
+                BlockSelected?.Invoke(selected.gameObject);
             }
         }
     }
 
-    public void Deselect()
+    public void OnDeselect()
     {
         ShapeSelectionController current = currentSelectedShape;
         if (current != null)
         {
             current.OnDeselect();
-            OnShapeDeselect?.Invoke();
+            ShapeDeselected?.Invoke();
         }
     }
 }

@@ -8,7 +8,7 @@ public class ShapeOverlapController : MonoBehaviour
 {
     [SerializeField] BlockCollisionDetection[] blocks;
     public bool IsOverlap { get; private set; }
-    public event Action<bool> OnOverlapChanged;
+    public event Action<bool> OverlapChanged;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class ShapeOverlapController : MonoBehaviour
         if(cache != IsOverlap)
         {
             IsOverlap = cache;
-            OnOverlapChanged?.Invoke(IsOverlap);
+            OverlapChanged?.Invoke(IsOverlap);
         }
     }
 }
