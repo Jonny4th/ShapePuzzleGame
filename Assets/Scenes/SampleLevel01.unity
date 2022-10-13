@@ -11430,6 +11430,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 473188368227465374, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: dataStorage
+      value: 
+      objectReference: {fileID: 11400000, guid: 173a7ab8304415b4c8629cbd280446dd, type: 2}
     - target: {fileID: 7942664544872702496, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: successScreen
       value: 
