@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Recorder;
 using UnityEngine;
 
 public class StageController : MonoBehaviour
@@ -25,7 +26,8 @@ public class StageController : MonoBehaviour
 
     private void StoreShape()
     {
-
+        ShapeModel[] shapes = FindObjectsOfType<ShapeModel>();
+        
     }
 
     public void LoadStageData()
@@ -43,9 +45,10 @@ public class StageController : MonoBehaviour
 
     public void SaveToJSON()
     {
+        string fileName = dataStorage.StageName;
         string data = JsonUtility.ToJson(dataStorage);
-        string path = Application.dataPath + "/Data/StagePuzzles/" + dataStorage.name + ".json";
+        string path = Application.dataPath + "/Data/StagePuzzles/" + fileName + ".json";
         System.IO.File.WriteAllText(path, data);
-        Debug.Log("massage: " + dataStorage.name + " is saved to " + path);
+        Debug.Log("massage: a file is saved to " + path);
     }
 }

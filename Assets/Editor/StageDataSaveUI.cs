@@ -12,7 +12,7 @@ public class StageDataSaveUI : Editor
     {
         DrawDefaultInspector();
         StageController controller = (StageController)target;
-        if (GUILayout.Button("Save Stage Puzzle"))
+        if (GUILayout.Button("Save Puzzle to Scriptable Obj"))
         {
             controller.SaveStageData();
         }

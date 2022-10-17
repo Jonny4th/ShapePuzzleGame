@@ -12,5 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120091077f0578046ab3729ac45e5ffa, type: 3}
   m_Name: Stage05
   m_EditorClassIdentifier: 
-  StageName: 
-  ActivePanels: []
+  StageName: Stage05
+  SavedData:
+  - {x: 0, y: 0, z: 5}
+  - {x: 0, y: 1, z: 5}
+  - {x: -1, y: 0, z: 5}
+  - {x: 5, y: 1, z: 1}
+  - {x: 1, y: 1, z: 5}
+  - {x: 5, y: 1, z: 0}
+  - {x: 0, y: -5, z: -1}
+  - {x: 5, y: -1, z: 1}
+  - {x: -1, y: -5, z: 1}
+  - {x: 1, y: -5, z: 1}
+  - {x: 1, y: -5, z: 0}
+  - {x: 0, y: -1, z: 5}
+  - {x: 5, y: -1, z: 0}
+  - {x: 0, y: -5, z: 0}
+  - {x: -1, y: -1, z: 5}
+  - {x: -1, y: -5, z: 0}
+  - {x: -1, y: 1, z: 5}
+  - {x: 5, y: 1, z: -1}
+  - {x: 5, y: 0, z: 0}
+  - {x: 5, y: 0, z: -1}
+  - {x: 5, y: -1, z: -1}
+  - {x: -1, y: -5, z: -1}
+  Shapes:
+  - {fileID: 1738178559043762943, guid: 93e6015f901b3be4899ae175df6d0271, type: 3}
+  - {fileID: 1738178559043762943, guid: 93e6015f901b3be4899ae175df6d0271, type: 3}
+  - {fileID: 1738178559043762943, guid: 93e6015f901b3be4899ae175df6d0271, type: 3}
+  - {fileID: 1738178559043762943, guid: 93e6015f901b3be4899ae175df6d0271, type: 3}
