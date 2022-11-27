@@ -7,7 +7,12 @@ using UnityEngine;
 public class ShapeOverlapController : MonoBehaviour
 {
     [SerializeField] BlockCollisionDetection[] blocks;
-    public bool IsOverlap { get; private set; }
+    [SerializeField] private bool isOverlap;
+    public bool IsOverlap
+    {
+        get { return isOverlap; }
+        private set { isOverlap = value; }
+    }
     public event Action<bool> OverlapChanged;
 
     private void Awake()
@@ -20,8 +25,8 @@ public class ShapeOverlapController : MonoBehaviour
         bool cache = Array.Exists(blocks, x => x.IsOverlap);
         if(cache != IsOverlap)
         {
-            IsOverlap = cache;
-            OverlapChanged?.Invoke(IsOverlap);
+            isOverlap = cache;
+            OverlapChanged?.Invoke(isOverlap);
         }
     }
 }

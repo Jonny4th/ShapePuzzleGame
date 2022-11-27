@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class BlockCollisionDetection : MonoBehaviour
 {
-    public bool IsOverlap { get; private set; }
+    [SerializeField] private bool isOverlap;
+    public bool IsOverlap 
+    {
+        get { return isOverlap; }
+        private set { isOverlap = value; }
+    }
     [SerializeField] LayerMask mask;
     ShapeOverlapController overlapController;
     [SerializeField] Material invalidMaterial;
@@ -14,12 +19,13 @@ public class BlockCollisionDetection : MonoBehaviour
     private void Awake()
     {
         overlapController = GetComponentInParent<ShapeOverlapController>();
+        ShapeMovementManager.Moved += CheckBlockOverlap;
     }
 
-    private void Update()
-    {
-        CheckBlockOverlap(null);
-    }
+    //private void Update()
+    //{
+    //    CheckBlockOverlap(null);
+    //}
     #endregion
 
     private void CheckBlockOverlap(OnMovementInfo info)
@@ -32,7 +38,7 @@ public class BlockCollisionDetection : MonoBehaviour
     {
         if (IsOverlap != value)
         {
-            IsOverlap = value;
+            isOverlap = value;
             overlapController.CheckOverlap();
         }
     }

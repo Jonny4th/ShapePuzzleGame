@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 1470059810744746816}
   - component: {fileID: 6459580821693717630}
   m_Layer: 0
-  m_Name: Shape
+  m_Name: Shape Chamfered
   m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e11f26e619adbd42945b2a30011b504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 0}
+  Data: {fileID: 11400000, guid: 3090729c743bead40b3a6f9d23b7172e, type: 2}
 --- !u!82 &1470059810744746816
 AudioSource:
   m_ObjectHideFlags: 0
@@ -622,6 +622,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 6615677422724981764, guid: c643c8184de782a4792bc1e438f5dbca, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
     - target: {fileID: 6615677422724981765, guid: c643c8184de782a4792bc1e438f5dbca, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -73,7 +73,7 @@ public class PanelOnOff : MonoBehaviour
         _isOn = true;
     }
 
-    private void CheckPanelState(OnMovementInfo info)
+    private void CheckPanelState(OnMovementInfo _)
     {
         //compound bools
         bool correct = _isBlock && _isOn;

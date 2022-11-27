@@ -15,6 +15,7 @@ public class ShapeMovementManager : MonoBehaviour
     [SerializeField] bool gridStartAtZero;
 
     ShapeSelectionController shape;
+    Transform shapeTransform;
     bool isRotating;
 
     public static event Action<OnMovementInfo> Moved;
@@ -26,6 +27,10 @@ public class ShapeMovementManager : MonoBehaviour
     private void OnDisable() {
         ObjectSelect.ShapeSelected -= AssignSelectedShape;
         ObjectSelect.ShapeDeselected -= ClearSelectedShape;
+    }
+    private void Start()
+    {
+        shapeTransform = GetComponent<Transform>();
     }
 
     private void AssignSelectedShape(ShapeSelectionController s)
@@ -63,27 +68,27 @@ public class ShapeMovementManager : MonoBehaviour
 
     private void MoveShape(Vector3 direction)
     {
-        shape.transform.position += direction;
-        shape.transform.position = AlignToGrid(shape.transform.position);
+        shapeTransform.position += direction;
+        shapeTransform.position = AlignToGrid(shapeTransform.position);
         OnMove();
     }
 
 
     private void RotateShape(Vector3 axis)
     {
-        Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shape.transform.rotation;
-        OnMove();
+        Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shapeTransform.rotation;
         StartCoroutine(nameof(Rotate), targetAngle);
+        OnMove();
     }
     IEnumerator Rotate(Quaternion target)
     {
         while(Quaternion.Angle(shape.transform.rotation, target) > 0.05f)
         {
-            shape.transform.rotation = Quaternion.Slerp(shape.transform.rotation, target, 0.9f);
+            shapeTransform.rotation = Quaternion.Slerp(shapeTransform.rotation, target, 0.9f);
             isRotating = true;
             yield return null;
         }
-        shape.transform.rotation = target;
+        shapeTransform.rotation = target;
         isRotating = false;
     }
 
