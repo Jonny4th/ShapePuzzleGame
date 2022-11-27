@@ -19,13 +19,12 @@ public class BlockCollisionDetection : MonoBehaviour
     private void Awake()
     {
         overlapController = GetComponentInParent<ShapeOverlapController>();
-        ShapeMovementManager.Moved += CheckBlockOverlap;
     }
 
-    //private void Update()
-    //{
-    //    CheckBlockOverlap(null);
-    //}
+    private void Update()
+    {
+        CheckBlockOverlap(null);
+    }
     #endregion
 
     private void CheckBlockOverlap(OnMovementInfo info)

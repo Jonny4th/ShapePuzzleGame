@@ -28,14 +28,11 @@ public class ShapeMovementManager : MonoBehaviour
         ObjectSelect.ShapeSelected -= AssignSelectedShape;
         ObjectSelect.ShapeDeselected -= ClearSelectedShape;
     }
-    private void Start()
-    {
-        shapeTransform = GetComponent<Transform>();
-    }
 
     private void AssignSelectedShape(ShapeSelectionController s)
     {
         shape = s;
+        shapeTransform = shape.transform;
     }
     private void ClearSelectedShape()
     {
