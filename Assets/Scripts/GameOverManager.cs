@@ -5,16 +5,17 @@ using System;
 
 public class GameOverManager : MonoBehaviour
 {
-    [SerializeField] List<PanelOnOff> targetPanels;
-    [SerializeField] List<PanelOnOff> emptyPanels;
+    [SerializeField] List<PanelStateController> targetPanels;
+    [SerializeField] List<PanelStateController> emptyPanels;
     [SerializeField] bool invalidPlacement;
     
     public static event Action Success;
     public static bool gameIsOver;
 
-    private void Start() {
-        targetPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelOnOff>(), IsTargetPanel));
-        emptyPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelOnOff>(), x => !IsTargetPanel(x)));
+    private void Start()
+    {
+        targetPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), IsTargetPanel));
+        emptyPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), x => !IsTargetPanel(x)));
 
         gameIsOver = false;
     }
@@ -34,14 +35,14 @@ public class GameOverManager : MonoBehaviour
         }
     }
 
-    private static bool IsTargetPanel(PanelOnOff panel)
+    private static bool IsTargetPanel(PanelStateController panel)
     {
-        return panel.IsOn;
+        return (panel.currentState & PanelStateController.State.Target) != 0;
     }
 
-    private static bool IsBlockOn(PanelOnOff panel)
+    private static bool IsBlockOn(PanelStateController panel)
     {
-        return panel.IsBlock;
+        return (panel.currentState & PanelStateController.State.Shadow) != 0;
     }
 
     private void CheckInvalidPlacement(bool value)
@@ -55,8 +56,8 @@ public class GameOverManager : MonoBehaviour
     }
     private void GameOverConditionCheck(OnMovementInfo info)
     {
-        List<PanelOnOff> corrects = targetPanels.FindAll(IsBlockOn);
-        List<PanelOnOff> misses = emptyPanels.FindAll(IsBlockOn);
+        List<PanelStateController> corrects = targetPanels.FindAll(IsBlockOn);
+        List<PanelStateController> misses = emptyPanels.FindAll(IsBlockOn);
         if (corrects.Count == targetPanels.Count & misses.Count == 0 & !invalidPlacement)
         {
             gameIsOver = true;

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.HID;
 [ExecuteInEditMode]
 #endif
 
-public class PaneLStateController : MonoBehaviour
+public class PanelStateController : MonoBehaviour
 {
     [SerializeField] LayerMask hitLayer;
     int hitLayerMask { get { return 1 << hitLayer.value; } }
@@ -16,7 +16,7 @@ public class PaneLStateController : MonoBehaviour
         Shadow = 0b_0000_0010,
         Correct = Target | Shadow,
     }
-    [SerializeField] State currentState;
+    public State currentState;
 
     [Header("Visuals")]
     [SerializeField] Material defaultMaterial;
@@ -30,12 +30,12 @@ public class PaneLStateController : MonoBehaviour
         mesh = GetComponent<MeshRenderer>();
     }
 
-#if UNITY_EDITOR
     private void Update()
     {
+#if UNITY_EDITOR
         UpdateState();
-    }
 #endif
+    }
 
     void UpdateState()
     {
@@ -62,5 +62,8 @@ public class PaneLStateController : MonoBehaviour
         }
     }
 
-
+    public void SetAsTarget()
+    {
+        currentState |= State.Target;
+    }
 }
