@@ -11,9 +11,6 @@ GameObject:
   - component: {fileID: 6615677422724981765}
   - component: {fileID: 6615677422724981764}
   - component: {fileID: 6615677422724981767}
-  - component: {fileID: 6615677422724981766}
-  - component: {fileID: 5400019214422615026}
-  - component: {fileID: 6290444879318503486}
   - component: {fileID: 2297472201408559801}
   - component: {fileID: 1435465436032340965}
   - component: {fileID: 800038621272619803}
@@ -92,45 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6615677422724981766
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615677422724981761}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 20, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &5400019214422615026
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615677422724981761}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 20, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6290444879318503486
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615677422724981761}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 20}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &2297472201408559801
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -192,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924ffbf56abb5574d888de92b351f01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedMaterial: {fileID: 2100000, guid: 0e31e7706b185d64bab3a4d926c2dded, type: 2}
 --- !u!114 &8918637596020996437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0199a12085890ee4a9473f6e8be624d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOverlap: 0
   mask:
     serializedVersion: 2
     m_Bits: 8
@@ -223,3 +181,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invalidMaterial: {fileID: 2100000, guid: ed088d52f3e9c474bb4960576f4bf0cc, type: 2}
   selectMaterial: {fileID: 2100000, guid: 0e31e7706b185d64bab3a4d926c2dded, type: 2}
+  state: 0

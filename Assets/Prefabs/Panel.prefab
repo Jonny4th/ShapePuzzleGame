@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8495054308071801234}
   - component: {fileID: 8495054308071801235}
   - component: {fileID: 8495054308071801232}
-  - component: {fileID: 8495054308071801236}
   - component: {fileID: 8930045394749255402}
+  - component: {fileID: 7709754249405645037}
   m_Layer: 2
   m_Name: Panel
   m_TagString: Untagged
@@ -100,24 +100,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &8495054308071801236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8495054308071801233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e93fa0cfa7efe14582bdbf20cb08a6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _panelOn: 0
-  _blockOn: 0
-  activeMaterial: {fileID: 2100000, guid: 8c3ea15c2eb93184fa5c2f9910fd8f10, type: 2}
-  inactiveMaterial: {fileID: 2100000, guid: 09fcf172b5a7ee34f961f82fffe0fab8, type: 2}
-  shadowMaterial: {fileID: 2100000, guid: e002265d9cce6cd47b8d4600a77e72cd, type: 2}
-  correctMaterial: {fileID: 2100000, guid: e2c513dd70a01de4199c5052616d0ad3, type: 2}
 --- !u!54 &8930045394749255402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,3 +116,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7709754249405645037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495054308071801233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed0baf02e4b30649b679a1d47d8d6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  currentState: 0
+  defaultMaterial: {fileID: 2100000, guid: 09fcf172b5a7ee34f961f82fffe0fab8, type: 2}
+  targetMaterial: {fileID: 2100000, guid: 8c3ea15c2eb93184fa5c2f9910fd8f10, type: 2}
+  shadowMaterial: {fileID: 2100000, guid: e002265d9cce6cd47b8d4600a77e72cd, type: 2}
+  correctMaterial: {fileID: 2100000, guid: e2c513dd70a01de4199c5052616d0ad3, type: 2}

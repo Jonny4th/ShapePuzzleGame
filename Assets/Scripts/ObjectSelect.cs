@@ -11,8 +11,8 @@ public class ObjectSelect : MonoBehaviour
     [SerializeField] LayerMask selectable;
     
     public List<ShapeSelectionController> ShapeInScene;
-    public GameObject currentSelectedBlock { get; private set; }
-    public ShapeSelectionController currentSelectedShape { get; private set; }
+    public GameObject CurrentSelectedBlock { get; private set; }
+    public ShapeSelectionController CurrentSelectedShape { get; private set; }
     public int SelectedIndex {get; private set;}
 
     public static event Action<ShapeSelectionController> ShapeSelected;
@@ -39,20 +39,20 @@ public class ObjectSelect : MonoBehaviour
 
     private void OnShapeSelect(GameObject seleted)
     {
-        currentSelectedBlock = seleted;
-        currentSelectedShape = currentSelectedBlock.GetComponentInParent<ShapeSelectionController>();
-        ShapeSelected?.Invoke(currentSelectedShape);
+        CurrentSelectedBlock = seleted;
+        CurrentSelectedShape = CurrentSelectedBlock.GetComponentInParent<ShapeSelectionController>();
+        ShapeSelected?.Invoke(CurrentSelectedShape);
     }
 
     private void Clear()
     {
-        currentSelectedBlock = null;
-        currentSelectedShape = null;
+        CurrentSelectedBlock = null;
+        CurrentSelectedShape = null;
     }
 
     public void ClickSelect()
     {
-        GameObject current = currentSelectedBlock;
+        GameObject current = CurrentSelectedBlock;
         if (current != null)
         {
             current.GetComponent<ISelectable>()?.OnDeselect();
@@ -63,7 +63,7 @@ public class ObjectSelect : MonoBehaviour
         {
             if (hit.collider.gameObject.TryGetComponent<ISelectable>(out var seleted))
             {
-                currentSelectedBlock = hit.collider.gameObject;
+                CurrentSelectedBlock = hit.collider.gameObject;
                 seleted.OnSelect();
                 BlockSelected?.Invoke(hit.collider.gameObject);
             }
@@ -74,7 +74,7 @@ public class ObjectSelect : MonoBehaviour
     {
         if (context.performed)
         {
-            ShapeSelectionController current = currentSelectedShape;
+            ShapeSelectionController current = CurrentSelectedShape;
             if (current != null)
             {
                 var index = ShapeInScene.IndexOf(current);
@@ -96,7 +96,7 @@ public class ObjectSelect : MonoBehaviour
 
     public void OnDeselect()
     {
-        ShapeSelectionController current = currentSelectedShape;
+        ShapeSelectionController current = CurrentSelectedShape;
         if (current != null)
         {
             current.OnDeselect();
