@@ -42,12 +42,13 @@ public class ShapeMovementManager : MonoBehaviour
 
     public void OnMovementKeyDown(InputAction.CallbackContext context)
     {
-        if (context.performed && context.ReadValue<Vector3>().sqrMagnitude > 0.1f)
+        Vector3 input = context.ReadValue<Vector3>();
+        if (context.performed && input.sqrMagnitude > 0.1f)
         {
-            Vector3 inputMovement = context.ReadValue<Vector3>();
             if (shape != null)
             {
-                MoveShape(inputMovement);
+                MoveShape(input);
+                OnMove();
             }
         }
     }
@@ -59,15 +60,17 @@ public class ShapeMovementManager : MonoBehaviour
             if (shape != null)
             {
                 RotateShape(inputAxis);
+                OnMove();
             }
         }
     }
 
     private void MoveShape(Vector3 direction)
     {
-        shapeTransform.position += direction;
-        shapeTransform.position = AlignToGrid(shapeTransform.position);
-        OnMove();
+        shapeTransform.Translate(AlignToGrid(direction));
+        Debug.Log(shapeTransform.position);
+        //shapeTransform.Translate(AlignToGrid(shapeTransform.position));
+        //OnMove();
     }
 
 
@@ -75,7 +78,6 @@ public class ShapeMovementManager : MonoBehaviour
     {
         Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shapeTransform.rotation;
         StartCoroutine(nameof(Rotate), targetAngle);
-        OnMove();
     }
     IEnumerator Rotate(Quaternion target)
     {
@@ -87,6 +89,7 @@ public class ShapeMovementManager : MonoBehaviour
         }
         shapeTransform.rotation = target;
         isRotating = false;
+        //OnMove();
     }
 
     Vector3 AlignToGrid(Vector3 pos)

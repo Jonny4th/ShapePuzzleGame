@@ -25,23 +25,30 @@ public class PanelStateController : MonoBehaviour
     [SerializeField] Material correctMaterial;
     MeshRenderer mesh;
 
+    private void OnEnable()
+    {
+        ShapeMovementManager.Moved += UpdateState;
+    }
+
+    private void OnDisable()
+    {
+        ShapeMovementManager.Moved -= UpdateState;
+    }
+
     private void Start()
     {
         mesh = GetComponent<MeshRenderer>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-#if UNITY_EDITOR
-        UpdateState();
-#endif
+        UpdateState(null);
     }
 
-    void UpdateState()
+    void UpdateState(OnMovementInfo info)
     {
-        if (Physics.Raycast(transform.position,transform.up, 10f))
+        if (Physics.Raycast(transform.position,transform.up, 10f, ~hitLayerMask))
         {
-            Debug.DrawRay(transform.position, transform.up * 10f, Color.yellow);
             currentState |= State.Shadow;
         }
         else
