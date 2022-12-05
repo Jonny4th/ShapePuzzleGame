@@ -707,10 +707,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 6761886516406075092, guid: 61387c3754c306f48a692b1e2a53832b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6761886516410784601, guid: 61387c3754c306f48a692b1e2a53832b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 182.8242
