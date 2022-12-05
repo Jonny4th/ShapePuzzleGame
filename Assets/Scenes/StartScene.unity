@@ -2166,8 +2166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toSceneIndex: 1
   toSceneName: SampleLevel00
-  useSceneName: 1
-  goToNextScene: 0
+  useSceneName: 0
+  goToNextScene: 1
 --- !u!1 &420781081
 GameObject:
   m_ObjectHideFlags: 0

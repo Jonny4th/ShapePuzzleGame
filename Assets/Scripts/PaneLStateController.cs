@@ -25,16 +25,6 @@ public class PanelStateController : MonoBehaviour
     [SerializeField] Material correctMaterial;
     MeshRenderer mesh;
 
-    private void OnEnable()
-    {
-        ShapeMovementManager.Moved += UpdateState;
-    }
-
-    private void OnDisable()
-    {
-        ShapeMovementManager.Moved -= UpdateState;
-    }
-
     private void Start()
     {
         mesh = GetComponent<MeshRenderer>();
@@ -42,10 +32,10 @@ public class PanelStateController : MonoBehaviour
 
     private void LateUpdate()
     {
-        UpdateState(null);
+        UpdateState();
     }
 
-    void UpdateState(OnMovementInfo info)
+    void UpdateState()
     {
         if (Physics.Raycast(transform.position,transform.up, 10f, ~hitLayerMask))
         {

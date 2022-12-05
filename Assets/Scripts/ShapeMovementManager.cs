@@ -67,10 +67,8 @@ public class ShapeMovementManager : MonoBehaviour
 
     private void MoveShape(Vector3 direction)
     {
-        shapeTransform.Translate(AlignToGrid(direction));
-        Debug.Log(shapeTransform.position);
-        //shapeTransform.Translate(AlignToGrid(shapeTransform.position));
-        //OnMove();
+        shapeTransform.position += direction;
+        shapeTransform.position = AlignToGrid(shapeTransform.position);
     }
 
 
