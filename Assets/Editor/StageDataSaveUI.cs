@@ -20,6 +20,10 @@ public class StageDataSaveUI : Editor
         {
             controller.SaveToJSON();
         }
+        if (GUILayout.Button("Load Stage Data from Scriptable Object"))
+        {
+            controller.LoadStageData();
+        }
 
     }
 }

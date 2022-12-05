@@ -4,6 +4,11 @@ using UnityEngine;
 public class StageController : MonoBehaviour
 {
     [SerializeField] private StageData dataStorage;
+    [SerializeField] int stageSize;
+    [SerializeField] string stageName;
+    public GameObject[] pieces;
+    public Vector3[] piecesPosition;
+    public Quaternion[] piecesRotation;
 
     public void SaveStageData()
     {
@@ -19,12 +24,22 @@ public class StageController : MonoBehaviour
         {
             dataStorage.PanelData[i] = Vector3Int.RoundToInt(activePanels[i].transform.position);
         }
+        dataStorage.StageName = stageName;
+        dataStorage.StageSize = stageSize;
     }
 
     private void StoreShape()
     {
-        ShapeModel[] shapes = FindObjectsOfType<ShapeModel>();
-        
+        ShapeModel[] shape = FindObjectsOfType<ShapeModel>();
+        pieces = new GameObject[shape.Length];
+        for (int i = 0; i < shape.Length; i++)
+        {
+            Debug.Log(shape[i].transform);
+            pieces[i] = shape[i].plainShape;
+            Debug.Log(shape[i].transform.position);
+            Debug.Log(shape[i].transform.rotation);
+        }
+        dataStorage.pieces = pieces;
     }
 
     public void LoadStageData()
@@ -37,6 +52,19 @@ public class StageController : MonoBehaviour
             {
                 panel.SetAsTarget();
             }
+            else
+            {
+                panel.currentState = PanelStateController.State.None;
+            }
+        }
+
+        pieces = dataStorage.pieces;
+        foreach (Tuple<GameObject,Transform> piece in pieces)
+        {
+            GameObject go = piece.Item1;
+            Transform transform = piece.Item2;
+            Debug.Log("Load: " + transform.position);
+            Instantiate(go, transform);
         }
     }
 

@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocks: []
+  isOverlap: 0
 --- !u!114 &8738171743660207234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e11f26e619adbd42945b2a30011b504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 0}
+  plainShape: {fileID: 7460690972144960728}
+  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 2680577e200692149af7d9825f073d00, type: 2}
 --- !u!82 &1470059810744746816
 AudioSource:
   m_ObjectHideFlags: 0

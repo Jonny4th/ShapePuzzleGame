@@ -25,7 +25,7 @@ public class BlockVisual : MonoBehaviour
     private void Awake()
     {
         model = GetComponentInParent<ShapeModel>();
-        defaultMaterial = model.Data.OriginalMaterial;
+        defaultMaterial = model.material;
         overlapController = GetComponentInParent<ShapeOverlapController>();
         selectionController = GetComponentInParent<ShapeSelectionController>();
     }

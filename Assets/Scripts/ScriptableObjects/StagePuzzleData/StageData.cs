@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,5 +13,7 @@ public class StageData : ScriptableObject
     public int StageId;
     public int StageSize;
     public Vector3[] PanelData;
-    public GameObject[] Shapes;
+    public GameObject[] pieces;
+    public Vector3[] piecesPosition;
+    public Quaternion[] piecesRotation;
 }

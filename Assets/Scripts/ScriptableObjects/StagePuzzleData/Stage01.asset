@@ -16,6 +16,4 @@ MonoBehaviour:
   StageId: 0
   StageSize: 7
   PanelData: []
-  Shapes:
-  - {fileID: 2471147023237940332, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
-  - {fileID: 1775484197832895059, guid: b2ff4a0fb68fa084d9e5f86086cea140, type: 3}
+  Shapes: []
