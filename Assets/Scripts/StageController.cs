@@ -6,9 +6,20 @@ public class StageController : MonoBehaviour
     [SerializeField] private StageData dataStorage;
     [SerializeField] int stageSize;
     [SerializeField] string stageName;
-    public GameObject[] pieces;
-    public Vector3[] piecesPosition;
-    public Quaternion[] piecesRotation;
+    public PieceData[] pieceData;
+
+    [Serializable]
+    public struct PieceData
+    {
+        public GameObject shape { get; set; }
+        public Vector3 position { get; set; }
+        public Quaternion rotation { get; set; }
+    }
+
+    //private void Start()
+    //{
+    //    LoadStageData();
+    //}
 
     public void SaveStageData()
     {
@@ -31,24 +42,32 @@ public class StageController : MonoBehaviour
     private void StoreShape()
     {
         ShapeModel[] shape = FindObjectsOfType<ShapeModel>();
-        pieces = new GameObject[shape.Length];
+        pieceData = new PieceData[shape.Length];
         for (int i = 0; i < shape.Length; i++)
         {
-            Debug.Log(shape[i].transform);
-            pieces[i] = shape[i].plainShape;
-            Debug.Log(shape[i].transform.position);
-            Debug.Log(shape[i].transform.rotation);
+            pieceData[i] = new PieceData
+            {
+                shape = shape[i].plainShape,
+                position = shape[i].transform.position,
+                rotation = shape[i].transform.rotation,
+            };
         }
-        dataStorage.pieces = pieces;
+        dataStorage.piece = pieceData;
     }
 
     public void LoadStageData()
+    {
+        LoadPuzzle();
+        LoadShapePieces();
+    }
+
+    private void LoadPuzzle()
     {
         Vector3[] activePanelCoordinates = dataStorage.PanelData;
         PanelStateController[] panels = FindObjectsOfType<PanelStateController>();
         foreach (PanelStateController panel in panels)
         {
-            if ( Array.Exists(activePanelCoordinates, x => x == panel.transform.position) )
+            if (Array.Exists(activePanelCoordinates, x => x == panel.transform.position))
             {
                 panel.SetAsTarget();
             }
@@ -57,16 +76,21 @@ public class StageController : MonoBehaviour
                 panel.currentState = PanelStateController.State.None;
             }
         }
-
-        pieces = dataStorage.pieces;
-        foreach (Tuple<GameObject,Transform> piece in pieces)
-        {
-            GameObject go = piece.Item1;
-            Transform transform = piece.Item2;
-            Debug.Log("Load: " + transform.position);
-            Instantiate(go, transform);
-        }
     }
+
+    private void LoadShapePieces()
+    {
+        pieceData = dataStorage.piece;
+        foreach (PieceData piece in pieceData)
+        {
+            GameObject go = piece.shape;
+            Vector3 pos = piece.position;
+            Quaternion rot = piece.rotation;
+            Instantiate(go, pos, rot);
+        }
+
+    }
+
 
     public void SaveToJSON()
     {
