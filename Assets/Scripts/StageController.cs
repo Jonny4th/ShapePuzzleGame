@@ -13,7 +13,7 @@ public class StageController : MonoBehaviour
 
     private void StorePuzzle()
     {
-        PanelOnOff[] activePanels = Array.FindAll(FindObjectsOfType<PanelOnOff>(), x => x.IsOn == true);
+        PanelStateController[] activePanels = Array.FindAll(FindObjectsOfType<PanelStateController>(), x => (x.currentState & PanelStateController.State.Target) != 0);
         dataStorage.SavedData = new Vector3[activePanels.Length];
         for (int i = 0; i < activePanels.Length; i++)
         {
@@ -30,12 +30,12 @@ public class StageController : MonoBehaviour
     public void LoadStageData()
     {
         Vector3[] activePanelCoordinates = dataStorage.SavedData;
-        PanelOnOff[] panels = FindObjectsOfType<PanelOnOff>();
-        foreach (PanelOnOff panel in panels)
+        PanelStateController[] panels = FindObjectsOfType<PanelStateController>();
+        foreach (PanelStateController panel in panels)
         {
             if ( Array.Exists(activePanelCoordinates, x => x == panel.transform.position) )
             {
-                panel.SetPanelOn();
+                panel.SetAsTarget();
             }
         }
     }

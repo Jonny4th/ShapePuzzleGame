@@ -12,14 +12,15 @@ public class BlockVisual : MonoBehaviour
     [SerializeField] Material invalidMaterial;
     [SerializeField] Material selectMaterial;
 
-    enum State
+    public enum State
     {
         Default,
         Selected,
+        NonSelected,
         Invalid
     }
 
-    State state = State.Default;
+    public State state = State.Default;
 
     private void Awake()
     {
