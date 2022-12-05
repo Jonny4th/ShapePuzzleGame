@@ -13,23 +13,9 @@ MonoBehaviour:
   m_Name: Stage01
   m_EditorClassIdentifier: 
   StageName: Stage01
-  SavedData:
-  - {x: 0, y: 0, z: 5}
-  - {x: 0, y: 1, z: 5}
-  - {x: 0, y: -5, z: 1}
-  - {x: -1, y: 0, z: 5}
-  - {x: 5, y: 1, z: 1}
-  - {x: 5, y: 1, z: 0}
-  - {x: 5, y: -1, z: 1}
-  - {x: -1, y: -5, z: 1}
-  - {x: 0, y: -1, z: 5}
-  - {x: 5, y: -1, z: 0}
-  - {x: 0, y: -5, z: 0}
-  - {x: -1, y: -5, z: 0}
-  - {x: -1, y: 1, z: 5}
-  - {x: 5, y: 1, z: -1}
-  - {x: 5, y: 0, z: 0}
-  - {x: -1, y: -5, z: -1}
+  StageId: 0
+  StageSize: 7
+  PanelData: []
   Shapes:
   - {fileID: 2471147023237940332, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
   - {fileID: 1775484197832895059, guid: b2ff4a0fb68fa084d9e5f86086cea140, type: 3}

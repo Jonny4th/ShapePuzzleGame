@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: StageDataTest
   m_EditorClassIdentifier: 
   StageName: 
-  ActivePanels: []
+  StageId: 0
+  StageSize: 7
+  PanelData: []
+  Shapes: []

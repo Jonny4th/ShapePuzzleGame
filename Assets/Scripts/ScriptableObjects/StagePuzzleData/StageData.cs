@@ -9,6 +9,8 @@ using UnityEngine;
 public class StageData : ScriptableObject
 {
     public string StageName;
-    public Vector3[] SavedData;
+    public int StageId;
+    public int StageSize;
+    public Vector3[] PanelData;
     public GameObject[] Shapes;
 }
