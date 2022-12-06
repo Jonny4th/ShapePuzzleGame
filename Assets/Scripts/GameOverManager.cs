@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class GameOverManager : MonoBehaviour
         if (corrects.Count == targetPanels.Count & misses.Count == 0 & !invalidPlacement)
         {
             gameIsOver = true;
+            
             Success?.Invoke();
         }
     }

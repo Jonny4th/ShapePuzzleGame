@@ -7,20 +7,20 @@ public class GameController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameOverManager.Success += OnMenu;
+        GameOverManager.Success += OnGameOver;
         playerInput = GetComponent<PlayerInput>();
         OnPlay();
     }
     private void OnDisable()
     {
-        GameOverManager.Success -= OnMenu;
+        GameOverManager.Success -= OnGameOver;
         playerInput = GetComponent<PlayerInput>();
         OnPlay();
     }
 
-    public void OnMenu()
+    public void OnGameOver()
     {
-        playerInput.SwitchCurrentActionMap("Menu");
+        playerInput.SwitchCurrentActionMap("GameOverMenu");
     }
     public void OnPlay()
     {

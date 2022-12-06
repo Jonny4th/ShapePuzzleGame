@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-    [SerializeField] private StageData dataStorage;
+    //[SerializeField] private StageData levelData;
+    [SerializeField] LevelData levelData;
     [SerializeField] int stageSize;
     [SerializeField] string stageName;
     public PieceData[] pieceData;
@@ -23,6 +27,7 @@ public class StageController : MonoBehaviour
 
     public void SaveStageData()
     {
+        levelData = new LevelData();
         StorePuzzle();
         StoreShape();
     }
@@ -30,13 +35,13 @@ public class StageController : MonoBehaviour
     private void StorePuzzle()
     {
         PanelStateController[] activePanels = Array.FindAll(FindObjectsOfType<PanelStateController>(), x => (x.currentState & PanelStateController.State.Target) != 0);
-        dataStorage.PanelData = new Vector3[activePanels.Length];
+        levelData.PanelData = new Vector3[activePanels.Length];
         for (int i = 0; i < activePanels.Length; i++)
         {
-            dataStorage.PanelData[i] = Vector3Int.RoundToInt(activePanels[i].transform.position);
+            levelData.PanelData[i] = Vector3Int.RoundToInt(activePanels[i].transform.position);
         }
-        dataStorage.StageName = stageName;
-        dataStorage.StageSize = stageSize;
+        levelData.StageName = stageName;
+        levelData.StageSize = stageSize;
     }
 
     private void StoreShape()
@@ -52,7 +57,7 @@ public class StageController : MonoBehaviour
                 rotation = shape[i].transform.rotation,
             };
         }
-        dataStorage.piece = pieceData;
+        levelData.piece = pieceData;
     }
 
     public void LoadStageData()
@@ -63,7 +68,7 @@ public class StageController : MonoBehaviour
 
     private void LoadPuzzle()
     {
-        Vector3[] activePanelCoordinates = dataStorage.PanelData;
+        Vector3[] activePanelCoordinates = levelData.PanelData;
         PanelStateController[] panels = FindObjectsOfType<PanelStateController>();
         foreach (PanelStateController panel in panels)
         {
@@ -80,7 +85,7 @@ public class StageController : MonoBehaviour
 
     private void LoadShapePieces()
     {
-        pieceData = dataStorage.piece;
+        pieceData = levelData.piece;
         foreach (PieceData piece in pieceData)
         {
             GameObject go = piece.shape;
@@ -94,10 +99,30 @@ public class StageController : MonoBehaviour
 
     public void SaveToJSON()
     {
-        string fileName = dataStorage.StageName;
-        string data = JsonUtility.ToJson(dataStorage);
+        string fileName = levelData.StageName;
+        string data = JsonUtility.ToJson(levelData);
         string path = Application.dataPath + "/Data/StagePuzzles/" + fileName + ".json";
         System.IO.File.WriteAllText(path, data);
         Debug.Log("massage: a file is saved to " + path);
+    }
+
+    public void Save()
+    {
+        BinaryFormatter bf = new();
+        //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
+        FileStream file = File.Create(Application.streamingAssetsPath +  "/" + stageName + ".gd"); //you can call it anything you want
+        bf.Serialize(file, levelData);
+        file.Close();
+    }
+
+    public void Load()
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+            levelData = (LevelData)bf.Deserialize(file);
+            file.Close();
+        }
     }
 }

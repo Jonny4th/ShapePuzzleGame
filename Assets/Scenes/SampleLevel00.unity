@@ -11075,6 +11075,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4361398765027748918, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
 --- !u!1001 &2103093676
@@ -11430,6 +11434,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1587853869}
+    - target: {fileID: 651619516633009395, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7321519935392192913, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11462,6 +11470,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7597114097275103334, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8926528375475765213, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.0005645752
@@ -11476,9 +11488,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 473188368227465374, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: stageName
+      value: Beginner2
+      objectReference: {fileID: 0}
+    - target: {fileID: 473188368227465374, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: stageSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 473188368227465374, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: dataStorage
       value: 
       objectReference: {fileID: 11400000, guid: f32a0d1effd324f4fa83576b4d77b892, type: 2}
+    - target: {fileID: 473188368227465374, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: pieceData.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7942664544872702496, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: successScreen
       value: 

@@ -164,7 +164,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7942664544872702525}
         m_TargetAssemblyTypeName: ObjectSelect, Assembly-CSharp
-        m_MethodName: Deselect
+        m_MethodName: OnDeselect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -200,6 +200,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c0acedcf-60bc-48e1-881c-41a622c38526
     m_ActionName: Puzzle Controls/RotateBlock
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2f53b31d-3ae1-4334-93a6-39c5bf4efce9
+    m_ActionName: GameOverMenu/NextLevel[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Puzzle Controls
@@ -383,4 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c8f0f003f56844ba763fb67aa943c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: f32a0d1effd324f4fa83576b4d77b892, type: 2}
+  dataStorage: {fileID: 0}
+  stageSize: 0
+  stageName: 
+  pieceData: []

@@ -140,7 +140,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "backward",
+                    "name": "forward",
                     "id": "50f45c00-32e8-45a6-b4ac-1382bf518250",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
@@ -151,7 +151,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "forward",
+                    "name": "backward",
                     "id": "794114b6-56e3-460c-b197-a621609e1b01",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
@@ -162,7 +162,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "right",
                     "id": "0dddfd44-9bfb-4362-be79-33410e925fde",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
@@ -173,7 +173,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "left",
                     "id": "32597209-d6e8-4f3e-a6b8-5d2e75c29663",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
@@ -217,7 +217,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "backward",
+                    "name": "forward",
                     "id": "732d24d5-8b0d-4c76-b107-fa142dacb6fe",
                     "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
@@ -228,7 +228,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "forward",
+                    "name": "backward",
                     "id": "9821ed67-4869-435c-ac48-a1328162791e",
                     "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
@@ -239,7 +239,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
+                    "name": "right",
                     "id": "2eaf683b-3446-4a29-819c-4839f736644b",
                     "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
@@ -250,7 +250,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "left",
                     "id": "2fe1ab84-e022-4774-8ae5-c8a3510b2189",
                     "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
@@ -745,6 +745,34 @@
                     "processors": "",
                     "groups": "KeyBoard",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "GameOverMenu",
+            "id": "27d4fe5b-c963-4663-a016-601879358e2f",
+            "actions": [
+                {
+                    "name": "NextLevel",
+                    "type": "Button",
+                    "id": "2f53b31d-3ae1-4334-93a6-39c5bf4efce9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "45687f0a-7c41-41b1-b322-a838c98fa052",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "NextLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
