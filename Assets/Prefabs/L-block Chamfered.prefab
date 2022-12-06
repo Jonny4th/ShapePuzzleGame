@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: 212523619228228510, guid: 6ec555bc3f3e86344bee30f43fbcf7d3, type: 3}
       propertyPath: plainShape
       value: 
-      objectReference: {fileID: 212523619228228510, guid: 6ec555bc3f3e86344bee30f43fbcf7d3, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1484034732322411296, guid: 6ec555bc3f3e86344bee30f43fbcf7d3, type: 3}
       propertyPath: m_Mesh
       value: 
