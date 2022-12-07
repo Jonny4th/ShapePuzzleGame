@@ -6,4 +6,6 @@ using UnityEngine;
 public class ShapeData : ScriptableObject
 {
     public Material OriginalMaterial;
+    public GameObject PlainShape;
+    public Mesh Mesh;
 }

@@ -7,7 +7,7 @@ public class MusicPlayer : MonoBehaviour
 {
     private AudioSource _audioSource;
     [SerializeField] AudioClip[] playlist;
-    int playingIndex;
+    [SerializeField] int playingIndex;
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);

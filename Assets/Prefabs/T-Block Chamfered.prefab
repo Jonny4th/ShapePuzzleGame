@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1164134249004674046, guid: c33e03dc66ac09746840b77670a735fc, type: 3}
       propertyPath: m_Name
-      value: T-block Chamfered
+      value: T-Block Chamfered
       objectReference: {fileID: 0}
     - target: {fileID: 1547376335598547840, guid: c33e03dc66ac09746840b77670a735fc, type: 3}
       propertyPath: blocks.Array.size
