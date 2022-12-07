@@ -12,9 +12,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
     - target: {fileID: 212523619228228510, guid: 6ec555bc3f3e86344bee30f43fbcf7d3, type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: a777777f2ac83d246bfcddfe73bd0b2b, type: 2}
+    - target: {fileID: 212523619228228510, guid: 6ec555bc3f3e86344bee30f43fbcf7d3, type: 3}
       propertyPath: plainShape
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2035208208991679428, guid: 6ec555bc3f3e86344bee30f43fbcf7d3, type: 3}
     - target: {fileID: 1484034732322411296, guid: 6ec555bc3f3e86344bee30f43fbcf7d3, type: 3}
       propertyPath: m_Mesh
       value: 
