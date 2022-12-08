@@ -22,10 +22,11 @@ public class MusicPlayer : MonoBehaviour
     public void PlayMusic()
     {
         if (_audioSource.isPlaying) return;
+        playingIndex = Random.Range(0, playlist.Length);
         _audioSource.clip = playlist[playingIndex];
         _audioSource.Play();
-        playingIndex++;
-        if (playingIndex >= playlist.Length) playingIndex = 0;
+        //playingIndex++;
+        //if (playingIndex >= playlist.Length) playingIndex = 0;
     }
 
     public void StopMusic()
