@@ -67,7 +67,7 @@ public class StageController : MonoBehaviour
         {
             if (Array.Exists(activePanelCoordinates, x => x == panel.transform.position))
             {
-                panel.SetAsTarget();
+                panel.SetAsTarget(true);
             }
             else
             {

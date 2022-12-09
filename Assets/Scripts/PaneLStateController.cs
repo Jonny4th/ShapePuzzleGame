@@ -59,8 +59,15 @@ public class PanelStateController : MonoBehaviour
         }
     }
 
-    public void SetAsTarget()
+    public void SetAsTarget(bool v)
     {
-        currentState |= State.Target;
+        if (v)
+        {
+            currentState |= State.Target;
+        }
+        else
+        {
+            currentState &= ~State.Target;
+        }
     }
 }

@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace PuzzleData
 {
-
     public class PuzzleCreator : MonoBehaviour
     {
         //[SerializeField] private StageData levelData;
+        PanelStateController[] allPanels;
         [SerializeField] StageData levelData;
         [SerializeField] int stageSize;
         [SerializeField] string stageName;
@@ -26,14 +26,24 @@ namespace PuzzleData
 
         public void SaveStageData()
         {
+            levelData = null;
             levelData = new StageData();
-            StorePuzzle();
-            StoreShape();
+            SavePuzzle();
+            SaveShapes();
         }
 
-        private void StorePuzzle()
+        private void SavePuzzle()
         {
-            PanelStateController[] activePanels = Array.FindAll(FindObjectsOfType<PanelStateController>(), x => (x.currentState & PanelStateController.State.Target) != 0);
+            allPanels = FindObjectsOfType<PanelStateController>();
+            foreach (PanelStateController panel in allPanels)
+            {
+                panel.SetAsTarget(false);
+            }
+            PanelStateController[] activePanels = Array.FindAll(allPanels, x => (x.currentState & PanelStateController.State.Shadow) != 0);
+            foreach (PanelStateController panel in activePanels)
+            {
+                panel.SetAsTarget(true);
+            }
             levelData.PanelData = new Vector3[activePanels.Length];
             for (int i = 0; i < activePanels.Length; i++)
             {
@@ -43,7 +53,7 @@ namespace PuzzleData
             levelData.StageSize = stageSize;
         }
 
-        private void StoreShape()
+        private void SaveShapes()
         {
             ShapeModel[] shape = FindObjectsOfType<ShapeModel>();
             pieceData = new PieceData[shape.Length];
@@ -73,7 +83,7 @@ namespace PuzzleData
             {
                 if (Array.Exists(activePanelCoordinates, x => x == panel.transform.position))
                 {
-                    panel.SetAsTarget();
+                    panel.SetAsTarget(true);
                 }
                 else
                 {
