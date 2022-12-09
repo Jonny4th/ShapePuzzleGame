@@ -27,7 +27,7 @@ namespace PuzzleData
         public void SaveStageData()
         {
             levelData = null;
-            levelData = new StageData();
+            levelData = ScriptableObject.CreateInstance<StageData>();
             SavePuzzle();
             SaveShapes();
         }
