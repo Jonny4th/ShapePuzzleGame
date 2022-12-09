@@ -1,3 +1,4 @@
+using PuzzleData;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,5 +14,5 @@ public class StageData : ScriptableObject
     public int StageId;
     public int StageSize;
     public Vector3[] PanelData;
-    public StageController.PieceData[] piece;
+    public PuzzleCreator.PieceData[] piece;
 }

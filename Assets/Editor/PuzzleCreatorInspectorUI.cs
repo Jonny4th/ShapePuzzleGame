@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using PuzzleData;
 using UnityEditor;
-using UnityEditor.UI;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-[CustomEditor(typeof(StageController))]
-public class StageDataSaveUI : Editor
+[CustomEditor(typeof(PuzzleData.PuzzleCreator))]
+public class PuzzleCreatorInspectorUI : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        StageController controller = (StageController)target;
+        PuzzleCreator controller = (PuzzleCreator)target;
         if (GUILayout.Button("Save Puzzle to Scriptable Obj"))
         {
             controller.SaveStageData();
+        }
+        if (GUILayout.Button("Save to JSON"))
+        {
+            controller.SaveToJSON();
         }
         if (GUILayout.Button("Load Stage Data from Scriptable Object"))
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using PuzzleData;
 
 public class StageController : MonoBehaviour
 {
@@ -10,15 +11,7 @@ public class StageController : MonoBehaviour
     [SerializeField] LevelData levelData;
     [SerializeField] int stageSize;
     [SerializeField] string stageName;
-    public PieceData[] pieceData;
-
-    [Serializable]
-    public struct PieceData
-    {
-        public GameObject shape { get; set; }
-        public Vector3 position { get; set; }
-        public Quaternion rotation { get; set; }
-    }
+    public PuzzleCreator.PieceData[] pieceData;
 
     //private void Start()
     //{
@@ -47,10 +40,10 @@ public class StageController : MonoBehaviour
     private void StoreShape()
     {
         ShapeModel[] shape = FindObjectsOfType<ShapeModel>();
-        pieceData = new PieceData[shape.Length];
+        pieceData = new PuzzleCreator.PieceData[shape.Length];
         for (int i = 0; i < shape.Length; i++)
         {
-            pieceData[i] = new PieceData
+            pieceData[i] = new PuzzleCreator.PieceData
             {
                 shape = shape[i].plainShape,
                 position = shape[i].transform.position,
@@ -86,7 +79,7 @@ public class StageController : MonoBehaviour
     private void LoadShapePieces()
     {
         pieceData = levelData.piece;
-        foreach (PieceData piece in pieceData)
+        foreach (PuzzleCreator.PieceData piece in pieceData)
         {
             GameObject go = piece.shape;
             Vector3 pos = piece.position;
@@ -94,25 +87,6 @@ public class StageController : MonoBehaviour
             Instantiate(go, pos, rot);
         }
 
-    }
-
-
-    public void SaveToJSON()
-    {
-        string fileName = levelData.StageName;
-        string data = JsonUtility.ToJson(levelData);
-        string path = Application.dataPath + "/Data/StagePuzzles/" + fileName + ".json";
-        System.IO.File.WriteAllText(path, data);
-        Debug.Log("massage: a file is saved to " + path);
-    }
-
-    public void Save()
-    {
-        BinaryFormatter bf = new();
-        //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
-        FileStream file = File.Create(Application.streamingAssetsPath +  "/" + stageName + ".gd"); //you can call it anything you want
-        bf.Serialize(file, levelData);
-        file.Close();
     }
 
     public void Load()
