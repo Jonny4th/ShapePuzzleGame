@@ -24,15 +24,21 @@ namespace PuzzleData
             public Quaternion rotation { get; set; }
         }
 
+        public void ResetPanelState()
+        {
+            allPanels = FindObjectsOfType<PanelStateController>();
+            foreach (var panel in allPanels)
+            {
+                panel.SetAsTarget(false);
+            }
+        }
+
         public void SaveStageData()
         {
-            levelData = null;
-            levelData = ScriptableObject.CreateInstance<StageData>();
-            SavePuzzle();
             SaveShapes();
         }
 
-        private void SavePuzzle()
+        public void ImprintShadowAsPuzzle()
         {
             allPanels = FindObjectsOfType<PanelStateController>();
             foreach (PanelStateController panel in allPanels)
@@ -61,7 +67,7 @@ namespace PuzzleData
             {
                 pieceData[i] = new PieceData
                 {
-                    shape = shape[i].plainShape,
+                    shape = shape[i].shapeData.PlainShape,
                     position = shape[i].transform.position,
                     rotation = shape[i].transform.rotation,
                 };
@@ -94,6 +100,11 @@ namespace PuzzleData
 
         private void LoadShapePieces()
         {
+            foreach (var piece in FindObjectsOfType<ShapeModel>())
+            {
+                DestroyImmediate(piece.gameObject);
+            }
+
             pieceData = levelData.piece;
             foreach (PieceData piece in pieceData)
             {
@@ -102,7 +113,6 @@ namespace PuzzleData
                 Quaternion rot = piece.rotation;
                 Instantiate(go, pos, rot);
             }
-
         }
 
 

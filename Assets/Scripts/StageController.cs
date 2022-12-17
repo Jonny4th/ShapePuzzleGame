@@ -4,23 +4,22 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using PuzzleData;
+using static PuzzleData.PuzzleCreator;
 
 public class StageController : MonoBehaviour
 {
-    //[SerializeField] private StageData levelData;
-    [SerializeField] LevelData levelData;
+    [SerializeField] StageData levelData;
     [SerializeField] int stageSize;
     [SerializeField] string stageName;
     public PuzzleCreator.PieceData[] pieceData;
 
-    //private void Start()
-    //{
-    //    LoadStageData();
-    //}
+    private void OnEnable()
+    {
+        LoadStageData();
+    }
 
     public void SaveStageData()
     {
-        levelData = new LevelData();
         StorePuzzle();
         StoreShape();
     }
@@ -78,25 +77,29 @@ public class StageController : MonoBehaviour
 
     private void LoadShapePieces()
     {
+        foreach (var piece in FindObjectsOfType<ShapeModel>())
+        {
+            DestroyImmediate(piece.gameObject);
+        }
+
         pieceData = levelData.piece;
-        foreach (PuzzleCreator.PieceData piece in pieceData)
+        foreach (PieceData piece in pieceData)
         {
             GameObject go = piece.shape;
             Vector3 pos = piece.position;
             Quaternion rot = piece.rotation;
             Instantiate(go, pos, rot);
         }
-
     }
 
-    public void Load()
-    {
-        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-            levelData = (LevelData)bf.Deserialize(file);
-            file.Close();
-        }
-    }
+    //public void Load()
+    //{
+    //    if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+    //    {
+    //        BinaryFormatter bf = new BinaryFormatter();
+    //        FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+    //        levelData = (LevelData)bf.Deserialize(file);
+    //        file.Close();
+    //    }
+    //}
 }

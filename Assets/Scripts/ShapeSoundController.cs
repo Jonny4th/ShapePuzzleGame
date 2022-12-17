@@ -6,12 +6,7 @@ using UnityEngine;
 
 public class ShapeSoundController : MonoBehaviour
 {
-    AudioSource audioSource;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    [SerializeField] AudioSource audioSource;
 
     private void OnEnable()
     {

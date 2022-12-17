@@ -204,7 +204,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7460690972144960728, guid: 69f712af5b8204046aabac24a9c0909b, type: 3}
       propertyPath: m_Name
-      value: I-block
+      value: Shape I
       objectReference: {fileID: 0}
     - target: {fileID: 7460690972144960730, guid: 69f712af5b8204046aabac24a9c0909b, type: 3}
       propertyPath: m_RootOrder
@@ -258,6 +258,10 @@ PrefabInstance:
       propertyPath: material
       value: 
       objectReference: {fileID: 2100000, guid: 28fe88c0a302bec4295f5e0d74ca6f41, type: 2}
+    - target: {fileID: 8738171743660207234, guid: 69f712af5b8204046aabac24a9c0909b, type: 3}
+      propertyPath: shapeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 89e2c5dad5fd1f147b19a7b43738d976, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69f712af5b8204046aabac24a9c0909b, type: 3}
 --- !u!4 &2297171379383027450 stripped

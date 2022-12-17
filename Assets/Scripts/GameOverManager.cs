@@ -22,21 +22,6 @@ public class GameOverManager : MonoBehaviour
 
         gameIsOver = false;
     }
-    //private void OnEnable()
-    //{
-    //    //ShapeMovementManager.OnMovement += GameOverConditionCheck;
-    //    //foreach ( var shape in FindObjectsOfType<ShapeOverlapController>() )
-    //    //{
-    //    //    shape.OverlapChanged += CheckInvalidPlacement;
-    //    //}
-    //}
-    //private void OnDisable() {
-    //    //ShapeMovementManager.OnMovement -= GameOverConditionCheck;
-    //    //foreach (var shape in FindObjectsOfType<ShapeOverlapController>())
-    //    //{
-    //    //    shape.OverlapChanged -= CheckInvalidPlacement;
-    //    //}
-    //}
 
     private static bool IsTargetPanel(PanelStateController panel)
     {
@@ -48,30 +33,21 @@ public class GameOverManager : MonoBehaviour
         return (panel.currentState & PanelStateController.State.Shadow) != 0;
     }
 
-    //private bool CheckInvalidPlacement()
-    //{
-    //    invalidPlacement = overlapShape.Exists(x => x.IsOverlap);
-    //    return invalidPlacement;
-    //}
-
     private void LateUpdate()
     {
-        GameOverConditionCheck();
+        GameOverConditionCheck(null);
     }
     private void GameOverConditionCheck(OnMovementInfo info)
     {
         List<PanelStateController> corrects = targetPanels.FindAll(IsBlockOn);
         List<PanelStateController> misses = emptyPanels.FindAll(IsBlockOn);
         invalidPlacement = overlapShape.Exists(x => x.IsOverlap);
-        if (corrects.Count == targetPanels.Count & misses.Count == 0 & !invalidPlacement)
+        if (invalidPlacement) return;
+        if (corrects.Count == targetPanels.Count & misses.Count == 0)
         {
             gameIsOver = true;
             Success?.Invoke();
         }
-    }
-    private void GameOverConditionCheck()
-    {
-        GameOverConditionCheck(null);
     }
 
 }

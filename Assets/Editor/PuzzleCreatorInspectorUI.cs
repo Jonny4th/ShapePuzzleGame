@@ -9,6 +9,10 @@ public class PuzzleCreatorInspectorUI : Editor
     {
         DrawDefaultInspector();
         PuzzleCreator controller = (PuzzleCreator)target;
+        if (GUILayout.Button("Imprint Panels State"))
+        {
+            controller.ImprintShadowAsPuzzle();
+        }
         if (GUILayout.Button("Save Puzzle to Scriptable Obj"))
         {
             controller.SaveStageData();
@@ -20,6 +24,10 @@ public class PuzzleCreatorInspectorUI : Editor
         if (GUILayout.Button("Load Stage Data from Scriptable Object"))
         {
             controller.LoadStageData();
+        }
+        if (GUILayout.Button("Reset Panels State"))
+        {
+            controller.ResetPanelState();
         }
 
     }
