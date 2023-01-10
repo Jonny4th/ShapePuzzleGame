@@ -10,12 +10,12 @@ public class OnDragMoveSingleAxis : MonoBehaviour
     [SerializeField] Vector3 pos;
     [SerializeField] LayerMask xzplane;
     [SerializeField] LayerMask yplane;
-    GameController gameController;
+    GameManager gameController;
     GameObject xzPlane;
     private void OnEnable() {
         parent = GetComponentInParent<ShapeSelectionController>();
         mainCamera = Camera.main;
-        gameController = FindObjectOfType<GameController>();
+        gameController = FindObjectOfType<GameManager>();
         xzPlane = FindObjectOfType<xzPlane>(true).gameObject;
     }
 

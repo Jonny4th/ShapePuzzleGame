@@ -20,9 +20,11 @@ public class ShapeSoundController : MonoBehaviour
 
     private void OnMove(OnMovementInfo obj)
     {
-        if (obj.shape == this.gameObject)
-        {
-            audioSource.Play();
-        }
+        audioSource.Play();
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioSource.volume = volume;
     }
 }

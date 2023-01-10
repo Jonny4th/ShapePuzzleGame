@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameController : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     PlayerInput playerInput;
 
@@ -25,6 +25,10 @@ public class GameController : MonoBehaviour
     public void OnPlay()
     {
         playerInput.SwitchCurrentActionMap("Puzzle Controls");
+    }
+    public void OnPause()
+    {
+        playerInput.SwitchCurrentActionMap("Menu");
     }
 
     public void OnQuit()
