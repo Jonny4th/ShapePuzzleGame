@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -9,7 +7,6 @@ namespace PuzzleData
 {
     public class PuzzleCreator : MonoBehaviour
     {
-        //[SerializeField] private StageData levelData;
         PanelStateController[] allPanels;
         [SerializeField] StageData levelData;
         [SerializeField] int stageSize;
