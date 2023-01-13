@@ -57,7 +57,6 @@ namespace PuzzleData
             {
                 pieceData[i] = new PieceData
                 {
-                    shape = shape.shapeData.PlainShape,
                     shapeIndex = shape.shapeIndex,
                     position = shape.transform.position,
                     rotation = shape.transform.rotation,

@@ -10,46 +10,11 @@ public class StageController : MonoBehaviour
     [SerializeField] Mesh BlockTheme;
     public PieceData[] pieceData;
 
-    ShapeData[] shapeDataCollection;
+    [SerializeField] ShapeDataList shapeDataCollection;
 
     private void OnEnable()
     {
-        shapeDataCollection = Resources.LoadAll<ShapeData>("ShapeData");
         LoadStageData();
-    }
-
-    public void SaveStageData()
-    {
-        StorePuzzle();
-        StoreShape();
-    }
-
-    private void StorePuzzle()
-    {
-        PanelStateController[] activePanels = Array.FindAll(FindObjectsOfType<PanelStateController>(), x => (x.currentState & PanelStateController.State.Target) != 0);
-        levelData.PanelData = new Vector3[activePanels.Length];
-        for (int i = 0; i < activePanels.Length; i++)
-        {
-            levelData.PanelData[i] = Vector3Int.RoundToInt(activePanels[i].transform.position);
-        }
-        levelData.StageName = stageName;
-        levelData.StageSize = stageSize;
-    }
-
-    private void StoreShape()
-    {
-        ShapeModel[] shape = FindObjectsOfType<ShapeModel>();
-        pieceData = new PieceData[shape.Length];
-        for (int i = 0; i < shape.Length; i++)
-        {
-            pieceData[i] = new PieceData
-            {
-                shape = shape[i].plainShape,
-                position = shape[i].transform.position,
-                rotation = shape[i].transform.rotation,
-            };
-        }
-        levelData.piece = pieceData;
     }
 
     public void LoadStageData()
@@ -95,7 +60,7 @@ public class StageController : MonoBehaviour
 
     private GameObject GetShape(int index)
     {
-        GameObject shape = Array.Find<ShapeData>(shapeDataCollection, x => x.ShapeIndex == index).PlainShape;
+        GameObject shape = Array.Find(shapeDataCollection.shapeDataList, x => x.ShapeIndex == index).PlainShape;
         return shape;
     }
 
