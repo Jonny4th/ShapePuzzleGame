@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using PuzzleData;
 using static PuzzleData.PuzzleCreator;
 
 public class StageController : MonoBehaviour
@@ -11,8 +10,11 @@ public class StageController : MonoBehaviour
     [SerializeField] Mesh BlockTheme;
     public PieceData[] pieceData;
 
+    ShapeData[] shapeDataCollection;
+
     private void OnEnable()
     {
+        shapeDataCollection = Resources.LoadAll<ShapeData>("ShapeData");
         LoadStageData();
     }
 
@@ -87,7 +89,7 @@ public class StageController : MonoBehaviour
             Vector3 pos = piece.position;
             Quaternion rot = piece.rotation;
             var shape = Instantiate(go, pos, rot);
-            
+            shape.GetComponent<ShapeModel>().SetMesh(BlockTheme);
         }
     }
 

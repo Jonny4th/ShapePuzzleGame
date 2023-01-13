@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e7cc4f52094e0c4d898df826784a180, type: 3}
-  m_Name: 07_Shape_S
+  m_Name: 06_Shape_O
   m_EditorClassIdentifier: 
-  OriginalMaterial: {fileID: 2100000, guid: 413c0486fcb157242b113364fbf0e39d, type: 2}
-  PlainShape: {fileID: 2532508005413688825, guid: fc61f1d35f209924b8a7d0874ebdc326, type: 3}
+  ShapeIndex: 6
+  OriginalMaterial: {fileID: 2100000, guid: 52ebb519b8168de409fd75fc114448b2, type: 2}
+  PlainShape: {fileID: 2058445276588453330, guid: abbae526012a2b642ac72e5e37784511, type: 3}
   Mesh: {fileID: 0}

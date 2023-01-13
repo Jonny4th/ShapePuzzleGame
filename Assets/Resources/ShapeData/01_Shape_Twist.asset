@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e7cc4f52094e0c4d898df826784a180, type: 3}
-  m_Name: 01_Shape_Cube
+  m_Name: 01_Shape_Twist
   m_EditorClassIdentifier: 
-  OriginalMaterial: {fileID: 2100000, guid: 2680577e200692149af7d9825f073d00, type: 2}
-  PlainShape: {fileID: 7460690972144960728, guid: 69f712af5b8204046aabac24a9c0909b, type: 3}
+  ShapeIndex: 10
+  OriginalMaterial: {fileID: 2100000, guid: 3547c35e5a7162d4ab1291cb042f13b9, type: 2}
+  PlainShape: {fileID: 1559348057206082709, guid: 1b06167ff242fc544b39d8ef12119c27, type: 3}
   Mesh: {fileID: 0}

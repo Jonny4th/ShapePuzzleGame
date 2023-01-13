@@ -69,5 +69,10 @@ public class BlockVisual : MonoBehaviour
             state = State.Default;
         }
         UpdateVisual();
-    }    
+    }
+
+    public void SetMesh()
+    {
+        GetComponent<MeshFilter>().mesh = model.mesh;
+    }
 }

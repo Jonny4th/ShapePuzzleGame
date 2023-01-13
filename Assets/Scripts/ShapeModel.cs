@@ -29,5 +29,13 @@ public class ShapeModel : MonoBehaviour
         }
     }
 
+    public void SetMesh(Mesh m)
+    {
+        mesh = m;
+        foreach (var block in GetComponentsInChildren<BlockVisual>())
+        {
+            block.SetMesh();
+        }
+    }
     
 }
