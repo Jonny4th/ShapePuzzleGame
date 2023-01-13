@@ -10,7 +10,7 @@ public class StageController : MonoBehaviour
     [SerializeField] string stageName;
     public PuzzleCreator.PieceData[] pieceData;
 
-    private void Start()
+    private void OnEnable()
     {
         LoadStageData();
     }

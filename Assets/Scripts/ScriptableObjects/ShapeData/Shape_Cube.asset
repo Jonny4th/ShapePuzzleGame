@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shape_Cube
   m_EditorClassIdentifier: 
   OriginalMaterial: {fileID: 2100000, guid: 2680577e200692149af7d9825f073d00, type: 2}
-  PlainShape: {fileID: 6615677422724981761, guid: c643c8184de782a4792bc1e438f5dbca, type: 3}
+  PlainShape: {fileID: 7460690972144960728, guid: 69f712af5b8204046aabac24a9c0909b, type: 3}
   Mesh: {fileID: 0}
