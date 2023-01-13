@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShapeIndex: 6
   OriginalMaterial: {fileID: 2100000, guid: 52ebb519b8168de409fd75fc114448b2, type: 2}
-  PlainShape: {fileID: 2058445276588453330, guid: abbae526012a2b642ac72e5e37784511, type: 3}
-  Mesh: {fileID: 0}
+  PlainShape: {fileID: 1713824550256646158, guid: ef187c36a6499384cac69fe595428713, type: 3}

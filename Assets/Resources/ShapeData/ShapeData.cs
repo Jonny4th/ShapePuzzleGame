@@ -8,5 +8,4 @@ public class ShapeData : ScriptableObject
     public int ShapeIndex;
     public Material OriginalMaterial;
     public GameObject PlainShape;
-    public Mesh Mesh;
 }
