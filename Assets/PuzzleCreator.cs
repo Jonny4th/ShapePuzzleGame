@@ -17,6 +17,7 @@ namespace PuzzleData
         public struct PieceData
         {
             public GameObject shape { get; set; }
+            public int shapeIndex { get; set; }
             public Vector3 position { get; set; }
             public Quaternion rotation { get; set; }
         }
@@ -49,16 +50,19 @@ namespace PuzzleData
 
         private void SaveShapes()
         {
-            ShapeModel[] shape = FindObjectsOfType<ShapeModel>();
-            pieceData = new PieceData[shape.Length];
-            for (int i = 0; i < shape.Length; i++)
+            ShapeModel[] shapes = FindObjectsOfType<ShapeModel>();
+            pieceData = new PieceData[shapes.Length];
+            int i = 0;
+            foreach (var shape in shapes)
             {
                 pieceData[i] = new PieceData
                 {
-                    shape = shape[i].shapeData.PlainShape,
-                    position = shape[i].transform.position,
-                    rotation = shape[i].transform.rotation,
+                    shape = shape.shapeData.PlainShape,
+                    shapeIndex = shape.shapeIndex,
+                    position = shape.transform.position,
+                    rotation = shape.transform.rotation,
                 };
+                i++;
             }
             levelData.piece = pieceData;
         }
