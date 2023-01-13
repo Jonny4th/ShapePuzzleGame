@@ -85,12 +85,18 @@ public class StageController : MonoBehaviour
         pieceData = levelData.piece;
         foreach (PieceData piece in pieceData)
         {
-            GameObject go = piece.shape;
+            GameObject go = GetShape(piece.shapeIndex);
             Vector3 pos = piece.position;
             Quaternion rot = piece.rotation;
             var shape = Instantiate(go, pos, rot);
             shape.GetComponent<ShapeModel>().SetMesh(BlockTheme);
         }
+    }
+
+    private GameObject GetShape(int index)
+    {
+        GameObject shape = Array.Find<ShapeData>(shapeDataCollection, x => x.ShapeIndex == index).PlainShape;
+        return shape;
     }
 
     //public void Load()
