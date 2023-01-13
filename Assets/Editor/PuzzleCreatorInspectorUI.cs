@@ -29,6 +29,10 @@ public class PuzzleCreatorInspectorUI : Editor
         {
             controller.ResetPanelState();
         }
+        if (GUILayout.Button("Clear Scene"))
+        {
+            controller.ClearScene();
+        }
 
     }
 }

@@ -21,15 +21,6 @@ namespace PuzzleData
             public Quaternion rotation { get; set; }
         }
 
-        public void ResetPanelState()
-        {
-            allPanels = FindObjectsOfType<PanelStateController>();
-            foreach (var panel in allPanels)
-            {
-                panel.SetAsTarget(false);
-            }
-        }
-
         public void SaveStageData()
         {
             SaveShapes();
@@ -80,6 +71,7 @@ namespace PuzzleData
 
         private void LoadPuzzle()
         {
+            ResetPanelState();
             Vector3[] activePanelCoordinates = levelData.PanelData;
             PanelStateController[] panels = FindObjectsOfType<PanelStateController>();
             foreach (PanelStateController panel in panels)
@@ -88,19 +80,12 @@ namespace PuzzleData
                 {
                     panel.SetAsTarget(true);
                 }
-                else
-                {
-                    panel.currentState = PanelStateController.State.None;
-                }
             }
         }
 
         private void LoadShapePieces()
         {
-            foreach (var piece in FindObjectsOfType<ShapeModel>())
-            {
-                DestroyImmediate(piece.gameObject);
-            }
+            ClearShape();
 
             pieceData = levelData.piece;
             foreach (PieceData piece in pieceData)
@@ -139,6 +124,29 @@ namespace PuzzleData
                 FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
                 levelData = (StageData)bf.Deserialize(file);
                 file.Close();
+            }
+        }
+
+        public void ClearScene()
+        {
+            ResetPanelState();
+            ClearShape();
+        }
+        public void ResetPanelState()
+        {
+            allPanels = FindObjectsOfType<PanelStateController>();
+            foreach (var panel in allPanels)
+            {
+                panel.SetAsTarget(false);
+            }
+        }
+
+        void ClearShape()
+        {
+            ShapeModel[] shapes = FindObjectsOfType<ShapeModel>();
+            foreach (var shape in shapes)
+            {
+                DestroyImmediate(shape.gameObject);
             }
         }
     }

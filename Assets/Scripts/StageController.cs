@@ -8,7 +8,8 @@ public class StageController : MonoBehaviour
     [SerializeField] StageData levelData;
     [SerializeField] int stageSize;
     [SerializeField] string stageName;
-    public PuzzleCreator.PieceData[] pieceData;
+    [SerializeField] Mesh BlockTheme;
+    public PieceData[] pieceData;
 
     private void OnEnable()
     {
@@ -36,10 +37,10 @@ public class StageController : MonoBehaviour
     private void StoreShape()
     {
         ShapeModel[] shape = FindObjectsOfType<ShapeModel>();
-        pieceData = new PuzzleCreator.PieceData[shape.Length];
+        pieceData = new PieceData[shape.Length];
         for (int i = 0; i < shape.Length; i++)
         {
-            pieceData[i] = new PuzzleCreator.PieceData
+            pieceData[i] = new PieceData
             {
                 shape = shape[i].plainShape,
                 position = shape[i].transform.position,
@@ -85,7 +86,8 @@ public class StageController : MonoBehaviour
             GameObject go = piece.shape;
             Vector3 pos = piece.position;
             Quaternion rot = piece.rotation;
-            Instantiate(go, pos, rot);
+            var shape = Instantiate(go, pos, rot);
+            
         }
     }
 

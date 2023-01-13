@@ -5,7 +5,29 @@ using UnityEngine;
 public class ShapeModel : MonoBehaviour
 {
     public ShapeData shapeData;
-    public GameObject plainShape;
-    public Mesh mesh;
-    public Material material;
+    public int shapeIndex
+    {
+        get { return shapeData.ShapeIndex; }
+    }
+    public GameObject plainShape
+    {
+        get
+        {
+            return shapeData.PlainShape;
+        }
+    }
+    public Mesh mesh
+    {
+        get; private set;
+    }
+
+    public Material material
+    {
+        get
+        {
+            return shapeData.OriginalMaterial;
+        }
+    }
+
+    
 }
