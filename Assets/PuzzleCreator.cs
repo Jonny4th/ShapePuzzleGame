@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
 using UnityEngine;
 
 namespace PuzzleData
@@ -8,7 +10,7 @@ namespace PuzzleData
     public class PuzzleCreator : MonoBehaviour
     {
         PanelStateController[] allPanels;
-        PanelStateController[] activePanels;
+        [SerializeField] PanelStateController[] activePanels;
         [SerializeField] StageData levelData;
         [SerializeField] int stageSize;
         [SerializeField] string stageName;
@@ -26,11 +28,19 @@ namespace PuzzleData
 
         public void SaveStageData()
         {
+            if (levelData.PanelData.Length!=0)
+            {
+                Debug.Log("Cannot overwrite.");
+                return;
+            }
+            SavePanelData();
             SaveShapes();
+            EditorUtility.SetDirty(levelData);
         }
 
         public void ImprintShadowAsPuzzle()
         {
+
             allPanels = FindObjectsOfType<PanelStateController>();
             foreach (PanelStateController panel in allPanels)
             {
@@ -40,6 +50,21 @@ namespace PuzzleData
             foreach (PanelStateController panel in activePanels)
             {
                 panel.SetAsTarget(true);
+            }
+        }
+
+        private void SavePanelData()
+        {
+            levelData.PanelData = new Vector3[activePanels.Length];
+            if (activePanels.Length == 0)
+            {
+                activePanels = Array.FindAll(allPanels, x => (x.currentState & PanelStateController.State.Target) != 0);
+            }
+            int i = 0;
+            foreach (PanelStateController panel in activePanels)
+            {
+                levelData.PanelData[i] = Vector3Int.RoundToInt(panel.transform.position);
+                i++;
             }
         }
 
@@ -58,6 +83,7 @@ namespace PuzzleData
                 };
                 i++;
             }
+            levelData.piece = pieceData;
         }
 
         public void LoadStageData()

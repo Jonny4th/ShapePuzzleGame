@@ -15,6 +15,16 @@ MonoBehaviour:
   StageName: Stage00
   StageId: 0
   StageSize: 7
-  PanelData: []
-  Shapes:
-  - {fileID: 2471147023237940332, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
+  PanelData:
+  - {x: 0, y: 2, z: -8}
+  - {x: 0, y: 2, z: -7}
+  - {x: -8, y: 3, z: 0}
+  - {x: 0, y: 3, z: -7}
+  - {x: -8, y: 0, z: -8}
+  - {x: -8, y: 2, z: 0}
+  - {x: -8, y: 0, z: -7}
+  - {x: 0, y: 3, z: -8}
+  piece:
+  - shapeIndex: 6
+    position: {x: -2, y: 2, z: -2}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
