@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Stage01
   m_EditorClassIdentifier: 
   StageName: Stage01
-  StageId: 0
+  StageId: 1
   StageSize: 7
-  PanelData: []
-  Shapes: []
+  PanelData:
+  - {x: -5, y: 5, z: 0}
+  - {x: -5, y: 0, z: -5}
+  - {x: 0, y: 5, z: -5}
+  piece:
+  - shapeIndex: 1
+    position: {x: -2, y: 2, z: -2}
+    rotation: {x: 0, y: 0, z: 0, w: 1}

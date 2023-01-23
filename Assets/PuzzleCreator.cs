@@ -18,24 +18,12 @@ namespace PuzzleData
 
         [SerializeField] ShapeDataList shapeDataCollection;
 
-        [Serializable]
+        [Serializable] 
         public struct PieceData
         {
             public int shapeIndex;
             public Vector3 position;
             public Quaternion rotation;
-        }
-
-        public void SaveStageData()
-        {
-            if (levelData.PanelData.Length!=0)
-            {
-                Debug.Log("Cannot overwrite.");
-                return;
-            }
-            SavePanelData();
-            SaveShapes();
-            EditorUtility.SetDirty(levelData);
         }
 
         public void ImprintShadowAsPuzzle()
@@ -53,13 +41,24 @@ namespace PuzzleData
             }
         }
 
+        public void SaveStageData()
+        {
+            if (levelData.PanelData.Length!=0)
+            {
+                throw new Exception("Cannot overwrite. Please use new LevelData file.");
+            }
+            SavePanelData();
+            SaveShapes();
+            EditorUtility.SetDirty(levelData);
+        }
+
         private void SavePanelData()
         {
-            levelData.PanelData = new Vector3[activePanels.Length];
             if (activePanels.Length == 0)
             {
-                activePanels = Array.FindAll(allPanels, x => (x.currentState & PanelStateController.State.Target) != 0);
+                activePanels = Array.FindAll(FindObjectsOfType<PanelStateController>(), x => (x.currentState & PanelStateController.State.Target) != 0);
             }
+            levelData.PanelData = new Vector3[activePanels.Length];
             int i = 0;
             foreach (PanelStateController panel in activePanels)
             {

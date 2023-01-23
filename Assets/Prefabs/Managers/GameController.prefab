@@ -308,7 +308,9 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: ae68f9b863e58dd408c782ce37576587, type: 2}
   stageSize: 7
   stageName: Beginner2
+  BlockTheme: {fileID: -6744128262313745913, guid: 1368db8f77f470c4bb80dfa2be2674d6, type: 3}
   pieceData: []
+  shapeDataCollection: {fileID: 11400000, guid: 516a2a64592bd524eb635edd6f4ba73a, type: 2}
 --- !u!82 &7942664543839098901
 AudioSource:
   m_ObjectHideFlags: 0

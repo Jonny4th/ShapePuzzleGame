@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f8dd5f53e90d54592fb6c407b6db15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activePanels: []
   levelData: {fileID: 0}
   stageSize: 0
   stageName: 
   pieceData: []
+  shapeDataCollection: {fileID: 11400000, guid: 516a2a64592bd524eb635edd6f4ba73a, type: 2}
