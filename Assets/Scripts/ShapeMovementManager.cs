@@ -13,6 +13,15 @@ public class ShapeMovementManager : MonoBehaviour
 {
     [SerializeField] float gridSize;
     [SerializeField] bool gridStartAtZero;
+    [SerializeField] Vector3 minimumLimit;
+    [SerializeField] Vector3 maximumLimit;
+    float minX { get => Math.Min(minimumLimit.x,maximumLimit.x); }
+    float maxX { get => Math.Max(minimumLimit.x,maximumLimit.x); }
+    float minY { get => Math.Min(minimumLimit.y,maximumLimit.y); }
+    float maxY { get => Math.Max(minimumLimit.y,maximumLimit.y); }
+    float minZ { get => Math.Min(minimumLimit.z,maximumLimit.z); }
+    float maxZ { get => Math.Max(minimumLimit.z,maximumLimit.z); }
+
 
     ShapeSelectionController shape;
     Transform shapeTransform;
@@ -67,8 +76,9 @@ public class ShapeMovementManager : MonoBehaviour
 
     private void MoveShape(Vector3 direction)
     {
-        shapeTransform.position += direction;
-        shapeTransform.position = AlignToGrid(shapeTransform.position);
+        Vector3 newPos = shapeTransform.position + direction;
+        if (IsAtLimit(newPos)) { return; }
+        shapeTransform.position = AlignToGrid(newPos);
     }
 
 
@@ -115,5 +125,17 @@ public class ShapeMovementManager : MonoBehaviour
             shape = shape.gameObject
         };
         Moved?.Invoke(info);
+    }
+
+    private bool IsAtLimit(Vector3 pos)
+    {
+        bool isLimit;
+
+        if (pos.x < minX || pos.x > maxX) { isLimit = true; }
+        else if (pos.y < minY || pos.y > maxY) { isLimit = true; }
+        else if (pos.z < minZ || pos.z > maxZ) { isLimit = true; }
+        else { isLimit = false; }
+
+        return isLimit;
     }
 }

@@ -37,7 +37,7 @@ public class PanelStateController : MonoBehaviour
 
     void UpdateState()
     {
-        if (Physics.Raycast(transform.position,transform.up, 10f, ~hitLayerMask))
+        if (Physics.Raycast(transform.position,-transform.forward, 10f, ~hitLayerMask))
         {
             currentState |= State.Shadow;
         }

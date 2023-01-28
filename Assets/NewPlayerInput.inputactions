@@ -788,7 +788,7 @@
                 {
                     "name": "",
                     "id": "45687f0a-7c41-41b1-b322-a838c98fa052",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",

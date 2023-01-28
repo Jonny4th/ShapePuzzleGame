@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: 1
   gridStartAtZero: 0
+  minimumLimit: {x: -2, y: 2, z: -2}
+  maximumLimit: {x: -8, y: 8, z: -8}
 --- !u!114 &7942664544872702497
 MonoBehaviour:
   m_ObjectHideFlags: 0
