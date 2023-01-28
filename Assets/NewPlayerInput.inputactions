@@ -387,7 +387,7 @@
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "KeyBoard",
                     "action": "RotateBlock X-axis",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -398,7 +398,7 @@
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "KeyBoard",
                     "action": "RotateBlock X-axis",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -453,7 +453,7 @@
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "KeyBoard",
                     "action": "RotateBlock Y-axis",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -464,7 +464,7 @@
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "KeyBoard",
                     "action": "RotateBlock Y-axis",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -503,6 +503,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "RotateY",
+                    "id": "76021260-f32d-4bd6-9876-f136741c9522",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateBlock Y-axis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "93766cbb-292a-4ecc-acce-c65ad31b79bc",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "RotateBlock Y-axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "427e8e5c-838c-410e-bdbd-1daa5a95712a",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "RotateBlock Y-axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "1D Axis",
                     "id": "b19e1f48-e7ea-4c02-8c8c-65cc142d3882",
                     "path": "1DAxis",
@@ -519,7 +552,7 @@
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "KeyBoard",
                     "action": "RotateBlock Z-axis",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -530,7 +563,7 @@
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "GamePad",
+                    "groups": "KeyBoard",
                     "action": "RotateBlock Z-axis",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -564,6 +597,39 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
+                    "action": "RotateBlock Z-axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "RotateZ",
+                    "id": "41b2cc2f-8b6c-497c-b8ab-2fb506b6e853",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "RotateBlock Z-axis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "892a8f59-e52b-4e42-aa71-afc9d2a6cff3",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "RotateBlock Z-axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "9e07c44b-0cf6-4f0f-861a-e227e5159919",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
                     "action": "RotateBlock Z-axis",
                     "isComposite": false,
                     "isPartOfComposite": true
