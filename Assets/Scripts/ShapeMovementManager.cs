@@ -68,10 +68,23 @@ public class ShapeMovementManager : MonoBehaviour
             Vector3 inputAxis = context.ReadValue<Vector3>();
             if (shape != null)
             {
+                Debug.Log(inputAxis);
                 RotateShape(inputAxis);
                 OnMove();
             }
         }
+    }
+
+    public void OnYRotationKeyDown(InputAction.CallbackContext context)
+    {
+        float inputValue = context.ReadValue<float>();
+        Debug.Log(inputValue);
+    }
+
+    public void OnZRotationKeyDown(InputAction.CallbackContext context)
+    {
+        float inputValue = context.ReadValue<float>();
+        Debug.Log(inputValue);
     }
 
     private void MoveShape(Vector3 direction)

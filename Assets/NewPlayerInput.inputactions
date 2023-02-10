@@ -18,7 +18,7 @@
                     "name": "RotateBlock X-axis",
                     "type": "Value",
                     "id": "45452936-6228-43b6-a31d-7694ada368bd",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -27,7 +27,7 @@
                     "name": "RotateBlock Y-axis",
                     "type": "Value",
                     "id": "79bd9872-5f50-4bab-8dab-a8d2f4ec5404",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -99,7 +99,7 @@
                     "name": "RotateBlock",
                     "type": "Value",
                     "id": "c0acedcf-60bc-48e1-881c-41a622c38526",
-                    "expectedControlType": "Vector3",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -186,7 +186,7 @@
                 {
                     "name": "3D Vector",
                     "id": "39164afe-ba38-4472-9ddd-321ba4e07bd8",
-                    "path": "3DVector(mode=2)",
+                    "path": "3DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -438,39 +438,6 @@
                 },
                 {
                     "name": "1D Axis",
-                    "id": "d560c425-91a0-497d-be3d-baf74d2bb06d",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "422b70af-90ed-439f-a5b3-6039486e76f0",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "cacba029-dff5-4a8f-84a1-335d14f0362b",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
                     "id": "91b2673a-218f-4c1d-9525-afef8b3195e4",
                     "path": "1DAxis",
                     "interactions": "Press",
@@ -514,9 +481,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Modifier",
+                    "name": "modifier",
                     "id": "93766cbb-292a-4ecc-acce-c65ad31b79bc",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -525,9 +492,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Binding",
+                    "name": "binding",
                     "id": "427e8e5c-838c-410e-bdbd-1daa5a95712a",
-                    "path": "<Gamepad>/rightStick/right",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -613,9 +580,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Modifier",
+                    "name": "modifier",
                     "id": "892a8f59-e52b-4e42-aa71-afc9d2a6cff3",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -624,9 +591,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Binding",
+                    "name": "binding",
                     "id": "9e07c44b-0cf6-4f0f-861a-e227e5159919",
-                    "path": "<Gamepad>/rightStick/up",
+                    "path": "<Gamepad>/rightStick/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "GamePad",
@@ -858,6 +825,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
+                    "action": "NextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f90b583-72a6-4ad2-893c-b20d4664458f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
                     "action": "NextLevel",
                     "isComposite": false,
                     "isPartOfComposite": false

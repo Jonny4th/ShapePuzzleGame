@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEngine;
@@ -49,7 +48,9 @@ namespace PuzzleData
             }
             SavePanelData();
             SaveShapes();
+#if UNITY_EDITOR            
             EditorUtility.SetDirty(levelData);
+#endif
         }
 
         private void SavePanelData()
