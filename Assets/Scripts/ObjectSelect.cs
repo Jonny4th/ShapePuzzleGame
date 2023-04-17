@@ -7,17 +7,16 @@ using System.Runtime.ConstrainedExecution;
 
 public class ObjectSelect : MonoBehaviour
 {
-    Camera mainCamera;
-    [SerializeField] LayerMask selectable;
-    
     public List<ShapeSelectionController> ShapeInScene;
-    public GameObject CurrentSelectedBlock { get; private set; }
     public ShapeSelectionController CurrentSelectedShape { get; private set; }
     public int SelectedIndex {get; private set;}
-
     public static event Action<ShapeSelectionController> ShapeSelected;
     public static event Action<GameObject> BlockSelected;
     public static event Action ShapeDeselected;
+    
+    Camera mainCamera;
+    [SerializeField] LayerMask selectable;
+    [SerializeField] GameObject CurrentSelectedBlock;
 
     private void OnEnable()
     {

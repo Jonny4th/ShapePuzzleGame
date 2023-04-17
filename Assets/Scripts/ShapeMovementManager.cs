@@ -48,6 +48,13 @@ public class ShapeMovementManager : MonoBehaviour
         shape = null;
     }
 
+    void Update()
+    {
+        if(Input.anyKey)
+        {
+            Debug.Log("pressed");
+        }
+    }
 
     public void OnMovementKeyDown(InputAction.CallbackContext context)
     {
