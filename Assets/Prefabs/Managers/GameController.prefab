@@ -68,8 +68,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7942664544872702498}
-        m_TargetAssemblyTypeName: BlockTranslation, Assembly-CSharp
-        m_MethodName: OnMovementKeyDown
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMoveForward
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -217,8 +217,28 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2f53b31d-3ae1-4334-93a6-39c5bf4efce9
     m_ActionName: GameOverMenu/NextLevel[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMoveBackward
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 39c9d7a0-62a0-45bf-9566-80a7479beddc
+    m_ActionName: Puzzle Controls/MoveBackward
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 803519c8-68c4-400f-b721-b5ac188e0933
+    m_ActionName: Menu/Resume
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: KeyBoard
   m_DefaultActionMap: Puzzle Controls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -250,6 +270,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   ShapeInScene: []
+  m_CurrentSelectedShape: {fileID: 0}
 --- !u!114 &7942664544872702498
 MonoBehaviour:
   m_ObjectHideFlags: 0

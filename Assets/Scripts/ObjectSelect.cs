@@ -1,21 +1,24 @@
-using System.Collections;
+using Shape.Movement;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using System.Runtime.ConstrainedExecution;
 
 public class ObjectSelect : MonoBehaviour
 {
     Camera mainCamera;
     [SerializeField] LayerMask selectable;
-    
+
     public List<ShapeSelectionController> ShapeInScene;
     public GameObject CurrentSelectedBlock { get; private set; }
-    public ShapeSelectionController CurrentSelectedShape { get; private set; }
-    public int SelectedIndex {get; private set;}
+
+    [SerializeField] ShapeSelectionController m_CurrentSelectedShape;
+    public ShapeSelectionController CurrentSelectedShape => m_CurrentSelectedShape;
+
+    public int SelectedIndex { get; private set; }
 
     public static event Action<ShapeSelectionController> ShapeSelected;
+    public static event Action<MovementHandler> MovementHandlerSelected;
     public static event Action<GameObject> BlockSelected;
     public static event Action ShapeDeselected;
 
@@ -40,28 +43,29 @@ public class ObjectSelect : MonoBehaviour
     private void OnShapeSelect(GameObject seleted)
     {
         CurrentSelectedBlock = seleted;
-        CurrentSelectedShape = CurrentSelectedBlock.GetComponentInParent<ShapeSelectionController>();
-        ShapeSelected?.Invoke(CurrentSelectedShape);
+        m_CurrentSelectedShape = CurrentSelectedBlock.GetComponentInParent<ShapeSelectionController>();
+        ShapeSelected?.Invoke(m_CurrentSelectedShape);
+        MovementHandlerSelected?.Invoke(m_CurrentSelectedShape.GetComponent<MovementHandler>());
     }
 
     private void Clear()
     {
         CurrentSelectedBlock = null;
-        CurrentSelectedShape = null;
+        m_CurrentSelectedShape = null;
     }
 
     public void ClickSelect()
     {
         GameObject current = CurrentSelectedBlock;
-        if (current != null)
+        if(current != null)
         {
             current.GetComponent<ISelectable>()?.OnDeselect();
             ShapeDeselected?.Invoke();
         }
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable, QueryTriggerInteraction.Ignore))
+        if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable, QueryTriggerInteraction.Ignore))
         {
-            if (hit.collider.gameObject.TryGetComponent<ISelectable>(out var seleted))
+            if(hit.collider.gameObject.TryGetComponent<ISelectable>(out var seleted))
             {
                 CurrentSelectedBlock = hit.collider.gameObject;
                 seleted.OnSelect();
@@ -72,15 +76,15 @@ public class ObjectSelect : MonoBehaviour
 
     public void TabSelect(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if(context.performed)
         {
-            ShapeSelectionController current = CurrentSelectedShape;
-            if (current != null)
+            ShapeSelectionController current = m_CurrentSelectedShape;
+            if(current != null)
             {
                 var index = ShapeInScene.IndexOf(current);
                 current.OnDeselect();
                 ShapeDeselected?.Invoke();
-                index = (index+1) % ShapeInScene.Count;
+                index = (index + 1) % ShapeInScene.Count;
                 ShapeSelectionController selected = ShapeInScene[index];
                 selected.OnSelect();
                 BlockSelected?.Invoke(selected.gameObject);
@@ -96,12 +100,11 @@ public class ObjectSelect : MonoBehaviour
 
     public void OnDeselect()
     {
-        ShapeSelectionController current = CurrentSelectedShape;
-        if (current != null)
+        ShapeSelectionController current = m_CurrentSelectedShape;
+        if(current != null)
         {
             current.OnDeselect();
             ShapeDeselected?.Invoke();
         }
     }
 }
- 
