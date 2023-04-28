@@ -26,67 +26,75 @@ namespace Shape.Movement
 
         internal void RotateTo(Quaternion destination)
         {
+            StopCoroutine(nameof(Rotate));
             StartCoroutine(nameof(Rotate), destination);
         }
 
         IEnumerator Rotate(Quaternion target)
         {
             IsBusy?.Invoke(true);
+            
             while(Quaternion.Angle(transform.rotation, target) > 0.05f)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, target, 0.8f);
                 yield return null;
             }
+
             transform.rotation = target;
             IsBusy?.Invoke(false);
         }
     }
 
-    public class MoveCommand : ICommand
+    public abstract class MovementCommend : ICommand
     {
-        MovementHandler handler;
+        public MovementHandler Handler { get; protected set; }
+        public abstract void Execute();
+        public abstract void Undo();
+    }
+
+    public class MoveCommand : MovementCommend
+    {
         Vector3 origin;
         Vector3 destination;
 
         public MoveCommand(MovementHandler handler, Vector3 destination)
         {
-            this.handler = handler;
+            Handler = handler;
             origin = handler.transform.position;
             this.destination = destination;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            handler.MoveTo(destination);
+            Handler.MoveTo(destination);
         }
 
-        public void Undo()
+        public override void Undo()
         {
-            handler.MoveTo(origin);
+            Handler.MoveTo(origin);
         }
     }
 
-    public class RotateCommand : ICommand
+    public class RotateCommand : MovementCommend
     {
-        MovementHandler handler;
-        Quaternion origin;
-        Quaternion destination;
+        private Quaternion origin;
+        private Quaternion destination;
 
         public RotateCommand(MovementHandler handler, Quaternion destination)
         {
-            this.handler = handler;
+            Handler = handler;
             origin = handler.transform.rotation;
             this.destination = destination;
         }
 
-        public void Execute()
+        public override void Execute()
         {
-            handler.RotateTo(destination);
+            Handler.RotateTo(destination);
         }
 
-        public void Undo()
+        public override void Undo()
         {
-            handler.RotateTo(origin);
+            Handler.RotateTo(origin);
         }
     }
 }

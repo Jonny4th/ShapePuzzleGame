@@ -35,7 +35,7 @@ public class GameOverManager : MonoBehaviour
     {
         GameOverConditionCheck(null);
     }
-    private void GameOverConditionCheck(OnMovementInfo info)
+    private void GameOverConditionCheck(MovementInfo info)
     {
         List<PanelStateController> corrects = targetPanels.FindAll(IsBlockOn);
         List<PanelStateController> misses = emptyPanels.FindAll(IsBlockOn);

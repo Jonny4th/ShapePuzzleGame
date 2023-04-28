@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "RotateBlock",
+                    "type": "Value",
+                    "id": "c0acedcf-60bc-48e1-881c-41a622c38526",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "RotateBlock X-axis",
                     "type": "Value",
                     "id": "45452936-6228-43b6-a31d-7694ada368bd",
@@ -96,13 +105,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RotateBlock",
-                    "type": "Value",
-                    "id": "c0acedcf-60bc-48e1-881c-41a622c38526",
-                    "expectedControlType": "Vector3",
+                    "name": "Undo",
+                    "type": "Button",
+                    "id": "33752d02-eb31-4a3e-ad8e-cbd2b1db76b2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Redo",
+                    "type": "Button",
+                    "id": "87c746d7-05a9-4c02-a158-deee9d4294a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -449,83 +467,6 @@
                 },
                 {
                     "name": "3D Vector",
-                    "id": "cf765bf2-8fa9-40a4-aa12-d0d14667e97f",
-                    "path": "3DVector(mode=1)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateBlock",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "ea6a8ffb-37b3-4100-85cb-a2eede002246",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "05cf36a4-e50e-461b-b621-f0162c97b0a2",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "b15f400e-f67b-48ad-aa06-1dec0aa82794",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "ed317e34-4430-4374-805d-9ca5f401ba03",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "forward",
-                    "id": "bed6207b-bdfd-45bf-aeed-7e9fc1171ea6",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "backward",
-                    "id": "9fc974c3-0a17-4344-8074-596d63728572",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "3D Vector",
                     "id": "aea3839f-858c-4ca2-8e34-b33fa314e0d0",
                     "path": "3DVector(mode=1)",
                     "interactions": "",
@@ -598,6 +539,105 @@
                     "processors": "",
                     "groups": "KeyBoard",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "df687cef-e79f-431a-9696-4b92a5ebb587",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d015e81b-e7e9-4667-b95b-c70059d5c716",
+                    "path": "<Keyboard>/insert",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "Redo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "cf765bf2-8fa9-40a4-aa12-d0d14667e97f",
+                    "path": "3DVector(mode=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateBlock",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "ea6a8ffb-37b3-4100-85cb-a2eede002246",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "05cf36a4-e50e-461b-b621-f0162c97b0a2",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "b15f400e-f67b-48ad-aa06-1dec0aa82794",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ed317e34-4430-4374-805d-9ca5f401ba03",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "bed6207b-bdfd-45bf-aeed-7e9fc1171ea6",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "9fc974c3-0a17-4344-8074-596d63728572",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "RotateBlock",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

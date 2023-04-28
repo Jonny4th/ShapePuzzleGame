@@ -1,11 +1,12 @@
+using Command;
 using Shape.Movement;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class OnMovementInfo
+public class MovementInfo
 {
-    public GameObject shape;
+    public MovementCommend movementHandler;
 }
 
 public class ShapeMovementManager : MonoBehaviour
@@ -25,7 +26,7 @@ public class ShapeMovementManager : MonoBehaviour
 
     public MovementHandler CurrentMovementHandler { get; private set; }
 
-    public static event Action<OnMovementInfo> Moved;
+    public static event Action<MovementInfo> Moved;
 
     private void OnEnable()
     {
@@ -62,8 +63,7 @@ public class ShapeMovementManager : MonoBehaviour
 
         if(IsAtLimit(destination)) return;
 
-        var command = new MoveCommand(CurrentMovementHandler, destination);
-        command.Execute();
+        CommandManager.Instance.AddCommand(new MoveCommand(CurrentMovementHandler, destination));
     }
 
     private void Rotate(Vector3 axis)
@@ -71,21 +71,29 @@ public class ShapeMovementManager : MonoBehaviour
         if(isBusy) return;
 
         var destination = CurrentMovementHandler.GetRotateDestination(axis);
-        var command = new RotateCommand(CurrentMovementHandler, destination);
-        command.Execute();
+        CommandManager.Instance.AddCommand(new RotateCommand(CurrentMovementHandler, destination));
     }
 
     public void OnMoveAxis(InputAction.CallbackContext context)
     {
-        if(!context.performed) return;
         var direction = context.ReadValue<Vector3>();
+        if(direction == Vector3.zero) return;
+        if(!context.performed) return;
+        if(CurrentMovementHandler == null) return;
+
         Move(direction);
     }
 
     public void OnRotateAxis(InputAction.CallbackContext context)
     {
+        if(isBusy) return;
         if(!context.performed) return;
+        if(CurrentMovementHandler == null) return;
+
         var rotation = context.ReadValue<Vector3>();
+
+        if(rotation == Vector3.zero) return;
+
         Rotate(rotation);
     }
 
