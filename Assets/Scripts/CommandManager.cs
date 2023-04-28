@@ -12,5 +12,10 @@ namespace Command
         public static CommandManager instance;
 
         public List<ICommand> commands = new();
+
+        public void ResetHistory()
+        {
+            commands.Clear();
+        }
     }
 }

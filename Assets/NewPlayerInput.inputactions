@@ -6,7 +6,7 @@
             "id": "933754f8-fab1-475b-b70c-61ca4e05b6dc",
             "actions": [
                 {
-                    "name": "MoveForward",
+                    "name": "Move",
                     "type": "Value",
                     "id": "d9461336-d71d-46b0-aeba-eac4be23fb4f",
                     "expectedControlType": "Vector3",
@@ -99,7 +99,7 @@
                     "name": "RotateBlock",
                     "type": "Value",
                     "id": "c0acedcf-60bc-48e1-881c-41a622c38526",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Vector3",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -531,7 +531,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveForward",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -542,7 +542,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "MoveForward",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -553,7 +553,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "MoveForward",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -564,7 +564,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "MoveForward",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -575,7 +575,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "MoveForward",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -586,7 +586,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "MoveForward",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -597,7 +597,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
-                    "action": "MoveForward",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

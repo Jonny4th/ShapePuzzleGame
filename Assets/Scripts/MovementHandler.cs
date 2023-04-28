@@ -14,7 +14,7 @@ namespace Shape.Movement
             return transform.position + direction;
         }
 
-        public void MoveTo(Vector3 destination)
+        internal void MoveTo(Vector3 destination)
         {
             transform.position = destination;
         }
@@ -24,7 +24,7 @@ namespace Shape.Movement
             return Quaternion.AngleAxis(90, axis) * transform.rotation;
         }
 
-        public void RotateTo(Quaternion destination)
+        internal void RotateTo(Quaternion destination)
         {
             StartCoroutine(nameof(Rotate), destination);
         }
@@ -34,7 +34,7 @@ namespace Shape.Movement
             IsBusy?.Invoke(true);
             while(Quaternion.Angle(transform.rotation, target) > 0.05f)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, target, 0.9f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, target, 0.8f);
                 yield return null;
             }
             transform.rotation = target;

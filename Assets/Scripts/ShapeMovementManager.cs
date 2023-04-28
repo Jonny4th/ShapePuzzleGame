@@ -61,8 +61,18 @@ public class ShapeMovementManager : MonoBehaviour
         var destination = AlignToGrid(CurrentMovementHandler.GetMoveDestination(direction));
 
         if(IsAtLimit(destination)) return;
-        
-        new MoveCommand(CurrentMovementHandler, destination).Execute();
+
+        var command = new MoveCommand(CurrentMovementHandler, destination);
+        command.Execute();
+    }
+
+    private void Rotate(Vector3 axis)
+    {
+        if(isBusy) return;
+
+        var destination = CurrentMovementHandler.GetRotateDestination(axis);
+        var command = new RotateCommand(CurrentMovementHandler, destination);
+        command.Execute();
     }
 
     public void OnMoveAxis(InputAction.CallbackContext context)
@@ -70,6 +80,13 @@ public class ShapeMovementManager : MonoBehaviour
         if(!context.performed) return;
         var direction = context.ReadValue<Vector3>();
         Move(direction);
+    }
+
+    public void OnRotateAxis(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        var rotation = context.ReadValue<Vector3>();
+        Rotate(rotation);
     }
 
     public void OnMovePosX(InputAction.CallbackContext context)
