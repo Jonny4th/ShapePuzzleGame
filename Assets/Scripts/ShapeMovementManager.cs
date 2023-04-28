@@ -1,12 +1,12 @@
-using System.Collections;
+using Command;
+using Shape.Movement;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using UnityEditor;
 
-public class OnMovementInfo
+public class MovementInfo
 {
-    public GameObject shape;
+    public MovementCommend movementHandler;
 }
 
 public class ShapeMovementManager : MonoBehaviour
@@ -15,101 +15,122 @@ public class ShapeMovementManager : MonoBehaviour
     [SerializeField] bool gridStartAtZero;
     [SerializeField] Vector3 minimumLimit;
     [SerializeField] Vector3 maximumLimit;
-    float minX { get => Math.Min(minimumLimit.x,maximumLimit.x); }
-    float maxX { get => Math.Max(minimumLimit.x,maximumLimit.x); }
-    float minY { get => Math.Min(minimumLimit.y,maximumLimit.y); }
-    float maxY { get => Math.Max(minimumLimit.y,maximumLimit.y); }
-    float minZ { get => Math.Min(minimumLimit.z,maximumLimit.z); }
-    float maxZ { get => Math.Max(minimumLimit.z,maximumLimit.z); }
+    float minX { get => Math.Min(minimumLimit.x, maximumLimit.x); }
+    float maxX { get => Math.Max(minimumLimit.x, maximumLimit.x); }
+    float minY { get => Math.Min(minimumLimit.y, maximumLimit.y); }
+    float maxY { get => Math.Max(minimumLimit.y, maximumLimit.y); }
+    float minZ { get => Math.Min(minimumLimit.z, maximumLimit.z); }
+    float maxZ { get => Math.Max(minimumLimit.z, maximumLimit.z); }
 
+    bool isBusy;
 
-    ShapeSelectionController shape;
-    Transform shapeTransform;
-    bool isRotating;
+    public MovementHandler CurrentMovementHandler { get; private set; }
 
-    public static event Action<OnMovementInfo> Moved;
+    public static event Action<MovementInfo> Moved;
 
-    private void OnEnable() {
-        ObjectSelect.ShapeSelected += AssignSelectedShape;
+    private void OnEnable()
+    {
+        ObjectSelect.MovementHandlerSelected += AssignSelectedShape;
         ObjectSelect.ShapeDeselected += ClearSelectedShape;
     }
-    private void OnDisable() {
-        ObjectSelect.ShapeSelected -= AssignSelectedShape;
+
+    private void OnDisable()
+    {
+        ObjectSelect.MovementHandlerSelected -= AssignSelectedShape;
         ObjectSelect.ShapeDeselected -= ClearSelectedShape;
     }
 
-    private void AssignSelectedShape(ShapeSelectionController s)
+    private void AssignSelectedShape(MovementHandler movementHandler)
     {
-        shape = s;
-        shapeTransform = shape.transform;
+        CurrentMovementHandler = movementHandler;
+        CurrentMovementHandler.IsBusy += SetBusy;
     }
+
     private void ClearSelectedShape()
     {
-        shape = null;
+        CurrentMovementHandler.IsBusy -= SetBusy;
+        CurrentMovementHandler = null;
     }
 
-    public void OnMovementKeyDown(InputAction.CallbackContext context)
+    private void SetBusy(bool value)
     {
-        Vector3 input = context.ReadValue<Vector3>();
-        if (context.performed && input.sqrMagnitude > 0.1f)
-        {
-            if (shape != null)
-            {
-                MoveShape(input);
-                OnMove();
-            }
-        }
-    }
-    public void OnRotationKeyDown(InputAction.CallbackContext context)
-    {
-        if (context.performed && !isRotating)
-        {
-            Vector3 inputAxis = context.ReadValue<Vector3>();
-            if (shape != null)
-            {
-                Debug.Log(inputAxis);
-                RotateShape(inputAxis);
-                OnMove();
-            }
-        }
+        isBusy = value;
     }
 
-    public void OnYRotationKeyDown(InputAction.CallbackContext context)
+    private void Move(Vector3 direction)
     {
-        float inputValue = context.ReadValue<float>();
-        Debug.Log(inputValue);
+        var destination = AlignToGrid(CurrentMovementHandler.GetMoveDestination(direction));
+
+        if(IsAtLimit(destination)) return;
+
+        CommandManager.Instance.AddCommand(new MoveCommand(CurrentMovementHandler, destination));
     }
 
-    public void OnZRotationKeyDown(InputAction.CallbackContext context)
+    private void Rotate(Vector3 axis)
     {
-        float inputValue = context.ReadValue<float>();
-        Debug.Log(inputValue);
+        if(isBusy) return;
+
+        var destination = CurrentMovementHandler.GetRotateDestination(axis);
+        CommandManager.Instance.AddCommand(new RotateCommand(CurrentMovementHandler, destination));
     }
 
-    private void MoveShape(Vector3 direction)
+    public void OnMoveAxis(InputAction.CallbackContext context)
     {
-        Vector3 newPos = shapeTransform.position + direction;
-        if (IsAtLimit(newPos)) { return; }
-        shapeTransform.position = AlignToGrid(newPos);
+        var direction = context.ReadValue<Vector3>();
+        if(direction == Vector3.zero) return;
+        if(!context.performed) return;
+        if(CurrentMovementHandler == null) return;
+
+        Move(direction);
     }
 
+    public void OnRotateAxis(InputAction.CallbackContext context)
+    {
+        if(isBusy) return;
+        if(!context.performed) return;
+        if(CurrentMovementHandler == null) return;
 
-    private void RotateShape(Vector3 axis)
-    {
-        Quaternion targetAngle = Quaternion.AngleAxis(90, axis) * shapeTransform.rotation;
-        StartCoroutine(nameof(Rotate), targetAngle);
+        var rotation = context.ReadValue<Vector3>();
+
+        if(rotation == Vector3.zero) return;
+
+        Rotate(rotation);
     }
-    IEnumerator Rotate(Quaternion target)
+
+    public void OnMovePosX(InputAction.CallbackContext context)
     {
-        while(Quaternion.Angle(shape.transform.rotation, target) > 0.05f)
-        {
-            shapeTransform.rotation = Quaternion.Slerp(shapeTransform.rotation, target, 0.9f);
-            isRotating = true;
-            yield return null;
-        }
-        shapeTransform.rotation = target;
-        isRotating = false;
-        //OnMove();
+        if(!context.performed) return;
+        Move(Vector3.right);
+    }
+
+    public void OnMoveNegX(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Move(Vector3.left);
+    }
+
+    public void OnMovePosZ(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Move(Vector3.forward);
+    }
+
+    public void OnMoveNegZ(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Move(Vector3.back);
+    }
+
+    public void OnMovePosY(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Move(Vector3.up);
+    }
+
+    public void OnMoveNegY(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Move(Vector3.down);
     }
 
     Vector3 AlignToGrid(Vector3 pos)
@@ -117,37 +138,31 @@ public class ShapeMovementManager : MonoBehaviour
         var x = AlignToGrid(pos.x);
         var y = AlignToGrid(pos.y);
         var z = AlignToGrid(pos.z);
-        pos = new Vector3(x,y,z);
+        pos = new Vector3(x, y, z);
         return pos;
     }
+
     float AlignToGrid(float value)
     {
         float offset = 0f;
-        if (gridStartAtZero)
+        if(gridStartAtZero)
         {
             offset = 0.5f;
         }
-        return Mathf.RoundToInt(value/gridSize - offset)*gridSize + offset;
-    }
-
-    private void OnMove()
-    {
-        OnMovementInfo info = new()
-        {
-            shape = shape.gameObject
-        };
-        Moved?.Invoke(info);
+        return Mathf.RoundToInt(value / gridSize - offset) * gridSize + offset;
     }
 
     private bool IsAtLimit(Vector3 pos)
     {
         bool isLimit;
 
-        if (pos.x < minX || pos.x > maxX) { isLimit = true; }
-        else if (pos.y < minY || pos.y > maxY) { isLimit = true; }
-        else if (pos.z < minZ || pos.z > maxZ) { isLimit = true; }
+        if(pos.x < minX || pos.x > maxX) { isLimit = true; }
+        else if(pos.y < minY || pos.y > maxY) { isLimit = true; }
+        else if(pos.z < minZ || pos.z > maxZ) { isLimit = true; }
         else { isLimit = false; }
 
         return isLimit;
     }
 }
+
+

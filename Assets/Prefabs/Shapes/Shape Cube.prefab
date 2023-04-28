@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 5140597467116463199}
   - component: {fileID: 1612751189800567635}
   - component: {fileID: 8738171743660207234}
+  - component: {fileID: 2470572109603125084}
   m_Layer: 0
   m_Name: Shape Cube
   m_TagString: Shape
@@ -339,9 +340,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapeData: {fileID: 11400000, guid: 3090729c743bead40b3a6f9d23b7172e, type: 2}
-  plainShape: {fileID: 7460690972144960728}
-  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 2680577e200692149af7d9825f073d00, type: 2}
+--- !u!114 &2470572109603125084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460690972144960728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c3225e9a0646747b9ba8adce816b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7460690973299891805
 GameObject:
   m_ObjectHideFlags: 0

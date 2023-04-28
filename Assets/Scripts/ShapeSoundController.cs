@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class ShapeSoundController : MonoBehaviour
@@ -18,7 +14,7 @@ public class ShapeSoundController : MonoBehaviour
         ShapeMovementManager.Moved -= OnMove;
     }
 
-    private void OnMove(OnMovementInfo obj)
+    private void OnMove(MovementInfo obj)
     {
         audioSource.Play();
     }
