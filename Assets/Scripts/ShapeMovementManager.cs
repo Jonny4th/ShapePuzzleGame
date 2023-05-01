@@ -3,10 +3,16 @@ using Shape.Movement;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 public class MovementInfo
 {
-    public MovementCommend movementHandler;
+    public MovementInfo(MovementCommand movementCommand)
+    {
+        command = movementCommand;
+    }
+
+    public MovementCommand command { get; }
 }
 
 public class ShapeMovementManager : MonoBehaviour
@@ -59,39 +65,48 @@ public class ShapeMovementManager : MonoBehaviour
 
     private void Move(Vector3 direction)
     {
+        if(CurrentMovementHandler == null) return;
+
         var destination = AlignToGrid(CurrentMovementHandler.GetMoveDestination(direction));
 
         if(IsAtLimit(destination)) return;
 
-        CommandManager.Instance.AddCommand(new MoveCommand(CurrentMovementHandler, destination));
+        var command = new MoveCommand(CurrentMovementHandler, destination);
+        CommandManager.Instance.AddCommand(command);
+        Moved?.Invoke(new MovementInfo(command));
     }
 
     private void Rotate(Vector3 axis)
     {
+        if(CurrentMovementHandler == null) return;
         if(isBusy) return;
 
         var destination = CurrentMovementHandler.GetRotateDestination(axis);
+        var command = new RotateCommand(CurrentMovementHandler, destination);
         CommandManager.Instance.AddCommand(new RotateCommand(CurrentMovementHandler, destination));
+        Moved?.Invoke(new MovementInfo(command));
     }
 
     public void OnMoveAxis(InputAction.CallbackContext context)
     {
+        if(!context.performed) return;
         var direction = context.ReadValue<Vector3>();
         if(direction == Vector3.zero) return;
-        if(!context.performed) return;
-        if(CurrentMovementHandler == null) return;
 
         Move(direction);
     }
 
     public void OnRotateAxis(InputAction.CallbackContext context)
     {
-        if(isBusy) return;
         if(!context.performed) return;
-        if(CurrentMovementHandler == null) return;
-
         var rotation = context.ReadValue<Vector3>();
+        if(rotation == Vector3.zero) return;
 
+        Rotate(rotation);
+    }
+
+    public void OnRotateAxis(Vector3 rotation)
+    {
         if(rotation == Vector3.zero) return;
 
         Rotate(rotation);
@@ -132,6 +147,82 @@ public class ShapeMovementManager : MonoBehaviour
         if(!context.performed) return;
         Move(Vector3.down);
     }
+
+    public void OnRotatePosX(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Rotate(Vector3.right);
+    }
+
+    public void OnRotateNegX(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Rotate(Vector3.left);
+    }
+
+    public void OnRotatePosZ(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Rotate(Vector3.forward);
+    }
+
+    public void OnRotateNegZ(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Rotate(Vector3.back);
+    }
+
+    public void OnRotatePosY(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Rotate(Vector3.up);
+    }
+
+    public void OnRotateNegY(InputAction.CallbackContext context)
+    {
+        if(!context.performed) return;
+        Rotate(Vector3.down);
+    }
+
+    #region Touch Screen Handler
+
+    public void OnRotateTouch(InputAction.CallbackContext context)
+    {
+        var touch = context.ReadValue<TouchState>();
+        var start = touch.startPosition;
+
+        if(touch.phase != UnityEngine.InputSystem.TouchPhase.Ended) return;
+        if(touch.delta != Vector2.zero) return; //Ended phase sometimes trigger twice: with none zero vector and with zero vector. This happens when you swipe fast.
+
+        var vector = touch.position - start;
+        Debug.Log($"{vector}: Mag = {vector.sqrMagnitude}, slope = {Vector2.Angle(Vector2.right, vector)}");
+        Rotate(HandleRotateTouch(vector));
+    }
+
+    private Vector3 HandleRotateTouch(Vector2 vector)
+    {
+        var axis = Vector3.zero;
+        if(vector.sqrMagnitude < 10000) return axis;
+
+        var angle = Vector2.Angle(Vector2.right, vector);
+
+        if(angle < 10f) axis = Vector3.down;
+        else if(angle > 170f) axis = Vector3.up;
+        else if(angle > 10f && angle < 70f)
+        {
+            if(vector.y > 0) axis = Vector3.back;
+            else axis = Vector3.left;
+        }
+        else if(angle > 110f && angle < 170f)
+        {
+            if(vector.y > 0) axis = Vector3.right;
+            else axis = Vector3.forward;
+        }
+
+        return axis;
+    }
+
+    #endregion
 
     Vector3 AlignToGrid(Vector3 pos)
     {

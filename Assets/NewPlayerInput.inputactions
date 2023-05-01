@@ -15,6 +15,60 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "MovePosX",
+                    "type": "Button",
+                    "id": "b2dfd93f-8f9a-4885-9af6-6eeb4054ff33",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveNegX",
+                    "type": "Button",
+                    "id": "88892be8-391e-471b-9162-be3241a453a5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MovePosY",
+                    "type": "Button",
+                    "id": "c390bd00-75da-4547-8944-ac7b974677bc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveNegY",
+                    "type": "Button",
+                    "id": "b725b851-52c5-4424-bf9d-e81558d2151e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MovePosZ",
+                    "type": "Button",
+                    "id": "50fff00c-6131-4d57-b92b-905853ff44fa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveNegZ",
+                    "type": "Button",
+                    "id": "408f7cdd-5f9b-4c4f-9903-d00d64468d9c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "RotateBlock",
                     "type": "Value",
                     "id": "c0acedcf-60bc-48e1-881c-41a622c38526",
@@ -24,31 +78,58 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RotateBlock X-axis",
-                    "type": "Value",
-                    "id": "45452936-6228-43b6-a31d-7694ada368bd",
-                    "expectedControlType": "Axis",
+                    "name": "RotatePosX",
+                    "type": "PassThrough",
+                    "id": "2badbf95-c9ce-4763-8b3c-9bb4c8f4346d",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "RotateBlock Y-axis",
-                    "type": "Value",
-                    "id": "79bd9872-5f50-4bab-8dab-a8d2f4ec5404",
-                    "expectedControlType": "Axis",
+                    "name": "RotateNegX",
+                    "type": "PassThrough",
+                    "id": "2da2360b-fd7a-47b3-ab63-17874b55e9ad",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "RotateBlock Z-axis",
-                    "type": "Value",
-                    "id": "3ba9d5ba-3db3-47bd-b10a-9337caf6ee60",
-                    "expectedControlType": "Integer",
+                    "name": "RotatePosY",
+                    "type": "PassThrough",
+                    "id": "35430311-78cf-4391-95ae-eba2ca104a66",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateNegY",
+                    "type": "PassThrough",
+                    "id": "df26985b-f342-4d61-96d0-90ef518aa8a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotatePosZ",
+                    "type": "PassThrough",
+                    "id": "573aea1b-e666-4dc6-9597-9bccc4d2819f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateNegZ",
+                    "type": "PassThrough",
+                    "id": "4d37f6e6-0252-4ce1-80e4-d635cc5250de",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "RotateView",
@@ -118,6 +199,15 @@
                     "type": "Button",
                     "id": "87c746d7-05a9-4c02-a158-deee9d4294a4",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RotateBlockTouch",
+                    "type": "PassThrough",
+                    "id": "d342f6ec-8255-4082-8d39-6d13f358f92f",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -235,317 +325,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "8e08f2ee-48a1-42ed-a36d-c4b2fca44985",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateBlock X-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "b62bf16f-cf97-4521-9340-9b0c9d1cf393",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock X-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "26ae8e39-6523-468c-922b-49eb73cb6ec7",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock X-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "bc09c010-91a4-4c16-b2ea-648f7e4a3c94",
-                    "path": "1DAxis",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateBlock X-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "67bfa374-1d04-4b88-bf81-74c945e4208a",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock X-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "3217bc8a-b8ee-4e77-a93c-2346d9cd5ffd",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock X-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "91b2673a-218f-4c1d-9525-afef8b3195e4",
-                    "path": "1DAxis",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "f78aa242-b019-4b71-8aa3-177c2bc777f9",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "01daebe8-16e1-4ae4-b0ac-c383c8ff7d18",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "RotateY",
-                    "id": "76021260-f32d-4bd6-9876-f136741c9522",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "93766cbb-292a-4ecc-acce-c65ad31b79bc",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "427e8e5c-838c-410e-bdbd-1daa5a95712a",
-                    "path": "<Gamepad>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "RotateBlock Y-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "b19e1f48-e7ea-4c02-8c8c-65cc142d3882",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "0ad5f508-9925-43d0-afc5-39c7c691eee9",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "6ae5707c-3c1b-49aa-b90e-bdf8003004ce",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "bbc2ff12-588b-4c2e-b1fe-959e476f81ba",
-                    "path": "1DAxis",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "a985ca48-23b4-4e31-af50-dff4388bba00",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "6ee9b204-ed16-49a3-8e66-be2c307a28f2",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "RotateZ",
-                    "id": "41b2cc2f-8b6c-497c-b8ab-2fb506b6e853",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "892a8f59-e52b-4e42-aa71-afc9d2a6cff3",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "9e07c44b-0cf6-4f0f-861a-e227e5159919",
-                    "path": "<Gamepad>/rightStick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "RotateBlock Z-axis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "3D Vector",
-                    "id": "aea3839f-858c-4ca2-8e34-b33fa314e0d0",
-                    "path": "3DVector(mode=1)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "bc0d5178-a850-4342-a0fe-7b2ca4bbc13b",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "f692f7df-1c6a-4697-802c-b8770feb3ace",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "0234f54a-c4d5-40a4-9ab1-d5c7a9506dbd",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "972ff2de-a25c-479c-87a5-5c23a77c0867",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "forward",
-                    "id": "b5deec89-5530-44b0-994e-32e19f999f90",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "backward",
-                    "id": "84050436-e279-4734-a3e0-467218151ea0",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "df687cef-e79f-431a-9696-4b92a5ebb587",
-                    "path": "<Keyboard>/backspace",
+                    "path": "<Keyboard>/pageUp",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
@@ -556,7 +338,7 @@
                 {
                     "name": "",
                     "id": "d015e81b-e7e9-4667-b95b-c70059d5c716",
-                    "path": "<Keyboard>/insert",
+                    "path": "<Keyboard>/pageDown",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard",
@@ -640,6 +422,160 @@
                     "action": "RotateBlock",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "3D Vector",
+                    "id": "3cdb6c70-370f-4d31-a79b-3e532cf53bc2",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateBlock",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "db6c30f3-3b73-42d3-8bb5-4e7ba1d144d5",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "e7daf063-e75d-4964-8324-6f5a79dc5c9d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "858a87a7-8e6f-4207-afbe-deb95964bf64",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "c50d340c-04ee-4e5a-867e-a0ec6219fe3b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "5f33f9c4-a000-43d1-9416-84aa00fa2f20",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "05aea906-8cd1-43a8-9c1c-2229be942950",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "RotateBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "98110856-817f-441c-a41a-93bbbaf22b44",
+                    "path": "<Keyboard>/s",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyBoard;Touch",
+                    "action": "MoveNegY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "779867f9-3544-4bc6-87b3-c15339331505",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyBoard;Touch",
+                    "action": "MovePosZ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53bc52bf-9206-4ae9-8a5a-d49e45da8096",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyBoard;Touch",
+                    "action": "MoveNegZ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d57b305c-db5e-45e0-82f6-b9966e06bead",
+                    "path": "<Keyboard>/w",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyBoard;Touch",
+                    "action": "MovePosY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f3e0906-47e9-4c79-b88a-dfb87a61a219",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyBoard;Touch",
+                    "action": "MovePosX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fa1f640-782b-48a8-bf3d-c0c0d093993b",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyBoard;Touch",
+                    "action": "MoveNegX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0da1e5de-d7a1-43b3-9a83-9b2f39ba6c7f",
+                    "path": "<Touchscreen>/touch0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "RotateBlockTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -829,6 +765,17 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Touch",
+            "bindingGroup": "Touch",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
                     "isOptional": false,
                     "isOR": false
                 }

@@ -45,14 +45,14 @@ namespace Shape.Movement
         }
     }
 
-    public abstract class MovementCommend : ICommand
+    public abstract class MovementCommand : ICommand
     {
         public MovementHandler Handler { get; protected set; }
         public abstract void Execute();
         public abstract void Undo();
     }
 
-    public class MoveCommand : MovementCommend
+    public class MoveCommand : MovementCommand
     {
         Vector3 origin;
         Vector3 destination;
@@ -75,7 +75,7 @@ namespace Shape.Movement
         }
     }
 
-    public class RotateCommand : MovementCommend
+    public class RotateCommand : MovementCommand
     {
         private Quaternion origin;
         private Quaternion destination;
