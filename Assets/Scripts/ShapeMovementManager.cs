@@ -195,15 +195,14 @@ public class ShapeMovementManager : MonoBehaviour
         if(touch.delta != Vector2.zero) return; //Ended phase sometimes trigger twice: with none zero vector and with zero vector. This happens when you swipe fast.
 
         var vector = touch.position - start;
-        Debug.Log($"{vector}: Mag = {vector.sqrMagnitude}, slope = {Vector2.Angle(Vector2.right, vector)}");
+        if(vector.sqrMagnitude < 10000) return;
+        Debug.Log($"{touch.phase}, {vector}: Mag = {vector.sqrMagnitude}, slope = {Vector2.Angle(Vector2.right, vector)}");
         Rotate(HandleRotateTouch(vector));
     }
 
     private Vector3 HandleRotateTouch(Vector2 vector)
     {
         var axis = Vector3.zero;
-        if(vector.sqrMagnitude < 10000) return axis;
-
         var angle = Vector2.Angle(Vector2.right, vector);
 
         if(angle < 10f) axis = Vector3.down;
