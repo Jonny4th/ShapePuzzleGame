@@ -5,32 +5,35 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartScene.unity
     guid: 2e98bcb7a922c9440bb4f17ffcc697d4
   - enabled: 0
     path: Assets/Scenes/PuzzleCreatorScene.unity
     guid: 30de69ab64a98dc47aa9badfbfa84bc4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleLevel001.unity
     guid: 6fb0421e0fb104c48bb81a74619f338c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleLevel002.unity
     guid: abca1c63ee066af448758fbe6551af82
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleLevel003.unity
     guid: 40158a906465f924ab8debb4cccc8e69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleLevel004.unity
     guid: f72335dda55accb45b035a22d9d001bb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleLevel005.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EndScene.unity
     guid: 8682b39dbcc72b14a96477f38284a19f
   - enabled: 0
     path: Assets/Scenes/EmptyScene.unity
     guid: 73e7401393e9024468eb57df1bec3d69
+  - enabled: 1
+    path: Assets/Scenes/TouchTestScene.unity
+    guid: e4b093e24b66773479476730ab300f13
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bba07d034e7bd394e9cf7a0c4c70f8d3, type: 2}
