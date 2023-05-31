@@ -66,25 +66,9 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7942664544872702498}
-        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
-        m_MethodName: OnMoveForward
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: d9461336-d71d-46b0-aeba-eac4be23fb4f
     m_ActionName: PuzzleControls/MoveShape[/Keyboard/w,/Keyboard/s,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/upArrow,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 45452936-6228-43b6-a31d-7694ada368bd
-    m_ActionName: PuzzleControls/RotateBlock
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: b18d41a0-0b5b-4534-b8c1-c10022e2bbaf
@@ -111,21 +95,9 @@ MonoBehaviour:
     m_ActionName: PuzzleControls/ToggleSelection[/Keyboard/tab]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PauseScreen, Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 7942664544872702526}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: OnMenu
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -178,18 +150,10 @@ MonoBehaviour:
     m_ActionId: d2421e3a-b91f-49ce-bbe2-b49c2c070a15
     m_ActionName: Puzzle Controls/Deselect[/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 79bd9872-5f50-4bab-8dab-a8d2f4ec5404
-    m_ActionName: Puzzle Controls/RotateBlock Y-axis
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3ba9d5ba-3db3-47bd-b10a-9337caf6ee60
-    m_ActionName: Puzzle Controls/RotateBlock Z-axis
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7942664544872702498}
         m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
-        m_MethodName: OnRotationKeyDown
+        m_MethodName: OnRotateAxis
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -218,10 +182,14 @@ MonoBehaviour:
     m_ActionId: 2f53b31d-3ae1-4334-93a6-39c5bf4efce9
     m_ActionName: GameOverMenu/NextLevel[/Keyboard/enter]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 803519c8-68c4-400f-b721-b5ac188e0933
+    m_ActionName: Menu/Resume
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7942664544872702498}
-        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
-        m_MethodName: OnMoveBackward
+      - m_Target: {fileID: 2455000850312452850}
+        m_TargetAssemblyTypeName: Command.CommandManager, Assembly-CSharp
+        m_MethodName: Undo
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -231,14 +199,178 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 39c9d7a0-62a0-45bf-9566-80a7479beddc
-    m_ActionName: Puzzle Controls/MoveBackward
+    m_ActionId: 33752d02-eb31-4a3e-ad8e-cbd2b1db76b2
+    m_ActionName: Puzzle Controls/Undo[/Keyboard/backspace]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2455000850312452850}
+        m_TargetAssemblyTypeName: Command.CommandManager, Assembly-CSharp
+        m_MethodName: Redo
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 87c746d7-05a9-4c02-a158-deee9d4294a4
+    m_ActionName: Puzzle Controls/Redo[/Keyboard/insert]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMovePosY
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c390bd00-75da-4547-8944-ac7b974677bc
+    m_ActionName: Puzzle Controls/MoveUp[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMoveNegY
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b725b851-52c5-4424-bf9d-e81558d2151e
+    m_ActionName: Puzzle Controls/MoveNegY[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMovePosX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b2dfd93f-8f9a-4885-9af6-6eeb4054ff33
+    m_ActionName: Puzzle Controls/MovePosX[/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMoveNegX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 88892be8-391e-471b-9162-be3241a453a5
+    m_ActionName: Puzzle Controls/MoveNegX[/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMovePosZ
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 50fff00c-6131-4d57-b92b-905853ff44fa
+    m_ActionName: Puzzle Controls/MovePosZ[/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnMoveNegZ
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 408f7cdd-5f9b-4c4f-9903-d00d64468d9c
+    m_ActionName: Puzzle Controls/MoveNegZ[/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 803519c8-68c4-400f-b721-b5ac188e0933
-    m_ActionName: Menu/Resume
+    m_ActionId: 2badbf95-c9ce-4763-8b3c-9bb4c8f4346d
+    m_ActionName: Puzzle Controls/RotatePosX
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2da2360b-fd7a-47b3-ab63-17874b55e9ad
+    m_ActionName: Puzzle Controls/RotateNegX
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 35430311-78cf-4391-95ae-eba2ca104a66
+    m_ActionName: Puzzle Controls/RotatePosY
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df26985b-f342-4d61-96d0-90ef518aa8a4
+    m_ActionName: Puzzle Controls/RotateNegY
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 573aea1b-e666-4dc6-9597-9bccc4d2819f
+    m_ActionName: Puzzle Controls/RotatePosZ
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d37f6e6-0252-4ce1-80e4-d635cc5250de
+    m_ActionName: Puzzle Controls/RotateNegZ
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702498}
+        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
+        m_MethodName: OnRotateTouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d342f6ec-8255-4082-8d39-6d13f358f92f
+    m_ActionName: Puzzle Controls/RotateBlockTouch
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7942664544872702526}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnResetScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3acf7b77-a74a-441e-89f3-c5fe5305b360
+    m_ActionName: Puzzle Controls/Reset[/Keyboard/home]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: KeyBoard
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Puzzle Controls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -266,7 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407963fecc09bda4e807d77f9d72d791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShapeInScene: []
   selectable:
     serializedVersion: 2
     m_Bits: 8
@@ -286,8 +417,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: 1
   gridStartAtZero: 0
-  minimumLimit: {x: -2, y: 2, z: -2}
-  maximumLimit: {x: -8, y: 8, z: -8}
+  minimumLimit: {x: -3, y: -3, z: -3}
+  maximumLimit: {x: 3, y: 3, z: 3}
 --- !u!114 &7942664544872702497
 MonoBehaviour:
   m_ObjectHideFlags: 0

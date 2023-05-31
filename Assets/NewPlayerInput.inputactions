@@ -211,6 +211,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "3acf7b77-a74a-441e-89f3-c5fe5305b360",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -330,7 +339,7 @@
                     "path": "<Keyboard>/pageUp",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyBoard",
+                    "groups": "KeyBoard;Touch",
                     "action": "Undo",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -574,6 +583,17 @@
                     "processors": "",
                     "groups": "Touch",
                     "action": "RotateBlockTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "22702247-c88d-4510-8dda-3015390ca110",
+                    "path": "<Keyboard>/home",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "Reset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

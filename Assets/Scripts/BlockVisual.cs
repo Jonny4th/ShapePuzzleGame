@@ -25,7 +25,7 @@ public class BlockVisual : MonoBehaviour
     private void Awake()
     {
         model = GetComponentInParent<ShapeModel>();
-        defaultMaterial = model.material;
+        defaultMaterial = GetComponent<MeshRenderer>().material;
         overlapController = GetComponentInParent<ShapeOverlapController>();
         selectionController = GetComponentInParent<ShapeSelectionController>();
     }
@@ -49,8 +49,16 @@ public class BlockVisual : MonoBehaviour
         switch(state)
         {
             case State.Default:  mesh.material = defaultMaterial; break;
-            case State.Selected: mesh.material = selectMaterial;  break;
-            case State.Invalid:  mesh.material = invalidMaterial; break;
+            case State.Selected:
+                {
+                    if(selectMaterial == null) break;
+                    mesh.material = selectMaterial; break;
+                }
+            case State.Invalid:
+                {
+                    if(invalidMaterial == null) break;
+                    mesh.material = invalidMaterial; break;
+                }
         }
     }
 

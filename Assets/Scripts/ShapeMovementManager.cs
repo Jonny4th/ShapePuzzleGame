@@ -80,6 +80,7 @@ public class ShapeMovementManager : MonoBehaviour
     {
         if(CurrentMovementHandler == null) return;
         if(isBusy) return;
+        if(axis == Vector3.zero) return;
 
         var destination = CurrentMovementHandler.GetRotateDestination(axis);
         var command = new RotateCommand(CurrentMovementHandler, destination);
@@ -197,10 +198,10 @@ public class ShapeMovementManager : MonoBehaviour
         var vector = touch.position - start;
         if(vector.sqrMagnitude < 10000) return;
         Debug.Log($"{touch.phase}, {vector}: Mag = {vector.sqrMagnitude}, slope = {Vector2.Angle(Vector2.right, vector)}");
-        Rotate(HandleRotateTouch(vector));
+        Rotate(HandleRotateTouch2Axis(vector));
     }
 
-    private Vector3 HandleRotateTouch(Vector2 vector)
+    private Vector3 HandleRotateTouch3Axis(Vector2 vector)
     {
         var axis = Vector3.zero;
         var angle = Vector2.Angle(Vector2.right, vector);
@@ -215,6 +216,24 @@ public class ShapeMovementManager : MonoBehaviour
         else if(angle > 110f && angle < 170f)
         {
             if(vector.y > 0) axis = Vector3.right;
+            else axis = Vector3.forward;
+        }
+
+        return axis;
+    }
+
+    private Vector3 HandleRotateTouch2Axis(Vector2 vector)
+    {
+        var axis = Vector3.zero;
+        var angle = Vector2.Angle(Vector2.right, vector);
+
+        float angleMargin = 20f;
+
+        if(angle < angleMargin) axis = Vector3.down;
+        else if(angle > (180f - angleMargin)) axis = Vector3.up;
+        else if(angle > 90f - angleMargin && angle < 90f + angleMargin)
+        {
+            if(vector.y > 0) axis = Vector3.back;
             else axis = Vector3.forward;
         }
 
