@@ -27,6 +27,7 @@ public class PanelStateController : MonoBehaviour
 
     private void Start()
     {
+
         mesh = GetComponent<MeshRenderer>();
     }
 
