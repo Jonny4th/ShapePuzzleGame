@@ -5043,30 +5043,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7942664544872702498, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: maximumLimit.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942664544872702498, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: maximumLimit.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942664544872702498, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: maximumLimit.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942664544872702498, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: minimumLimit.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942664544872702498, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: minimumLimit.y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942664544872702498, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: minimumLimit.z
-      value: -3
-      objectReference: {fileID: 0}
     - target: {fileID: 7942664544872702499, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
