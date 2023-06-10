@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Visualization;
 
 namespace Assets.Scripts
 {
     public class TouchVisualization : MonoBehaviour
     {
         [SerializeField]
-        UnityEngine.Object _swipeProcessor;
+        Object _swipeProcessor;
 
         IPointsVisualizable Observant => _swipeProcessor as IPointsVisualizable;
 

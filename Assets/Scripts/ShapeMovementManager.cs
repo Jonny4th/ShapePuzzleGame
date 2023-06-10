@@ -1,6 +1,7 @@
 using Command;
 using Shape.Movement;
 using System;
+using Touch;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -28,7 +29,7 @@ public class ShapeMovementManager : MonoBehaviour
 
     bool isBusy;
 
-    private MovementHandler CurrentMovementHandler;
+    private IMotionManagable CurrentMovementHandler;
 
     [SerializeField]
     UnityEngine.Object _swipeProcessor;
@@ -61,7 +62,7 @@ public class ShapeMovementManager : MonoBehaviour
 
         if(IsAtLimit(destination)) return;
 
-        var command = new MoveCommand(CurrentMovementHandler, destination);
+        var command = new MoveCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
         CommandManager.Instance.AddCommand(command);
         Moved?.Invoke(new MovementInfo(command));
     }
@@ -73,8 +74,9 @@ public class ShapeMovementManager : MonoBehaviour
         if(axis == Vector3.zero) return;
 
         var destination = CurrentMovementHandler.GetRotateDestination(axis);
-        var command = new RotateCommand(CurrentMovementHandler, destination);
-        CommandManager.Instance.AddCommand(new RotateCommand(CurrentMovementHandler, destination));
+
+        var command = new RotateCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
+        CommandManager.Instance.AddCommand(command);
         Moved?.Invoke(new MovementInfo(command));
     }
 
@@ -201,7 +203,7 @@ public class ShapeMovementManager : MonoBehaviour
         var start = touch.startPosition;
 
         if(touch.phase != UnityEngine.InputSystem.TouchPhase.Ended) return;
-        if(touch.delta != Vector2.zero) return; 
+        if(touch.delta != Vector2.zero) return;
         //Ended phase sometimes trigger twice: with none zero vector and with zero vector.
         //This happens when you swipe fast.
 
@@ -254,15 +256,15 @@ public class ShapeMovementManager : MonoBehaviour
 
     #region Auxilary Fucntions
 
-    private void AssignSelectedShape(MovementHandler movementHandler)
+    private void AssignSelectedShape(IMotionManagable movementHandler)
     {
         CurrentMovementHandler = movementHandler;
-        CurrentMovementHandler.IsBusy += SetBusy;
+        CurrentMovementHandler.IsRotating += SetBusy;
     }
 
     private void ClearSelectedShape()
     {
-        CurrentMovementHandler.IsBusy -= SetBusy;
+        CurrentMovementHandler.IsRotating -= SetBusy;
         CurrentMovementHandler = null;
     }
 

@@ -18,7 +18,7 @@ public class ObjectSelect : MonoBehaviour
     public int SelectedIndex { get; private set; }
 
     public static event Action<ShapeSelectionController> ShapeSelected;
-    public static event Action<MovementHandler> MovementHandlerSelected;
+    public static event Action<IMotionManagable> MovementHandlerSelected;
     public static event Action<GameObject> BlockSelected;
     public static event Action ShapeDeselected;
 
@@ -45,7 +45,7 @@ public class ObjectSelect : MonoBehaviour
         CurrentSelectedBlock = seleted;
         m_CurrentSelectedShape = CurrentSelectedBlock.GetComponentInParent<ShapeSelectionController>();
         ShapeSelected?.Invoke(m_CurrentSelectedShape);
-        MovementHandlerSelected?.Invoke(m_CurrentSelectedShape.GetComponent<MovementHandler>());
+        MovementHandlerSelected?.Invoke(m_CurrentSelectedShape.GetComponent<IMotionManagable>());
     }
 
     private void Clear()

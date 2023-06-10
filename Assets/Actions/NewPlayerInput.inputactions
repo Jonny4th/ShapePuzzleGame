@@ -596,7 +596,7 @@
                 {
                     "name": "",
                     "id": "0da1e5de-d7a1-43b3-9a83-9b2f39ba6c7f",
-                    "path": "<Touchscreen>/touch0/position",
+                    "path": "<Touchscreen>/touch0",
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",

@@ -1,8 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-public interface ITouchDetection
+namespace Touch
 {
-    event Action<float> ArcDetected;
-    event Action<Vector2> StraightDetected;
+    public interface ITouchDetection
+    {
+        event Action<float> ArcDetected;
+        event Action<Vector2> StraightDetected;
+    }
+
 }

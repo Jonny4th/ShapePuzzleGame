@@ -1,11 +1,11 @@
-using Assets.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Touch;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
+using Visualization;
 
 public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizable
 {
@@ -104,7 +104,6 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     #region Aux
     private void UpdateLine(Vector2 pos)
     {
-        Debug.Log($"Add point: {pos}");
         points.Add(pos);
         LineUpdated?.Invoke(points);
         IsStraight();

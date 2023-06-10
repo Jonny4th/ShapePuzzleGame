@@ -464,7 +464,7 @@ MonoBehaviour:
   gridStartAtZero: 0
   minimumLimit: {x: -3, y: -3, z: -3}
   maximumLimit: {x: 3, y: 3, z: 3}
-  swipeProcessor: {fileID: 104064617044608683}
+  _swipeProcessor: {fileID: 104064617044608683}
 --- !u!114 &104064617044608683
 MonoBehaviour:
   m_ObjectHideFlags: 0
