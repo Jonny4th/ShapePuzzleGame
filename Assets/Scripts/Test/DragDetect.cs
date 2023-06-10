@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -8,40 +8,31 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class DragDetect : MonoBehaviour
 {
-    [SerializeField]
-    TMP_Text positionDisplay;
+    //Drag Detection Events
+    public event Action<float> ArcDetected;
+    public event Action<Vector2> StraightDetected;
+
+    //Touch Visualization Events
+    public event Action<List<Vector2>> LineUpdate;
+    public event Action<Vector2> PointUpdate;
+
+    List<Vector2> points = new();
+
+    bool m_IsPress = false;
+    bool m_IsArc = true;
+    bool m_IsStraight = true;
+    float firstSign = 0;
 
     [SerializeField]
-    LineRenderer line;
-
-    [SerializeField]
-    GameObject point;
-
-    [SerializeField]
-    float depth;
-
-    [SerializeField]
-    float lineWidth;
-
-    public List<Vector2> points = new();
-
-    bool m_IsPress;
-
-    readonly string positionDisplayFormat = "( {0} , {1} )";
-    Camera cam;
-
-    void Start()
-    {
-        cam = Camera.main;
-    }
+    private float angleLimit;
 
     public void PointerPosition(InputAction.CallbackContext context)
     {
         if(!m_IsPress) return;
+
         var pos = context.ReadValue<Vector2>();
-        points.Add(pos);
-        positionDisplay.text = string.Format(positionDisplayFormat, (int)pos.x, (int)pos.y);
-        DrawOnScreen(points, line);
+
+        UpdateTouch(pos);
     }
 
     public void OnPointerPressed(InputAction.CallbackContext context)
@@ -53,48 +44,102 @@ public class DragDetect : MonoBehaviour
     public void OnTouch(InputAction.CallbackContext context)
     {
         var touch = context.ReadValue<TouchState>();
-        Debug.Log(touch.phase);
         SetIsPressing(touch.phase != TouchPhase.Ended || touch.phase != TouchPhase.Canceled);
+        Debug.Log(m_IsPress);
         if(!m_IsPress) return;
+
         var pos = touch.position;
+        UpdateTouch(pos);
+    }
+
+    private void UpdateTouch(Vector2 pos)
+    {
         points.Add(pos);
-        positionDisplay.text = string.Format(positionDisplayFormat, (int)pos.x, (int)pos.y);
-        DrawOnScreen(points, line);
+        LineUpdate?.Invoke(points);
+        IsStraight();
+        IsArc();
     }
 
     private void SetIsPressing(bool value)
     {
         m_IsPress = value;
-        if(!m_IsPress) points.Clear();
+        if(!m_IsPress)
+        {
+            DecideDragEvent();
+            ResetParameters();
+        }
     }
 
-    private void DrawOnScreen(List<Vector2> points, LineRenderer line)
+    private void ResetParameters()
     {
-        var pos = points.Select(point => cam.ScreenToWorldPoint(new Vector3(point.x, point.y, depth))).ToArray();
-        line.positionCount = pos.Length;
-        line.startWidth = lineWidth;
-        line.endWidth = lineWidth;
-        line.SetPositions(pos);
-        ShowPointOnWorld(CenterOfMass(pos.ToList()));
+        points.Clear();
+        firstSign = 0;
+        m_IsArc = true;
+        m_IsStraight = true;
     }
 
-    private Vector3 CenterOfMass(List<Vector3> points)
+    private float ArcAngle
     {
-        var center = Vector3.zero;
-        points.ForEach(point => { center += point; });
-        center /= points.Count;
-        return center;
+        get
+        {
+            if(points.Count < 2) return 0;
+            var start = points.First();
+            var second = points[1];
+
+            var end = points.Last();
+            var nextToLast = points[^2];
+
+            var vectorA = second - start;
+            var vectorB = end - nextToLast;
+
+            return Vector2.SignedAngle(vectorA, vectorB);
+        }
     }
 
-    private void ShowPointOnWorld(Vector3 pos)
+    private Vector2 DragDirection
     {
-        point.transform.position = pos;
-        point.SetActive(true);
+        get
+        {
+            var start = points.First();
+            var end = points.Last();
+
+            return end - start;
+        }
     }
 
-    private Vector2 Center(List<Vector2> points)
+    private void IsArc()
     {
+        if(!m_IsArc) return;
+        if(points.Count < 3) return;
 
-        return default;
+        var direction = Mathf.Sign(ArcAngle);
+
+        if(points.Count == 3)
+        {
+            firstSign = direction;
+            return;
+        }
+
+        m_IsArc = firstSign == direction;
+    }
+
+    private void IsStraight()
+    {
+        if(!m_IsStraight) return;
+
+        if(points.Count < 3) return;
+        m_IsStraight = Mathf.Abs(ArcAngle) < angleLimit;
+    }
+
+    private void DecideDragEvent()
+    {
+        if(m_IsStraight)
+        {
+            StraightDetected?.Invoke(DragDirection);
+        }
+        else if(m_IsArc)
+        {
+            ArcDetected?.Invoke(firstSign);
+        }
     }
 }

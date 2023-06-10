@@ -40,7 +40,7 @@
                     "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "New control scheme",
+                    "groups": "Pointer and Touch",
                     "action": "Pointer",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -51,7 +51,7 @@
                     "path": "<Pointer>/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "New control scheme",
+                    "groups": "Pointer and Touch",
                     "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -62,7 +62,7 @@
                     "path": "<Touchscreen>/touch0/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "New control scheme",
+                    "groups": "Pointer and Touch",
                     "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -72,8 +72,8 @@
     ],
     "controlSchemes": [
         {
-            "name": "New control scheme",
-            "bindingGroup": "New control scheme",
+            "name": "Pointer and Touch",
+            "bindingGroup": "Pointer and Touch",
             "devices": [
                 {
                     "devicePath": "<Pointer>",

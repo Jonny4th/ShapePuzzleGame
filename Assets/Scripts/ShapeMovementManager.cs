@@ -185,7 +185,7 @@ public class ShapeMovementManager : MonoBehaviour
         Rotate(Vector3.down);
     }
 
-    #region Touch Screen Handler
+#region Touch Screen Handler
 
     public void OnRotateTouch(InputAction.CallbackContext context)
     {
@@ -240,7 +240,7 @@ public class ShapeMovementManager : MonoBehaviour
         return axis;
     }
 
-    #endregion
+#endregion
 
     Vector3 AlignToGrid(Vector3 pos)
     {
