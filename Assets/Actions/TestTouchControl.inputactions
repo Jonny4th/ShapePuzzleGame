@@ -40,7 +40,7 @@
                     "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Pointer and Touch",
+                    "groups": "Pointer",
                     "action": "Pointer",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -51,7 +51,7 @@
                     "path": "<Pointer>/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Pointer and Touch",
+                    "groups": "Pointer",
                     "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -59,10 +59,10 @@
                 {
                     "name": "",
                     "id": "89d999db-b254-4283-bea9-c0b9d6afcfa8",
-                    "path": "<Touchscreen>/touch0/position",
+                    "path": "<Touchscreen>/touch0",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Pointer and Touch",
+                    "groups": "Touch",
                     "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -72,17 +72,23 @@
     ],
     "controlSchemes": [
         {
-            "name": "Pointer and Touch",
-            "bindingGroup": "Pointer and Touch",
+            "name": "Pointer",
+            "bindingGroup": "Pointer",
             "devices": [
                 {
                     "devicePath": "<Pointer>",
                     "isOptional": false,
                     "isOR": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Touch",
+            "bindingGroup": "Touch",
+            "devices": [
                 {
                     "devicePath": "<Touchscreen>",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 }
             ]

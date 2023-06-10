@@ -697,7 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499a4ec19253a3b4eb08dee0150705c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleLimit: 20
+  angleLimit: 30
+  minSrtMagnitude: 1
 --- !u!114 &1610071330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +759,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1610071329}
-        m_TargetAssemblyTypeName: DragDetect, Assembly-CSharp
+        m_TargetAssemblyTypeName: SwipeProcessor, Assembly-CSharp
         m_MethodName: OnTouch
         m_Mode: 0
         m_Arguments:
@@ -772,7 +773,7 @@ MonoBehaviour:
     m_ActionId: a5687f4e-19bc-470d-b866-63c3e6bf56d5
     m_ActionName: Touch/Touch
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Touch
   m_DefaultActionMap: Touch
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -788,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5204a3f33081b4d8cf6b5d47520b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Observant: {fileID: 1610071329}
+  _swipeProcessor: {fileID: 1610071329}
   line: {fileID: 1129669907}
   lineWidth: 0.1
   point: {fileID: 85597741}
@@ -806,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90451ef6a25fd0f409c739153620800c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drag: {fileID: 1610071329}
+  _swipeProcessor: {fileID: 1610071329}
 --- !u!1 &1617699671
 GameObject:
   m_ObjectHideFlags: 0

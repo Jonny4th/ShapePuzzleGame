@@ -7,7 +7,9 @@ namespace Assets.Scripts
     public class ArcAndStraightDebug : MonoBehaviour
     {
         [SerializeField]
-        SwipeProcessor drag;
+        UnityEngine.Object _swipeProcessor;
+
+        ITouchDetection drag => _swipeProcessor as ITouchDetection;
 
         void OnEnable()
         {

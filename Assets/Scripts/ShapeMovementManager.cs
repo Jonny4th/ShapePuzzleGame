@@ -31,7 +31,9 @@ public class ShapeMovementManager : MonoBehaviour
     private MovementHandler CurrentMovementHandler;
 
     [SerializeField]
-    SwipeProcessor swipeProcessor;
+    UnityEngine.Object _swipeProcessor;
+
+    ITouchDetection swipeProcessor => _swipeProcessor as ITouchDetection;
 
     public static event Action<MovementInfo> Moved;
 

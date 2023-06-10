@@ -7,7 +7,9 @@ namespace Assets.Scripts
     public class TouchVisualization : MonoBehaviour
     {
         [SerializeField]
-        SwipeProcessor Observant;
+        UnityEngine.Object _swipeProcessor;
+
+        IPointsVisualizable Observant => _swipeProcessor as IPointsVisualizable;
 
         [SerializeField]
         LineRenderer line;
@@ -28,8 +30,14 @@ namespace Assets.Scripts
 
         void OnEnable()
         {
-            Observant.LineUpdate += DrawOnScreen;
-            Observant.PointUpdate += ShowPointOnWorld;
+            Observant.LineUpdated += DrawOnScreen;
+            Observant.PointUpdated += ShowPointOnWorld;
+        }
+
+        void OnDisable()
+        {
+            Observant.LineUpdated -= DrawOnScreen;
+            Observant.PointUpdated -= ShowPointOnWorld;
         }
 
         private void DrawOnScreen(List<Vector2> points)
