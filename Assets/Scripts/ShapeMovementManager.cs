@@ -1,26 +1,25 @@
 using Command;
 using Shape.Movement;
 using System;
+using Touch;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-public class MovementInfo
-{
-    public MovementInfo(MovementCommand movementCommand)
-    {
-        command = movementCommand;
-    }
-
-    public MovementCommand command { get; }
-}
-
 public class ShapeMovementManager : MonoBehaviour
 {
-    [SerializeField] float gridSize;
-    [SerializeField] bool gridStartAtZero;
-    [SerializeField] Vector3 minimumLimit;
-    [SerializeField] Vector3 maximumLimit;
+    [SerializeField]
+    float gridSize;
+
+    [SerializeField]
+    bool gridStartAtZero;
+
+    [SerializeField]
+    Vector3 minimumLimit;
+
+    [SerializeField]
+    Vector3 maximumLimit;
+
     float minX { get => Math.Min(minimumLimit.x, maximumLimit.x); }
     float maxX { get => Math.Max(minimumLimit.x, maximumLimit.x); }
     float minY { get => Math.Min(minimumLimit.y, maximumLimit.y); }
@@ -30,7 +29,12 @@ public class ShapeMovementManager : MonoBehaviour
 
     bool isBusy;
 
-    public MovementHandler CurrentMovementHandler { get; private set; }
+    private IMotionManagable CurrentMovementHandler;
+
+    [SerializeField]
+    UnityEngine.Object _swipeProcessor;
+
+    ITouchDetection swipeProcessor => _swipeProcessor as ITouchDetection;
 
     public static event Action<MovementInfo> Moved;
 
@@ -38,32 +42,19 @@ public class ShapeMovementManager : MonoBehaviour
     {
         ObjectSelect.MovementHandlerSelected += AssignSelectedShape;
         ObjectSelect.ShapeDeselected += ClearSelectedShape;
+        swipeProcessor.ArcDetected += OnArcDetected;
+        swipeProcessor.StraightDetected += OnStraightDetect;
     }
 
     private void OnDisable()
     {
         ObjectSelect.MovementHandlerSelected -= AssignSelectedShape;
         ObjectSelect.ShapeDeselected -= ClearSelectedShape;
+        swipeProcessor.ArcDetected -= OnArcDetected;
+        swipeProcessor.StraightDetected -= OnStraightDetect;
     }
 
-    private void AssignSelectedShape(MovementHandler movementHandler)
-    {
-        CurrentMovementHandler = movementHandler;
-        CurrentMovementHandler.IsBusy += SetBusy;
-    }
-
-    private void ClearSelectedShape()
-    {
-        CurrentMovementHandler.IsBusy -= SetBusy;
-        CurrentMovementHandler = null;
-    }
-
-    private void SetBusy(bool value)
-    {
-        isBusy = value;
-    }
-
-    private void Move(Vector3 direction)
+    private void ProcessMove(Vector3 direction)
     {
         if(CurrentMovementHandler == null) return;
 
@@ -71,20 +62,21 @@ public class ShapeMovementManager : MonoBehaviour
 
         if(IsAtLimit(destination)) return;
 
-        var command = new MoveCommand(CurrentMovementHandler, destination);
+        var command = new MoveCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
         CommandManager.Instance.AddCommand(command);
         Moved?.Invoke(new MovementInfo(command));
     }
 
-    private void Rotate(Vector3 axis)
+    private void ProcessRotate(Vector3 axis)
     {
         if(CurrentMovementHandler == null) return;
         if(isBusy) return;
         if(axis == Vector3.zero) return;
 
         var destination = CurrentMovementHandler.GetRotateDestination(axis);
-        var command = new RotateCommand(CurrentMovementHandler, destination);
-        CommandManager.Instance.AddCommand(new RotateCommand(CurrentMovementHandler, destination));
+
+        var command = new RotateCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
+        CommandManager.Instance.AddCommand(command);
         Moved?.Invoke(new MovementInfo(command));
     }
 
@@ -94,7 +86,7 @@ public class ShapeMovementManager : MonoBehaviour
         var direction = context.ReadValue<Vector3>();
         if(direction == Vector3.zero) return;
 
-        Move(direction);
+        ProcessMove(direction);
     }
 
     public void OnRotateAxis(InputAction.CallbackContext context)
@@ -103,87 +95,105 @@ public class ShapeMovementManager : MonoBehaviour
         var rotation = context.ReadValue<Vector3>();
         if(rotation == Vector3.zero) return;
 
-        Rotate(rotation);
+        ProcessRotate(rotation);
     }
 
     public void OnRotateAxis(Vector3 rotation)
     {
         if(rotation == Vector3.zero) return;
 
-        Rotate(rotation);
+        ProcessRotate(rotation);
     }
 
+    #region Separate Move Input Actions 
     public void OnMovePosX(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Move(Vector3.right);
+        ProcessMove(Vector3.right);
     }
 
     public void OnMoveNegX(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Move(Vector3.left);
+        ProcessMove(Vector3.left);
     }
 
     public void OnMovePosZ(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Move(Vector3.forward);
+        ProcessMove(Vector3.forward);
     }
 
     public void OnMoveNegZ(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Move(Vector3.back);
+        ProcessMove(Vector3.back);
     }
 
     public void OnMovePosY(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Move(Vector3.up);
+        ProcessMove(Vector3.up);
     }
 
     public void OnMoveNegY(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Move(Vector3.down);
+        ProcessMove(Vector3.down);
     }
+    #endregion
 
+    #region Separate Rotation Input Actions
     public void OnRotatePosX(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Rotate(Vector3.right);
+        ProcessRotate(Vector3.right);
     }
 
     public void OnRotateNegX(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Rotate(Vector3.left);
+        ProcessRotate(Vector3.left);
     }
 
     public void OnRotatePosZ(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Rotate(Vector3.forward);
+        ProcessRotate(Vector3.forward);
     }
 
     public void OnRotateNegZ(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Rotate(Vector3.back);
+        ProcessRotate(Vector3.back);
     }
 
     public void OnRotatePosY(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Rotate(Vector3.up);
+        ProcessRotate(Vector3.up);
     }
 
     public void OnRotateNegY(InputAction.CallbackContext context)
     {
         if(!context.performed) return;
-        Rotate(Vector3.down);
+        ProcessRotate(Vector3.down);
     }
+    #endregion
+
+    #region Spiwe Action Handler
+
+    private void OnStraightDetect(Vector2 direction)
+    {
+        ProcessRotate(HandleRotateTouch2Axis(direction));
+    }
+
+    private void OnArcDetected(float direction)
+    {
+        ProcessRotate(Vector3.right * direction);
+    }
+
+    #endregion
 
     #region Touch Screen Handler
 
@@ -193,12 +203,14 @@ public class ShapeMovementManager : MonoBehaviour
         var start = touch.startPosition;
 
         if(touch.phase != UnityEngine.InputSystem.TouchPhase.Ended) return;
-        if(touch.delta != Vector2.zero) return; //Ended phase sometimes trigger twice: with none zero vector and with zero vector. This happens when you swipe fast.
+        if(touch.delta != Vector2.zero) return;
+        //Ended phase sometimes trigger twice: with none zero vector and with zero vector.
+        //This happens when you swipe fast.
 
         var vector = touch.position - start;
         if(vector.sqrMagnitude < 10000) return;
         Debug.Log($"{touch.phase}, {vector}: Mag = {vector.sqrMagnitude}, slope = {Vector2.Angle(Vector2.right, vector)}");
-        Rotate(HandleRotateTouch2Axis(vector));
+        ProcessRotate(HandleRotateTouch2Axis(vector));
     }
 
     private Vector3 HandleRotateTouch3Axis(Vector2 vector)
@@ -242,6 +254,25 @@ public class ShapeMovementManager : MonoBehaviour
 
     #endregion
 
+    #region Auxilary Fucntions
+
+    private void AssignSelectedShape(IMotionManagable movementHandler)
+    {
+        CurrentMovementHandler = movementHandler;
+        CurrentMovementHandler.IsRotating += SetBusy;
+    }
+
+    private void ClearSelectedShape()
+    {
+        CurrentMovementHandler.IsRotating -= SetBusy;
+        CurrentMovementHandler = null;
+    }
+
+    private void SetBusy(bool value)
+    {
+        isBusy = value;
+    }
+
     Vector3 AlignToGrid(Vector3 pos)
     {
         var x = AlignToGrid(pos.x);
@@ -272,6 +303,15 @@ public class ShapeMovementManager : MonoBehaviour
 
         return isLimit;
     }
+    #endregion
 }
 
+public class MovementInfo
+{
+    public MovementInfo(MovementCommand movementCommand)
+    {
+        command = movementCommand;
+    }
 
+    public MovementCommand command { get; }
+}

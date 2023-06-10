@@ -186,6 +186,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RotateBlockTouch",
+                    "type": "PassThrough",
+                    "id": "d342f6ec-8255-4082-8d39-6d13f358f92f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PointerPosition",
+                    "type": "PassThrough",
+                    "id": "674dfa10-80a5-41d0-95b6-2469dfa706d9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PointerPress",
+                    "type": "Button",
+                    "id": "9fc86255-11ce-48ff-92a7-417bb5f5cd09",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Undo",
                     "type": "Button",
                     "id": "33752d02-eb31-4a3e-ad8e-cbd2b1db76b2",
@@ -199,15 +226,6 @@
                     "type": "Button",
                     "id": "87c746d7-05a9-4c02-a158-deee9d4294a4",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "RotateBlockTouch",
-                    "type": "PassThrough",
-                    "id": "d342f6ec-8255-4082-8d39-6d13f358f92f",
-                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -330,28 +348,6 @@
                     "processors": "",
                     "groups": "GamePad",
                     "action": "ToggleSelection",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "df687cef-e79f-431a-9696-4b92a5ebb587",
-                    "path": "<Keyboard>/pageUp",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard;Touch",
-                    "action": "Undo",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d015e81b-e7e9-4667-b95b-c70059d5c716",
-                    "path": "<Keyboard>/pageDown",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard",
-                    "action": "Redo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -577,6 +573,28 @@
                 },
                 {
                     "name": "",
+                    "id": "34297981-79c6-4b72-ab34-e25a03d41f54",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "PointerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98c256e6-037f-4b44-8c35-3107a478831d",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "PointerPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0da1e5de-d7a1-43b3-9a83-9b2f39ba6c7f",
                     "path": "<Touchscreen>/touch0",
                     "interactions": "",
@@ -594,6 +612,28 @@
                     "processors": "",
                     "groups": "KeyBoard",
                     "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d015e81b-e7e9-4667-b95b-c70059d5c716",
+                    "path": "<Keyboard>/pageDown",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "Redo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df687cef-e79f-431a-9696-4b92a5ebb587",
+                    "path": "<Keyboard>/pageUp",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard;Touch",
+                    "action": "Undo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

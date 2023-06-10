@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7942664544872702526}
   - component: {fileID: 7942664544872702525}
   - component: {fileID: 7942664544872702498}
+  - component: {fileID: 104064617044608683}
   - component: {fileID: 7942664544872702497}
   - component: {fileID: 7942664544872702496}
   - component: {fileID: 7942664543839098901}
@@ -95,6 +96,18 @@ MonoBehaviour:
     m_ActionName: PuzzleControls/ToggleSelection[/Keyboard/tab]
   - m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PauseScreen, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7942664544872702526}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnPause
@@ -339,9 +352,9 @@ MonoBehaviour:
     m_ActionName: Puzzle Controls/RotateNegZ
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7942664544872702498}
-        m_TargetAssemblyTypeName: ShapeMovementManager, Assembly-CSharp
-        m_MethodName: OnRotateTouch
+      - m_Target: {fileID: 104064617044608683}
+        m_TargetAssemblyTypeName: SwipeProcessor, Assembly-CSharp
+        m_MethodName: OnTouch
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -369,6 +382,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3acf7b77-a74a-441e-89f3-c5fe5305b360
     m_ActionName: Puzzle Controls/Reset[/Keyboard/home]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 104064617044608683}
+        m_TargetAssemblyTypeName: SwipeProcessor, Assembly-CSharp
+        m_MethodName: PointerPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 674dfa10-80a5-41d0-95b6-2469dfa706d9
+    m_ActionName: Puzzle Controls/PointerPosition[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 104064617044608683}
+        m_TargetAssemblyTypeName: SwipeProcessor, Assembly-CSharp
+        m_MethodName: OnPointerPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9fc86255-11ce-48ff-92a7-417bb5f5cd09
+    m_ActionName: Puzzle Controls/PointerPress[/Mouse/press,/Pen/press]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Puzzle Controls
@@ -419,6 +464,21 @@ MonoBehaviour:
   gridStartAtZero: 0
   minimumLimit: {x: -3, y: -3, z: -3}
   maximumLimit: {x: 3, y: 3, z: 3}
+  _swipeProcessor: {fileID: 104064617044608683}
+--- !u!114 &104064617044608683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942664544872702520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499a4ec19253a3b4eb08dee0150705c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleLimit: 20
+  minSrtMagnitude: 1
 --- !u!114 &7942664544872702497
 MonoBehaviour:
   m_ObjectHideFlags: 0

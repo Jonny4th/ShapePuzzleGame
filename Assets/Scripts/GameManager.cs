@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void OnResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnQuit()
