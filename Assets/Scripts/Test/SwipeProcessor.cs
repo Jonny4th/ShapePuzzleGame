@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,15 +7,15 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
-public class SwipeProcessor : MonoBehaviour
+public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizable
 {
     //Touch Detection Events
     public event Action<float> ArcDetected;
     public event Action<Vector2> StraightDetected;
 
     //Touch Visualization Events
-    public event Action<List<Vector2>> LineUpdate;
-    public event Action<Vector2> PointUpdate;
+    public event Action<List<Vector2>> LineUpdated;
+    public event Action<Vector2> PointUpdated;
 
     List<Vector2> points = new();
 
@@ -91,7 +92,7 @@ public class SwipeProcessor : MonoBehaviour
     public void OnTouch(InputAction.CallbackContext context)
     {
         var touch = context.ReadValue<TouchState>();
-        SetIsPressing(touch.phase != TouchPhase.Ended || touch.phase != TouchPhase.Canceled);
+        SetIsPressing(touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled);
         Debug.Log(m_IsPress);
         if(!m_IsPress) return;
 
@@ -105,7 +106,7 @@ public class SwipeProcessor : MonoBehaviour
     private void UpdateLine(Vector2 pos)
     {
         points.Add(pos);
-        LineUpdate?.Invoke(points);
+        LineUpdated?.Invoke(points);
         IsStraight();
         IsArc();
     }
