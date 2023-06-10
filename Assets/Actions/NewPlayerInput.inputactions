@@ -220,6 +220,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PointerPosition",
+                    "type": "PassThrough",
+                    "id": "674dfa10-80a5-41d0-95b6-2469dfa706d9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PointerPress",
+                    "type": "PassThrough",
+                    "id": "9fc86255-11ce-48ff-92a7-417bb5f5cd09",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -578,7 +596,7 @@
                 {
                     "name": "",
                     "id": "0da1e5de-d7a1-43b3-9a83-9b2f39ba6c7f",
-                    "path": "<Touchscreen>/touch0",
+                    "path": "<Touchscreen>/touch0/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
@@ -592,8 +610,30 @@
                     "path": "<Keyboard>/home",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyBoard",
+                    "groups": "KeyBoard;Touch",
                     "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34297981-79c6-4b72-ab34-e25a03d41f54",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard;GamePad",
+                    "action": "PointerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98c256e6-037f-4b44-8c35-3107a478831d",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard;GamePad",
+                    "action": "PointerPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
-public class DragDetect : MonoBehaviour
+public class SwipeProcessor : MonoBehaviour
 {
-    //Drag Detection Events
+    //Touch Detection Events
     public event Action<float> ArcDetected;
     public event Action<Vector2> StraightDetected;
 
@@ -25,58 +25,8 @@ public class DragDetect : MonoBehaviour
 
     [SerializeField]
     private float angleLimit;
-
-    public void PointerPosition(InputAction.CallbackContext context)
-    {
-        if(!m_IsPress) return;
-
-        var pos = context.ReadValue<Vector2>();
-
-        UpdateTouch(pos);
-    }
-
-    public void OnPointerPressed(InputAction.CallbackContext context)
-    {
-        var press = context.ReadValue<float>();
-        SetIsPressing(press > 0.5f);
-    }
-
-    public void OnTouch(InputAction.CallbackContext context)
-    {
-        var touch = context.ReadValue<TouchState>();
-        SetIsPressing(touch.phase != TouchPhase.Ended || touch.phase != TouchPhase.Canceled);
-        Debug.Log(m_IsPress);
-        if(!m_IsPress) return;
-
-        var pos = touch.position;
-        UpdateTouch(pos);
-    }
-
-    private void UpdateTouch(Vector2 pos)
-    {
-        points.Add(pos);
-        LineUpdate?.Invoke(points);
-        IsStraight();
-        IsArc();
-    }
-
-    private void SetIsPressing(bool value)
-    {
-        m_IsPress = value;
-        if(!m_IsPress)
-        {
-            DecideDragEvent();
-            ResetParameters();
-        }
-    }
-
-    private void ResetParameters()
-    {
-        points.Clear();
-        firstSign = 0;
-        m_IsArc = true;
-        m_IsStraight = true;
-    }
+    [SerializeField]
+    private float minSrtMagnitude;
 
     private float ArcAngle
     {
@@ -102,11 +52,84 @@ public class DragDetect : MonoBehaviour
         {
             var start = points.First();
             var end = points.Last();
-
-            return end - start;
+            var direction = end - start;
+            Debug.Log(Vector2.SqrMagnitude(direction));
+            return direction;
         }
     }
 
+    #region Mouse
+
+    /// <summary>
+    /// Attach to Input System [Pointer] > [Press].
+    /// </summary>
+    /// <param name="context"></param>
+    public void OnPointerPressed(InputAction.CallbackContext context)
+    {
+        var press = context.ReadValue<float>();
+        SetIsPressing(press > 0.5f);
+    }
+
+    /// <summary>
+    /// Attach to Input System [Pointer] > [Position].
+    /// </summary>
+    /// <param name="context"></param>
+    public void PointerPosition(InputAction.CallbackContext context)
+    {
+        if(!m_IsPress) return;
+        var pos = context.ReadValue<Vector2>();
+        UpdateLine(pos);
+    }
+
+    #endregion
+
+    #region Touch
+    /// <summary>
+    /// Attach to Input System [TouchScreen] > [Position].
+    /// </summary>
+    /// <param name="context"></param>
+    public void OnTouch(InputAction.CallbackContext context)
+    {
+        var touch = context.ReadValue<TouchState>();
+        SetIsPressing(touch.phase != TouchPhase.Ended || touch.phase != TouchPhase.Canceled);
+        Debug.Log(m_IsPress);
+        if(!m_IsPress) return;
+
+        var pos = touch.position;
+        UpdateLine(pos);
+    }
+
+    #endregion
+
+    #region Aux
+    private void UpdateLine(Vector2 pos)
+    {
+        points.Add(pos);
+        LineUpdate?.Invoke(points);
+        IsStraight();
+        IsArc();
+    }
+
+    private void SetIsPressing(bool value)
+    {
+        m_IsPress = value;
+        if(!m_IsPress)
+        {
+            DecideDragEvent();
+            ResetParameters();
+        }
+    }
+
+    private void ResetParameters()
+    {
+        points.Clear();
+        firstSign = 0;
+        m_IsArc = true;
+        m_IsStraight = true;
+    }
+    #endregion
+
+    #region Logics
     private void IsArc()
     {
         if(!m_IsArc) return;
@@ -133,6 +156,7 @@ public class DragDetect : MonoBehaviour
 
     private void DecideDragEvent()
     {
+        if(Vector2.SqrMagnitude(DragDirection) < minSrtMagnitude) return;
         if(m_IsStraight)
         {
             StraightDetected?.Invoke(DragDirection);
@@ -142,4 +166,5 @@ public class DragDetect : MonoBehaviour
             ArcDetected?.Invoke(firstSign);
         }
     }
+    #endregion
 }

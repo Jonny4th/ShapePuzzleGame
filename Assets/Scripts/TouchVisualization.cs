@@ -7,7 +7,7 @@ namespace Assets.Scripts
     public class TouchVisualization : MonoBehaviour
     {
         [SerializeField]
-        DragDetect Observant;
+        SwipeProcessor Observant;
 
         [SerializeField]
         LineRenderer line;

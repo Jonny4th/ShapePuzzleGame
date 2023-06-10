@@ -7,7 +7,7 @@ namespace Assets.Scripts
     public class ArcAndStraightDebug : MonoBehaviour
     {
         [SerializeField]
-        DragDetect drag;
+        SwipeProcessor drag;
 
         void OnEnable()
         {
