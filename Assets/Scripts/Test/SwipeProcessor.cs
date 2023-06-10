@@ -92,10 +92,9 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     public void OnTouch(InputAction.CallbackContext context)
     {
         var touch = context.ReadValue<TouchState>();
-        SetIsPressing(touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled);
-        Debug.Log(m_IsPress);
+        SetIsPressing(touch.isInProgress);
         if(!m_IsPress) return;
-
+        if(touch.delta == Vector2.zero) return;
         var pos = touch.position;
         UpdateLine(pos);
     }
@@ -105,6 +104,7 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     #region Aux
     private void UpdateLine(Vector2 pos)
     {
+        Debug.Log($"Add point: {pos}");
         points.Add(pos);
         LineUpdated?.Invoke(points);
         IsStraight();
