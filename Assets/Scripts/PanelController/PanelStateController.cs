@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 #if UNITY_EDITOR
 [ExecuteInEditMode]
@@ -38,7 +37,7 @@ public class PanelStateController : MonoBehaviour
 
     void UpdateState()
     {
-        if (Physics.Raycast(transform.position,-transform.forward, 10f, ~hitLayerMask))
+        if(Physics.Raycast(transform.position, -transform.forward, 10f, ~hitLayerMask))
         {
             currentState |= State.Shadow;
         }
@@ -51,7 +50,7 @@ public class PanelStateController : MonoBehaviour
 
     void UpdateVisual()
     {
-        switch (currentState)
+        switch(currentState)
         {
             case State.None: mesh.material = defaultMaterial; break;
             case State.Target: mesh.material = targetMaterial; break;
@@ -62,7 +61,7 @@ public class PanelStateController : MonoBehaviour
 
     public void SetAsTarget(bool v)
     {
-        if (v)
+        if(v)
         {
             currentState |= State.Target;
         }
