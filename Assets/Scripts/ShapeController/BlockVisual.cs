@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlockVisual : MonoBehaviour
@@ -33,13 +31,13 @@ public class BlockVisual : MonoBehaviour
     private void OnEnable()
     {
         overlapController.OverlapChanged += UpdateState;
-        selectionController.ShapeSelected  += UpdateState;
+        selectionController.ShapeSelected += UpdateState;
     }
 
     private void OnDisable()
     {
         overlapController.OverlapChanged -= UpdateState;
-        selectionController.ShapeSelected  -= UpdateState;
+        selectionController.ShapeSelected -= UpdateState;
     }
 
     private void UpdateVisual()
@@ -48,7 +46,7 @@ public class BlockVisual : MonoBehaviour
 
         switch(state)
         {
-            case State.Default:  mesh.material = defaultMaterial; break;
+            case State.Default: mesh.material = defaultMaterial; break;
             case State.Selected:
                 {
                     if(selectMaterial == null) break;
@@ -63,12 +61,12 @@ public class BlockVisual : MonoBehaviour
     }
 
     private void UpdateState(bool _)
-    { 
+    {
         if(overlapController.IsOverlap)
         {
             state = State.Invalid;
         }
-        else if (selectionController.IsSelected)
+        else if(selectionController.IsSelected)
         {
             state = State.Selected;
         }

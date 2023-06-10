@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShapeModel : MonoBehaviour
@@ -32,10 +30,10 @@ public class ShapeModel : MonoBehaviour
     public void SetMesh(Mesh m)
     {
         mesh = m;
-        foreach (var block in GetComponentsInChildren<BlockVisual>())
+        foreach(var block in GetComponentsInChildren<BlockVisual>())
         {
             block.SetMesh();
         }
     }
-    
+
 }
