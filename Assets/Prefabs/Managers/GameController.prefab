@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7942664543839098901}
   - component: {fileID: 7942664543839098902}
   - component: {fileID: 2455000850312452850}
+  - component: {fileID: 4291574774209815044}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -180,8 +181,8 @@ MonoBehaviour:
     m_ActionName: Puzzle Controls/RotateBlock
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+      - m_Target: {fileID: 4291574774209815044}
+        m_TargetAssemblyTypeName: SceneChange, Script.GameFlow
         m_MethodName: ChangeScene
         m_Mode: 1
         m_Arguments:
@@ -629,3 +630,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb15a6f26eb17147967cf4095521e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4291574774209815044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942664544872702520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a08b79803eda9344a790b79789a2819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSceneIndex: 0
+  toSceneName: 
+  useSceneName: 0
+  goToNextScene: 1

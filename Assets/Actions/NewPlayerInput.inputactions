@@ -787,17 +787,6 @@
                     "action": "NextLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6f90b583-72a6-4ad2-893c-b20d4664458f",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "NextLevel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
