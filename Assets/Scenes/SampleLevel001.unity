@@ -11300,6 +11300,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 651619516289712523, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_text
+      value: "Tap 'Spacebar'\nto select the cube.\n\nUse these button to\ncontrol
+        the cube\n- Keyboard arrows: Front-back / left-right\n  \n- W / S : Up /
+        down "
+      objectReference: {fileID: 0}
+    - target: {fileID: 651619516289712523, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 651619516533275863, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_IsActive
       value: 1
