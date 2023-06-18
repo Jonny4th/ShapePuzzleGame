@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Touch;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using Visualization;
@@ -19,7 +20,8 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
 
     List<Vector2> points = new();
 
-    bool m_IsPress = false;
+    bool isTouchRegistered = false;
+
     bool m_IsArc = true;
     bool m_IsStraight = true;
     float firstSign = 0;
@@ -28,6 +30,7 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     private float angleLimit;
     [SerializeField]
     private float minSrtMagnitude;
+
 
     private float ArcAngle
     {
@@ -54,7 +57,6 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
             var start = points.First();
             var end = points.Last();
             var direction = end - start;
-            Debug.Log(Vector2.SqrMagnitude(direction));
             return direction;
         }
     }
@@ -67,8 +69,19 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     /// <param name="context"></param>
     public void OnPointerPressed(InputAction.CallbackContext context)
     {
-        var press = context.ReadValue<float>();
-        SetIsPressing(press > 0.5f);
+        var isTouching = context.ReadValue<float>() > 0.5;
+
+        if(isTouching)
+        {
+            isTouchRegistered = !EventSystem.current.IsPointerOverGameObject();
+        }
+        else
+        {
+            if(isTouchRegistered)
+            {
+                OnTouchEnd();
+            }
+        }
     }
 
     /// <summary>
@@ -77,7 +90,7 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     /// <param name="context"></param>
     public void PointerPosition(InputAction.CallbackContext context)
     {
-        if(!m_IsPress) return;
+        if(!isTouchRegistered) return;
         var pos = context.ReadValue<Vector2>();
         UpdateLine(pos);
     }
@@ -92,9 +105,21 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     public void OnTouch(InputAction.CallbackContext context)
     {
         var touch = context.ReadValue<TouchState>();
-        SetIsPressing(touch.isInProgress);
-        if(!m_IsPress) return;
+
+        if(touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
+        {
+            isTouchRegistered = !EventSystem.current.IsPointerOverGameObject();
+        }
+
+        if(!isTouchRegistered) return;
+        
+        if(touch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
+        {
+            OnTouchEnd();
+        }
+        
         if(touch.delta == Vector2.zero) return;
+
         var pos = touch.position;
         UpdateLine(pos);
     }
@@ -110,22 +135,13 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
         IsArc();
     }
 
-    private void SetIsPressing(bool value)
-    {
-        m_IsPress = value;
-        if(!m_IsPress)
-        {
-            DecideDragEvent();
-            ResetParameters();
-        }
-    }
-
     private void ResetParameters()
     {
         points.Clear();
         firstSign = 0;
         m_IsArc = true;
         m_IsStraight = true;
+        isTouchRegistered = false;
     }
     #endregion
 
@@ -165,6 +181,12 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
         {
             ArcDetected?.Invoke(firstSign);
         }
+    }
+
+    private void OnTouchEnd()
+    {
+        DecideDragEvent();
+        ResetParameters();
     }
     #endregion
 }

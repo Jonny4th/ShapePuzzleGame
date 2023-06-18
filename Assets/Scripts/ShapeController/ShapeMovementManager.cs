@@ -3,6 +3,7 @@ using Shape.Movement;
 using System;
 using Touch;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
@@ -196,7 +197,7 @@ public class ShapeMovementManager : MonoBehaviour
     #endregion
 
     #region Touch Screen Handler
-
+    //deplicated
     public void OnRotateTouch(InputAction.CallbackContext context)
     {
         var touch = context.ReadValue<TouchState>();
@@ -209,7 +210,6 @@ public class ShapeMovementManager : MonoBehaviour
 
         var vector = touch.position - start;
         if(vector.sqrMagnitude < 10000) return;
-        Debug.Log($"{touch.phase}, {vector}: Mag = {vector.sqrMagnitude}, slope = {Vector2.Angle(Vector2.right, vector)}");
         ProcessRotate(HandleRotateTouch2Axis(vector));
     }
 
