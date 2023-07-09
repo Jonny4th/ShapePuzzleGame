@@ -38,8 +38,6 @@ namespace Shape.Movement
 
         ITouchDetection swipeProcessor => _swipeProcessor as ITouchDetection;
 
-        public static event Action<MovementInfo> Moved;
-
         public SOGameEvent Move;
 
         private void OnEnable()
@@ -67,9 +65,7 @@ namespace Shape.Movement
             if(IsAtLimit(destination)) return;
 
             var command = new MoveCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
-            CommandManager.Instance.AddCommand(command);
-            Moved?.Invoke(new MovementInfo(command));
-            Move.Raise();
+            Move.Raise(this, command);
         }
 
         private void ProcessRotate(Vector3 axis)
@@ -81,8 +77,7 @@ namespace Shape.Movement
             var destination = CurrentMovementHandler.GetRotateDestination(axis);
 
             var command = new RotateCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
-            CommandManager.Instance.AddCommand(command);
-            Moved?.Invoke(new MovementInfo(command));
+            Move.Raise(this, command);
         }
 
         public void OnMoveAxis(InputAction.CallbackContext context)
@@ -367,15 +362,5 @@ namespace Shape.Movement
             return isLimit;
         }
         #endregion
-    }
-
-    public class MovementInfo
-    {
-        public MovementInfo(MovementCommand movementCommand)
-        {
-            command = movementCommand;
-        }
-
-        public MovementCommand command { get; }
     }
 }

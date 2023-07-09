@@ -136,7 +136,7 @@ namespace ScriptableObjectEvent
                 {
                     if (GUILayout.Button("Raise Event"))
                     {
-                        key.Raise(); //Raise the events
+                        key.Raise(new Component(), new object()); //Raise the events
                     }
                 }
                 EditorGUILayout.EndVertical();

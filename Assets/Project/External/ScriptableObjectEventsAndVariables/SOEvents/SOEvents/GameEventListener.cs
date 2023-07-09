@@ -1,14 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace ScriptableObjectEvent
 {
+    [Serializable]
+    public class CustomEvent : UnityEvent<Component, object> { }
+
     public class GameEventListener : MonoBehaviour
     {
         public SOGameEvent Event; //Which event does this listen for
-        public UnityEvent Response; //Reponse to happen when the event is raised
+        public CustomEvent Response; //Reponse to happen when the event is raised
 
         [TextArea]
         [Tooltip("What does this object do when the attached event is raised")]
@@ -17,7 +19,7 @@ namespace ScriptableObjectEvent
         private void OnEnable()
         {
             //If the event is not null, register this component/gameObject
-            if (Event != null)
+            if(Event != null)
             {
                 Event.RegisterListener(this);
             }
@@ -26,7 +28,7 @@ namespace ScriptableObjectEvent
         private void OnDisable()
         {
             //If the event is not null, unregister this component/gameObject
-            if (Event != null)
+            if(Event != null)
             {
                 Event.UnregisterListener(this);
             }
@@ -35,9 +37,9 @@ namespace ScriptableObjectEvent
         /// <summary>
         /// Raise the response set to this event
         /// </summary>
-        public void OnEventRaised()
+        public void OnEventRaised(Component sender, object data)
         {
-            Response.Invoke();
+            Response.Invoke(sender, data);
         }
     }
 }

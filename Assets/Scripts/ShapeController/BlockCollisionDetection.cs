@@ -23,11 +23,11 @@ public class BlockCollisionDetection : MonoBehaviour
 
     private void Update()
     {
-        CheckBlockOverlap(null);
+        CheckBlockOverlap();
     }
     #endregion
 
-    private void CheckBlockOverlap(MovementInfo info)
+    private void CheckBlockOverlap()
     {
         Collider[] hitColliders = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.identity, mask, QueryTriggerInteraction.Ignore);
         hitColliders = Array.FindAll(hitColliders, x => x.GetComponentInParent<ShapeOverlapController>() != overlapController);

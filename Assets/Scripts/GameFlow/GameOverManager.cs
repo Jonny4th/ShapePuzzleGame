@@ -1,18 +1,16 @@
+using ScriptableObjectEvent;
+using Shape.Controller;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Shape.Controller;
-using Shape.Movement;
-using ScriptableObjectEvent;
 
 public class GameOverManager : MonoBehaviour
 {
     [SerializeField] List<PanelStateController> targetPanels;
     [SerializeField] List<PanelStateController> emptyPanels;
-    [SerializeField] List<ShapeOverlapController> overlapShape;
+    [SerializeField] List<ShapeOverlapController> shapeInScene;
     [SerializeField] bool invalidPlacement;
 
-    //public static event Action Success;
     public static bool gameIsOver;
 
     public SOGameEvent Success;
@@ -21,36 +19,38 @@ public class GameOverManager : MonoBehaviour
     {
         targetPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), IsTargetPanel));
         emptyPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), x => !IsTargetPanel(x)));
-        overlapShape.AddRange(FindObjectsOfType<ShapeOverlapController>());
+        shapeInScene.AddRange(FindObjectsOfType<ShapeOverlapController>());
 
         gameIsOver = false;
     }
 
-    private static bool IsTargetPanel(PanelStateController panel)
+    private bool IsTargetPanel(PanelStateController panel)
     {
         return (panel.currentState & PanelStateController.State.Target) != 0;
     }
 
-    private static bool IsBlockOn(PanelStateController panel)
+    private bool IsBlockOn(PanelStateController panel)
     {
         return (panel.currentState & PanelStateController.State.Shadow) != 0;
     }
 
     private void LateUpdate()
     {
-        GameOverConditionCheck(null);
-    }
-    private void GameOverConditionCheck(MovementInfo info)
-    {
-        List<PanelStateController> corrects = targetPanels.FindAll(IsBlockOn);
-        List<PanelStateController> misses = emptyPanels.FindAll(IsBlockOn);
-        invalidPlacement = overlapShape.Exists(x => x.IsOverlap);
-        if(invalidPlacement) return;
-        if(corrects.Count == targetPanels.Count & misses.Count == 0)
-        {
-            gameIsOver = true;
-            Success.Raise();
-        }
+        if(gameIsOver) return;
+        GameOverConditionCheck();
     }
 
+    private void GameOverConditionCheck()
+    {
+        if(shapeInScene.Exists(x => x.IsOverlap)) return;
+
+        List<PanelStateController> misses = emptyPanels.FindAll(IsBlockOn);
+        if(misses.Count > 0) return;
+
+        List<PanelStateController> corrects = targetPanels.FindAll(IsBlockOn);
+        if(corrects.Count != targetPanels.Count) return;
+
+        gameIsOver = true;
+        Success.Raise(this, true);
+    }
 }

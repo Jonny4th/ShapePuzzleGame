@@ -26,7 +26,7 @@ namespace ScriptableObjectEvent
                 //If the application is playing - raise/trigger the event
                 if (EditorApplication.isPlaying)
                 {
-                    script.Raise();
+                    script.Raise(new Component(), new object());
                 }
             }
         }

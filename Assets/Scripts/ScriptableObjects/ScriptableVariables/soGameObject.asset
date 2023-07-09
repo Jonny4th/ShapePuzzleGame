@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d359e321ff88841a8f2594ceb16913, type: 3}
-  m_Name: StageSuccess
+  m_Script: {fileID: 11500000, guid: f235638ff7da5f740a261cb4ec2a66b8, type: 3}
+  m_Name: soGameObject
   m_EditorClassIdentifier: 
-  eventDescription: Stage is solved.
+  startingValue: {fileID: 0}

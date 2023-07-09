@@ -15,7 +15,7 @@ namespace ScriptableObjectEvent
         [Tooltip("When is this event raised")]
         public string eventDescription = "[When does this event trigger]";
 
-        public void Raise()
+        public void Raise(Component sender, object data)
         {
 #if UNITY_EDITOR
             //Debug - show the event has been raised
@@ -24,7 +24,7 @@ namespace ScriptableObjectEvent
             //Loop through the listener list and raise the events passed
             for (int i = listeners.Count - 1; i >= 0; i--)
             {
-                listeners[i].OnEventRaised();
+                listeners[i].OnEventRaised(sender, data);
             }
         }
 

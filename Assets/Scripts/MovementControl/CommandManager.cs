@@ -6,15 +6,12 @@ namespace Command
 {
     public class CommandManager : MonoBehaviour
     {
-        public static CommandManager Instance { get; private set; }
-
         private List<ICommand> commandHistory = new();
 
         private int m_currentIndex;
 
         void Awake()
         {
-            Instance = this;
             m_currentIndex = -1;
         }
 
@@ -43,7 +40,7 @@ namespace Command
             commandHistory[m_currentIndex].Execute();
         }
 
-        public void AddCommand(ICommand command)
+        private void AddCommand(ICommand command)
         {
             command.Execute();
 
@@ -60,6 +57,12 @@ namespace Command
                 commandHistory.Add(command);
                 return;
             }
+        }
+
+        public void OnCommandReceived(Component sender, object data)
+        {
+            if(data is not ICommand command) return;
+            AddCommand(command);
         }
     }
 }
