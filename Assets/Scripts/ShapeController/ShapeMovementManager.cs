@@ -1,4 +1,5 @@
 using Command;
+using ScriptableObjectEvent;
 using System;
 using Touch;
 using UnityEngine;
@@ -39,6 +40,8 @@ namespace Shape.Movement
 
         public static event Action<MovementInfo> Moved;
 
+        public SOGameEvent Move;
+
         private void OnEnable()
         {
             ObjectSelect.MovementHandlerSelected += AssignSelectedShape;
@@ -66,6 +69,7 @@ namespace Shape.Movement
             var command = new MoveCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
             CommandManager.Instance.AddCommand(command);
             Moved?.Invoke(new MovementInfo(command));
+            Move.Raise();
         }
 
         private void ProcessRotate(Vector3 axis)

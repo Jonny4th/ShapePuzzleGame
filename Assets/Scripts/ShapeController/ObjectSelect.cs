@@ -54,25 +54,25 @@ public class ObjectSelect : MonoBehaviour
         m_CurrentSelectedShape = null;
     }
 
-    //public void ClickSelect()
-    //{
-    //    GameObject current = CurrentSelectedBlock;
-    //    if(current != null)
-    //    {
-    //        current.GetComponent<ISelectable>()?.OnDeselect();
-    //        ShapeDeselected?.Invoke();
-    //    }
-    //    Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-    //    if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable, QueryTriggerInteraction.Ignore))
-    //    {
-    //        if(hit.collider.gameObject.TryGetComponent<ISelectable>(out var seleted))
-    //        {
-    //            CurrentSelectedBlock = hit.collider.gameObject;
-    //            seleted.OnSelect();
-    //            BlockSelected?.Invoke(hit.collider.gameObject);
-    //        }
-    //    }
-    //}
+    public void ClickSelect()
+    {
+        GameObject current = CurrentSelectedBlock;
+        if(current != null)
+        {
+            current.GetComponent<ISelectable>()?.OnDeselect();
+            ShapeDeselected?.Invoke();
+        }
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, selectable, QueryTriggerInteraction.Ignore))
+        {
+            if(hit.collider.gameObject.TryGetComponent<ISelectable>(out var seleted))
+            {
+                CurrentSelectedBlock = hit.collider.gameObject;
+                seleted.OnSelect();
+                BlockSelected?.Invoke(hit.collider.gameObject);
+            }
+        }
+    }
 
     public void TabSelect(InputAction.CallbackContext context)
     {

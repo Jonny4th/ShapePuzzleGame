@@ -8,13 +8,11 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameOverManager.Success += OnGameOver;
         playerInput = GetComponent<PlayerInput>();
         OnPlay();
     }
     private void OnDisable()
     {
-        GameOverManager.Success -= OnGameOver;
         playerInput = GetComponent<PlayerInput>();
         OnPlay();
     }

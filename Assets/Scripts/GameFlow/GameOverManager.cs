@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Shape.Controller;
 using Shape.Movement;
+using ScriptableObjectEvent;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] List<ShapeOverlapController> overlapShape;
     [SerializeField] bool invalidPlacement;
 
-    public static event Action Success;
+    //public static event Action Success;
     public static bool gameIsOver;
+
+    public SOGameEvent Success;
 
     private void Start()
     {
@@ -46,7 +49,7 @@ public class GameOverManager : MonoBehaviour
         if(corrects.Count == targetPanels.Count & misses.Count == 0)
         {
             gameIsOver = true;
-            Success?.Invoke();
+            Success.Raise();
         }
     }
 
