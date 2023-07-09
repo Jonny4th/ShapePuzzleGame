@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Shape.Controller;
+using Shape.Movement;
 
 public class GameOverManager : MonoBehaviour
 {

@@ -1,29 +1,32 @@
 using System;
 using UnityEngine;
 
-public class ShapeOverlapController : MonoBehaviour
+namespace Shape.Controller
 {
-    [SerializeField] BlockCollisionDetection[] blocks;
-    [SerializeField] private bool isOverlap;
-    public bool IsOverlap
+    public class ShapeOverlapController : MonoBehaviour
     {
-        get { return isOverlap; }
-        private set { isOverlap = value; }
-    }
-    public event Action<bool> OverlapChanged;
-
-    private void Awake()
-    {
-        blocks = GetComponentsInChildren<BlockCollisionDetection>();
-    }
-
-    public void CheckOverlap()
-    {
-        bool cache = Array.Exists(blocks, x => x.IsOverlap);
-        if(cache != IsOverlap)
+        [SerializeField] BlockCollisionDetection[] blocks;
+        [SerializeField] private bool isOverlap;
+        public bool IsOverlap
         {
-            isOverlap = cache;
-            OverlapChanged?.Invoke(isOverlap);
+            get { return isOverlap; }
+            private set { isOverlap = value; }
+        }
+        public event Action<bool> OverlapChanged;
+
+        private void Awake()
+        {
+            blocks = GetComponentsInChildren<BlockCollisionDetection>();
+        }
+
+        public void CheckOverlap()
+        {
+            bool cache = Array.Exists(blocks, x => x.IsOverlap);
+            if(cache != IsOverlap)
+            {
+                isOverlap = cache;
+                OverlapChanged?.Invoke(isOverlap);
+            }
         }
     }
 }

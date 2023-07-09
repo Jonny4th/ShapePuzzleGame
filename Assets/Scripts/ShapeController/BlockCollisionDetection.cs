@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Shape.Movement;
+using Shape.Controller;
 
 public class BlockCollisionDetection : MonoBehaviour
 {

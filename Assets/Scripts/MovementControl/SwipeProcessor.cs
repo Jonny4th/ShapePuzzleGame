@@ -31,7 +31,6 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
     [SerializeField]
     private float minSrtMagnitude;
 
-
     private float ArcAngle
     {
         get
@@ -108,13 +107,15 @@ public class SwipeProcessor : MonoBehaviour, ITouchDetection, IPointsVisualizabl
 
         if(touch.phase == UnityEngine.InputSystem.TouchPhase.Began)
         {
-            isTouchRegistered = !EventSystem.current.IsPointerOverGameObject();
+            isTouchRegistered = !EventSystem.current.IsPointerOverGameObject(touch.touchId);
+            Debug.Log($"Begin : touch = {isTouchRegistered}");
         }
 
         if(!isTouchRegistered) return;
         
         if(touch.phase == UnityEngine.InputSystem.TouchPhase.Ended)
         {
+            Debug.Log($"End");
             OnTouchEnd();
         }
         
