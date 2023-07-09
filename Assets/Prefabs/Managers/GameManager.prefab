@@ -437,99 +437,27 @@ MonoBehaviour:
     m_ActionId: 87c746d7-05a9-4c02-a158-deee9d4294a4
     m_ActionName: Puzzle Controls/Redo[/Keyboard/insert]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
-        m_MethodName: OnMovePosY
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: c390bd00-75da-4547-8944-ac7b974677bc
     m_ActionName: Puzzle Controls/MoveUp[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
-        m_MethodName: OnMoveNegY
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: b725b851-52c5-4424-bf9d-e81558d2151e
     m_ActionName: Puzzle Controls/MoveNegY[/Keyboard/s]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
-        m_MethodName: OnMovePosX
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: b2dfd93f-8f9a-4885-9af6-6eeb4054ff33
     m_ActionName: Puzzle Controls/MovePosX[/Keyboard/upArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
-        m_MethodName: OnMoveNegX
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 88892be8-391e-471b-9162-be3241a453a5
     m_ActionName: Puzzle Controls/MoveNegX[/Keyboard/downArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
-        m_MethodName: OnMovePosZ
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 50fff00c-6131-4d57-b92b-905853ff44fa
     m_ActionName: Puzzle Controls/MovePosZ[/Keyboard/leftArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
-        m_MethodName: OnMoveNegZ
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 408f7cdd-5f9b-4c4f-9903-d00d64468d9c
     m_ActionName: Puzzle Controls/MoveNegZ[/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -668,7 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPanels: []
   emptyPanels: []
-  overlapShape: []
+  shapeInScene: []
   invalidPlacement: 0
   Success: {fileID: 11400000, guid: fec07613e866e1c41bf3babb730fcf38, type: 2}
 --- !u!114 &7942664544872702496
