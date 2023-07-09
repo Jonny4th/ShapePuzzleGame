@@ -21,7 +21,7 @@ namespace ScriptableObjectEvent
             Debug.Log(this.name + " event raised");
 #endif
             //Loop through the listener list and raise the events passed
-            for (int i = listeners.Count - 1; i >= 0; i--)
+            for(int i = listeners.Count - 1; i >= 0; i--)
             {
                 listeners[i].OnEventRaised();
             }

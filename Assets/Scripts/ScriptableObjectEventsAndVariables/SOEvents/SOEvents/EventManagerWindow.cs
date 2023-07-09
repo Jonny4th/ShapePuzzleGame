@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -59,7 +58,7 @@ namespace ScriptableObjectEvent
         }
 
         private void OnGUI()
-        {          
+        {
             toolbarInt = GUILayout.Toolbar(toolbarInt, toolbarStrings);
 
             //Switch based on the current selected toolbar button
@@ -107,7 +106,7 @@ namespace ScriptableObjectEvent
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
             //Print out a list of all the Events and each GameObject thats part of the event
-            foreach (SOGameEvent key in gameEventDictionary.Keys)
+            foreach(SOGameEvent key in gameEventDictionary.Keys)
             {
                 //***********************Event Name***********************
                 EditorGUILayout.BeginHorizontal(EditorStyles.helpBox); //All the Event names
@@ -122,7 +121,7 @@ namespace ScriptableObjectEvent
 
                 //***********************Event GameObjects***********************
                 EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true)); //All objects that use the Event
-                foreach (GameObject value in gameEventDictionary[key])
+                foreach(GameObject value in gameEventDictionary[key])
                 {
                     GUILayout.Label(value.name, midLeftAlign, GUILayout.Width(windowWidth)); //Gameobject names
                     EditorGUILayout.ObjectField(value, typeof(object), true, GUILayout.Width(windowWidth - 10));
@@ -132,9 +131,9 @@ namespace ScriptableObjectEvent
 
                 //***********************Event Raise***********************
                 EditorGUILayout.BeginVertical(); //Button to trigger all the events 
-                if (EditorApplication.isPlaying) //If the application is playing - draw the raise buttons
+                if(EditorApplication.isPlaying) //If the application is playing - draw the raise buttons
                 {
-                    if (GUILayout.Button("Raise Event"))
+                    if(GUILayout.Button("Raise Event"))
                     {
                         key.Raise(); //Raise the events
                     }
@@ -158,7 +157,7 @@ namespace ScriptableObjectEvent
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginVertical(GUILayout.ExpandWidth(true)); //All objects that use the Event
-            foreach (GameObject value in unassignedEventListeners)
+            foreach(GameObject value in unassignedEventListeners)
             {
                 GUILayout.Label(value.name); //Gameobject names
                 EditorGUILayout.ObjectField(value, typeof(object), true);
@@ -197,12 +196,12 @@ namespace ScriptableObjectEvent
             //Get all the eventObjects in the scene
             eventObjects = FindObjectsOfType<GameEventListener>();
 
-            foreach (GameEventListener listener in eventObjects)
+            foreach(GameEventListener listener in eventObjects)
             {
-                if (listener.Event != null) //Check to make sure there is an event (there won't be when the component is first added)
+                if(listener.Event != null) //Check to make sure there is an event (there won't be when the component is first added)
                 {
                     //Check to see if the key does not already exist in the dictionary
-                    if (!gameEventDictionary.ContainsKey(listener.Event))
+                    if(!gameEventDictionary.ContainsKey(listener.Event))
                     {
                         List<GameObject> eventObjectList = new List<GameObject>();
 

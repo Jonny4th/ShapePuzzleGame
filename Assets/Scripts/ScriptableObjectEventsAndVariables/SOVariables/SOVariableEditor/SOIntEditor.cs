@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -33,7 +31,7 @@ namespace ScriptableObjectVariable
             //Display a int input field and button to add the inputted value to the current value
             intModifyValue = EditorGUILayout.IntField("Modify current value by: ", intModifyValue);
 
-            if (GUILayout.Button("Modify"))
+            if(GUILayout.Button("Modify"))
             {
 
                 script.AddValue(intModifyValue);
@@ -42,9 +40,9 @@ namespace ScriptableObjectVariable
             EditorGUILayout.EndHorizontal();
 
             //Display button that resets the value to the starting value
-            if (GUILayout.Button("Reset Value"))
+            if(GUILayout.Button("Reset Value"))
             {
-                if (EditorApplication.isPlaying)
+                if(EditorApplication.isPlaying)
                 {
                     script.ResetValue();
                 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -34,7 +32,7 @@ namespace ScriptableObjectEvent
 
             EditorGUILayout.PropertyField(gameEvent);
 
-            if (targetScript.Event != null) //If the gameEvent value is not empty - get the gameEvent description
+            if(targetScript.Event != null) //If the gameEvent value is not empty - get the gameEvent description
             {
                 GUIStyle boldStyle = new GUIStyle();
                 boldStyle.richText = true;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -24,7 +22,7 @@ namespace ScriptableObjectVariable
 
             EditorGUILayout.LabelField("Debugging Options", EditorStyles.centeredGreyMiniLabel);
 
-            if (script.value != null)
+            if(script.value != null)
             {
                 EditorGUILayout.LabelField("Current value: " + script.value.name, EditorStyles.boldLabel);
             }
@@ -33,9 +31,9 @@ namespace ScriptableObjectVariable
                 EditorGUILayout.LabelField("Current value: ", EditorStyles.boldLabel);
             }
             //Display button that resets the value to the starting value
-            if (GUILayout.Button("Reset Value"))
+            if(GUILayout.Button("Reset Value"))
             {
-                if (EditorApplication.isPlaying)
+                if(EditorApplication.isPlaying)
                 {
                     script.ResetValue();
                 }

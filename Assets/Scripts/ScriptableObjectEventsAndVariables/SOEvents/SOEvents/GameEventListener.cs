@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace ScriptableObjectEvent
@@ -17,7 +15,7 @@ namespace ScriptableObjectEvent
         private void OnEnable()
         {
             //If the event is not null, register this component/gameObject
-            if (Event != null)
+            if(Event != null)
             {
                 Event.RegisterListener(this);
             }
@@ -26,7 +24,7 @@ namespace ScriptableObjectEvent
         private void OnDisable()
         {
             //If the event is not null, unregister this component/gameObject
-            if (Event != null)
+            if(Event != null)
             {
                 Event.UnregisterListener(this);
             }
