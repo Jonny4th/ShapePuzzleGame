@@ -159,5 +159,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invalidMaterial: {fileID: 2100000, guid: ed088d52f3e9c474bb4960576f4bf0cc, type: 2}
-  selectMaterial: {fileID: 2100000, guid: 0e31e7706b185d64bab3a4d926c2dded, type: 2}
+  selectMaterial: {fileID: 0}
   state: 0

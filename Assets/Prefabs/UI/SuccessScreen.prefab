@@ -382,9 +382,37 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 167408657623924989, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 167408657623924989, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 167408657623924989, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2092722400311837197}
+    - target: {fileID: 167408657623924989, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 167408657623924989, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 167408657623924989, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneChange, Script.GameFlow
+      objectReference: {fileID: 0}
+    - target: {fileID: 167408657623924989, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 167408657623924991, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: NextScene
       objectReference: {fileID: 0}
     - target: {fileID: 167408658100868489, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
       propertyPath: m_text
@@ -409,7 +437,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 167408657623924991, guid: a11235c1df5223f48afbff2cfe89366c, type: 3}
   m_PrefabInstance: {fileID: 2275720646394342486}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2275720645005281257
+--- !u!114 &2092722400311837197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

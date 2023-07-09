@@ -1,21 +1,30 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShapeSelectionController : MonoBehaviour, ISelectable
 {
-    public bool IsSelected { get; private set; }
-    public event Action<bool> ShapeSelected;
+    [SerializeField]
+    private bool isSelected;
+    public bool IsSelected => isSelected;
+    public UnityEvent<bool> OnShapeSelected;
 
     #region ISelectable
     public void OnSelect()
     {
-        IsSelected = true;
-        ShapeSelected?.Invoke(true);
+        isSelected = true;
+        OnSelected();
     }
     public void OnDeselect()
     {
-        IsSelected = false;
-        ShapeSelected?.Invoke(false);
+        isSelected = false;
+        OnSelected();
+    }
+
+    public void OnSelected()
+    {
+        OnShapeSelected?.Invoke(isSelected);
     }
     #endregion
 }
+

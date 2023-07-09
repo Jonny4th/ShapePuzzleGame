@@ -1,26 +1,30 @@
 using UnityEngine;
+using Shape.Movement;
 
-public class ShapeSoundController : MonoBehaviour
+namespace Shape.Controller
 {
-    [SerializeField] AudioSource audioSource;
-
-    private void OnEnable()
+    public class ShapeSoundController : MonoBehaviour
     {
-        ShapeMovementManager.Moved += OnMove;
-    }
+        [SerializeField] AudioSource audioSource;
 
-    private void OnDisable()
-    {
-        ShapeMovementManager.Moved -= OnMove;
-    }
+        private void OnEnable()
+        {
+            ShapeMovementManager.Moved += OnMove;
+        }
 
-    private void OnMove(MovementInfo obj)
-    {
-        audioSource.Play();
-    }
+        private void OnDisable()
+        {
+            ShapeMovementManager.Moved -= OnMove;
+        }
 
-    public void SetVolume(float volume)
-    {
-        audioSource.volume = volume;
+        private void OnMove(MovementInfo obj)
+        {
+            audioSource.Play();
+        }
+
+        public void SetVolume(float volume)
+        {
+            audioSource.volume = volume;
+        }
     }
 }

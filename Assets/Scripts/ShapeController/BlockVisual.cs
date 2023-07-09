@@ -1,4 +1,5 @@
 using UnityEngine;
+using Shape.Controller;
 
 public class BlockVisual : MonoBehaviour
 {
@@ -31,13 +32,13 @@ public class BlockVisual : MonoBehaviour
     private void OnEnable()
     {
         overlapController.OverlapChanged += UpdateState;
-        selectionController.ShapeSelected += UpdateState;
+        selectionController.OnShapeSelected.AddListener(UpdateState);
     }
 
     private void OnDisable()
     {
         overlapController.OverlapChanged -= UpdateState;
-        selectionController.ShapeSelected -= UpdateState;
+        selectionController.OnShapeSelected.RemoveListener(UpdateState);
     }
 
     private void UpdateVisual()
@@ -49,13 +50,11 @@ public class BlockVisual : MonoBehaviour
             case State.Default: mesh.material = defaultMaterial; break;
             case State.Selected:
                 {
-                    if(selectMaterial == null) break;
-                    mesh.material = selectMaterial; break;
+                    mesh.material = selectMaterial != null? selectMaterial : defaultMaterial; break;
                 }
             case State.Invalid:
                 {
-                    if(invalidMaterial == null) break;
-                    mesh.material = invalidMaterial; break;
+                    mesh.material = invalidMaterial !=null? invalidMaterial : defaultMaterial; break;
                 }
         }
     }
