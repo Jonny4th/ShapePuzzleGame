@@ -3004,6 +3004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SuccessScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 2275720645418533697, guid: 124e0661b7421a24abf32389351eb4b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2275720645418533702, guid: 124e0661b7421a24abf32389351eb4b5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

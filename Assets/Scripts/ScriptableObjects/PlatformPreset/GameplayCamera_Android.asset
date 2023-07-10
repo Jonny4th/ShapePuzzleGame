@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d06959e24def4644ba24e1e3016ac07a, type: 3}
-  m_Name: GameplayCamera_Mobiles
+  m_Name: GameplayCamera_Android
   m_EditorClassIdentifier: 
-  Preset: {fileID: 2655988077585873504, guid: 18477cd674d9dcb49b7b61ce960a748c, type: 2}
+  GameObject: {fileID: 3168250078385219564, guid: 5f2a997eaa5e6624191f830e67e78dc8, type: 3}
   Platform: 11

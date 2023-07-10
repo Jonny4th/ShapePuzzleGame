@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d06959e24def4644ba24e1e3016ac07a, type: 3}
-  m_Name: GameplayCamera_Desktop
+  m_Name: GameplayCamera_WebGL
   m_EditorClassIdentifier: 
-  Preset: {fileID: 2655988077585873504, guid: 17d3608c46a2565448f5779b9119cda1, type: 2}
+  GameObject: {fileID: 3168250078385219564, guid: 6b228af7f7a045c47bc801426c368959, type: 3}
   Platform: 17
