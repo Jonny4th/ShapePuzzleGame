@@ -4,6 +4,8 @@ using UnityEngine;
 public class UIPlatformEnable : MonoBehaviour
 {
     private RectTransform ui;
+    [SerializeField]
+    RuntimePlatform enablePlatform;
 
     void Awake()
     {
@@ -13,6 +15,6 @@ public class UIPlatformEnable : MonoBehaviour
 
     public void EnableOnAndroidOnly()
     {
-        ui.gameObject.SetActive(Application.platform == RuntimePlatform.Android);
+        ui.gameObject.SetActive(Application.platform == enablePlatform);
     }
 }

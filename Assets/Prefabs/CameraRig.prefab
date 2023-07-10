@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 8208334729198377591}
   - component: {fileID: 8208334729198377584}
   - component: {fileID: 8208334729198377585}
+  - component: {fileID: 8600827548846657930}
+  - component: {fileID: 298748202701566436}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -58,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8208334729198377586}
   m_LocalRotation: {x: 0.30290222, y: 0, z: 0, w: 0.95302165}
-  m_LocalPosition: {x: -0, y: 3.6, z: -8.44}
+  m_LocalPosition: {x: -0, y: 5.52, z: -8.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92,7 +94,7 @@ Camera:
   far clip plane: 17
   field of view: 60
   orthographic: 1
-  orthographic size: 13.6
+  orthographic size: 6.94
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -116,3 +118,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8208334729198377586}
   m_Enabled: 1
+--- !u!114 &8600827548846657930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208334729198377586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9b626c816766b4e830b92e811d53cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  component: {fileID: 8208334729198377584}
+  defaultPreset: {fileID: 2655988077585873504, guid: 17d3608c46a2565448f5779b9119cda1, type: 2}
+  PlatformPresets:
+  - {fileID: 11400000, guid: 992bc0c73c51c0d49a446e5b04be5b7f, type: 2}
+  - {fileID: 11400000, guid: c8f2c81934869cc4898841c5b6713095, type: 2}
+--- !u!114 &298748202701566436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8208334729198377586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9b626c816766b4e830b92e811d53cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  component: {fileID: 8208334729198377591}
+  defaultPreset: {fileID: 2655988077585873504, guid: c5c9a126bdec7cd47811c7411aff4d41, type: 2}
+  PlatformPresets:
+  - {fileID: 11400000, guid: aa8b828bb3396784e861eb6b58f22e8f, type: 2}
+  - {fileID: 11400000, guid: 27412ce1bfb57b4459158c13a0e0a094, type: 2}
