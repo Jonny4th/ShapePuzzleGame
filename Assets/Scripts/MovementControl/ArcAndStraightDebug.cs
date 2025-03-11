@@ -16,6 +16,12 @@ namespace Assets.Scripts
             drag.ArcDetected += OnArc;
         }
 
+        void OnDisable()
+        {
+            drag.StraightDetected -= OnStraight;
+            drag.ArcDetected -= OnArc;
+        }
+
         private void OnArc(float direction)
         {
             Debug.Log(direction);

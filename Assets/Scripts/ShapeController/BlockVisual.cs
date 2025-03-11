@@ -15,7 +15,6 @@ public class BlockVisual : MonoBehaviour
     {
         Default,
         Selected,
-        NonSelected,
         Invalid
     }
 

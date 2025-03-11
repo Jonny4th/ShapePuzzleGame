@@ -9,6 +9,9 @@ namespace Shape.Movement
     {
         public event Action<bool> IsRotating;
 
+        public bool isRotating => m_isRotating;
+        private bool m_isRotating;
+
         public Vector3 GetMoveDestination(Vector3 direction)
         {
             return transform.position + direction;
@@ -32,6 +35,7 @@ namespace Shape.Movement
 
         IEnumerator Rotate(Quaternion target)
         {
+            m_isRotating = true;
             IsRotating?.Invoke(true);
             
             while(Quaternion.Angle(transform.rotation, target) > 0.05f)
@@ -41,6 +45,8 @@ namespace Shape.Movement
             }
 
             transform.rotation = target;
+
+            m_isRotating = false;
             IsRotating?.Invoke(false);
         }
     }

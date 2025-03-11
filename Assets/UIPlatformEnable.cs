@@ -3,18 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class UIPlatformEnable : MonoBehaviour
 {
-    private RectTransform ui;
     [SerializeField]
     RuntimePlatform enablePlatform;
 
     void Awake()
     {
-        ui = GetComponent<RectTransform>();
-        EnableOnAndroidOnly();
+        CheckEnable();
     }
 
-    public void EnableOnAndroidOnly()
+    public void CheckEnable()
     {
-        ui.gameObject.SetActive(Application.platform == enablePlatform);
+        gameObject.SetActive(Application.platform == enablePlatform);
     }
 }

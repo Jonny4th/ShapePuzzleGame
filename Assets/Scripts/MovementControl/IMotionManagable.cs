@@ -5,6 +5,8 @@ namespace Shape.Movement
 {
     public interface IMotionManagable
     {
+        bool isRotating { get; }
+
         Vector3 GetMoveDestination(Vector3 direction);
         Quaternion GetRotateDestination(Vector3 axis);
         event Action<bool> IsRotating;

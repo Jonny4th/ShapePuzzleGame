@@ -8,5 +8,4 @@ namespace Touch
         event Action<float> ArcDetected;
         event Action<Vector2> StraightDetected;
     }
-
 }

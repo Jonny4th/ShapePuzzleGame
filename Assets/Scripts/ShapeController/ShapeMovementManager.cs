@@ -1,4 +1,3 @@
-using Command;
 using ScriptableObjectEvent;
 using System;
 using Touch;
@@ -34,7 +33,7 @@ namespace Shape.Movement
         private IMotionManagable CurrentMovementHandler;
 
         [SerializeField]
-        UnityEngine.Object _swipeProcessor;
+        MonoBehaviour _swipeProcessor;
 
         ITouchDetection swipeProcessor => _swipeProcessor as ITouchDetection;
 
@@ -42,16 +41,12 @@ namespace Shape.Movement
 
         private void OnEnable()
         {
-            ObjectSelect.MovementHandlerSelected += AssignSelectedShape;
-            ObjectSelect.ShapeDeselected += ClearSelectedShape;
             swipeProcessor.ArcDetected += OnArcDetected;
             swipeProcessor.StraightDetected += OnStraightDetect;
         }
 
         private void OnDisable()
         {
-            ObjectSelect.MovementHandlerSelected -= AssignSelectedShape;
-            ObjectSelect.ShapeDeselected -= ClearSelectedShape;
             swipeProcessor.ArcDetected -= OnArcDetected;
             swipeProcessor.StraightDetected -= OnStraightDetect;
         }
@@ -59,8 +54,9 @@ namespace Shape.Movement
         private void ProcessMove(Vector3 direction)
         {
             if(CurrentMovementHandler == null) return;
+            if(direction == Vector3.zero) return;
 
-            var destination = AlignToGrid(CurrentMovementHandler.GetMoveDestination(direction));
+            var destination = AlignToGrid(CurrentMovementHandler.GetMoveDestination(direction), gridSize, gridStartAtZero);
 
             if(IsAtLimit(destination)) return;
 
@@ -71,7 +67,7 @@ namespace Shape.Movement
         private void ProcessRotate(Vector3 axis)
         {
             if(CurrentMovementHandler == null) return;
-            if(isBusy) return;
+            if(CurrentMovementHandler.isRotating) return;
             if(axis == Vector3.zero) return;
 
             var destination = CurrentMovementHandler.GetRotateDestination(axis);
@@ -80,11 +76,11 @@ namespace Shape.Movement
             Move.Raise(this, command);
         }
 
+        #region General Move/Rotate Input Action
         public void OnMoveAxis(InputAction.CallbackContext context)
         {
             if(!context.performed) return;
             var direction = context.ReadValue<Vector3>();
-            if(direction == Vector3.zero) return;
 
             ProcessMove(direction);
         }
@@ -93,15 +89,22 @@ namespace Shape.Movement
         {
             if(!context.performed) return;
             var rotation = context.ReadValue<Vector3>();
-            OnRotateAxis(rotation);
+
+            ProcessRotate(rotation);
+        }
+        #endregion
+
+        #region General Move/Rotate Direct Input
+        public void OnMoveAxis(Vector3 direction)
+        {
+            ProcessMove(direction);
         }
 
         public void OnRotateAxis(Vector3 rotation)
         {
-            if(rotation == Vector3.zero) return;
-
             ProcessRotate(rotation);
         }
+        #endregion
 
         #region Separate Move Input Actions 
         public void OnMovePosX(InputAction.CallbackContext context)
@@ -297,8 +300,8 @@ namespace Shape.Movement
 
         private Vector3 HandleRotateTouch2Axis(Vector2 vector)
         {
-            var axis = Vector3.zero;
-            var angle = Vector2.Angle(Vector2.right, vector);
+            var axis = Vector3.zero; // axis of rotation to be return.
+            var angle = Vector2.Angle(Vector2.right, vector); // angle of input vector.
 
             float angleMargin = 20f;
 
@@ -317,35 +320,28 @@ namespace Shape.Movement
 
         #region Auxilary Fucntions
 
-        private void AssignSelectedShape(IMotionManagable movementHandler)
+        public void AssignSelectedShape(IMotionManagable movementHandler)
         {
             CurrentMovementHandler = movementHandler;
-            CurrentMovementHandler.IsRotating += SetBusy;
         }
 
-        private void ClearSelectedShape()
+        public void ClearSelectedShape()
         {
-            CurrentMovementHandler.IsRotating -= SetBusy;
             CurrentMovementHandler = null;
         }
 
-        private void SetBusy(bool value)
+        public static Vector3 AlignToGrid(Vector3 pos, float gridSize, bool gridStartAtZero = true)
         {
-            isBusy = value;
-        }
-
-        Vector3 AlignToGrid(Vector3 pos)
-        {
-            var x = AlignToGrid(pos.x);
-            var y = AlignToGrid(pos.y);
-            var z = AlignToGrid(pos.z);
+            var x = AlignToGrid(pos.x, gridSize, gridStartAtZero);
+            var y = AlignToGrid(pos.y, gridSize, gridStartAtZero);
+            var z = AlignToGrid(pos.z, gridSize, gridStartAtZero);
             pos = new Vector3(x, y, z);
             return pos;
         }
 
-        float AlignToGrid(float value)
+        public static float AlignToGrid(float value, float gridSize, bool gridStartAtZero)
         {
-            float offset = gridStartAtZero? 0.5f : 0f;
+            float offset = gridStartAtZero ? 0.5f : 0f;
             var grid = Mathf.RoundToInt(value / gridSize - offset) * gridSize + offset;
             return grid;
         }

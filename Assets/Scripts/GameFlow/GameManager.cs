@@ -1,33 +1,56 @@
+using Shape.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    PlayerInput playerInput;
+    [SerializeField]
+    PlayerInput m_PlayerInput;
+
+    [SerializeField]
+    ObjectSelect m_ObjectSelect;
+
+    [SerializeField]
+    ShapeMovementManager m_ShapeMovementManager;
 
     private void OnEnable()
     {
-        playerInput = GetComponent<PlayerInput>();
+        m_ObjectSelect.MovementHandlerSelected.AddListener(HandelShapeSelected);
+        m_ObjectSelect.ShapeDeselected.AddListener(HandleShapeDeselected);
+
         OnPlay();
     }
+
     private void OnDisable()
     {
-        playerInput = GetComponent<PlayerInput>();
+        m_ObjectSelect.MovementHandlerSelected.RemoveListener(HandelShapeSelected);
+        m_ObjectSelect.ShapeDeselected.RemoveListener(HandleShapeDeselected);
+
         OnPlay();
+    }
+
+    private void HandleShapeDeselected()
+    {
+        m_ShapeMovementManager.ClearSelectedShape();
+    }
+
+    private void HandelShapeSelected(IMotionManagable shape)
+    {
+        m_ShapeMovementManager.AssignSelectedShape(shape);
     }
 
     public void OnGameOver()
     {
-        playerInput.SwitchCurrentActionMap("GameOverMenu");
+        m_PlayerInput.SwitchCurrentActionMap("GameOverMenu");
     }
     public void OnPlay()
     {
-        playerInput.SwitchCurrentActionMap("Puzzle Controls");
+        m_PlayerInput.SwitchCurrentActionMap("Puzzle Controls");
     }
     public void OnPause()
     {
-        playerInput.SwitchCurrentActionMap("Menu");
+        m_PlayerInput.SwitchCurrentActionMap("Menu");
     }
 
     public void OnResetScene()

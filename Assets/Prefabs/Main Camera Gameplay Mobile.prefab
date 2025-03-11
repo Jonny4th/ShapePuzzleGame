@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera Gameplay Mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 2052895109016351594, guid: c57833ba9a297394481c1a3b176d300b, type: 3}
+      propertyPath: orthographic size
+      value: 13.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2052895109016351597, guid: c57833ba9a297394481c1a3b176d300b, type: 3}
       propertyPath: m_RootOrder
       value: 0

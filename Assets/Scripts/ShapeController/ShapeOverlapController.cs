@@ -6,12 +6,14 @@ namespace Shape.Controller
     public class ShapeOverlapController : MonoBehaviour
     {
         [SerializeField] BlockCollisionDetection[] blocks;
+
         [SerializeField] private bool isOverlap;
         public bool IsOverlap
         {
             get { return isOverlap; }
             private set { isOverlap = value; }
         }
+
         public event Action<bool> OverlapChanged;
 
         private void Awake()

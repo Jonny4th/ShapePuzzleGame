@@ -2,6 +2,7 @@ using Shape.Movement;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class ObjectSelect : MonoBehaviour
@@ -17,21 +18,21 @@ public class ObjectSelect : MonoBehaviour
 
     public int SelectedIndex { get; private set; }
 
-    public static event Action<ShapeSelectionController> ShapeSelected;
-    public static event Action<IMotionManagable> MovementHandlerSelected;
-    public static event Action<GameObject> BlockSelected;
-    public static event Action ShapeDeselected;
+    public UnityEvent<ShapeSelectionController> ShapeSelected;
+    public UnityEvent<IMotionManagable> MovementHandlerSelected;
+    public UnityEvent<GameObject> BlockSelected;
+    public UnityEvent ShapeDeselected;
 
     private void OnEnable()
     {
-        BlockSelected += OnShapeSelect;
-        ShapeDeselected += Clear;
+        BlockSelected.AddListener(OnShapeSelect);
+        ShapeDeselected.AddListener(Clear);
     }
 
     private void OnDisable()
     {
-        BlockSelected -= OnShapeSelect;
-        ShapeDeselected -= Clear;
+        BlockSelected.RemoveListener(OnShapeSelect);
+        ShapeDeselected.RemoveListener(Clear);
     }
 
     private void Start()
