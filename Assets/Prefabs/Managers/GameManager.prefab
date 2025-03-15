@@ -688,7 +688,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnRotationToggleChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1090965847031259786}
+        m_TargetAssemblyTypeName: ControllerPanelManager, Shape.UI
+        m_MethodName: OnRotationToggleChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7951995036705657960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,3 +1148,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 651619515487716309, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
   m_PrefabInstance: {fileID: 1840230358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1090965847031259786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1090965846316944732, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+  m_PrefabInstance: {fileID: 1840230358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4a2bbb6a8841647949daa3ee47b293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

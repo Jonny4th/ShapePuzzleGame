@@ -31,11 +31,13 @@ namespace Shape.Inputs
         {
             toggleRotationOn = true;
             OnRotationToggleChanged.Invoke(true);
+            Debug.Log("Toggle phase: " + toggleRotationOn);
         }
         public void ToggleRotationOff()
         {
             toggleRotationOn = false;
             OnRotationToggleChanged.Invoke(false);
+            Debug.Log("Toggle phase: " + toggleRotationOn);
         }
         #endregion
 
