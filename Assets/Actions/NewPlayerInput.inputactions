@@ -18,7 +18,7 @@
                     "name": "MovePosX",
                     "type": "Button",
                     "id": "b2dfd93f-8f9a-4885-9af6-6eeb4054ff33",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -27,7 +27,7 @@
                     "name": "MoveNegX",
                     "type": "Button",
                     "id": "88892be8-391e-471b-9162-be3241a453a5",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -54,7 +54,7 @@
                     "name": "MovePosZ",
                     "type": "Button",
                     "id": "50fff00c-6131-4d57-b92b-905853ff44fa",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -79,7 +79,7 @@
                 },
                 {
                     "name": "RotatePosX",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "2badbf95-c9ce-4763-8b3c-9bb4c8f4346d",
                     "expectedControlType": "",
                     "processors": "",
@@ -88,45 +88,45 @@
                 },
                 {
                     "name": "RotateNegX",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "2da2360b-fd7a-47b3-ab63-17874b55e9ad",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
                     "name": "RotatePosY",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "35430311-78cf-4391-95ae-eba2ca104a66",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
                     "name": "RotateNegY",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "df26985b-f342-4d61-96d0-90ef518aa8a4",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
                     "name": "RotatePosZ",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "573aea1b-e666-4dc6-9597-9bccc4d2819f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
                     "name": "RotateNegZ",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "4d37f6e6-0252-4ce1-80e4-d635cc5250de",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -135,7 +135,7 @@
                     "name": "RotateView",
                     "type": "Button",
                     "id": "b18d41a0-0b5b-4534-b8c1-c10022e2bbaf",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -153,7 +153,7 @@
                     "name": "ToggleSelection",
                     "type": "Button",
                     "id": "f60efdef-6a78-4717-adc0-2f03f3e3f38c",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -235,6 +235,15 @@
                     "type": "Button",
                     "id": "3acf7b77-a74a-441e-89f3-c5fe5305b360",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleRotate",
+                    "type": "Button",
+                    "id": "4249418d-99bb-4430-bb00-4482234ef5c3",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -474,23 +483,23 @@
                 },
                 {
                     "name": "",
-                    "id": "8f3e0906-47e9-4c79-b88a-dfb87a61a219",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard;Touch",
-                    "action": "MovePosX",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1fa1f640-782b-48a8-bf3d-c0c0d093993b",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard;Touch",
                     "action": "MoveNegX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fb6ea50-c462-4d8e-b1d1-bc0380149f4a",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovePosX",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -636,6 +645,215 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "4f478536-a0f4-497d-9c08-69fa72e3ff0b",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosX",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "a842a8c8-7f46-427a-bd2b-8c0303070118",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "713b069c-c749-488e-8feb-7a6c395b6373",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "a1694664-91e4-46fd-8329-94ee291535ed",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegX",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "caa72ddb-e8a8-4f82-b588-200383574345",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "da1c48c2-fd1c-428e-a829-bd77d558ef98",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "97d1b35f-dbce-44dd-98b9-cebe9dc4ba61",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosY",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "ec7310fa-1557-4d1e-9a56-ba41d617fccd",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "ffd7fadb-1880-472f-b9de-a4b523ec51bb",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "aee3c622-ad1a-4161-b1cd-5844b54ed58e",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegY",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "bb27d0cd-12aa-4e9a-83fc-0098a8863610",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "44671019-ac90-43f7-b018-24c792d9e276",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "32dba2e3-2f36-4203-a250-3200fe982da1",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosZ",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "72925f22-7d5f-43e7-b12e-96f383a50f13",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosZ",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "abf65d7c-c738-40d2-8621-dd0c400f6ca9",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotatePosZ",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "2ae57167-079e-44ea-bf53-dffa850ccbc4",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegZ",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "1f787b88-301b-4254-afa5-bff007e53f79",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegZ",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "cbcaac28-6772-4a41-b9e9-28a4d2c39872",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateNegZ",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b7c40ccc-c9ab-4979-8117-01f71b3184c8",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoard;GamePad;Touch",
+                    "action": "ToggleRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

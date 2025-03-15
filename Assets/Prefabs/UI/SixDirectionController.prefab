@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7789609836549411499}
   - component: {fileID: 9134817154114828048}
   m_Layer: 5
-  m_Name: MovementControllerUI
+  m_Name: SixDirectionController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

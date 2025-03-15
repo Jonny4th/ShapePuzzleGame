@@ -1,3 +1,4 @@
+using Shape.Inputs;
 using Shape.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     ShapeMovementManager m_ShapeMovementManager;
+
+    [SerializeField]
+    ShapeInputHandler m_ShapeMovementInputHandler;
+
+    void Awake()
+    {
+        m_ShapeMovementInputHandler.SetShapeMovementController(m_ShapeMovementManager);
+    }
 
     private void OnEnable()
     {
@@ -35,7 +44,7 @@ public class GameManager : MonoBehaviour
         m_ShapeMovementManager.ClearSelectedShape();
     }
 
-    private void HandelShapeSelected(IMotionManagable shape)
+    private void HandelShapeSelected(IMotionInfo shape)
     {
         m_ShapeMovementManager.AssignSelectedShape(shape);
     }

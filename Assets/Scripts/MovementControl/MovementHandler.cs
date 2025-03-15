@@ -5,7 +5,7 @@ using System;
 
 namespace Shape.Movement
 {
-    public class MovementHandler : MonoBehaviour, IMotionManagable, IMotionCommandHandler
+    public class MovementHandler : MonoBehaviour, IMotionInfo, IMotionCommandHandler
     {
         public event Action<bool> IsRotating;
 

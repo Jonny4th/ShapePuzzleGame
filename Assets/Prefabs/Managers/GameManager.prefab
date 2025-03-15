@@ -206,18 +206,6 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7942664544872702497}
-        m_TargetAssemblyTypeName: GameOverManager, Script.GameFlow
-        m_MethodName: OnShapeMoved
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2455000850312452850}
         m_TargetAssemblyTypeName: Command.CommandManager, Script.MovementControl
         m_MethodName: OnCommandReceived
@@ -259,6 +247,7 @@ GameObject:
   - component: {fileID: 7942664544872702496}
   - component: {fileID: 2455000850312452850}
   - component: {fileID: 4291574774209815044}
+  - component: {fileID: 7327375238475635347}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -299,6 +288,7 @@ MonoBehaviour:
   m_PlayerInput: {fileID: 7942664544872702499}
   m_ObjectSelect: {fileID: 7942664544872702525}
   m_ShapeMovementManager: {fileID: 6973162859472105052}
+  m_ShapeMovementInputHandler: {fileID: 7327375238475635347}
 --- !u!114 &7942664544872702499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,8 +316,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
+      - m_Target: {fileID: 7327375238475635347}
+        m_TargetAssemblyTypeName: Shape.Inputs.ShapeInputHandler, Shape.Inputs
         m_MethodName: OnMoveAxis
         m_Mode: 0
         m_Arguments:
@@ -398,8 +388,8 @@ MonoBehaviour:
     m_ActionName: Puzzle Controls/Deselect[/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6973162859472105052}
-        m_TargetAssemblyTypeName: Shape.Movement.ShapeMovementManager, Script.ShapeController
+      - m_Target: {fileID: 7327375238475635347}
+        m_TargetAssemblyTypeName: Shape.Inputs.ShapeInputHandler, Shape.Inputs
         m_MethodName: OnRotateAxis
         m_Mode: 0
         m_Arguments:
@@ -576,6 +566,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9fc86255-11ce-48ff-92a7-417bb5f5cd09
     m_ActionName: Puzzle Controls/PointerPress[/Mouse/press,/Pen/press]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7327375238475635347}
+        m_TargetAssemblyTypeName: Shape.Inputs.ShapeInputHandler, Shape.Inputs
+        m_MethodName: ToggleRotateControl
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4249418d-99bb-4430-bb00-4482234ef5c3
+    m_ActionName: Puzzle Controls/ToggleRotate[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Puzzle Controls
@@ -668,6 +674,21 @@ MonoBehaviour:
   toSceneName: 
   useSceneName: 0
   goToNextScene: 1
+--- !u!114 &7327375238475635347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942664544872702520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc09159c07d52e44a29dfe0cc519c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnRotationToggleChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7951995036705657960
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +793,10 @@ PrefabInstance:
     - target: {fileID: 2112643708, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 498221275274095736, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Name
+      value: SixDirectionController
       objectReference: {fileID: 0}
     - target: {fileID: 498221275274095736, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_IsActive
@@ -893,6 +918,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 1357751175140705866, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7327375238475635347}
+    - target: {fileID: 1357751175140705866, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7327375238475635347}
     - target: {fileID: 2016076779643433368, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -26.085938
@@ -914,12 +947,68 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913694512113938506, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -157
+      value: -70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516320348987236004, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Name
+      value: ToggleRotation
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -966,8 +1055,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7584071043878540263, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584071043878540263, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584071043878540263, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584071043878540263, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584071043878540263, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 27
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584071044042967325, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_fontSize
+      value: 45.25
       objectReference: {fileID: 0}
     - target: {fileID: 7584071044042967325, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_fontAsset

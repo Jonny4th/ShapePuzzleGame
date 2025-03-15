@@ -1,13 +1,12 @@
 using ScriptableObjectEvent;
+using Shape.Inputs;
 using System;
 using Touch;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 
 namespace Shape.Movement
 {
-    public class ShapeMovementManager : MonoBehaviour
+    public class ShapeMovementManager : MonoBehaviour, IShapeMovementController
     {
         [SerializeField]
         float gridSize;
@@ -21,23 +20,23 @@ namespace Shape.Movement
         [SerializeField]
         Vector3 maximumLimit;
 
+        [SerializeField]
+        MonoBehaviour _swipeProcessor;
+
+        public SOGameEvent Move;
+
+        ITouchDetection swipeProcessor => _swipeProcessor as ITouchDetection;
+
+        private IMotionInfo CurrentMovementHandler;
+
+        bool isBusy;
+
         float minX { get => Math.Min(minimumLimit.x, maximumLimit.x); }
         float maxX { get => Math.Max(minimumLimit.x, maximumLimit.x); }
         float minY { get => Math.Min(minimumLimit.y, maximumLimit.y); }
         float maxY { get => Math.Max(minimumLimit.y, maximumLimit.y); }
         float minZ { get => Math.Min(minimumLimit.z, maximumLimit.z); }
         float maxZ { get => Math.Max(minimumLimit.z, maximumLimit.z); }
-
-        bool isBusy;
-
-        private IMotionManagable CurrentMovementHandler;
-
-        [SerializeField]
-        MonoBehaviour _swipeProcessor;
-
-        ITouchDetection swipeProcessor => _swipeProcessor as ITouchDetection;
-
-        public SOGameEvent Move;
 
         private void OnEnable()
         {
@@ -76,25 +75,7 @@ namespace Shape.Movement
             Move.Raise(this, command);
         }
 
-        #region General Move/Rotate Input Action
-        public void OnMoveAxis(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            var direction = context.ReadValue<Vector3>();
-
-            ProcessMove(direction);
-        }
-
-        public void OnRotateAxis(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            var rotation = context.ReadValue<Vector3>();
-
-            ProcessRotate(rotation);
-        }
-        #endregion
-
-        #region General Move/Rotate Direct Input
+        #region General Move/Rotate
         public void OnMoveAxis(Vector3 direction)
         {
             ProcessMove(direction);
@@ -106,45 +87,7 @@ namespace Shape.Movement
         }
         #endregion
 
-        #region Separate Move Input Actions 
-        public void OnMovePosX(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessMove(Vector3.right);
-        }
-
-        public void OnMoveNegX(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessMove(Vector3.left);
-        }
-
-        public void OnMovePosZ(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessMove(Vector3.forward);
-        }
-
-        public void OnMoveNegZ(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessMove(Vector3.back);
-        }
-
-        public void OnMovePosY(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessMove(Vector3.up);
-        }
-
-        public void OnMoveNegY(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessMove(Vector3.down);
-        }
-        #endregion
-
-        #region Separate Move Direct Input
+        #region Separate Move Methods
         public void OnMovePosX()
         {
             ProcessMove(Vector3.right);
@@ -176,45 +119,7 @@ namespace Shape.Movement
         }
         #endregion
 
-        #region Separate Rotation Input Actions
-        public void OnRotatePosX(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessRotate(Vector3.right);
-        }
-
-        public void OnRotateNegX(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessRotate(Vector3.left);
-        }
-
-        public void OnRotatePosZ(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessRotate(Vector3.forward);
-        }
-
-        public void OnRotateNegZ(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessRotate(Vector3.back);
-        }
-
-        public void OnRotatePosY(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessRotate(Vector3.up);
-        }
-
-        public void OnRotateNegY(InputAction.CallbackContext context)
-        {
-            if(!context.performed) return;
-            ProcessRotate(Vector3.down);
-        }
-        #endregion
-
-        #region Separate Rotation Direct Input
+        #region Separate Rotation Methods
         public void OnRotatePosX()
         {
             ProcessRotate(Vector3.right);
@@ -262,20 +167,20 @@ namespace Shape.Movement
 
         #region Touch Screen Handler
         //deplicated
-        public void OnRotateTouch(InputAction.CallbackContext context)
-        {
-            var touch = context.ReadValue<TouchState>();
-            var start = touch.startPosition;
+        //public void OnRotateTouch(InputAction.CallbackContext context)
+        //{
+        //    var touch = context.ReadValue<TouchState>();
+        //    var start = touch.startPosition;
 
-            if(touch.phase != UnityEngine.InputSystem.TouchPhase.Ended) return;
-            if(touch.delta != Vector2.zero) return;
-            //Ended phase sometimes trigger twice: with none zero vector and with zero vector.
-            //This happens when you swipe fast.
+        //    if(touch.phase != UnityEngine.InputSystem.TouchPhase.Ended) return;
+        //    if(touch.delta != Vector2.zero) return;
+        //    Ended phase sometimes trigger twice: with none zero vector and with zero vector.
+        //    This happens when you swipe fast.
 
-            var vector = touch.position - start;
-            if(vector.sqrMagnitude < 10000) return;
-            ProcessRotate(HandleRotateTouch2Axis(vector));
-        }
+        //    var vector = touch.position - start;
+        //    if(vector.sqrMagnitude < 10000) return;
+        //    ProcessRotate(HandleRotateTouch2Axis(vector));
+        //}
 
         private Vector3 HandleRotateTouch3Axis(Vector2 vector)
         {
@@ -320,7 +225,7 @@ namespace Shape.Movement
 
         #region Auxilary Fucntions
 
-        public void AssignSelectedShape(IMotionManagable movementHandler)
+        public void AssignSelectedShape(IMotionInfo movementHandler)
         {
             CurrentMovementHandler = movementHandler;
         }
