@@ -2418,4 +2418,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SixDirectionPad: {fileID: 3784006236554683911}
-  m_RotationSpeed: 20
+  m_RotationSpeed: 40
