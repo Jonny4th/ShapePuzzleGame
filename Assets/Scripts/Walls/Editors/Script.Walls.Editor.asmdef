@@ -1,0 +1,18 @@
+{
+    "name": "Script.Walls.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:615e1139be69cf44f8f6d2dda7204c89"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
