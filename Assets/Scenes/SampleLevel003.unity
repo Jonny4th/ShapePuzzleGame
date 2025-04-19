@@ -11744,6 +11744,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2016076779317419598, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.085938
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006237131885009, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006237131885009, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006237131885009, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006237131885009, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006237131885009, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006237131885009, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532911445662128385, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532911445662128385, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082074239560953864, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.30182293
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082074239560953864, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082074239560953864, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584071044321475633, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7942664544872702520, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: m_Name
       value: GameController

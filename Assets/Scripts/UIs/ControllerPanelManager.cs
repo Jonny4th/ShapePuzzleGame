@@ -1,57 +1,60 @@
 using System.Collections;
 using UnityEngine;
 
-public class ControllerPanelManager : MonoBehaviour
+namespace Shape.UIs
 {
-    [SerializeField]
-    Transform m_SixDirectionPad;
-
-    [SerializeField]
-    private float m_RotationSpeed = 1f;
-    
-    Coroutine m_RotationProcess;
-
-    private Quaternion m_OriginalOrientation;
-
-    void Awake()
+    public class ControllerPanelManager : MonoBehaviour
     {
-        m_OriginalOrientation = m_SixDirectionPad.rotation;
-    }
+        [SerializeField]
+        Transform m_SixDirectionPad;
 
-    public void OnRotationToggleChanged(bool isOn)
-    {
-        if(isOn)
+        [SerializeField]
+        private float m_RotationSpeed = 1f;
+
+        Coroutine m_RotationProcess;
+
+        private Quaternion m_OriginalOrientation;
+
+        void Awake()
         {
-            CheckRotationCoroutine();
-
-            m_RotationProcess = StartCoroutine(RotateTo(m_SixDirectionPad.rotation * Quaternion.Euler(0, 0, 90)));
-        }
-        else
-        {
-            CheckRotationCoroutine();
-
-            m_RotationProcess = StartCoroutine(RotateTo(m_OriginalOrientation));
+            m_OriginalOrientation = m_SixDirectionPad.rotation;
         }
 
-        void CheckRotationCoroutine()
+        public void OnRotationToggleChanged(bool isOn)
         {
-            if(m_RotationProcess != null)
+            if(isOn)
             {
-                StopCoroutine(m_RotationProcess);
-                m_RotationProcess = null;
+                CheckRotationCoroutine();
+
+                m_RotationProcess = StartCoroutine(RotateTo(m_SixDirectionPad.rotation * Quaternion.Euler(0, 0, 90)));
+            }
+            else
+            {
+                CheckRotationCoroutine();
+
+                m_RotationProcess = StartCoroutine(RotateTo(m_OriginalOrientation));
+            }
+
+            void CheckRotationCoroutine()
+            {
+                if(m_RotationProcess != null)
+                {
+                    StopCoroutine(m_RotationProcess);
+                    m_RotationProcess = null;
+                }
             }
         }
-    }
 
-    IEnumerator RotateTo(Quaternion oriantation)
-    {
-        var newRotation = Quaternion.RotateTowards(m_SixDirectionPad.rotation, oriantation, m_RotationSpeed);
-
-        while(m_SixDirectionPad.rotation != newRotation)
+        IEnumerator RotateTo(Quaternion oriantation)
         {
-            m_SixDirectionPad.rotation = newRotation;
-            newRotation = Quaternion.RotateTowards(m_SixDirectionPad.rotation, oriantation, m_RotationSpeed);
-            yield return null;
+            var newRotation = Quaternion.RotateTowards(m_SixDirectionPad.rotation, oriantation, m_RotationSpeed);
+
+            while(m_SixDirectionPad.rotation != newRotation)
+            {
+                m_SixDirectionPad.rotation = newRotation;
+                newRotation = Quaternion.RotateTowards(m_SixDirectionPad.rotation, oriantation, m_RotationSpeed);
+                yield return null;
+            }
         }
     }
 }

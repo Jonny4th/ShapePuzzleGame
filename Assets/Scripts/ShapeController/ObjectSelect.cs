@@ -79,23 +79,28 @@ public class ObjectSelect : MonoBehaviour
     {
         if(context.performed)
         {
-            ShapeSelectionController current = m_CurrentSelectedShape;
-            if(current != null)
-            {
-                var index = ShapeInScene.IndexOf(current);
-                current.OnDeselect();
-                ShapeDeselected?.Invoke();
-                index = (index + 1) % ShapeInScene.Count;
-                ShapeSelectionController selected = ShapeInScene[index];
-                selected.OnSelect();
-                BlockSelected?.Invoke(selected.gameObject);
-            }
-            else
-            {
-                ShapeSelectionController selected = ShapeInScene[0];
-                selected.OnSelect();
-                BlockSelected?.Invoke(selected.gameObject);
-            }
+            TabSelect();
+        }
+    }
+
+    public void TabSelect()
+    {
+        ShapeSelectionController current = m_CurrentSelectedShape;
+        if(current != null)
+        {
+            var index = ShapeInScene.IndexOf(current);
+            current.OnDeselect();
+            ShapeDeselected?.Invoke();
+            index = (index + 1) % ShapeInScene.Count;
+            ShapeSelectionController selected = ShapeInScene[index];
+            selected.OnSelect();
+            BlockSelected?.Invoke(selected.gameObject);
+        }
+        else
+        {
+            ShapeSelectionController selected = ShapeInScene[0];
+            selected.OnSelect();
+            BlockSelected?.Invoke(selected.gameObject);
         }
     }
 
