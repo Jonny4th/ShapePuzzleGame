@@ -4,6 +4,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 #endif
 
+[RequireComponent(typeof(MeshRenderer))]
 public class PanelStateController : MonoBehaviour
 {
     [SerializeField] LayerMask hitLayer;
@@ -24,18 +25,17 @@ public class PanelStateController : MonoBehaviour
     [SerializeField] Material correctMaterial;
     MeshRenderer mesh;
 
-    private void Start()
+    public void Start()
     {
-
         mesh = GetComponent<MeshRenderer>();
     }
 
-    private void LateUpdate()
+    public void LateUpdate()
     {
         UpdateState();
     }
 
-    void UpdateState()
+    private void UpdateState()
     {
         if(Physics.Raycast(transform.position, -transform.forward, 10f, ~hitLayerMask))
         {
@@ -45,10 +45,11 @@ public class PanelStateController : MonoBehaviour
         {
             currentState &= ~State.Shadow;
         }
+
         UpdateVisual();
     }
 
-    void UpdateVisual()
+    private void UpdateVisual()
     {
         switch(currentState)
         {

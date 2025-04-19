@@ -1,3 +1,4 @@
+using Scripts.Models;
 using System;
 using UnityEngine;
 using static PuzzleData.PuzzleCreator;

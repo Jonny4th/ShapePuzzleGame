@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using Walls;
 
 [CustomEditor(typeof(WallCreator))]
 public class WallCreatorInspector : Editor
@@ -12,7 +13,7 @@ public class WallCreatorInspector : Editor
 
         if(GUILayout.Button("Build"))
         {
-            creator.Create();
+            creator.Build();
         }
     }
 }

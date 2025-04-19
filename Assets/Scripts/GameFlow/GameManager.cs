@@ -3,6 +3,7 @@ using Shape.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Walls;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     ShapeInputHandler m_ShapeMovementInputHandler;
+
+    [SerializeField]
+    WallCreatable m_WallCreator;
 
     void Awake()
     {
