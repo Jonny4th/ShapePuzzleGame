@@ -3,10 +3,12 @@ using UnityEngine;
 public class ShapeModel : MonoBehaviour
 {
     public ShapeData shapeData;
+    
     public int shapeIndex
     {
         get { return shapeData.ShapeIndex; }
     }
+
     public GameObject plainShape
     {
         get
@@ -14,6 +16,7 @@ public class ShapeModel : MonoBehaviour
             return shapeData.PlainShape;
         }
     }
+
     public Mesh mesh
     {
         get; private set;

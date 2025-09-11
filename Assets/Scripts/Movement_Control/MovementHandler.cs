@@ -12,6 +12,8 @@ namespace Shape.Movement
         public bool isRotating => m_isRotating;
         private bool m_isRotating;
 
+        private Coroutine m_rotateCoroutine;
+
         public Vector3 GetMoveDestination(Vector3 direction)
         {
             return transform.position + direction;
@@ -29,8 +31,9 @@ namespace Shape.Movement
 
         public void RotateTo(Quaternion destination)
         {
-            StopCoroutine(nameof(Rotate));
-            StartCoroutine(nameof(Rotate), destination);
+            if(m_rotateCoroutine != null)
+                StopCoroutine(m_rotateCoroutine);
+            m_rotateCoroutine = StartCoroutine(nameof(Rotate), destination);
         }
 
         IEnumerator Rotate(Quaternion target)
