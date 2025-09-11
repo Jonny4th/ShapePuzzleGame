@@ -1,0 +1,16 @@
+{
+    "name": "Script.Walls",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1a425a2b52982df4aa3b3bfbfc1c458e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

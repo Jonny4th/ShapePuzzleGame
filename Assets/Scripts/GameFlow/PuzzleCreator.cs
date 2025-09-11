@@ -1,3 +1,4 @@
+using Scripts.Models;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace PuzzleData
 {
-    public class PuzzleCreator : MonoBehaviour
+    public partial class PuzzleCreator : MonoBehaviour
     {
         PanelStateController[] allPanels;
         [SerializeField] PanelStateController[] activePanels;
@@ -16,14 +17,6 @@ namespace PuzzleData
         public PieceData[] pieceData;
 
         [SerializeField] ShapeDataList shapeDataCollection;
-
-        [Serializable] 
-        public struct PieceData
-        {
-            public int shapeIndex;
-            public Vector3 position;
-            public Quaternion rotation;
-        }
 
         public void ImprintShadowAsPuzzle()
         {

@@ -1,3 +1,4 @@
+using Scripts.Models;
 using System;
 using UnityEngine;
 using static PuzzleData.PuzzleCreator;
@@ -25,6 +26,9 @@ public class StageController : MonoBehaviour
 
     private void LoadPuzzle()
     {
+        stageSize = levelData.StageSize;
+        stageName = levelData.StageName;
+        
         Vector3[] activePanelCoordinates = levelData.PanelData;
         PanelStateController[] panels = FindObjectsOfType<PanelStateController>();
         foreach (PanelStateController panel in panels)
@@ -54,7 +58,11 @@ public class StageController : MonoBehaviour
             Vector3 pos = piece.position;
             Quaternion rot = piece.rotation;
             var shape = Instantiate(go, pos, rot);
-            shape.GetComponent<ShapeModel>().SetMesh(BlockTheme);
+
+            if (BlockTheme != null)
+            {
+                shape.GetComponent<ShapeModel>().SetMesh(BlockTheme);
+            }
         }
     }
 

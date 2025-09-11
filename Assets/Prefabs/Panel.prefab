@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8495054308071801237}
   - component: {fileID: 8495054308071801234}
   - component: {fileID: 8495054308071801235}
+  - component: {fileID: 3746807638221112462}
   - component: {fileID: 7709754249405645037}
   m_Layer: 2
   m_Name: Panel
@@ -26,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8495054308071801233}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8495054308071801234
 MeshFilter:
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3746807638221112462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495054308071801233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271297118b386324681ac13ff8dfe8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _relativeCoordinate: {x: 0, y: 0, z: 0}
+  _panelState: {fileID: 7709754249405645037}
 --- !u!114 &7709754249405645037
 MonoBehaviour:
   m_ObjectHideFlags: 0
