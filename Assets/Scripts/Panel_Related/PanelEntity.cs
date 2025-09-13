@@ -1,12 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using Scripts.Walls;
 using UnityEngine;
 
-public class PanelEntity : MonoBehaviour
+public class PanelEntity : TileableMono
 {
-    [SerializeField] private Vector3Int _relativeCoordinate;
+    [SerializeField] private PanelIdentifier _identifier;
     [SerializeField] private PanelStateController _panelState;
 
-    public Vector3Int RelativeCoordinate => _relativeCoordinate;
+    public override PanelIdentifier Identifier
+    {
+        get => _identifier;
+        set => _identifier = value;
+    } 
+
     public PanelStateController PanelState => _panelState;
 }

@@ -1,17 +1,22 @@
 using Scripts.Models;
 using System;
 using UnityEngine;
-using static PuzzleData.PuzzleCreator;
+using UnityEngine.Events;
+using Scripts.Walls;
+using System.Linq;
+using System.Collections.Generic;
 
 public class StageController : MonoBehaviour
 {
-    [SerializeField] StageData levelData;
-    [SerializeField] int stageSize;
-    [SerializeField] string stageName;
-    [SerializeField] Mesh BlockTheme;
-    public PieceData[] pieceData;
+    [SerializeField] private WallCreatable _wallCreator;
+    [SerializeField] private StageDataSO _levelData;
+    [SerializeField] private Mesh _blockTheme;
 
-    [SerializeField] ShapeDataList shapeDataCollection;
+    public PieceData[] pieceData;
+    
+    [Space]
+    public UnityEvent OnClueSet;
+    public UnityEvent OnPieceSet;
 
     private void OnEnable()
     {
@@ -20,26 +25,28 @@ public class StageController : MonoBehaviour
 
     public void LoadStageData()
     {
-        LoadPuzzle();
+        LoadClue();
         LoadShapePieces();
     }
 
-    private void LoadPuzzle()
+    private void LoadClue()
     {
-        stageSize = levelData.StageSize;
-        stageName = levelData.StageName;
-        
-        Vector3[] activePanelCoordinates = levelData.PanelData;
-        PanelStateController[] panels = FindObjectsOfType<PanelStateController>();
-        foreach (PanelStateController panel in panels)
+        IEnumerable<PanelEntity> panels = _wallCreator
+        .SetDimention(_levelData.Data.StageSize)
+        .Build()
+        .Select(x => x.GetComponent<PanelEntity>());
+
+        PanelIdentifier[] activePanels = _levelData.Data.PanelData;
+
+        foreach (var panel in panels)
         {
-            if (Array.Exists(activePanelCoordinates, x => x == panel.transform.position))
+            if (Array.Exists(activePanels, x => x == panel.Identifier))
             {
-                panel.SetAsTarget(true);
+                panel.PanelState.SetAsTarget(true);
             }
             else
             {
-                panel.currentState = PanelStateController.State.None;
+                panel.PanelState.currentState = PanelStateController.State.None;
             }
         }
     }
@@ -51,7 +58,8 @@ public class StageController : MonoBehaviour
             DestroyImmediate(piece.gameObject);
         }
 
-        pieceData = levelData.piece;
+        pieceData = _levelData.Data.piece;
+
         foreach (PieceData piece in pieceData)
         {
             GameObject go = GetShape(piece.shapeIndex);
@@ -59,16 +67,16 @@ public class StageController : MonoBehaviour
             Quaternion rot = piece.rotation;
             var shape = Instantiate(go, pos, rot);
 
-            if (BlockTheme != null)
+            if (_blockTheme != null)
             {
-                shape.GetComponent<ShapeModel>().SetMesh(BlockTheme);
+                shape.GetComponent<ShapeModel>().SetMesh(_blockTheme);
             }
         }
     }
 
     private GameObject GetShape(int index)
     {
-        GameObject shape = Array.Find(shapeDataCollection.shapeDataList, x => x.ShapeIndex == index).PlainShape;
+        GameObject shape = Array.Find(_levelData.shapeDataCollection.shapeDataList, x => x.ShapeIndex == index).PlainShape;
         return shape;
     }
 

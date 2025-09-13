@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-using Walls;
+using Scripts.Walls;
 
 [CustomEditor(typeof(WallManager))]
 public class WallManagerInspector : Editor

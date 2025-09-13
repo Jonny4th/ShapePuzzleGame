@@ -1,36 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Walls
+namespace Scripts.Walls
 {
     public class WallManager : WallCreatable
     {
-        [SerializeField]
-        private WallCreatable m_ZWallCreator;
+        [SerializeField] private WallCreatable m_ZWallCreator;
+        [SerializeField] private WallCreatable m_XWallCreator;
+        [SerializeField] private WallCreatable m_YWallCreator;
 
-        [SerializeField]
-        private WallCreatable m_XWallCreator;
+        [SerializeField] TileableMono m_TilePrototype;
 
-        [SerializeField]
-        private WallCreatable m_YWallCreator;
+        [SerializeField] private Transform m_Parent;
 
-        [SerializeField]
-        GameObject m_TilePrototype;
+        [SerializeField] private int m_XSize;
 
-        [SerializeField]
-        private Transform m_Parent;
+        [SerializeField] private int m_YSize;
 
-        [SerializeField]
-        private int m_X;
+        [SerializeField] private int m_ZSize;
 
-        [SerializeField]
-        private int m_Y;
-
-        [SerializeField]
-        private int m_Z;
-
-        public override List<WallTileInfo> TileInfos => m_TileInfos;
-        private List<WallTileInfo> m_TileInfos = new();
+        public override List<TileableMono> TileInfos => m_TileInfos;
+        private List<TileableMono> m_TileInfos = new();
 
         public void Awake()
         {
@@ -48,36 +38,36 @@ namespace Walls
                 m_YWallCreator.SetParent(m_Parent);
             }
 
-            m_ZWallCreator.SetDimention(m_X, m_Y, 0);
-            m_XWallCreator.SetDimention(m_Z, m_Y, 0);
-            m_YWallCreator.SetDimention(m_X, m_Z, 0);
+            m_ZWallCreator.SetDimention(m_XSize, m_YSize, 0);
+            m_XWallCreator.SetDimention(m_ZSize, m_YSize, 0);
+            m_YWallCreator.SetDimention(m_XSize, m_ZSize, 0);
         }
 
-        public override WallCreatable Build()
+        public override List<TileableMono> Build()
         {
             m_TileInfos.Clear();
 
-            if(!(m_X == 0 || m_Y == 0))
+            if(!(m_XSize == 0 || m_YSize == 0))
             {
-                m_ZWallCreator.transform.position = new Vector3(0, 0, m_Z / 2f + 1f);
+                m_ZWallCreator.transform.position = new Vector3(0, 0, m_ZSize / 2f + 1f);
                 m_ZWallCreator.Build();
                 m_TileInfos.AddRange(m_ZWallCreator.TileInfos);
             }
 
-            if(!(m_Z == 0 || m_Y == 0))
+            if(!(m_ZSize == 0 || m_YSize == 0))
             {
-                m_XWallCreator.transform.position = new Vector3(m_X / 2f + 1f, 0, 0);
+                m_XWallCreator.transform.position = new Vector3(m_XSize / 2f + 1f, 0, 0);
                 m_XWallCreator.Build();
                 m_TileInfos.AddRange(m_XWallCreator.TileInfos);
             }
-            if(!(m_X == 0 || m_Z == 0))
+            if(!(m_XSize == 0 || m_ZSize == 0))
             {
-                m_YWallCreator.transform.position = new Vector3(0, - m_Z / 2f - 1f, 0);
+                m_YWallCreator.transform.position = new Vector3(0, - m_ZSize / 2f - 1f, 0);
                 m_YWallCreator.Build();
                 m_TileInfos.AddRange(m_YWallCreator.TileInfos);
             }
 
-            return this;
+            return m_TileInfos;
         }
 
         public override WallCreatable Clear()
@@ -90,15 +80,15 @@ namespace Walls
             return this;
         }
 
-        public override WallCreatable SetDimention(int x, int y, int z)
+        public override WallCreatable SetDimention(Vector3Int dimention)
         {
-            m_X = x;
-            m_Y = y;
-            m_Z = z;
+            m_XSize = dimention.x;
+            m_YSize = dimention.y;
+            m_ZSize = dimention.z;
 
-            m_ZWallCreator.SetDimention(x, y);
-            m_XWallCreator.SetDimention(z, y);
-            m_YWallCreator.SetDimention(x, z);
+            m_ZWallCreator.SetDimention(m_XSize, m_YSize);
+            m_XWallCreator.SetDimention(m_ZSize, m_YSize);
+            m_YWallCreator.SetDimention(m_XSize, m_ZSize);
 
             return this;
         }
@@ -114,7 +104,7 @@ namespace Walls
             return this;
         }
 
-        public override WallCreatable SetTilePrototype(GameObject tile)
+        public override WallCreatable SetTilePrototype(TileableMono tile)
         {
             m_TilePrototype = tile;
 
@@ -124,5 +114,6 @@ namespace Walls
 
             return this;
         }
+
     }
 }

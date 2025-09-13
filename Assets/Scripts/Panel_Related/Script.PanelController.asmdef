@@ -1,3 +1,17 @@
 {
-	"name": "Script.PanelController"
+    "name": "Script.PanelController",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b2658bc45be4f194987989d765f1ca03",
+        "GUID:615e1139be69cf44f8f6d2dda7204c89"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

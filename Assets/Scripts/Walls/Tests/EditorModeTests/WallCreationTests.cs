@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
-using Walls;
+using Scripts.Walls;
 
 public class WallCreationTests
 {
@@ -9,8 +9,9 @@ public class WallCreationTests
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
-        creator = new GameObject().AddComponent<WallCreator>()
-                                  .SetTilePrototype(new GameObject());
+        creator = new GameObject()
+            .AddComponent<WallCreator>()
+            .SetTilePrototype(new GameObject().AddComponent<TileableMono>());
     }
 
     // A Test behaves as an ordinary method
@@ -26,7 +27,7 @@ public class WallCreationTests
 
         //Assert
         Assert.AreEqual(1, creator.TileInfos.Count);
-        Assert.AreEqual(Vector3.zero, creator.TileInfos[0].Tile.transform.position);
+        Assert.AreEqual(Vector3.zero, creator.TileInfos[0].transform.position);
     }
 
     [Test]
@@ -51,7 +52,7 @@ public class WallCreationTests
 
         for(int i = 0; i < expectedPos.Length; i++)
         {
-            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].Tile.transform.position);
+            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].transform.position);
         }
     }
 
@@ -84,7 +85,7 @@ public class WallCreationTests
 
         for(int i = 0; i < expectedPos.Length; i++)
         {
-            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].Tile.transform.position);
+            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].transform.position);
         }
     }
 
@@ -117,7 +118,7 @@ public class WallCreationTests
         Assert.AreEqual(15, creator.TileInfos.Count);
         for(int i = 0; i < expectedPos.Length; i++)
         {
-            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].Tile.transform.position);
+            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].transform.position);
         }
     }
 
@@ -150,7 +151,7 @@ public class WallCreationTests
         Assert.AreEqual(15, creator.TileInfos.Count);
         for(int i = 0; i < expectedPos.Length; i++)
         {
-            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].Tile.transform.position);
+            Assert.AreEqual(expectedPos[i], creator.TileInfos[i].transform.position);
         }
     }
 }

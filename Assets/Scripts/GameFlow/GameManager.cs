@@ -1,26 +1,20 @@
+using Scripts.Models;
 using Shape.Inputs;
 using Shape.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Walls;
+using Scripts.Walls;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    PlayerInput m_PlayerInput;
+    [SerializeField] private PlayerInput m_PlayerInput = null!;
 
-    [SerializeField]
-    ObjectSelect m_ObjectSelect;
+    [SerializeField] private ObjectSelect m_ObjectSelect = null!;
 
-    [SerializeField]
-    ShapeMovementManager m_ShapeMovementManager;
+    [SerializeField] private ShapeMovementManager m_ShapeMovementManager = null!;
 
-    [SerializeField]
-    ShapeInputHandler m_ShapeMovementInputHandler;
-
-    [SerializeField]
-    WallCreatable m_WallCreator;
+    [SerializeField] private ShapeInputHandler m_ShapeMovementInputHandler = null!;
 
     void Awake()
     {
@@ -57,10 +51,12 @@ public class GameManager : MonoBehaviour
     {
         m_PlayerInput.SwitchCurrentActionMap("GameOverMenu");
     }
+
     public void OnPlay()
     {
         m_PlayerInput.SwitchCurrentActionMap("Puzzle Controls");
     }
+
     public void OnPause()
     {
         m_PlayerInput.SwitchCurrentActionMap("Menu");

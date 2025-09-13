@@ -1,18 +1,15 @@
+using System;
 using UnityEngine;
 
 namespace Scripts.Models
 {
-    [CreateAssetMenu(fileName = "StageData", menuName = "Stage Data")]
-
-    [System.Serializable]
-    public class StageData : ScriptableObject
+    [Serializable]
+    public struct StageData
     {
-        public int StageId;
+        public string StageId;
         public string StageName;
-
-        public int StageSize;
-
-        public Vector3[] PanelData;
+        public Vector3Int StageSize;
+        public PanelIdentifier[] PanelData;
         public PieceData[] piece;
     }
 }

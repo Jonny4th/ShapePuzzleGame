@@ -1,19 +1,22 @@
 using UnityEditor;
 using UnityEngine;
-using Walls;
 
-[CustomEditor(typeof(WallCreator))]
-public class WallCreatorInspector : Editor
+namespace Scripts.Walls
 {
-    public override void OnInspectorGUI()
+    
+    [CustomEditor(typeof(WallCreator))]
+    public class WallCreatorInspector : Editor
     {
-        DrawDefaultInspector();
-
-        WallCreator creator = (WallCreator)target;
-
-        if(GUILayout.Button("Build"))
+        public override void OnInspectorGUI()
         {
-            creator.Build();
+            DrawDefaultInspector();
+
+            WallCreator creator = (WallCreator)target;
+
+            if(GUILayout.Button("Build"))
+            {
+                creator.Build();
+            }
         }
     }
 }

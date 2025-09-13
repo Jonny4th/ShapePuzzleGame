@@ -2,7 +2,9 @@
     "name": "Script.Walls.EditorModeTests",
     "rootNamespace": "",
     "references": [
-        "GUID:615e1139be69cf44f8f6d2dda7204c89"
+        "GUID:615e1139be69cf44f8f6d2dda7204c89",
+        "GUID:b2658bc45be4f194987989d765f1ca03",
+        "GUID:1a425a2b52982df4aa3b3bfbfc1c458e"
     ],
     "includePlatforms": [
         "Editor"
