@@ -1,12 +1,10 @@
-using Scripts.Models;
 using Shape.Inputs;
 using Shape.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Scripts.Walls;
 
-public class GameManager : MonoBehaviour
+public class PuzzleManager : MonoBehaviour
 {
     [SerializeField] private PlayerInput m_PlayerInput = null!;
 
