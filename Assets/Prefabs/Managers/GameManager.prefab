@@ -290,7 +290,6 @@ MonoBehaviour:
   m_ObjectSelect: {fileID: 7942664544872702525}
   m_ShapeMovementManager: {fileID: 6973162859472105052}
   m_ShapeMovementInputHandler: {fileID: 7327375238475635347}
-  m_WallCreator: {fileID: 731054748141923737}
 --- !u!114 &7942664544872702499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a08b79803eda9344a790b79789a2819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneChangeRequest: {fileID: 11400000, guid: 4060b4518fae1ee4d9bacdb9edd73486, type: 2}
   toSceneIndex: 0
   toSceneName: 
   useSceneName: 0
@@ -900,6 +900,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 817901645295819981, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4291574774209815044}
+    - target: {fileID: 817901645295819981, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
     - target: {fileID: 817901645655574969, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -991,6 +999,18 @@ PrefabInstance:
     - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784006236554683911, guid: a89ad8d5c7a9d094fa2f1311b0beaaa7, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1190,17 +1210,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 164354740d4bf53478d64807475cafba, type: 3}
---- !u!114 &731054748141923737 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 390165383488737850, guid: 164354740d4bf53478d64807475cafba, type: 3}
-  m_PrefabInstance: {fileID: 1103134736842014627}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20590470770b3fc4ea8481aaaaaa98de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &3505059091063590970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4605888976099078041, guid: 164354740d4bf53478d64807475cafba, type: 3}

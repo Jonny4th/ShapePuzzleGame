@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,11 @@ namespace ScriptableObjectEvent
         public void UnregisterListener(GameEventListener listener)
         {
             listeners.Remove(listener);
+        }
+
+        public void RegisterListener(object onSceneRequest)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,8 +1,10 @@
+using ScriptableObjectEvent;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
+    [SerializeField] private SOGameEvent _sceneChangeRequest;
     [SerializeField] int toSceneIndex;
     [SerializeField] string toSceneName;
     [SerializeField] bool useSceneName;
@@ -11,13 +13,13 @@ public class SceneChange : MonoBehaviour
     {
         if(goToNextScene)
         {
-            int currentIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentIndex + 1);
+            int currentIndex = SceneManager.GetSceneAt(1).buildIndex;
+            _sceneChangeRequest.Raise(this, currentIndex + 1);
         }
         else
         {
-            if(useSceneName) SceneManager.LoadScene(toSceneName);
-            else SceneManager.LoadScene(toSceneIndex);
+            if(useSceneName) _sceneChangeRequest.Raise(this, toSceneName);
+            else _sceneChangeRequest.Raise(this, toSceneIndex);
         }
     }
 }

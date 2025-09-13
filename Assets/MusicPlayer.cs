@@ -10,7 +10,6 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] int playingIndex;
     private void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
         _audioSource = GetComponent<AudioSource>();
     }
 
