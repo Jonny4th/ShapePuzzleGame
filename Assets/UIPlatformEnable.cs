@@ -3,11 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class UIPlatformEnable : MonoBehaviour
 {
-    [SerializeField]
-    RuntimePlatform enablePlatform;
+    [SerializeField] private RuntimePlatform enablePlatform;
+    [SerializeField] private bool m_Perform = true;
 
     void Awake()
     {
+        if (!m_Perform) return;
         CheckEnable();
     }
 

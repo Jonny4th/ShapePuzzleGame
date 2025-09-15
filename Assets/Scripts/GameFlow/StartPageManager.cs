@@ -1,6 +1,5 @@
 using ScriptableObjectEvent;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartPageManager : MonoBehaviour
 {
