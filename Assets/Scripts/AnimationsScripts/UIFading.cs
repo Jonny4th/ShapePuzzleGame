@@ -32,6 +32,8 @@ public class UIFading : AnimatedElement
             normalizeTime = Mathf.InverseLerp(startTime, endTime, Time.time);
         }
 
+        m_CanvasGroup.alpha = originalAlpha * m_FadeFunction.Evaluate(1);
+
         OnAnimationFinish();
         m_IsRunning = false;
     }

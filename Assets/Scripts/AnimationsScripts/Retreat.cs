@@ -22,14 +22,18 @@ public class Retreat : AnimatedElement
         var startTime = Time.time;
         var endTime = startTime + m_AnimationTime;
         var normalizeTime = 0f;
-
+        var evaluate = 0f;
+        
         while (normalizeTime < 1)
         {
-            var evaluate = m_Motion.Evaluate(normalizeTime);
+            evaluate = m_Motion.Evaluate(normalizeTime);
             transform.position = origin + new Vector3(0, evaluate, 0);
             yield return null;
             normalizeTime = Mathf.InverseLerp(startTime, endTime, Time.time);
         }
+
+        evaluate = m_Motion.Evaluate(1);
+        transform.position = origin + new Vector3(0, evaluate, 0);
 
         m_IsMoving = false;
         OnAnimationFinish();

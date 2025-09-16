@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StartSceneAnimationController : MonoBehaviour
+public class AnimatedElementController : MonoBehaviour
 {
     [SerializeField] private AnimatedElement[] m_Elements;
     [SerializeField] private float m_Delay;
@@ -19,11 +19,11 @@ public class StartSceneAnimationController : MonoBehaviour
 
         foreach (var element in m_Elements)
         {
-            element.FinishAnimaiton += CountMovedFinished;
+            element.FinishAnimaiton += CountAnimationFinished;
         }
     }
 
-    private void CountMovedFinished(AnimatedElement element)
+    private void CountAnimationFinished(AnimatedElement element)
     {
         m_ElementsCount--;
     }

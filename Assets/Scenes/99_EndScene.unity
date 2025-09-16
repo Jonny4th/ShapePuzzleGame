@@ -2404,10 +2404,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a08b79803eda9344a790b79789a2819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneChangeRequest: {fileID: 0}
-  toSceneIndex: 1
-  toSceneName: SampleLevel00
-  useSceneName: 0
+  _sceneChangeRequest: {fileID: 11400000, guid: 4060b4518fae1ee4d9bacdb9edd73486, type: 2}
+  toSceneIndex: 2
+  toSceneName: SampleLevel001
+  useSceneName: 1
   goToNextScene: 0
 --- !u!1 &420781081
 GameObject:
