@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class StageController : MonoBehaviour
 {
     [SerializeField] private WallCreatable _wallCreator;
-    [SerializeField] private StageDataSO _levelData;
+    [SerializeField] private StageBlueprint _levelData;
     [SerializeField] private Mesh _blockTheme;
 
     public PieceData[] pieceData;
@@ -20,14 +20,28 @@ public class StageController : MonoBehaviour
 
     private void OnEnable()
     {
-        LoadStageData();
+        BuildStage();
     }
 
-    public void LoadStageData()
+    #region Builder Methods
+    public StageController SetStageBlueprint(StageBlueprint blueprint)
+    {
+        _levelData = blueprint;
+        return this;
+    }
+
+    public StageController SetTheme(Mesh theme)
+    {
+        _blockTheme = theme;
+        return this;
+    }
+
+    public void BuildStage()
     {
         LoadClue();
         LoadShapePieces();
     }
+    #endregion
 
     private void LoadClue()
     {

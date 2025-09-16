@@ -44,9 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad33d66c188f5ab4da12533a7bdd99e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StageDataScriptables:
-  - {fileID: 11400000, guid: 8a233f8e0bd713448ad8dc6c24a2875a, type: 2}
-  - {fileID: 11400000, guid: 8a52ea60b86f07b4484fc598e43137ee, type: 2}
-  - {fileID: 11400000, guid: a85c261c80450564191a0d3ccb7f3026, type: 2}
-  - {fileID: 11400000, guid: 789d6cb02449c5d4ca831b45d16f8437, type: 2}
-  - {fileID: 11400000, guid: ad05aa5aa1f102a48883b6f63060bf78, type: 2}
+  m_StageDataCollection: {fileID: 11400000, guid: 927b9c80a16bc334a991f1417dd38af5, type: 2}

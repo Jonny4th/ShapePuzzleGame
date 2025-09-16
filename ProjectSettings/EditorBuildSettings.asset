@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PuzzleCreatorScene.unity
     guid: 30de69ab64a98dc47aa9badfbfa84bc4
   - enabled: 0
-    path: Assets/Scenes/EmptyScene.unity
+    path: Assets/Scenes/02_PuzzleScene.unity
     guid: 73e7401393e9024468eb57df1bec3d69
   - enabled: 0
     path: Assets/Scenes/TouchTestScene.unity
@@ -47,3 +47,4 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 97ea323fa567c6f49a3e162edcbdda0c, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: bba07d034e7bd394e9cf7a0c4c70f8d3, type: 2}
+  m_UseUCBPForAssetBundles: 0

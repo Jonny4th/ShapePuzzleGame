@@ -3,6 +3,6 @@ using UnityEngine;
 
 public class StageDataStorage : MonoBehaviour
 {
-    [SerializeField] private StageDataSO[] m_StageDataScriptables;
-    public StageDataSO[] StageDataScriptables => m_StageDataScriptables;
+    [SerializeField] private StageDataCollection m_StageDataCollection;
+    public StageDataCollection StageDataCollection => m_StageDataCollection;
 }

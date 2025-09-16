@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Packed Assets
   m_EditorClassIdentifier: 
   m_GroupName: Packed Assets
-  m_Data:
-    m_SerializedData: []
   m_GUID: 1f6d06919e5eac54ba7a9d579704ad49
   m_SerializeEntries:
   - m_GUID: 5a8a2522d875f264aa1a1cad8a58d50c
     m_Address: Assets/Prefabs/Managers/StageDataStorage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 927b9c80a16bc334a991f1417dd38af5
+    m_Address: ProductionStageDataCollection.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
