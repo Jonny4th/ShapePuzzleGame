@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class ObjectSelect : MonoBehaviour
 {
-    Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
     [SerializeField] LayerMask selectable;
 
     public List<ShapeSelectionController> ShapeInScene;
@@ -22,21 +22,32 @@ public class ObjectSelect : MonoBehaviour
     public UnityEvent<GameObject> BlockSelected;
     public UnityEvent ShapeDeselected;
 
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
+
     private void OnEnable()
     {
         BlockSelected.AddListener(OnShapeSelect);
-        ShapeDeselected.AddListener(Clear);
+        ShapeDeselected.AddListener(ClearSelection);
     }
 
     private void OnDisable()
     {
         BlockSelected.RemoveListener(OnShapeSelect);
-        ShapeDeselected.RemoveListener(Clear);
+        ShapeDeselected.RemoveListener(ClearSelection);
     }
 
     private void Start()
     {
-        mainCamera = Camera.main;
+        OnReset();
+    }
+
+    public void OnReset()
+    {
+        ClearSelection();
+        ShapeInScene.Clear();
         ShapeInScene.AddRange(FindObjectsOfType<ShapeSelectionController>());
     }
 
@@ -48,7 +59,7 @@ public class ObjectSelect : MonoBehaviour
         MovementHandlerSelected?.Invoke(m_CurrentSelectedShape.GetComponent<IMotionInfo>());
     }
 
-    private void Clear()
+    private void ClearSelection()
     {
         CurrentSelectedBlock = null;
         m_CurrentSelectedShape = null;

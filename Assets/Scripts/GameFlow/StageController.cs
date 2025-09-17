@@ -8,18 +8,23 @@ using System.Collections.Generic;
 
 public class StageController : MonoBehaviour
 {
+    [SerializeField] private StageDataCollection _stageDataCollection;
     [SerializeField] private WallCreatable _wallCreator;
     [SerializeField] private StageBlueprint _levelData;
     [SerializeField] private Mesh _blockTheme;
 
     public PieceData[] pieceData;
-    
+
     [Space]
     public UnityEvent OnClueSet;
     public UnityEvent OnPieceSet;
 
+    public int currentIndex = 0;
+    private GameObject[] _shapesInScene;
+
     private void OnEnable()
     {
+        _levelData = _stageDataCollection.StageBlueprints[currentIndex];
         BuildStage();
     }
 
@@ -46,9 +51,9 @@ public class StageController : MonoBehaviour
     private void LoadClue()
     {
         IEnumerable<PanelEntity> panels = _wallCreator
-        .SetDimention(_levelData.Data.StageSize)
-        .Build()
-        .Select(x => x.GetComponent<PanelEntity>());
+            .SetDimention(_levelData.Data.StageSize)
+            .Build()
+            .Select(x => x.GetComponent<PanelEntity>());
 
         PanelIdentifier[] activePanels = _levelData.Data.PanelData;
 
@@ -63,16 +68,14 @@ public class StageController : MonoBehaviour
                 panel.PanelState.currentState = PanelStateController.State.None;
             }
         }
+
+        OnClueSet?.Invoke();
     }
 
     private void LoadShapePieces()
     {
-        foreach (var piece in FindObjectsOfType<ShapeModel>())
-        {
-            DestroyImmediate(piece.gameObject);
-        }
-
         pieceData = _levelData.Data.piece;
+        List<GameObject> shapeList = new();
 
         foreach (PieceData piece in pieceData)
         {
@@ -85,7 +88,13 @@ public class StageController : MonoBehaviour
             {
                 shape.GetComponent<ShapeModel>().SetMesh(_blockTheme);
             }
+
+            shapeList.Add(shape);
         }
+
+        _shapesInScene = shapeList.ToArray();
+
+        OnPieceSet?.Invoke();
     }
 
     private GameObject GetShape(int index)
@@ -104,4 +113,20 @@ public class StageController : MonoBehaviour
     //        file.Close();
     //    }
     //}
+
+    public void NextStage()
+    {
+        currentIndex++;
+        _levelData = _stageDataCollection.StageBlueprints[currentIndex];
+        _wallCreator.Clear();
+
+        foreach (var piece in _shapesInScene)
+        {
+            DestroyImmediate(piece);
+        }
+
+        BuildStage();
+        
+        BroadcastMessage("OnReset", SendMessageOptions.DontRequireReceiver);
+    }
 }

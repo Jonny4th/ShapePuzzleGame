@@ -50,14 +50,19 @@ namespace Shape.Movement
             swipeProcessor.StraightDetected -= OnStraightDetect;
         }
 
+        public void OnReset()
+        {
+            ClearSelectedShape();
+        }
+
         private void ProcessMove(Vector3 direction)
         {
-            if(CurrentMovementHandler == null) return;
-            if(direction == Vector3.zero) return;
+            if (CurrentMovementHandler == null) return;
+            if (direction == Vector3.zero) return;
 
             var destination = AlignToGrid(CurrentMovementHandler.GetMoveDestination(direction), gridSize, gridStartAtZero);
 
-            if(IsAtLimit(destination)) return;
+            if (IsAtLimit(destination)) return;
 
             var command = new MoveCommand(CurrentMovementHandler as IMotionCommandHandler, destination);
             Move.Raise(this, command);

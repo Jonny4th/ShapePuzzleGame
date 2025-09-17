@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120091077f0578046ab3729ac45e5ffa, type: 3}
   m_Name: Level_001_TranslationTutorial
   m_EditorClassIdentifier: 
+  shapeDataCollection: {fileID: 11400000, guid: 516a2a64592bd524eb635edd6f4ba73a, type: 2}
   Data:
-    StageId: TEST
+    StageId: CUBE-001
     StageName: This Is a Test
     StageSize: {x: 7, y: 7, z: 7}
     PanelData:
@@ -27,4 +28,5 @@ MonoBehaviour:
     - shapeIndex: 1
       position: {x: 3, y: -3, z: 3}
       rotation: {x: 0, y: 0, z: 0, w: 0}
-  shapeDataCollection: {fileID: 11400000, guid: 516a2a64592bd524eb635edd6f4ba73a, type: 2}
+    DisplayDiscription: 
+    DeveloperDiscription: 

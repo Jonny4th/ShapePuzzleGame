@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcb2cfa5464f5c4aa623b937202ae7d, type: 3}
   m_Name: ProductionStageDataCollection
   m_EditorClassIdentifier: Scripts.Models::Scripts.Models.StageDataCollection
-  m_StageDataScriptables:
+  m_StageBlueprints:
   - {fileID: 11400000, guid: 8a233f8e0bd713448ad8dc6c24a2875a, type: 2}
   - {fileID: 11400000, guid: 8a52ea60b86f07b4484fc598e43137ee, type: 2}
   - {fileID: 11400000, guid: a85c261c80450564191a0d3ccb7f3026, type: 2}

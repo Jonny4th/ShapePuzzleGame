@@ -8,7 +8,7 @@ namespace Scripts.Models
     [Serializable]
     public class StageBlueprint : ScriptableObject
     {
-        public StageData Data;
         public ShapeDataList shapeDataCollection;
+        public StageData Data;
     }
 }

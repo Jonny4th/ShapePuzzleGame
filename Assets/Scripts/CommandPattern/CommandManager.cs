@@ -15,7 +15,13 @@ namespace Command
             m_currentIndex = -1;
         }
 
-        public void ResetHistory()
+        public void OnReset()
+        {
+            ResetHistory();
+            m_currentIndex = -1;
+        }
+
+        private void ResetHistory()
         {
             commandHistory.Clear();
         }

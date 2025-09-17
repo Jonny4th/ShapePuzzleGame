@@ -3,6 +3,7 @@ using Shape.Controller;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.iOS;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -17,11 +18,24 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
+        Setup();
+    }
+
+    public void Setup()
+    {
         targetPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), IsTargetPanel));
         emptyPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), x => !IsTargetPanel(x)));
         shapeInScene.AddRange(FindObjectsOfType<ShapeOverlapController>());
-
         gameIsOver = false;
+    }
+
+    public void OnReset()
+    {
+        Debug.Log("Reset GameOverManager");
+        targetPanels.Clear();
+        emptyPanels.Clear();
+        shapeInScene.Clear();
+        Setup();
     }
 
     private bool IsTargetPanel(PanelStateController panel)
@@ -51,6 +65,7 @@ public class GameOverManager : MonoBehaviour
         if(corrects.Count != targetPanels.Count) return;
 
         gameIsOver = true;
+
         Success.Raise(this, true);
     }
 }

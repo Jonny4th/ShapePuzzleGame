@@ -17,4 +17,11 @@ public class SuccessScreen : MonoBehaviour
         successScreen.SetActive(true);
         successScreenOn = true;
     }
+
+    public void HideScreen()
+    {
+        Time.timeScale = 1f;
+        successScreen.SetActive(false);
+        successScreenOn = false;
+    }
 }

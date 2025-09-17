@@ -1,0 +1,16 @@
+{
+    "name": "Scripts.StageSelection",
+    "rootNamespace": "",
+    "references": [
+        "Scripts.Models"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

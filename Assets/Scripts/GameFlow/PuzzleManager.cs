@@ -53,6 +53,13 @@ public class PuzzleManager : MonoBehaviour
     public void OnPlay()
     {
         m_PlayerInput.SwitchCurrentActionMap("Puzzle Controls");
+        
+    }
+
+    public void OnReset()
+    {
+        Debug.Log("Reset PuzzleManager");
+        OnPlay();
     }
 
     public void OnPause()
@@ -60,14 +67,8 @@ public class PuzzleManager : MonoBehaviour
         m_PlayerInput.SwitchCurrentActionMap("Menu");
     }
 
-    public void OnResetScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
     public void OnQuit()
     {
         Application.Quit();
     }
-
 }
