@@ -61,7 +61,7 @@ public class StageController : MonoBehaviour
         {
             if (Array.Exists(activePanels, x => x == panel.Identifier))
             {
-                panel.PanelState.SetAsTarget(true);
+                panel.PanelState.SetAsClue(true);
             }
             else
             {

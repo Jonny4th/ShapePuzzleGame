@@ -23,8 +23,9 @@ namespace Scripts.Walls
         [SerializeField]
         private Transform m_Parent;
 
+        [SerializeField] private List<TileableMono> m_TileInfo = new();
         public override List<TileableMono> TileInfos => m_TileInfo;
-        private List<TileableMono> m_TileInfo = new();
+        
 
         public override WallCreatable SetTilePrototype(TileableMono tilePrototype)
         {
@@ -60,7 +61,14 @@ namespace Scripts.Walls
 
         public override WallCreatable Clear()
         {
-            foreach(var tileInfo in m_TileInfo)
+            if (m_TileInfo.Count == 0)
+            {
+                if(m_Parent == null) m_Parent = transform;
+
+                m_TileInfo.AddRange(m_Parent.GetComponentsInChildren<TileableMono>());
+            }
+
+            foreach (var tileInfo in m_TileInfo)
             {
                 DestroyImmediate(tileInfo.gameObject);
             }

@@ -60,7 +60,7 @@ public class PanelStateController : MonoBehaviour
         }
     }
 
-    public void SetAsTarget(bool v)
+    public void SetAsClue(bool v)
     {
         if(v)
         {

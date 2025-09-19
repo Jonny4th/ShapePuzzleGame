@@ -18,21 +18,22 @@ namespace PuzzleData
 
         [SerializeField] ShapeDataList shapeDataCollection;
 
-        public void ImprintShadowAsPuzzle()
+        public void ImprintShadowAsClue()
         {
+            allPanels = FindObjectsByType<PanelEntity>(FindObjectsSortMode.None);
 
-            allPanels = FindObjectsOfType<PanelEntity>();
-
+            // First, clear all target states
             foreach (var panel in allPanels)
             {
-                panel.PanelState.SetAsTarget(false);
+                panel.PanelState.SetAsClue(false);
             }
 
+            // Then, find all panels that are in the shadow state and set them as clues
             activePanels = Array.FindAll(allPanels, x => (x.PanelState.currentState & PanelStateController.State.Shadow) != 0);
 
             foreach (var panel in activePanels)
             {
-                panel.PanelState.SetAsTarget(true);
+                panel.PanelState.SetAsClue(true);
             }
         }
 
@@ -53,7 +54,8 @@ namespace PuzzleData
         {
             if (activePanels.Length == 0)
             {
-                activePanels = Array.FindAll(FindObjectsOfType<PanelEntity>(), x => (x.PanelState.currentState & PanelStateController.State.Target) != 0);
+                activePanels = Array.FindAll(FindObjectsByType<PanelEntity>(FindObjectsSortMode.None),
+                    x => (x.PanelState.currentState & PanelStateController.State.Target) != 0);
             }
             
             levelData.Data.PanelData = new PanelIdentifier[activePanels.Length];
@@ -66,11 +68,13 @@ namespace PuzzleData
 
         private void SaveShapes()
         {
-            ShapeModel[] shapes = FindObjectsOfType<ShapeModel>();
+            ShapeModel[] shapes = FindObjectsByType<ShapeModel>(FindObjectsSortMode.None);
             pieceData = new PieceData[shapes.Length];
             int i = 0;
             foreach (var shape in shapes)
             {
+                var snapPos = Vector3Int.RoundToInt(shape.transform.position);
+
                 pieceData[i] = new PieceData
                 {
                     shapeIndex = shape.shapeIndex,
@@ -92,12 +96,12 @@ namespace PuzzleData
         {
             ResetPanelState();
             var panelIdendifier = levelData.Data.PanelData;
-            var panels = FindObjectsOfType<PanelEntity>();
+            var panels = FindObjectsByType<PanelEntity>(FindObjectsSortMode.None);
             foreach (var panel in panels)
             {
                 if (Array.Exists(panelIdendifier, x => x == panel.Identifier))
                 {
-                    panel.PanelState.SetAsTarget(true);
+                    panel.PanelState.SetAsClue(true);
                 }
             }
         }
@@ -166,7 +170,7 @@ namespace PuzzleData
             allPanels = FindObjectsOfType<PanelEntity>();
             foreach (var panel in allPanels)
             {
-                panel.PanelState.SetAsTarget(false);
+                panel.PanelState.SetAsClue(false);
             }
         }
 

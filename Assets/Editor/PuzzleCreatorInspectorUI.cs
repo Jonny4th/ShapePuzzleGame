@@ -11,7 +11,7 @@ public class PuzzleCreatorInspectorUI : Editor
         PuzzleCreator controller = (PuzzleCreator)target;
         if (GUILayout.Button("Imprint Panels State"))
         {
-            controller.ImprintShadowAsPuzzle();
+            controller.ImprintShadowAsClue();
         }
         if (GUILayout.Button("Save Puzzle to Scriptable Obj"))
         {

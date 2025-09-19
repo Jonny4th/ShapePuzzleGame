@@ -13,9 +13,14 @@ namespace Scripts.Walls
 
             WallCreator creator = (WallCreator)target;
 
-            if(GUILayout.Button("Build"))
+            if (GUILayout.Button("Build"))
             {
                 creator.Build();
+            }
+            
+            if(GUILayout.Button("Clear"))
+            {
+                creator.Clear();
             }
         }
     }
