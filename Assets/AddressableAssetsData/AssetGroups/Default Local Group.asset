@@ -14,7 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: ab0dd75871e2e9042947813d20c973f9
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 5a8a2522d875f264aa1a1cad8a58d50c
+    m_Address: Assets/Prefabs/Managers/StageDataStorage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 927b9c80a16bc334a991f1417dd38af5
+    m_Address: ProductionStageDataCollection.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f66314c0ee883de448b3ed1649ab1964, type: 2}
   m_SchemaSet:

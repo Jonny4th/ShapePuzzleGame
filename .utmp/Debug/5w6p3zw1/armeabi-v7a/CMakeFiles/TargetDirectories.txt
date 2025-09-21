@@ -1,0 +1,5 @@
+D:/Tong/ShapePuzzleGame/.utmp/Debug/5w6p3zw1/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Tong/ShapePuzzleGame/.utmp/Debug/5w6p3zw1/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+D:/Tong/ShapePuzzleGame/.utmp/Debug/5w6p3zw1/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+D:/Tong/ShapePuzzleGame/.utmp/Debug/5w6p3zw1/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+D:/Tong/ShapePuzzleGame/.utmp/Debug/5w6p3zw1/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir

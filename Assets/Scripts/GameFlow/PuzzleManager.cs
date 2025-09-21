@@ -2,7 +2,6 @@ using Shape.Inputs;
 using Shape.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PuzzleManager : MonoBehaviour
 {

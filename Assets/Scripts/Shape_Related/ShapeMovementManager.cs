@@ -1,4 +1,5 @@
 using ScriptableObjectEvent;
+using Scripts.Models;
 using Shape.Inputs;
 using System;
 using Touch;
@@ -53,6 +54,21 @@ namespace Shape.Movement
         public void OnReset()
         {
             ClearSelectedShape();
+        }
+
+        public void OnBeginStageConsrtruction(StageBlueprint stage)
+        {
+            var xLim = -(stage.Data.StageSize.x - 1);
+            var yLim = stage.Data.StageSize.y - 1;
+            var zLim = -(stage.Data.StageSize.z - 1);
+            var max = new Vector3(xLim, yLim, zLim);
+            SetSpaceLimit(Vector3.zero, max);
+        }
+
+        public void SetSpaceLimit(Vector3 min, Vector3 max)
+        {
+            minimumLimit = min;
+            maximumLimit = max;
         }
 
         private void ProcessMove(Vector3 direction)

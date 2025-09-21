@@ -10,14 +10,17 @@ public class StageController : MonoBehaviour
 {
     [SerializeField] private StageDataCollection _stageDataCollection;
     [SerializeField] private WallCreatable _wallCreator;
+    [SerializeField] private Transform _shapeParent;
     [SerializeField] private StageBlueprint _levelData;
     [SerializeField] private Mesh _blockTheme;
 
+    [SerializeField] private SceneChange _endSceneChanger;
     public PieceData[] pieceData;
 
     [Space]
     public UnityEvent OnClueSet;
     public UnityEvent OnPieceSet;
+    public UnityEvent<StageBlueprint> OnBeginConstruction;
 
     public int currentIndex = 0;
     private GameObject[] _shapesInScene;
@@ -43,6 +46,7 @@ public class StageController : MonoBehaviour
 
     public void BuildStage()
     {
+        OnBeginConstruction?.Invoke(_levelData);
         LoadClue();
         LoadShapePieces();
     }
@@ -82,7 +86,7 @@ public class StageController : MonoBehaviour
             GameObject go = GetShape(piece.shapeIndex);
             Vector3 pos = piece.position;
             Quaternion rot = piece.rotation;
-            var shape = Instantiate(go, pos, rot);
+            var shape = Instantiate(go, pos, rot, _shapeParent);
 
             if (_blockTheme != null)
             {
@@ -117,6 +121,13 @@ public class StageController : MonoBehaviour
     public void NextStage()
     {
         currentIndex++;
+        if(currentIndex >= _stageDataCollection.StageBlueprints.Length)
+        {
+            currentIndex = 0;
+            _endSceneChanger.ChangeScene();
+            return;
+        }
+
         _levelData = _stageDataCollection.StageBlueprints[currentIndex];
         _wallCreator.Clear();
 

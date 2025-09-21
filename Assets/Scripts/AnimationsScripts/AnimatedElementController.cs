@@ -41,7 +41,7 @@ public class AnimatedElementController : MonoBehaviour
         foreach (var e in m_Elements)
         {
             e.Perform();
-            yield return new WaitForSeconds(m_Delay);
+            yield return new WaitForSecondsRealtime(m_Delay);
         }
 
         yield return new WaitUntil(() => m_ElementsCount == 0);

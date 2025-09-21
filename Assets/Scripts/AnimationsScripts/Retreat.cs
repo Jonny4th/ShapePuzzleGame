@@ -22,7 +22,7 @@ public class Retreat : AnimatedElement
         var startTime = Time.time;
         var endTime = startTime + m_AnimationTime;
         var normalizeTime = 0f;
-        var evaluate = 0f;
+        float evaluate;
         
         while (normalizeTime < 1)
         {

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Scripts.Walls
 {
     public class WallManager : WallCreatable
     {
+        [SerializeField] private bool m_IsPivotAtCenter = true;
         [SerializeField] private WallCreatable m_ZWallCreator;
         [SerializeField] private WallCreatable m_XWallCreator;
         [SerializeField] private WallCreatable m_YWallCreator;
@@ -24,7 +26,9 @@ namespace Scripts.Walls
 
         public void Awake()
         {
-            if(m_TilePrototype != null)
+            m_TileInfos = new();
+
+            if (m_TilePrototype != null)
             {
                 m_ZWallCreator.SetTilePrototype(m_TilePrototype);
                 m_XWallCreator.SetTilePrototype(m_TilePrototype);
@@ -45,24 +49,24 @@ namespace Scripts.Walls
 
         public override List<TileableMono> Build()
         {
-            m_TileInfos.Clear();
+            Clear();
 
             if(!(m_XSize == 0 || m_YSize == 0))
             {
-                m_ZWallCreator.transform.position = new Vector3(0, 0, m_ZSize / 2f + 1f);
+                if(m_IsPivotAtCenter) m_ZWallCreator.transform.position = new Vector3(0, 0, m_ZSize / 2f + 1f);
                 m_ZWallCreator.Build();
                 m_TileInfos.AddRange(m_ZWallCreator.TileInfos);
             }
 
             if(!(m_ZSize == 0 || m_YSize == 0))
             {
-                m_XWallCreator.transform.position = new Vector3(m_XSize / 2f + 1f, 0, 0);
+                if(m_IsPivotAtCenter) m_XWallCreator.transform.position = new Vector3(m_XSize / 2f + 1f, 0, 0);
                 m_XWallCreator.Build();
                 m_TileInfos.AddRange(m_XWallCreator.TileInfos);
             }
             if(!(m_XSize == 0 || m_ZSize == 0))
             {
-                m_YWallCreator.transform.position = new Vector3(0, - m_ZSize / 2f - 1f, 0);
+                if(m_IsPivotAtCenter) m_YWallCreator.transform.position = new Vector3(0, - m_ZSize / 2f - 1f, 0);
                 m_YWallCreator.Build();
                 m_TileInfos.AddRange(m_YWallCreator.TileInfos);
             }

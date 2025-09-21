@@ -16,17 +16,38 @@ MonoBehaviour:
   Data:
     StageId: CUBE-004
     StageName: This Is a Test
-    StageSize: {x: 7, y: 7, z: 7}
+    StageSize: {x: 8, y: 8, z: 8}
     PanelData:
     - PanelSide: 0
+      Coordinate: {x: 4, y: 3}
+    - PanelSide: 0
+      Coordinate: {x: 4, y: 4}
+    - PanelSide: 1
+      Coordinate: {x: 4, y: 3}
+    - PanelSide: 2
+      Coordinate: {x: 4, y: 4}
+    - PanelSide: 2
+      Coordinate: {x: 3, y: 4}
+    - PanelSide: 1
       Coordinate: {x: 3, y: 3}
     - PanelSide: 1
+      Coordinate: {x: 4, y: 4}
+    - PanelSide: 0
+      Coordinate: {x: 3, y: 4}
+    - PanelSide: 2
+      Coordinate: {x: 4, y: 3}
+    - PanelSide: 0
       Coordinate: {x: 3, y: 3}
     - PanelSide: 2
       Coordinate: {x: 3, y: 3}
+    - PanelSide: 1
+      Coordinate: {x: 3, y: 4}
     piece:
-    - shapeIndex: 1
-      position: {x: 3, y: -3, z: 3}
-      rotation: {x: 0, y: 0, z: 0, w: 0}
+    - shapeIndex: 2
+      position: {x: 0, y: 7, z: 0}
+      rotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+    - shapeIndex: 2
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 1, z: 0, w: 0}
     DisplayDiscription: 
     DeveloperDiscription: 

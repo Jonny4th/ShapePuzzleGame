@@ -6,26 +6,15 @@ namespace Scripts.Walls
 {
     public class WallCreator : WallCreatable
     {
+        [SerializeField] private bool m_IsPivotAtCenter = true;
         [SerializeField] private PanelSide panelSide;
-
-        [SerializeField]
-        private TileableMono m_TilePrototype;
-
-        [SerializeField]
-        private int m_Width;
-
-        [SerializeField]
-        private int m_Height;
-
-        [SerializeField]
-        private int m_Depth;
-
-        [SerializeField]
-        private Transform m_Parent;
-
+        [SerializeField] private TileableMono m_TilePrototype;
+        [SerializeField] private int m_Width;
+        [SerializeField] private int m_Height;
+        [SerializeField] private int m_Depth;
+        [SerializeField] private Transform m_Parent;
         [SerializeField] private List<TileableMono> m_TileInfo = new();
         public override List<TileableMono> TileInfos => m_TileInfo;
-        
 
         public override WallCreatable SetTilePrototype(TileableMono tilePrototype)
         {
@@ -70,7 +59,7 @@ namespace Scripts.Walls
 
             foreach (var tileInfo in m_TileInfo)
             {
-                DestroyImmediate(tileInfo.gameObject);
+                if(tileInfo != null) DestroyImmediate(tileInfo.gameObject);
             }
 
             m_TileInfo.Clear();
@@ -81,16 +70,18 @@ namespace Scripts.Walls
         private List<TileableMono> DoTiling()
         {
             var tiles = new List<TileableMono>();
-
+            var posCoef = m_IsPivotAtCenter ? 1f : 0f;
+            
             for (var j = 0; j < m_Height; j++)
             {
                 for (var i = 0; i < m_Width; i++)
                 {
-                    var x = i - (m_Width / 2f - 0.5f);
-                    var y = j - (m_Height / 2f - 0.5f);
+                    var xPos = i - posCoef * (m_Width / 2f - 0.5f);
+                    var yPos = j - posCoef * (m_Height / 2f - 0.5f);
 
                     var tile = Instantiate(m_TilePrototype, m_Parent);
-                    tile.transform.SetLocalPositionAndRotation(new Vector3(x, y, m_Depth), Quaternion.identity);
+                    tile.transform.SetLocalPositionAndRotation(new Vector3(xPos, yPos, m_Depth), Quaternion.identity);
+                    if(panelSide == PanelSide.Z) tile.transform.Rotate(Vector3.up, 180f);
                     tile.name = $"Panel ({i},{j})";
                     tile.Identifier = new()
                     {

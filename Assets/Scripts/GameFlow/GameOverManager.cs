@@ -3,7 +3,6 @@ using Shape.Controller;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.iOS;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -23,9 +22,9 @@ public class GameOverManager : MonoBehaviour
 
     public void Setup()
     {
-        targetPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), IsTargetPanel));
-        emptyPanels.AddRange(Array.FindAll(FindObjectsOfType<PanelStateController>(), x => !IsTargetPanel(x)));
-        shapeInScene.AddRange(FindObjectsOfType<ShapeOverlapController>());
+        targetPanels.AddRange(Array.FindAll(FindObjectsByType<PanelStateController>( FindObjectsSortMode.None), IsTargetPanel));
+        emptyPanels.AddRange(Array.FindAll(FindObjectsByType<PanelStateController>( FindObjectsSortMode.None), x => !IsTargetPanel(x)));
+        shapeInScene.AddRange(FindObjectsByType<ShapeOverlapController>( FindObjectsSortMode.None));
         gameIsOver = false;
     }
 
