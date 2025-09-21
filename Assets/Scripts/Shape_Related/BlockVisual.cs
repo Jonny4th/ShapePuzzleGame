@@ -30,14 +30,14 @@ public class BlockVisual : MonoBehaviour
 
     private void OnEnable()
     {
-        overlapController.OverlapChanged += UpdateState;
-        selectionController.OnShapeSelected.AddListener(UpdateState);
+        if(overlapController != null) overlapController.OverlapChanged += UpdateState;
+        if(selectionController != null) selectionController.OnShapeSelected.AddListener(UpdateState);
     }
 
     private void OnDisable()
     {
-        overlapController.OverlapChanged -= UpdateState;
-        selectionController.OnShapeSelected.RemoveListener(UpdateState);
+        if(overlapController != null) overlapController.OverlapChanged -= UpdateState;
+        if(selectionController != null) selectionController.OnShapeSelected.RemoveListener(UpdateState);
     }
 
     private void UpdateVisual()

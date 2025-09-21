@@ -1,0 +1,57 @@
+<linker>
+  <assembly fullname="Project.External, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Outline" preserve="all" />
+    <type fullname="Outline/ListVector3" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Script.GameFlow, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="StageDataStorage" preserve="all" />
+  </assembly>
+  <assembly fullname="Script.MovementControl, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shape.Movement.MovementHandler" preserve="all" />
+  </assembly>
+  <assembly fullname="Script.ShapeController, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="BlockCollisionDetection" preserve="all" />
+    <type fullname="BlockSelect" preserve="all" />
+    <type fullname="BlockVisual" preserve="all" />
+    <type fullname="Shape.Controller.ShapeOverlapController" preserve="all" />
+    <type fullname="ShapeModel" preserve="all" />
+    <type fullname="ShapeSelectionController" preserve="all" />
+  </assembly>
+  <assembly fullname="Scripts.Models, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Scripts.Models.ShapeDataList" preserve="all" />
+    <type fullname="Scripts.Models.StageBlueprint" preserve="all" />
+    <type fullname="Scripts.Models.StageDataCollection" preserve="all" />
+    <type fullname="ShapeData" preserve="all" />
+    <type fullname="PanelIdentifier" preserve="nothing" serialized="true" />
+    <type fullname="Scripts.Models.PieceData" preserve="nothing" serialized="true" />
+    <type fullname="Scripts.Models.StageData" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.LineRenderer" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent`1" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.BoxCollider" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody" preserve="all" />
+  </assembly>
+</linker>

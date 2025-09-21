@@ -324,7 +324,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1 &418973376
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.3764706}
+    m_NormalColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0.43137255}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 0.3137255}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1791,7 +1791,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1 &1083175946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2471147023237940332, guid: ba11928d7a038584a80a6f9bfd94ffba, type: 3}
@@ -2651,7 +2651,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1 &1500810401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1775484197832895059, guid: b2ff4a0fb68fa084d9e5f86086cea140, type: 3}
@@ -2711,7 +2711,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1 &1555598014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5632444903816005513, guid: 9df4ff2aff8e6db459faf0d9b676bd25, type: 3}
@@ -2771,7 +2771,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1 &1558925107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,15 +3248,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Elements:
   - {fileID: 1500810405}
+  - {fileID: 2097936351}
   - {fileID: 1019504695}
   - {fileID: 2145870104}
+  - {fileID: 411518910}
   - {fileID: 1442970001}
   - {fileID: 2049339317}
   - {fileID: 1827181351}
-  - {fileID: 2097936351}
-  - {fileID: 411518910}
   - {fileID: 1555598017}
-  m_Delay: 0.2
+  m_Delay: 0.1
   OnAnimationFinish:
     m_PersistentCalls:
       m_Calls:
@@ -3560,7 +3560,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1 &1920490431
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,7 +3961,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1001 &2097936347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4137,7 +4137,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1001 &2145870100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4277,7 +4277,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_AnimationTime: 2.5
+  m_AnimationTime: 3.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
