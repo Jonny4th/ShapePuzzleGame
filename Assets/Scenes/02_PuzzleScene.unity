@@ -279,14 +279,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 0
     m_Resolution: -1
@@ -789,14 +789,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4514235561714304117, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4514235561714304117, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: m_Perform
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4532911445662128385, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -872,10 +864,6 @@ PrefabInstance:
     - target: {fileID: 7584071044758922955, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: m_fontSize
       value: 67.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 7821875423616154795, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7942664544872702499, guid: 889c1bb1480f26c4faa53cd60892d172, type: 3}
       propertyPath: m_ActionEvents.Array.size

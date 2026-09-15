@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enablePlatform: 11
-  m_Perform: 1
+  m_UseCurrentOverride: 0
 --- !u!1 &3185950129230071127
 GameObject:
   m_ObjectHideFlags: 0

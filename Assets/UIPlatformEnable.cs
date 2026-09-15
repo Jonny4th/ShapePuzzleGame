@@ -4,11 +4,9 @@ using UnityEngine;
 public class UIPlatformEnable : MonoBehaviour
 {
     [SerializeField] private RuntimePlatform enablePlatform;
-    [SerializeField] private bool m_Perform = true;
 
     void Awake()
     {
-        if (!m_Perform) return;
         CheckEnable();
     }
 
