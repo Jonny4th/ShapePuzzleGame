@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class StageSelectionSceneManager : MonoBehaviour
 {
-    [SerializeField] private StageDataCollection stageDataCollection;
+    [SerializeField] private LevelDataCollection stageDataCollection;
 
 }

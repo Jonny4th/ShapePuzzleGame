@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Scripts.Models
 {
     [Serializable]
-    public struct StageData
+    public struct LevelData
     {
         public string StageId;
         public string StageName;

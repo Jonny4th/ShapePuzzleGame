@@ -56,7 +56,7 @@ namespace Shape.Movement
             ClearSelectedShape();
         }
 
-        public void OnBeginStageConsrtruction(StageBlueprint stage)
+        public void OnBeginStageConsrtruction(LevelBlueprint stage)
         {
             var xLim = -(stage.Data.StageSize.x - 1);
             var yLim = stage.Data.StageSize.y - 1;

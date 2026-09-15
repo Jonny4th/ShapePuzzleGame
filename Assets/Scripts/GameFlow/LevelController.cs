@@ -6,12 +6,12 @@ using Scripts.Walls;
 using System.Linq;
 using System.Collections.Generic;
 
-public class StageController : MonoBehaviour
+public class LevelController : MonoBehaviour
 {
-    [SerializeField] private StageDataCollection _stageDataCollection;
+    [SerializeField] private LevelDataCollection _stageDataCollection;
     [SerializeField] private WallCreatable _wallCreator;
     [SerializeField] private Transform _shapeParent;
-    [SerializeField] private StageBlueprint _levelData;
+    [SerializeField] private LevelBlueprint _levelData;
     [SerializeField] private Mesh _blockTheme;
 
     [SerializeField] private SceneChange _endSceneChanger;
@@ -20,7 +20,7 @@ public class StageController : MonoBehaviour
     [Space]
     public UnityEvent OnClueSet;
     public UnityEvent OnPieceSet;
-    public UnityEvent<StageBlueprint> OnBeginConstruction;
+    public UnityEvent<LevelBlueprint> OnBeginConstruction;
 
     public int currentIndex = 0;
     private GameObject[] _shapesInScene;
@@ -32,13 +32,13 @@ public class StageController : MonoBehaviour
     }
 
     #region Builder Methods
-    public StageController SetStageBlueprint(StageBlueprint blueprint)
+    public LevelController SetStageBlueprint(LevelBlueprint blueprint)
     {
         _levelData = blueprint;
         return this;
     }
 
-    public StageController SetTheme(Mesh theme)
+    public LevelController SetTheme(Mesh theme)
     {
         _blockTheme = theme;
         return this;

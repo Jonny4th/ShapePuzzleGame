@@ -11,7 +11,7 @@ namespace PuzzleData
     {
         PanelEntity[] allPanels;
         [SerializeField] PanelEntity[] activePanels;
-        [SerializeField] StageBlueprint levelData;
+        [SerializeField] LevelBlueprint levelData;
         [SerializeField] Vector3Int stageSize;
         [SerializeField] string stageName;
         public PieceData[] pieceData;
@@ -155,7 +155,7 @@ namespace PuzzleData
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-                levelData = (StageBlueprint)bf.Deserialize(file);
+                levelData = (LevelBlueprint)bf.Deserialize(file);
                 file.Close();
             }
         }
