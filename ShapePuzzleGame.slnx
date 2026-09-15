@@ -1,0 +1,25 @@
+﻿<Solution>
+  <Project Path="Script.GameFlow.csproj" />
+  <Project Path="LeanCommon.csproj" />
+  <Project Path="CW.Common.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Script.ShapeController.csproj" />
+  <Project Path="LeanTouch.csproj" />
+  <Project Path="Script.Walls.csproj" />
+  <Project Path="Scripts.Models.csproj" />
+  <Project Path="ScriptableEventsAndVariables.csproj" />
+  <Project Path="Command.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Script.MovementControl.csproj" />
+  <Project Path="Script.PanelController.csproj" />
+  <Project Path="MovementControl.Tests.PlayMode.csproj" />
+  <Project Path="VirtualButtonsScripts.csproj" />
+  <Project Path="Scripts.StageSelection.csproj" />
+  <Project Path="Script.Utilities.csproj" />
+  <Project Path="Shape.Inputs.csproj" />
+  <Project Path="Script.Walls.Editor.csproj" />
+  <Project Path="Script.ShapeController.Editor.csproj" />
+  <Project Path="Shape.UI.csproj" />
+  <Project Path="Project.External.csproj" />
+  <Project Path="Script.Walls.EditorModeTests.csproj" />
+</Solution>
