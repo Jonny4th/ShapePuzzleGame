@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] private LevelDataCollection _stageDataCollection;
     [SerializeField] private WallCreatable _wallCreator;
     [SerializeField] private Transform _shapeParent;
     [SerializeField] private LevelBlueprint _levelData;
@@ -22,12 +21,20 @@ public class LevelController : MonoBehaviour
     public UnityEvent OnPieceSet;
     public UnityEvent<LevelBlueprint> OnBeginConstruction;
 
+    private LevelDataCollection _stageDataCollection = null;
     public int currentIndex = 0;
     private GameObject[] _shapesInScene;
 
     private void OnEnable()
     {
-        _levelData = _stageDataCollection.StageBlueprints[currentIndex];
+        if(LevelDataStorage.Instance != null)
+        {
+            _stageDataCollection = LevelDataStorage.Instance.StageDataCollection;
+            _levelData = _stageDataCollection.StageBlueprints[currentIndex];
+        }
+        
+        if (_levelData == null) throw new Exception("Level is not assigned. Add it in the inspector.");
+
         BuildStage();
     }
 
@@ -120,6 +127,7 @@ public class LevelController : MonoBehaviour
 
     public void NextStage()
     {
+        if(_stageDataCollection == null) throw new Exception("No data in level list. You probably start the level from Puzzle Scene.");
         currentIndex++;
         if(currentIndex >= _stageDataCollection.StageBlueprints.Length)
         {
