@@ -1,9 +1,11 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
 public class UIPlatformEnable : MonoBehaviour
 {
-    [SerializeField] private RuntimePlatform enablePlatform;
+    [SerializeField] private PlatformPair[] m_Entries;
 
     void Awake()
     {
@@ -12,6 +14,19 @@ public class UIPlatformEnable : MonoBehaviour
 
     public void CheckEnable()
     {
-        gameObject.SetActive(Application.platform == enablePlatform);
+        var currentPlatform = Application.platform;
+
+        foreach(var component in m_Entries)
+        {
+            if(component.Platform.Any(triggerPlatform => triggerPlatform == currentPlatform)) component.Component.SetActive(true); 
+            else component.Component.SetActive(false);
+        }
     }
+}
+
+[Serializable]
+internal struct PlatformPair
+{
+    public GameObject Component;
+    public RuntimePlatform[] Platform;
 }
