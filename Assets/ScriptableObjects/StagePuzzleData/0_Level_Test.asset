@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120091077f0578046ab3729ac45e5ffa, type: 3}
   m_Name: 0_Level_Test
   m_EditorClassIdentifier: 
+  shapeDataCollection: {fileID: 11400000, guid: 516a2a64592bd524eb635edd6f4ba73a, type: 2}
   Data:
     StageId: TEST
     StageName: This Is a Test
@@ -25,6 +26,7 @@ MonoBehaviour:
       Coordinate: {x: 3, y: 3}
     piece:
     - shapeIndex: 1
-      position: {x: 3, y: -3, z: 3}
+      position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 0}
-  shapeDataCollection: {fileID: 11400000, guid: 516a2a64592bd524eb635edd6f4ba73a, type: 2}
+    DisplayDiscription: 
+    DeveloperDiscription: 
