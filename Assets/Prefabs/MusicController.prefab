@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentPlayMode: 0
   m_playlist:
-  - {fileID: 8300000, guid: 556ddbba42b12974a8c846d27ec1570d, type: 3}
-  - {fileID: 8300000, guid: c691d60950856524e8e607ef5d0a23a6, type: 3}
-  - {fileID: 8300000, guid: 213ecf9bfb5b06749a77a5a8b6967c33, type: 3}
-  - {fileID: 8300000, guid: e9c6c76e566d8d04b94c54bc27e78a28, type: 3}
+  - {fileID: 11400000, guid: a5f57f78ee2cbe249969fda063659cef, type: 2}
+  - {fileID: 11400000, guid: fec81c0c4b1e70f4e82ff4d4f4b7a3ac, type: 2}
+  - {fileID: 11400000, guid: efea49f8f82c6dd47a35a5c3a7666c38, type: 2}
+  - {fileID: 11400000, guid: 9f89a677f70794f46b553672292cea63, type: 2}
 --- !u!82 &5962118109131212111
 AudioSource:
   m_ObjectHideFlags: 0

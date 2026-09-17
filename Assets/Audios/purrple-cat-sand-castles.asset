@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9c16302ce2fc346878964bab9a660a, type: 3}
+  m_Name: purrple-cat-sand-castles
+  m_EditorClassIdentifier: Scripts.Models::MusicData
+  AudioClip: {fileID: 8300000, guid: e9c6c76e566d8d04b94c54bc27e78a28, type: 3}
+  MetaData:
+    Name: purrple-cat-sand-castles
+    Artist: 
+    Cover: {fileID: 0}
+    Reference: 

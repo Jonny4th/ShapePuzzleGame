@@ -20,6 +20,7 @@
   <Project Path="Script.Walls.Editor.csproj" />
   <Project Path="Script.ShapeController.Editor.csproj" />
   <Project Path="Shape.UI.csproj" />
+  <Project Path="General.Audio.csproj" />
   <Project Path="Project.External.csproj" />
   <Project Path="Script.Walls.EditorModeTests.csproj" />
 </Solution>

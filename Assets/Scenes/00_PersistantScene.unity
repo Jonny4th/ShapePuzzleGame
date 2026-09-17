@@ -821,6 +821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageDataStorage
       objectReference: {fileID: 0}
+    - target: {fileID: 3143277601163686274, guid: 5a8a2522d875f264aa1a1cad8a58d50c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6097258040952699539, guid: 5a8a2522d875f264aa1a1cad8a58d50c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -863,7 +867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6989097538768715538, guid: 5a8a2522d875f264aa1a1cad8a58d50c, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
