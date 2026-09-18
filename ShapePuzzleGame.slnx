@@ -6,6 +6,7 @@
   <Project Path="Script.ShapeController.csproj" />
   <Project Path="LeanTouch.csproj" />
   <Project Path="Script.Walls.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Scripts.Models.csproj" />
   <Project Path="ScriptableEventsAndVariables.csproj" />
   <Project Path="Command.csproj" />
