@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "NewPlayerInput",
     "maps": [
         {
@@ -180,7 +181,7 @@
                     "name": "Deselect",
                     "type": "Button",
                     "id": "d2421e3a-b91f-49ce-bbe2-b49c2c070a15",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -247,6 +248,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RotateViewAngle",
+                    "type": "Value",
+                    "id": "42985d6f-938b-459c-8e9f-07db41dbc532",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -854,6 +864,39 @@
                     "action": "ToggleRotate",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "dee09df3-3cfc-44f1-83fc-864abe693932",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateViewAngle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "1983257c-21a7-42df-aff0-51b9902a5a32",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoard",
+                    "action": "RotateViewAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "dce33fc4-6078-40b0-87af-044b50517e7d",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyBoard",
+                    "action": "RotateViewAngle",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -988,7 +1031,7 @@
                     "name": "NextLevel",
                     "type": "Button",
                     "id": "2f53b31d-3ae1-4334-93a6-39c5bf4efce9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
