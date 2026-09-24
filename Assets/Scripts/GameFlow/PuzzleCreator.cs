@@ -9,8 +9,8 @@ namespace PuzzleData
 {
     public partial class PuzzleCreator : MonoBehaviour
     {
-        PanelEntity[] allPanels;
-        [SerializeField] PanelEntity[] activePanels;
+        ClueTile[] allPanels;
+        [SerializeField] ClueTile[] activePanels;
         [SerializeField] LevelBlueprint levelData;
         [SerializeField] Vector3Int stageSize;
         [SerializeField] string stageName;
@@ -20,20 +20,20 @@ namespace PuzzleData
 
         public void ImprintShadowAsClue()
         {
-            allPanels = FindObjectsByType<PanelEntity>(FindObjectsSortMode.None);
+            allPanels = FindObjectsByType<ClueTile>(FindObjectsSortMode.None);
 
             // First, clear all target states
             foreach (var panel in allPanels)
             {
-                panel.PanelState.SetAsClue(false);
+                panel.SetAsClue(false);
             }
 
             // Then, find all panels that are in the shadow state and set them as clues
-            activePanels = Array.FindAll(allPanels, x => (x.PanelState.currentState & PanelStateController.State.Shadow) != 0);
+            activePanels = Array.FindAll(allPanels, x => (x.CurrentState & ClueTile.State.Shadow) != 0);
 
             foreach (var panel in activePanels)
             {
-                panel.PanelState.SetAsClue(true);
+                panel.SetAsClue(true);
             }
         }
 
@@ -54,11 +54,11 @@ namespace PuzzleData
         {
             if (activePanels.Length == 0)
             {
-                activePanels = Array.FindAll(FindObjectsByType<PanelEntity>(FindObjectsSortMode.None),
-                    x => (x.PanelState.currentState & PanelStateController.State.Target) != 0);
+                activePanels = Array.FindAll(FindObjectsByType<ClueTile>(FindObjectsSortMode.None),
+                    x => (x.CurrentState & ClueTile.State.Target) != 0);
             }
             
-            levelData.Data.PanelData = new PanelIdentifier[activePanels.Length];
+            levelData.Data.PanelData = new TileIdentifier[activePanels.Length];
 
             for (int i = 0; i < activePanels.Length; i++)
             {
@@ -96,12 +96,12 @@ namespace PuzzleData
         {
             ResetPanelState();
             var panelIdendifier = levelData.Data.PanelData;
-            var panels = FindObjectsByType<PanelEntity>(FindObjectsSortMode.None);
+            var panels = FindObjectsByType<ClueTile>(FindObjectsSortMode.None);
             foreach (var panel in panels)
             {
                 if (Array.Exists(panelIdendifier, x => x == panel.Identifier))
                 {
-                    panel.PanelState.SetAsClue(true);
+                    panel.SetAsClue(true);
                 }
             }
         }
@@ -125,7 +125,7 @@ namespace PuzzleData
         {
             levelData.Data.StageName = stageName;
             levelData.Data.StageSize = stageSize;
-            levelData.Data.PanelData = new PanelIdentifier[activePanels.Length];
+            levelData.Data.PanelData = new TileIdentifier[activePanels.Length];
 
             for (int i = 0; i < activePanels.Length; i++)
             {
@@ -167,16 +167,16 @@ namespace PuzzleData
         }
         public void ResetPanelState()
         {
-            allPanels = FindObjectsOfType<PanelEntity>();
+            allPanels = FindObjectsByType<ClueTile>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             foreach (var panel in allPanels)
             {
-                panel.PanelState.SetAsClue(false);
+                panel.SetAsClue(false);
             }
         }
 
         void ClearShape()
         {
-            ShapeModel[] shapes = FindObjectsOfType<ShapeModel>();
+            ShapeModel[] shapes = FindObjectsByType<ShapeModel>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             foreach (var shape in shapes)
             {
                 DestroyImmediate(shape.gameObject);

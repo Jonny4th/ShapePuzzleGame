@@ -7,18 +7,18 @@ public enum PanelSide
 }
 
 [Serializable]
-public struct PanelIdentifier
+public struct TileIdentifier
 {
     public PanelSide PanelSide;
     public Vector2Int Coordinate;
 
-    public static bool operator ==(PanelIdentifier a, PanelIdentifier b)
+    public static bool operator ==(TileIdentifier a, TileIdentifier b)
     {
         return a.PanelSide == b.PanelSide &&
                 a.Coordinate == b.Coordinate;
     }
 
-    public static bool operator !=(PanelIdentifier a, PanelIdentifier b)
+    public static bool operator !=(TileIdentifier a, TileIdentifier b)
     {
         return !(a.PanelSide == b.PanelSide &&
                 a.Coordinate == b.Coordinate);

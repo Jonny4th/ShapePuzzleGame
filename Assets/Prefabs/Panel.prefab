@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8495054308071801235}
   - component: {fileID: 3746807638221112462}
   - component: {fileID: 7709754249405645037}
+  - component: {fileID: -2623162661484745496}
   m_Layer: 2
   m_Name: Panel
   m_TagString: Untagged
@@ -60,6 +61,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,9 +87,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3746807638221112462
 MonoBehaviour:
@@ -97,8 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271297118b386324681ac13ff8dfe8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _relativeCoordinate: {x: 0, y: 0, z: 0}
-  _panelState: {fileID: 7709754249405645037}
+  _identifier:
+    PanelSide: 0
+    Coordinate: {x: 0, y: 0}
+  _panelStateVisual: {fileID: 7709754249405645037}
+  _blockDetector: {fileID: -2623162661484745496}
+  _currentState: 0
+  OnClueStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7709754249405645037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,11 +126,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed0baf02e4b30649b679a1d47d8d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitLayer:
-    serializedVersion: 2
-    m_Bits: 8
   currentState: 0
   defaultMaterial: {fileID: 2100000, guid: 09fcf172b5a7ee34f961f82fffe0fab8, type: 2}
   targetMaterial: {fileID: 2100000, guid: 8c3ea15c2eb93184fa5c2f9910fd8f10, type: 2}
   shadowMaterial: {fileID: 2100000, guid: e002265d9cce6cd47b8d4600a77e72cd, type: 2}
   correctMaterial: {fileID: 2100000, guid: e2c513dd70a01de4199c5052616d0ad3, type: 2}
+--- !u!114 &-2623162661484745496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495054308071801233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc5cfacdb2a4f34ab16a8f53995d39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Script.PanelController::BlockDetector
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  OnBlockEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBlockExit:
+    m_PersistentCalls:
+      m_Calls: []

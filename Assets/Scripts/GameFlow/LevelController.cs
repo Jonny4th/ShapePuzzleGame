@@ -61,22 +61,22 @@ public class LevelController : MonoBehaviour
 
     private void LoadClue()
     {
-        IEnumerable<PanelEntity> panels = _wallCreator
+        IEnumerable<ClueTile> panels = _wallCreator
             .SetDimention(_levelData.Data.StageSize)
             .Build()
-            .Select(x => x.GetComponent<PanelEntity>());
+            .Select(x => x.GetComponent<ClueTile>());
 
-        PanelIdentifier[] activePanels = _levelData.Data.PanelData;
+        TileIdentifier[] activePanels = _levelData.Data.PanelData;
 
         foreach (var panel in panels)
         {
             if (Array.Exists(activePanels, x => x == panel.Identifier))
             {
-                panel.PanelState.SetAsClue(true);
+                panel.SetAsClue(true);
             }
             else
             {
-                panel.PanelState.currentState = PanelStateController.State.None;
+                panel.ChangeStateTo(ClueTile.State.None);
             }
         }
 

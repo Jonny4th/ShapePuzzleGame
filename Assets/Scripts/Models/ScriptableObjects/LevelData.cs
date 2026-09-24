@@ -9,7 +9,7 @@ namespace Scripts.Models
         public string StageId;
         public string StageName;
         public Vector3Int StageSize;
-        public PanelIdentifier[] PanelData;
+        public TileIdentifier[] PanelData;
         public PieceData[] piece;
 
         [TextArea(3, 10)]

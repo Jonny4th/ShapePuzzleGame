@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class GameOverManager : MonoBehaviour
 {
-    [SerializeField] List<PanelStateController> targetPanels;
-    [SerializeField] List<PanelStateController> emptyPanels;
+    [SerializeField] List<ClueTile> targetPanels;
+    [SerializeField] List<ClueTile> emptyPanels;
     [SerializeField] List<ShapeOverlapController> shapeInScene;
     [SerializeField] bool invalidPlacement;
 
@@ -22,8 +22,8 @@ public class GameOverManager : MonoBehaviour
 
     public void Setup()
     {
-        targetPanels.AddRange(Array.FindAll(FindObjectsByType<PanelStateController>( FindObjectsSortMode.None), IsTargetPanel));
-        emptyPanels.AddRange(Array.FindAll(FindObjectsByType<PanelStateController>( FindObjectsSortMode.None), x => !IsTargetPanel(x)));
+        targetPanels.AddRange(Array.FindAll(FindObjectsByType<ClueTile>( FindObjectsSortMode.None), IsTargetPanel));
+        emptyPanels.AddRange(Array.FindAll(FindObjectsByType<ClueTile>( FindObjectsSortMode.None), x => !IsTargetPanel(x)));
         shapeInScene.AddRange(FindObjectsByType<ShapeOverlapController>( FindObjectsSortMode.None));
         gameIsOver = false;
     }
@@ -37,14 +37,14 @@ public class GameOverManager : MonoBehaviour
         Setup();
     }
 
-    private bool IsTargetPanel(PanelStateController panel)
+    private bool IsTargetPanel(ClueTile panel)
     {
-        return (panel.currentState & PanelStateController.State.Target) != 0;
+        return (panel.CurrentState & ClueTile.State.Target) != 0;
     }
 
-    private bool IsBlockOn(PanelStateController panel)
+    private bool IsBlockOn(ClueTile panel)
     {
-        return (panel.currentState & PanelStateController.State.Shadow) != 0;
+        return (panel.CurrentState & ClueTile.State.Shadow) != 0;
     }
 
     private void LateUpdate()
@@ -57,10 +57,10 @@ public class GameOverManager : MonoBehaviour
     {
         if(shapeInScene.Exists(x => x.IsOverlap)) return;
 
-        List<PanelStateController> misses = emptyPanels.FindAll(IsBlockOn);
+        List<ClueTile> misses = emptyPanels.FindAll(IsBlockOn);
         if(misses.Count > 0) return;
 
-        List<PanelStateController> corrects = targetPanels.FindAll(IsBlockOn);
+        List<ClueTile> corrects = targetPanels.FindAll(IsBlockOn);
         if(corrects.Count != targetPanels.Count) return;
 
         gameIsOver = true;

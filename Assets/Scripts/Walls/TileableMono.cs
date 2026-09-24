@@ -4,6 +4,6 @@ namespace Scripts.Walls
 {
     public abstract class TileableMono : MonoBehaviour
     {
-        public abstract PanelIdentifier Identifier { get; set; }
+        public abstract TileIdentifier Identifier { get; set; }
     }
 }
