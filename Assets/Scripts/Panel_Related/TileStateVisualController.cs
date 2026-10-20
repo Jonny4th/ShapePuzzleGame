@@ -8,26 +8,22 @@ using State = ClueTile.State;
 [RequireComponent(typeof(MeshRenderer))]
 public class TileStateVisualController : MonoBehaviour
 {
+    [SerializeField] private MeshRenderer m_Renderer; 
+    
     [Header("Visuals")]
     [SerializeField] Material defaultMaterial;
     [SerializeField] Material targetMaterial;
     [SerializeField] Material shadowMaterial;
     [SerializeField] Material correctMaterial;
-    MeshRenderer mesh;
-
-    public void Start()
-    {
-        mesh = GetComponent<MeshRenderer>();
-    }
 
     public void UpdateVisual(State state)
     {
         switch(state)
         {
-            case State.None: mesh.material = defaultMaterial; break;
-            case State.Target: mesh.material = targetMaterial; break;
-            case State.Shadow: mesh.material = shadowMaterial; break;
-            case State.Correct: mesh.material = correctMaterial; break;
+            case State.None: m_Renderer.material = defaultMaterial; break;
+            case State.Target: m_Renderer.material = targetMaterial; break;
+            case State.Shadow: m_Renderer.material = shadowMaterial; break;
+            case State.Correct: m_Renderer.material = correctMaterial; break;
         }
     }
 }

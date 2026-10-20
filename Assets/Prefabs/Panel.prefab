@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed0baf02e4b30649b679a1d47d8d6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
+  m_Renderer: {fileID: 8495054308071801235}
   defaultMaterial: {fileID: 2100000, guid: 09fcf172b5a7ee34f961f82fffe0fab8, type: 2}
   targetMaterial: {fileID: 2100000, guid: 8c3ea15c2eb93184fa5c2f9910fd8f10, type: 2}
   shadowMaterial: {fileID: 2100000, guid: e002265d9cce6cd47b8d4600a77e72cd, type: 2}
