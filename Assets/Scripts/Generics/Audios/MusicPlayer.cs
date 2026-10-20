@@ -15,7 +15,6 @@ namespace General.Audio
     [RequireComponent(typeof(AudioSource))]
     public class MusicPlayer : MonoBehaviour
     {
-        //This is singleton.
         public PlayMode CurrentPlayMode => m_CurrentPlaymode;
         [SerializeField] private PlayMode m_CurrentPlaymode;
 
@@ -23,8 +22,7 @@ namespace General.Audio
         public float CurrentSongLength => m_audioSource.clip.length;
         public float CurrentTime => m_audioSource.time;
 
-        public MusicData[] Playlist => m_playlist;
-        [SerializeField] private MusicData[] m_playlist;
+        [SerializeField] private MusicAlbum m_playlist;
         
         public int CurrentMusicIndex => m_playingIndex;
         private int m_playingIndex = 0;
@@ -34,11 +32,13 @@ namespace General.Audio
 
         public event Action<MusicData> OnNewSongStart;
 
+        [SerializeField] bool m_playOnAwake;
+
         private void Awake()
         {
             m_audioSource = GetComponent<AudioSource>();
 
-            PlayMusic(m_CurrentPlaymode);
+            if(m_playOnAwake) PlayMusic(m_CurrentPlaymode);
         }
 
         public void PlayMusic(PlayMode playMode)
@@ -149,7 +149,7 @@ namespace General.Audio
         {
             if(index >= m_playlist.Length) throw new IndexOutOfRangeException();
 
-            var clipData = m_playlist[index];
+            var clipData = m_playlist.GetTrack(index);
 
             m_playingIndex = index;
             m_audioSource.clip = clipData;
